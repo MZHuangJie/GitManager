@@ -40,6 +40,7 @@ const IPC = {
   GIT_REVERT_HUNK: "git:revert-hunk",
   GIT_RESOLVE_CONFLICT: "git:resolve-conflict",
   GIT_FILE_DIFF: "git:file-diff",
+  GIT_FILE_FULL_DIFF: "git:file-full-diff",
   // Settings
   SETTINGS_GET: "settings:get",
   SETTINGS_SET: "settings:set",
@@ -458,6 +459,11 @@ ${hunkLines}`;
     const args = staged ? ["--cached", "--", file] : ["--", file];
     return await git.diff(args);
   },
+  async getFullFileDiff(repoPath, file, staged) {
+    const git = getGit(repoPath);
+    const args = staged ? ["--unified=999999", "--cached", "--", file] : ["--unified=999999", "--", file];
+    return await git.diff(args);
+  },
   async init(repoPath) {
     const git = getGit(repoPath);
     await git.init();
@@ -743,6 +749,17 @@ function registerGitIpc() {
     }
   );
   electron.ipcMain.handle(
+    IPC.GIT_FILE_FULL_DIFF,
+    async (_e, repoPath, file, staged) => {
+      try {
+        const diff = await gitService.getFullFileDiff(repoPath, file, staged);
+        return { success: true, data: diff };
+      } catch (err) {
+        return { success: false, error: err.message };
+      }
+    }
+  );
+  electron.ipcMain.handle(
     IPC.GIT_INIT,
     async (_e, repoPath) => {
       try {
@@ -934,8 +951,14 @@ const githubService = {
     }
     const data = await res.json();
     return {
+      id: data.id,
+      name: data.name,
+      fullName: data.full_name,
       cloneUrl: data.clone_url,
-      htmlUrl: data.html_url
+      htmlUrl: data.html_url,
+      private: data.private,
+      description: data.description,
+      updatedAt: data.updated_at
     };
   }
 };

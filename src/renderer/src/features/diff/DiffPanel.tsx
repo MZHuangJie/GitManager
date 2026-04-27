@@ -1,9 +1,9 @@
 import { useState, useMemo, useEffect, useCallback } from 'react'
-import { Typography, Tag, Empty, Button, Space, Dropdown, notification } from 'antd'
+import { Typography, Tag, Empty, Button, Space, Dropdown, Tooltip, notification } from 'antd'
 import type { MenuProps } from 'antd'
 import {
   FileTextOutlined, PlusOutlined, MinusOutlined,
-  SaveOutlined, RollbackOutlined
+  SaveOutlined, RollbackOutlined, ExpandOutlined
 } from '@ant-design/icons'
 import { parseDiff, FileDiff, DiffHunk, DiffPair, getFileLang } from '../../utils/diff'
 
@@ -153,12 +153,36 @@ export default function DiffPanel({ diff, standalone, editable, repoPath, filePa
   const [selectedFile, setSelectedFile] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
   const [resolving, setResolving] = useState(false)
+  const [fullFile, setFullFile] = useState(false)
+  const [fullDiff, setFullDiff] = useState<string | null>(null)
+  const [loadingFullDiff, setLoadingFullDiff] = useState(false)
 
-  const files = useMemo(() => parseDiff(diff), [diff])
+  const files = useMemo(() => parseDiff(fullFile && fullDiff ? fullDiff : diff), [diff, fullFile, fullDiff])
   const activeFile = useMemo(
     () => files.find((f) => f.path === selectedFile) || null,
     [files, selectedFile]
   )
+
+  const canShowFullFile = !!repoPath && !!filePath
+
+  const handleToggleFullFile = useCallback(async () => {
+    if (fullFile) {
+      setFullFile(false)
+      setFullDiff(null)
+      return
+    }
+    if (!repoPath || !filePath) return
+    setLoadingFullDiff(true)
+    try {
+      const res: any = await window.electronAPI.gitFileFullDiff(repoPath, filePath, staged || false)
+      if (res.success && res.data) {
+        setFullDiff(res.data)
+        setFullFile(true)
+      }
+    } finally {
+      setLoadingFullDiff(false)
+    }
+  }, [fullFile, repoPath, filePath, staged])
 
   useEffect(() => {
     if (files.length > 0 && !selectedFile) {
@@ -297,6 +321,15 @@ export default function DiffPanel({ diff, standalone, editable, repoPath, filePa
             <Button size="small" icon={<SaveOutlined />} onClick={onRefreshStatus} loading={saving}>
               刷新
             </Button>
+            {canShowFullFile && (
+              <Tooltip title={fullFile ? '返回差异视图' : '显示全部代码'}>
+                <Button size="small" icon={<ExpandOutlined />}
+                  type={fullFile ? 'primary' : 'default'}
+                  onClick={handleToggleFullFile} loading={loadingFullDiff}>
+                  {fullFile ? '差异视图' : '全部代码'}
+                </Button>
+              </Tooltip>
+            )}
           </Space>
         </div>
       )}
@@ -389,10 +422,19 @@ export default function DiffPanel({ diff, standalone, editable, repoPath, filePa
                     <Text type="success" style={{ fontSize: 12 }}>+{activeFile.additions}</Text>
                     <Text type="danger" style={{ fontSize: 12 }}>-{activeFile.deletions}</Text>
                   </div>
-                  <div style={{ display: 'flex', gap: 8, fontSize: 12, color: 'var(--text-tertiary)' }}>
-                    <span>旧版本</span>
-                    <span style={{ color: 'var(--text-secondary)' }}>/</span>
-                    <span>新版本</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                    <div style={{ display: 'flex', gap: 8, fontSize: 12, color: 'var(--text-tertiary)' }}>
+                      <span>旧版本</span>
+                      <span style={{ color: 'var(--text-secondary)' }}>/</span>
+                      <span>新版本</span>
+                    </div>
+                    {canShowFullFile && (
+                      <Button size="small" icon={<ExpandOutlined />}
+                        type={fullFile ? 'primary' : 'default'}
+                        onClick={handleToggleFullFile} loading={loadingFullDiff}>
+                        {fullFile ? '差异视图' : '全部代码'}
+                      </Button>
+                    )}
                   </div>
                 </div>
               )}

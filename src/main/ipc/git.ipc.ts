@@ -285,6 +285,18 @@ export function registerGitIpc(): void {
   )
 
   ipcMain.handle(
+    IPC.GIT_FILE_FULL_DIFF,
+    async (_e, repoPath: string, file: string, staged: boolean): Promise<IpcResponse<any>> => {
+      try {
+        const diff = await gitService.getFullFileDiff(repoPath, file, staged)
+        return { success: true, data: diff }
+      } catch (err: any) {
+        return { success: false, error: err.message }
+      }
+    }
+  )
+
+  ipcMain.handle(
     IPC.GIT_INIT,
     async (_e, repoPath: string): Promise<IpcResponse<any>> => {
       try {

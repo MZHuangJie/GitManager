@@ -332,6 +332,14 @@ export const gitService = {
     return await git.diff(args)
   },
 
+  async getFullFileDiff(repoPath: string, file: string, staged: boolean): Promise<string> {
+    const git = getGit(repoPath)
+    const args = staged
+      ? ['--unified=999999', '--cached', '--', file]
+      : ['--unified=999999', '--', file]
+    return await git.diff(args)
+  },
+
   async init(repoPath: string): Promise<void> {
     const git = getGit(repoPath)
     await git.init()

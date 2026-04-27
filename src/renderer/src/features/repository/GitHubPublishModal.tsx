@@ -19,6 +19,8 @@ export default function GitHubPublishModal({ open, repoPath, repoName, onClose }
   const commit = useStore((s) => s.commit)
   const repos = useStore((s) => s.repos)
   const updateRepoInfo = useStore((s) => s.updateRepoInfo)
+  const githubRepos = useStore((s) => s.githubRepos)
+  const setGithubRepos = useStore((s) => s.setGithubRepos)
 
   useEffect(() => {
     if (open) {
@@ -52,10 +54,10 @@ export default function GitHubPublishModal({ open, repoPath, repoName, onClose }
         return
       }
 
-      const { cloneUrl } = createRes.data
+      const newRepo = createRes.data
 
       // 构建带 token 的认证 URL，避免 git push 时卡在凭证输入
-      const authUrl = cloneUrl.replace('https://', `https://${values.token}@`)
+      const authUrl = newRepo.cloneUrl.replace('https://', `https://${values.token}@`)
 
       // Add remote
       const remoteRes: any = await window.electronAPI.gitAddRemote(repoPath, 'origin', authUrl)
@@ -64,12 +66,15 @@ export default function GitHubPublishModal({ open, repoPath, repoName, onClose }
         return
       }
 
-      notification.success({ message: `GitHub 仓库已创建: ${cloneUrl}` })
+      notification.success({ message: `GitHub 仓库已创建: ${newRepo.cloneUrl}` })
+
+      // 将新仓库加入 githubRepos 列表，使其出现在"我的仓库"
+      setGithubRepos([newRepo, ...githubRepos])
 
       // 更新 repo 的 remoteUrl，使其归入"我的仓库"（存储不含 token 的 URL）
       const targetRepo = repos.find((r) => r.path === repoPath)
       if (targetRepo) {
-        await updateRepoInfo(targetRepo.id, { remoteUrl: cloneUrl })
+        await updateRepoInfo(targetRepo.id, { remoteUrl: newRepo.cloneUrl })
       }
 
       // 检查是否有提交记录（新 init 的仓库没有分支和提交）

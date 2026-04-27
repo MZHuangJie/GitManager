@@ -77,7 +77,16 @@ export const githubService = {
     name: string,
     isPrivate: boolean,
     description?: string
-  ): Promise<{ cloneUrl: string; htmlUrl: string }> {
+  ): Promise<{
+    id: number
+    name: string
+    fullName: string
+    cloneUrl: string
+    htmlUrl: string
+    private: boolean
+    description: string | null
+    updatedAt: string
+  }> {
     const res = await fetch('https://api.github.com/user/repos', {
       method: 'POST',
       headers: {
@@ -100,8 +109,14 @@ export const githubService = {
 
     const data = await res.json()
     return {
+      id: data.id,
+      name: data.name,
+      fullName: data.full_name,
       cloneUrl: data.clone_url,
-      htmlUrl: data.html_url
+      htmlUrl: data.html_url,
+      private: data.private,
+      description: data.description,
+      updatedAt: data.updated_at
     }
   }
 }

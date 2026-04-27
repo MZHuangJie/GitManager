@@ -2,7 +2,8 @@ import { Table, Button, Tag, Space, Popconfirm, Empty, Typography, notification 
 import {
   BranchesOutlined,
   DeleteOutlined,
-  SwapOutlined
+  SwapOutlined,
+  MergeCellsOutlined
 } from '@ant-design/icons'
 import { useStore } from '../../stores'
 import { useCallback } from 'react'
@@ -129,14 +130,23 @@ export default function BranchList() {
         <Text type="secondary" strong>
           共 {branches.length} 个分支
         </Text>
-        <Button
-          type="primary"
-          size="small"
-          icon={<BranchesOutlined />}
-          onClick={() => setModalOpen('createBranchModalOpen', true)}
-        >
-          新建分支
-        </Button>
+        <Space size="small">
+          <Button
+            size="small"
+            icon={<MergeCellsOutlined />}
+            onClick={() => setModalOpen('mergeModalOpen', true)}
+          >
+            合并分支
+          </Button>
+          <Button
+            type="primary"
+            size="small"
+            icon={<BranchesOutlined />}
+            onClick={() => setModalOpen('createBranchModalOpen', true)}
+          >
+            新建分支
+          </Button>
+        </Space>
       </div>
       <Table
         dataSource={branches}

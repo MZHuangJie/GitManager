@@ -14,7 +14,8 @@ import {
   FolderOutlined,
   DownloadOutlined,
   CaretDownOutlined,
-  CaretRightOutlined
+  CaretRightOutlined,
+  ReloadOutlined
 } from '@ant-design/icons'
 import { useStore } from '../stores'
 import { RepoInfo } from '../../shared/types'
@@ -33,6 +34,7 @@ export default function AppSider() {
   const githubUsername = useStore((s) => s.githubUsername)
   const githubAvatarUrl = useStore((s) => s.githubAvatarUrl)
   const githubRepos = useStore((s) => s.githubRepos)
+  const setGithubRepos = useStore((s) => s.setGithubRepos)
 
   const setThemeMode = useStore((s) => s.setThemeMode)
   const selectRepo = useStore((s) => s.selectRepo)
@@ -113,6 +115,8 @@ export default function AppSider() {
     setGithubLogin(false, '')
   }
 
+  const [refreshingGithub, setRefreshingGithub] = useState(false)
+
   const toggleSection = (key: string) => {
     setCollapsedSections(prev => {
       const next = new Set(prev)
@@ -123,6 +127,21 @@ export default function AppSider() {
       }
       return next
     })
+  }
+
+  const handleRefreshGithubRepos = async () => {
+    setRefreshingGithub(true)
+    try {
+      const tokenRes: any = await window.electronAPI.githubGetToken()
+      if (tokenRes.success && tokenRes.data) {
+        const reposRes: any = await window.electronAPI.githubListRepos(tokenRes.data)
+        if (reposRes.success) {
+          setGithubRepos(reposRes.data)
+        }
+      }
+    } finally {
+      setRefreshingGithub(false)
+    }
   }
 
   const renderLocalRepoItem = (repo: RepoInfo) => (
@@ -377,6 +396,12 @@ export default function AppSider() {
                     }
                     <GithubOutlined style={{ color: 'var(--accent)' }} />
                     我的仓库 ({githubRepos.length})
+                    <Tooltip title="刷新列表">
+                      <Button type="text" size="small" icon={<ReloadOutlined />}
+                        loading={refreshingGithub}
+                        onClick={(e) => { e.stopPropagation(); handleRefreshGithubRepos() }}
+                        style={{ marginLeft: 'auto', color: 'var(--text-tertiary)', fontSize: 11 }} />
+                    </Tooltip>
                   </div>
 
                   {!collapsedSections.has('myRepos') && (

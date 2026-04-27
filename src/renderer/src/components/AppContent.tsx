@@ -2,9 +2,7 @@ import { Layout, Tabs, Breadcrumb, Select, Button, Space, Spin, Empty, Typograph
 import {
   DownloadOutlined,
   UploadOutlined,
-  MergeCellsOutlined,
   BranchesOutlined,
-  PlusOutlined,
   GithubOutlined
 } from '@ant-design/icons'
 import { useStore } from '../stores'
@@ -174,27 +172,15 @@ export default function AppContent() {
               >
                 推送
               </Button>
-              <Button
-                size="small"
-                icon={<PlusOutlined />}
-                onClick={() => setModalOpen('createBranchModalOpen', true)}
-              >
-                新建分支
-              </Button>
-              <Button
-                size="small"
-                icon={<MergeCellsOutlined />}
-                onClick={() => setModalOpen('mergeModalOpen', true)}
-              >
-                合并分支
-              </Button>
-              <Button
-                size="small"
-                icon={<GithubOutlined />}
-                onClick={() => setGithubModalOpen(true)}
-              >
-                推送 GitHub
-              </Button>
+              {selectedRepo && !selectedRepo.remoteUrl && (
+                <Button
+                  size="small"
+                  icon={<GithubOutlined />}
+                  onClick={() => setGithubModalOpen(true)}
+                >
+                  推送 GitHub
+                </Button>
+              )}
             </Space>
           </div>
 
