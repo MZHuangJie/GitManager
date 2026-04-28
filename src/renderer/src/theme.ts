@@ -96,42 +96,42 @@ const darkTheme: ThemeConfig = {
   }
 }
 
-// 薄荷森林 - 清新绿色
+// 薄荷森林 - 青色系
 const forestTheme: ThemeConfig = {
   token: {
     ...cuteToken,
-    colorPrimary: '#6aab8e',
-    colorPrimaryBg: '#eef7f1',
-    colorPrimaryBgHover: '#ddefe4',
-    colorPrimaryBorder: '#a3d1b9',
-    colorPrimaryHover: '#84c0a4',
-    colorPrimaryActive: '#4f9675',
-    colorSuccess: '#6aab8e',
-    colorWarning: '#e8b96b',
-    colorError: '#d9746b',
-    colorInfo: '#7eb8d4',
-    colorTextBase: '#24332b',
-    colorBgBase: '#f4f9f5',
+    colorPrimary: '#26a69a',
+    colorPrimaryBg: '#e0f2f1',
+    colorPrimaryBgHover: '#b2dfdb',
+    colorPrimaryBorder: '#80cbc4',
+    colorPrimaryHover: '#4db6ac',
+    colorPrimaryActive: '#00897b',
+    colorSuccess: '#26a69a',
+    colorWarning: '#f9a825',
+    colorError: '#ef5350',
+    colorInfo: '#4fc3f7',
+    colorTextBase: '#1b2e2b',
+    colorBgBase: '#f0faf8',
     colorBgContainer: '#ffffff',
     colorBgElevated: '#ffffff',
-    colorBorder: '#d4e8dc',
-    colorBorderSecondary: '#e4f2e8',
-    colorFill: '#eef7f1',
-    colorFillSecondary: '#f5faf6',
-    colorFillTertiary: '#fafcfa',
-    colorText: '#24332b',
-    colorTextSecondary: '#5a7563',
-    colorTextTertiary: '#879e8f',
-    colorTextQuaternary: '#b0c4b7',
-    boxShadow: '0 2px 12px rgba(106, 171, 142, 0.12)',
-    boxShadowSecondary: '0 4px 20px rgba(106, 171, 142, 0.08)'
+    colorBorder: '#c8e6e0',
+    colorBorderSecondary: '#dcede9',
+    colorFill: '#e0f2f1',
+    colorFillSecondary: '#e8f5f3',
+    colorFillTertiary: '#f2faf8',
+    colorText: '#1b2e2b',
+    colorTextSecondary: '#4d6b64',
+    colorTextTertiary: '#7a9e95',
+    colorTextQuaternary: '#b2cbc4',
+    boxShadow: '0 2px 12px rgba(38, 166, 154, 0.12)',
+    boxShadowSecondary: '0 4px 20px rgba(38, 166, 154, 0.08)'
   },
   components: {
-    Button: { borderRadius: 10, controlHeight: 36, controlHeightSM: 28, primaryShadow: '0 2px 8px rgba(106, 171, 142, 0.3)' },
-    Card: { borderRadius: 14, boxShadow: '0 2px 12px rgba(106, 171, 142, 0.06)' },
+    Button: { borderRadius: 10, controlHeight: 36, controlHeightSM: 28, primaryShadow: '0 2px 8px rgba(38, 166, 154, 0.3)' },
+    Card: { borderRadius: 14, boxShadow: '0 2px 12px rgba(38, 166, 154, 0.06)' },
     Tag: { borderRadius: 6 },
     Modal: { borderRadius: 16, boxShadow: '0 8px 40px rgba(0,0,0,0.08)' },
-    Table: { borderRadius: 12, headerBg: '#f0f7f3', borderColor: '#e4f2e8' }
+    Table: { borderRadius: 12, headerBg: '#e8f5f3', borderColor: '#dcede9' }
   }
 }
 
