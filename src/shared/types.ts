@@ -79,8 +79,17 @@ export interface MergeResult {
   }
 }
 
-export type ThemeMode = 'dark' | 'light'
+export type ThemeMode = 'light' | 'dark' | 'forest' | 'ocean' | 'sunset' | 'glass' | 'cyber'
 export const DEFAULT_THEME: ThemeMode = 'light'
+export const THEME_META: Record<ThemeMode, { name: string; icon: string; dark: boolean }> = {
+  light:  { name: '奶油草莓', icon: '🍓', dark: false },
+  dark:   { name: '薰衣草夜空', icon: '🪻', dark: true },
+  forest: { name: '薄荷森林', icon: '🌿', dark: false },
+  ocean:  { name: '深海暗流', icon: '🌊', dark: true },
+  sunset: { name: '日落余晖', icon: '🌅', dark: true },
+  glass:  { name: '毛玻璃', icon: '💎', dark: false },
+  cyber:  { name: '未来主义', icon: '⚡', dark: true }
+}
 
 export interface LogOptions {
   maxCount?: number

@@ -1,13 +1,12 @@
 import { useMemo, useState } from 'react'
-import { Layout, Button, Input, List, Tooltip, Spin, Empty, Typography, Avatar, notification } from 'antd'
+import { Layout, Button, Input, List, Tooltip, Spin, Empty, Typography, Avatar, notification, Dropdown } from 'antd'
+import type { MenuProps } from 'antd'
 import {
   PlusOutlined,
   DeleteOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   GithubOutlined,
-  SunOutlined,
-  MoonOutlined,
   CloudDownloadOutlined,
   LoginOutlined,
   LogoutOutlined,
@@ -17,13 +16,42 @@ import {
   CaretRightOutlined,
   ReloadOutlined,
   SearchOutlined,
-  ForkOutlined
+  ForkOutlined,
+  BgColorsOutlined
 } from '@ant-design/icons'
 import { useStore } from '../stores'
-import { RepoInfo } from '../../shared/types'
+import { RepoInfo, THEME_META } from '@shared/types'
+import type { ThemeMode } from '@shared/types'
 
 const { Sider } = Layout
 const { Text } = Typography
+
+function ThemeDropdown({ children, placement }: { children: React.ReactNode; placement: 'right' | 'bottomRight' }) {
+  const themeMode = useStore((s) => s.themeMode)
+  const setThemeMode = useStore((s) => s.setThemeMode)
+
+  const themeItems: MenuProps['items'] = (Object.entries(THEME_META) as [ThemeMode, typeof THEME_META[ThemeMode]][]).map(
+    ([key, meta]) => ({
+      key,
+      label: `${meta.icon}  ${meta.name}`,
+      style: {
+        fontWeight: themeMode === key ? 600 : 400,
+        color: themeMode === key ? 'var(--accent)' : 'var(--text-primary)',
+        background: themeMode === key ? 'var(--bg-selected)' : 'transparent'
+      }
+    })
+  )
+
+  const handleClick: MenuProps['onClick'] = ({ key }) => {
+    setThemeMode(key as ThemeMode)
+  }
+
+  return (
+    <Dropdown menu={{ items: themeItems, onClick: handleClick }} placement={placement} trigger={['click']}>
+      {children as React.ReactElement}
+    </Dropdown>
+  )
+}
 
 export default function AppSider() {
   const repos = useStore((s) => s.repos)
@@ -377,11 +405,9 @@ export default function AppSider() {
                 onClick={() => setModalOpen('githubLoginModalOpen', true)} />
             </Tooltip>
           )}
-          <Tooltip title={themeMode === 'dark' ? '切换到亮色主题' : '切换到暗色主题'} placement="right">
-            <Button type="text"
-              icon={themeMode === 'dark' ? <SunOutlined style={{ color: '#f5c26b' }} /> : <MoonOutlined style={{ color: '#c4a7f5' }} />}
-              onClick={() => setThemeMode(themeMode === 'dark' ? 'light' : 'dark')} />
-          </Tooltip>
+          <ThemeDropdown placement="right">
+            <Button type="text" icon={<BgColorsOutlined style={{ color: 'var(--accent)' }} />} />
+          </ThemeDropdown>
         </div>
       ) : (
         <div style={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
@@ -420,11 +446,10 @@ export default function AppSider() {
                     onClick={() => setModalOpen('githubLoginModalOpen', true)} />
                 </Tooltip>
               )}
-              <Tooltip title={themeMode === 'dark' ? '切换到亮色主题' : '切换到暗色主题'}>
+              <ThemeDropdown placement="bottomRight">
                 <Button type="text" size="small"
-                  icon={themeMode === 'dark' ? <SunOutlined style={{ color: '#f5c26b' }} /> : <MoonOutlined style={{ color: '#c4a7f5' }} />}
-                  onClick={() => setThemeMode(themeMode === 'dark' ? 'light' : 'dark')} />
-              </Tooltip>
+                  icon={<BgColorsOutlined style={{ color: 'var(--accent)' }} />} />
+              </ThemeDropdown>
             </div>
           </div>
 

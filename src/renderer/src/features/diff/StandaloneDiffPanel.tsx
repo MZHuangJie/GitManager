@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useState, useCallback } from 'react'
 import { Spin, Empty, notification } from 'antd'
 import DiffPanel from './DiffPanel'
 import { useStore } from '../../stores'
+import type { ThemeMode } from '@shared/types'
 
 interface DiffWindowData {
   diff: string
@@ -20,7 +21,7 @@ export default function StandaloneDiffPanel() {
 
   // Sync store theme from preload arg, so ThemeWrapper applies correct theme
   useLayoutEffect(() => {
-    const theme = window.electronAPI.diffWindowTheme as 'dark' | 'light'
+    const theme = window.electronAPI.diffWindowTheme as ThemeMode
     setThemeMode(theme)
   }, [setThemeMode])
 
@@ -29,7 +30,7 @@ export default function StandaloneDiffPanel() {
       const d = (window as any).__diffData as DiffWindowData | undefined
       if (d && d.diff) {
         if (d.theme) {
-          setThemeMode(d.theme as 'dark' | 'light')
+          setThemeMode(d.theme as ThemeMode)
         }
         setData(d)
         setLoading(false)

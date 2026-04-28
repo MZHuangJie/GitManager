@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
 
 /* ── 主题 CSS 变量 ── */
+
 :root,
 [data-theme='dark'] {
   --bg-primary: #1a1625;
@@ -149,6 +150,7 @@ body {
 }
 
 /* 全局隐藏滚动条 — 用 width:0 而非 display:none，避免回退到原生滚动条 */
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -159,6 +161,7 @@ body {
 }
 
 /* Diff 面板显示滚动条 */
+
 .show-scrollbar::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -191,6 +194,7 @@ body {
 }
 
 /* diff2html 容器 */
+
 .diff-container {
   max-height: 600px;
   overflow: auto;
@@ -208,6 +212,7 @@ body {
 }
 
 /* diff2html 暗色主题覆盖 (dark, ocean, sunset, cyber) */
+
 [data-theme='dark'] .d2h-wrapper,
 [data-theme='ocean'] .d2h-wrapper,
 [data-theme='sunset'] .d2h-wrapper,
@@ -218,6 +223,7 @@ body {
   --d2h-ins-bg: rgba(111, 207, 151, 0.08);
   --d2h-del-bg: rgba(232, 131, 122, 0.08);
 }
+
 [data-theme='dark'] .d2h-file-header,
 [data-theme='ocean'] .d2h-file-header,
 [data-theme='sunset'] .d2h-file-header,
@@ -225,18 +231,21 @@ body {
   background: #231f33 !important;
   border-color: #383250 !important;
 }
+
 [data-theme='dark'] .d2h-file-wrapper,
 [data-theme='ocean'] .d2h-file-wrapper,
 [data-theme='sunset'] .d2h-file-wrapper,
 [data-theme='cyber'] .d2h-file-wrapper {
   border-color: #2e2845 !important;
 }
+
 [data-theme='dark'] .d2h-code-line,
 [data-theme='ocean'] .d2h-code-line,
 [data-theme='sunset'] .d2h-code-line,
 [data-theme='cyber'] .d2h-code-line {
   color: #c4b3d4 !important;
 }
+
 [data-theme='dark'] .d2h-ins,
 [data-theme='ocean'] .d2h-ins,
 [data-theme='sunset'] .d2h-ins,
@@ -244,6 +253,7 @@ body {
   background: rgba(111, 207, 151, 0.1) !important;
   border-color: rgba(111, 207, 151, 0.2) !important;
 }
+
 [data-theme='dark'] .d2h-del,
 [data-theme='ocean'] .d2h-del,
 [data-theme='sunset'] .d2h-del,
@@ -251,12 +261,14 @@ body {
   background: rgba(232, 131, 122, 0.1) !important;
   border-color: rgba(232, 131, 122, 0.2) !important;
 }
+
 [data-theme='dark'] .d2h-code-side-linenumber,
 [data-theme='ocean'] .d2h-code-side-linenumber,
 [data-theme='sunset'] .d2h-code-side-linenumber,
 [data-theme='cyber'] .d2h-code-side-linenumber {
   border-color: #383250 !important;
 }
+
 [data-theme='dark'] .d2h-file-list-wrapper,
 [data-theme='ocean'] .d2h-file-list-wrapper,
 [data-theme='sunset'] .d2h-file-list-wrapper,
@@ -266,39 +278,46 @@ body {
 }
 
 /* diff2html 亮色主题覆盖 (light, forest, glass) */
+
 [data-theme='light'] .d2h-file-header,
 [data-theme='forest'] .d2h-file-header,
 [data-theme='glass'] .d2h-file-header {
   background: #fdf6f8 !important;
   border-color: #f0dde2 !important;
 }
+
 [data-theme='light'] .d2h-file-wrapper,
 [data-theme='forest'] .d2h-file-wrapper,
 [data-theme='glass'] .d2h-file-wrapper {
   border-color: #f5e8ec !important;
 }
+
 [data-theme='light'] .d2h-code-line,
 [data-theme='forest'] .d2h-code-line,
 [data-theme='glass'] .d2h-code-line {
   color: #5c4b51 !important;
 }
+
 [data-theme='light'] .d2h-ins,
 [data-theme='forest'] .d2h-ins,
 [data-theme='glass'] .d2h-ins {
   background: rgba(126, 203, 154, 0.12) !important;
   border-color: rgba(126, 203, 154, 0.2) !important;
 }
+
 [data-theme='light'] .d2h-del,
 [data-theme='forest'] .d2h-del,
 [data-theme='glass'] .d2h-del {
   background: rgba(240, 124, 130, 0.12) !important;
   border-color: rgba(240, 124, 130, 0.2) !important;
 }
+
 [data-theme='light'] .d2h-code-side-linenumber,
 [data-theme='forest'] .d2h-code-side-linenumber,
 [data-theme='glass'] .d2h-code-side-linenumber {
   border-color: #f0dde2 !important;
 }
+
 [data-theme='light'] .d2h-file-list-wrapper,
 [data-theme='forest'] .d2h-file-list-wrapper,
 [data-theme='glass'] .d2h-file-list-wrapper {
@@ -307,6 +326,7 @@ body {
 }
 
 /* 柔和过渡 */
+
 .ant-btn {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
@@ -316,34 +336,43 @@ body {
 }
 
 /* 卡片悬停 */
+
 .ant-card-hoverable:hover {
   transform: translateY(-2px);
 }
 
 /* 选中行发光 */
+
 [data-theme='dark'] .ant-table-row-selected > td {
   box-shadow: inset 0 0 0 1px rgba(196, 167, 245, 0.25) !important;
 }
+
 [data-theme='light'] .ant-table-row-selected > td {
   box-shadow: inset 0 0 0 1px rgba(247, 133, 155, 0.25) !important;
 }
+
 [data-theme='forest'] .ant-table-row-selected > td {
   box-shadow: inset 0 0 0 1px rgba(106, 171, 142, 0.25) !important;
 }
+
 [data-theme='ocean'] .ant-table-row-selected > td {
   box-shadow: inset 0 0 0 1px rgba(109, 179, 216, 0.25) !important;
 }
+
 [data-theme='sunset'] .ant-table-row-selected > td {
   box-shadow: inset 0 0 0 1px rgba(232, 168, 124, 0.25) !important;
 }
+
 [data-theme='glass'] .ant-table-row-selected > td {
   box-shadow: inset 0 0 0 1px rgba(139, 157, 195, 0.25) !important;
 }
+
 [data-theme='cyber'] .ant-table-row-selected > td {
   box-shadow: inset 0 0 0 1px rgba(0, 229, 255, 0.3) !important;
 }
 
 /* Tabs 高度传递：让 tab 内容区填充剩余高度 */
+
 .ant-tabs-content-holder {
   flex: 1 !important;
   min-height: 0 !important;

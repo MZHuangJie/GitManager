@@ -5,12 +5,12 @@ import { ConfigProvider } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import { useEffect } from 'react'
 import { useStore } from './stores'
-import { lightTheme, darkTheme } from './theme'
+import { themes } from './theme'
 import App from './App'
 
 function ThemeWrapper({ children }: { children: React.ReactNode }) {
   const themeMode = useStore((s) => s.themeMode)
-  const themeConfig = themeMode === 'light' ? lightTheme : darkTheme
+  const themeConfig = themes[themeMode]
 
   useEffect(() => {
     document.body.setAttribute('data-theme', themeMode)
