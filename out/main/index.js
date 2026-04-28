@@ -277,7 +277,9 @@ const gitService = {
       ).map((r) => ({
         from: r.from,
         to: r.to
-      }))
+      })),
+      ahead: status.ahead,
+      behind: status.behind
     };
   },
   async getLog(repoPath, opts = {}) {

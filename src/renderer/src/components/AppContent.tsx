@@ -1,4 +1,4 @@
-import { Layout, Tabs, Breadcrumb, Select, Button, Space, Spin, Empty, Typography, notification } from 'antd'
+import { Layout, Tabs, Breadcrumb, Select, Button, Space, Spin, Empty, Typography, notification, Badge } from 'antd'
 import {
   DownloadOutlined,
   UploadOutlined,
@@ -29,6 +29,7 @@ export default function AppContent() {
   const operationError = useStore((s) => s.operationError)
   const currentBranch = useStore((s) => s.currentBranch)
   const branches = useStore((s) => s.branches)
+  const workingStatus = useStore((s) => s.workingStatus)
 
   const setActiveTab = useStore((s) => s.setActiveTab)
   const setModalOpen = useStore((s) => s.setModalOpen)
@@ -156,22 +157,26 @@ export default function AppContent() {
             </div>
 
             <Space size="small">
-              <Button
-                size="small"
-                icon={<DownloadOutlined />}
-                loading={activeOperation === 'pull'}
-                onClick={handlePull}
-              >
-                拉取
-              </Button>
-              <Button
-                size="small"
-                icon={<UploadOutlined />}
-                loading={activeOperation === 'push'}
-                onClick={handlePush}
-              >
-                推送
-              </Button>
+              <Badge count={workingStatus?.behind || 0} overflowCount={99} size="small" offset={[-2, 2]}>
+                <Button
+                  size="small"
+                  icon={<DownloadOutlined />}
+                  loading={activeOperation === 'pull'}
+                  onClick={handlePull}
+                >
+                  拉取
+                </Button>
+              </Badge>
+              <Badge count={workingStatus?.ahead || 0} overflowCount={99} size="small" offset={[-2, 2]}>
+                <Button
+                  size="small"
+                  icon={<UploadOutlined />}
+                  loading={activeOperation === 'push'}
+                  onClick={handlePush}
+                >
+                  推送
+                </Button>
+              </Badge>
               {selectedRepo && !selectedRepo.remoteUrl && (
                 <Button
                   size="small"

@@ -40,6 +40,8 @@ export interface WorkingStatus {
   created: string[]
   deleted: string[]
   renamed: Array<{ from: string; to: string }>
+  ahead: number
+  behind: number
 }
 
 export interface BranchEntry {

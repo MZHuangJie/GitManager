@@ -111,7 +111,9 @@ export const gitService = {
         .map((r: { from: string; to: string }) => ({
           from: r.from,
           to: r.to
-        }))
+        })),
+      ahead: status.ahead,
+      behind: status.behind
     }
   },
 
