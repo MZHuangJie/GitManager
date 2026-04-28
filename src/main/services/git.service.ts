@@ -221,9 +221,18 @@ export const gitService = {
 
   async push(repoPath: string): Promise<{ pushed: boolean }> {
     const git = getGit(repoPath)
-    const result = await git.push()
-    return {
-      pushed: result.pushed || false
+    try {
+      const result = await git.push()
+      return { pushed: result.pushed || false }
+    } catch (err: any) {
+      const msg = err?.message || ''
+      if (msg.includes('no upstream') || msg.includes('--set-upstream')) {
+        const branch = await git.branch()
+        const currentBranch = branch.current
+        await git.push('origin', currentBranch, ['-u'])
+        return { pushed: true }
+      }
+      throw err
     }
   },
 

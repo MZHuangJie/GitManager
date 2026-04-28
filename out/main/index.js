@@ -374,10 +374,19 @@ const gitService = {
   },
   async push(repoPath) {
     const git = getGit(repoPath);
-    const result = await git.push();
-    return {
-      pushed: result.pushed || false
-    };
+    try {
+      const result = await git.push();
+      return { pushed: result.pushed || false };
+    } catch (err) {
+      const msg = err?.message || "";
+      if (msg.includes("no upstream") || msg.includes("--set-upstream")) {
+        const branch = await git.branch();
+        const currentBranch = branch.current;
+        await git.push("origin", currentBranch, ["-u"]);
+        return { pushed: true };
+      }
+      throw err;
+    }
   },
   async createBranch(repoPath, name, baseBranch, switchTo = true) {
     const git = getGit(repoPath);
