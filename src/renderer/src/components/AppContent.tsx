@@ -41,6 +41,10 @@ export default function AppContent() {
   const selectedRepo = repos.find((r) => r.id === selectedRepoId)
   const [githubModalOpen, setGithubModalOpen] = useState(false)
 
+  const changedFileCount = selectedRepo && workingStatus
+    ? workingStatus.staged.length + workingStatus.unstaged.length + workingStatus.created.length + workingStatus.deleted.length
+    : 0
+
   if (operationError) {
     notification.error({
       message: '操作失败',
@@ -79,7 +83,11 @@ export default function AppContent() {
         },
         {
           key: 'changes',
-          label: '文件变更',
+          label: (
+            <Badge count={changedFileCount} overflowCount={99} size="small" offset={[6, -4]}>
+              <span>文件变更</span>
+            </Badge>
+          ),
           children: <StageArea />
         },
         {
@@ -234,6 +242,7 @@ export default function AppContent() {
             {activeOperation === 'delete-branch' && '正在删除分支...'}
             {activeOperation === 'discard' && '正在丢弃修改...'}
             {activeOperation === 'clone' && '正在克隆仓库...'}
+            {activeOperation === 'reset' && '正在回滚...'}
           </Text>
         </div>
       )}

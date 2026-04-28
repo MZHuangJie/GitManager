@@ -36,6 +36,7 @@ export const IPC = {
   GIT_RESOLVE_CONFLICT: 'git:resolve-conflict',
   GIT_FILE_DIFF: 'git:file-diff',
   GIT_FILE_FULL_DIFF: 'git:file-full-diff',
+  GIT_RESET: 'git:reset',
 
   // Settings
   SETTINGS_GET: 'settings:get',

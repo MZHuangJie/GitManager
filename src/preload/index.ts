@@ -57,6 +57,8 @@ const api = {
     ipcRenderer.invoke(IPC.GIT_FILE_DIFF, repoPath, file, staged),
   gitFileFullDiff: (repoPath: string, file: string, staged: boolean) =>
     ipcRenderer.invoke(IPC.GIT_FILE_FULL_DIFF, repoPath, file, staged),
+  gitReset: (repoPath: string, hash: string) =>
+    ipcRenderer.invoke(IPC.GIT_RESET, repoPath, hash),
 
   // Settings
   settingsGet: (key: string) => ipcRenderer.invoke(IPC.SETTINGS_GET, key),

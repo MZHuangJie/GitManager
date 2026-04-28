@@ -1,5 +1,6 @@
-import { Table, Input, Empty, Tag, Typography, Descriptions, Spin, notification } from 'antd'
-import { BranchesOutlined, SearchOutlined, ExpandOutlined } from '@ant-design/icons'
+import { Table, Input, Empty, Tag, Typography, Descriptions, Spin, notification, Modal, Dropdown } from 'antd'
+import { BranchesOutlined, SearchOutlined, ExpandOutlined, RollbackOutlined } from '@ant-design/icons'
+import type { MenuProps } from 'antd'
 import { useStore } from '../../stores'
 import { useMemo, useCallback, useState, useRef, useEffect } from 'react'
 import { CommitEntry } from '../../../shared/types'
@@ -25,6 +26,7 @@ export default function CommitHistory() {
 
   const selectCommit = useStore((s) => s.selectCommit)
   const loadDiff = useStore((s) => s.loadDiff)
+  const resetToCommit = useStore((s) => s.resetToCommit)
   const commitSearchQuery = useStore((s) => s.commitSearchQuery)
   const setCommitSearch = useStore((s) => s.setCommitSearch)
   const themeMode = useStore((s) => s.themeMode)
@@ -33,6 +35,7 @@ export default function CommitHistory() {
 
   const [topRatio, setTopRatio] = useState(DEFAULT_TOP_RATIO)
   const [dragging, setDragging] = useState(false)
+  const [contextMenu, setContextMenu] = useState<{ record: CommitEntry; x: number; y: number } | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const draggingRef = useRef(false)
   const dragStartYRef = useRef(0)
@@ -74,6 +77,34 @@ export default function CommitHistory() {
       window.electronAPI.windowOpenDiff({ diff: fileDiff, editable: false, theme: themeMode })
     }
   }, [currentDiff, themeMode])
+
+  const handleReset = useCallback((record: CommitEntry) => {
+    if (!selectedRepo) return
+    setContextMenu(null)
+    Modal.confirm({
+      title: '回滚到此提交',
+      content: `确定要将仓库回滚到提交 ${record.hash.slice(0, 7)} 吗？此操作将丢弃该提交之后的所有更改，不可撤销。`,
+      okText: '确认回滚',
+      okButtonProps: { danger: true },
+      cancelText: '取消',
+      onOk: async () => {
+        await resetToCommit(selectedRepo.path, record.hash)
+        notification.success({ message: `已回滚到 ${record.hash.slice(0, 7)}` })
+      }
+    })
+  }, [selectedRepo, resetToCommit])
+
+  const contextMenuItems: MenuProps['items'] = contextMenu
+    ? [
+        {
+          key: 'reset',
+          label: '回退到此版本',
+          icon: <RollbackOutlined />,
+          danger: true,
+          onClick: () => handleReset(contextMenu.record)
+        }
+      ]
+    : []
 
   const topPanelRef = useRef<HTMLDivElement>(null)
   const bottomPanelRef = useRef<HTMLDivElement>(null)
@@ -229,6 +260,10 @@ export default function CommitHistory() {
           pagination={{ pageSize: 30, showSizeChanger: true, showTotal: (t) => `共 ${t} 条` }}
           onRow={(record) => ({
             onClick: () => handleRowClick(record),
+            onContextMenu: (e) => {
+              e.preventDefault()
+              setContextMenu({ record, x: e.clientX, y: e.clientY })
+            },
             style: {
               cursor: 'pointer',
               background: record.hash === selectedCommitHash ? 'var(--bg-selected)' : undefined
@@ -350,6 +385,27 @@ export default function CommitHistory() {
             </div>
           )}
         </div>
+      )}
+      {/* Right-click context menu */}
+      {contextMenu && (
+        <Dropdown
+          open
+          onOpenChange={(open) => { if (!open) setContextMenu(null) }}
+          menu={{ items: contextMenuItems }}
+          placement="bottomLeft"
+          trigger={['contextMenu']}
+        >
+          <div
+            style={{
+              position: 'fixed',
+              left: contextMenu.x,
+              top: contextMenu.y,
+              width: 1,
+              height: 1,
+              pointerEvents: 'none'
+            }}
+          />
+        </Dropdown>
       )}
     </div>
   )

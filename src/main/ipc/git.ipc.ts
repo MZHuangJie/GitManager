@@ -309,6 +309,18 @@ export function registerGitIpc(): void {
   )
 
   ipcMain.handle(
+    IPC.GIT_RESET,
+    async (_e, repoPath: string, hash: string): Promise<IpcResponse<any>> => {
+      try {
+        await gitService.resetToCommit(repoPath, hash)
+        return { success: true, data: undefined }
+      } catch (err: any) {
+        return { success: false, error: err.message }
+      }
+    }
+  )
+
+  ipcMain.handle(
     IPC.GIT_ADD_REMOTE,
     async (_e, repoPath: string, name: string, url: string): Promise<IpcResponse<any>> => {
       try {

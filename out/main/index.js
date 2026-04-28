@@ -41,6 +41,7 @@ const IPC = {
   GIT_RESOLVE_CONFLICT: "git:resolve-conflict",
   GIT_FILE_DIFF: "git:file-diff",
   GIT_FILE_FULL_DIFF: "git:file-full-diff",
+  GIT_RESET: "git:reset",
   // Settings
   SETTINGS_GET: "settings:get",
   SETTINGS_SET: "settings:set",
@@ -486,6 +487,10 @@ ${hunkLines}`;
     const git = getGit(repoPath);
     await git.push(remote, branch, ["-u"]);
   },
+  async resetToCommit(repoPath, hash) {
+    const git = getGit(repoPath);
+    await git.reset(["--hard", hash]);
+  },
   async clone(url, targetDir) {
     if (!fs.existsSync(targetDir)) {
       fs.mkdirSync(targetDir, { recursive: true });
@@ -766,6 +771,17 @@ function registerGitIpc() {
     async (_e, repoPath) => {
       try {
         await gitService.init(repoPath);
+        return { success: true, data: void 0 };
+      } catch (err) {
+        return { success: false, error: err.message };
+      }
+    }
+  );
+  electron.ipcMain.handle(
+    IPC.GIT_RESET,
+    async (_e, repoPath, hash) => {
+      try {
+        await gitService.resetToCommit(repoPath, hash);
         return { success: true, data: void 0 };
       } catch (err) {
         return { success: false, error: err.message };

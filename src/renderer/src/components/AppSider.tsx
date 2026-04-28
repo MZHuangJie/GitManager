@@ -15,7 +15,8 @@ import {
   DownloadOutlined,
   CaretDownOutlined,
   CaretRightOutlined,
-  ReloadOutlined
+  ReloadOutlined,
+  SearchOutlined
 } from '@ant-design/icons'
 import { useStore } from '../stores'
 import { RepoInfo } from '../../shared/types'
@@ -347,9 +348,10 @@ export default function AppSider() {
 
           {/* 搜索 + 添加 */}
           <div style={{ padding: '8px 12px', display: 'flex', gap: 8 }}>
-            <Input.Search
+            <Input
               placeholder="搜索仓库..."
               allowClear size="small"
+              prefix={<SearchOutlined style={{ color: 'var(--text-tertiary)' }} />}
               value={repoSearchQuery}
               onChange={(e) => setRepoSearch(e.target.value)}
               style={{ flex: 1 }}

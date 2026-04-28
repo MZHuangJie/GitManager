@@ -257,6 +257,7 @@ export default function StageArea() {
             disabled={selectedRowKeys.length === 0}
           >
             <Button
+              type="primary"
               size="small"
               danger
               icon={<DeleteOutlined />}

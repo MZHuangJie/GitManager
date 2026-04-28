@@ -36,6 +36,7 @@ const IPC = {
   GIT_RESOLVE_CONFLICT: "git:resolve-conflict",
   GIT_FILE_DIFF: "git:file-diff",
   GIT_FILE_FULL_DIFF: "git:file-full-diff",
+  GIT_RESET: "git:reset",
   // Settings
   SETTINGS_GET: "settings:get",
   SETTINGS_SET: "settings:set",
@@ -85,6 +86,7 @@ const api = {
   gitResolveConflict: (repoPath, file, strategy) => electron.ipcRenderer.invoke(IPC.GIT_RESOLVE_CONFLICT, repoPath, file, strategy),
   gitFileDiff: (repoPath, file, staged) => electron.ipcRenderer.invoke(IPC.GIT_FILE_DIFF, repoPath, file, staged),
   gitFileFullDiff: (repoPath, file, staged) => electron.ipcRenderer.invoke(IPC.GIT_FILE_FULL_DIFF, repoPath, file, staged),
+  gitReset: (repoPath, hash) => electron.ipcRenderer.invoke(IPC.GIT_RESET, repoPath, hash),
   // Settings
   settingsGet: (key) => electron.ipcRenderer.invoke(IPC.SETTINGS_GET, key),
   settingsSet: (key, value) => electron.ipcRenderer.invoke(IPC.SETTINGS_SET, key, value),

@@ -366,6 +366,11 @@ export const gitService = {
     await git.push(remote, branch, ['-u'])
   },
 
+  async resetToCommit(repoPath: string, hash: string): Promise<void> {
+    const git = getGit(repoPath)
+    await git.reset(['--hard', hash])
+  },
+
   async clone(url: string, targetDir: string): Promise<{ repoPath: string }> {
     // 确保目标目录存在
     if (!fs.existsSync(targetDir)) {

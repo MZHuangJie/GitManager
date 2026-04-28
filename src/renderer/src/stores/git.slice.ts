@@ -38,6 +38,7 @@ export interface GitSlice {
   deleteBranch: (repoPath: string, branch: string) => Promise<void>
   discardFiles: (repoPath: string, files: string[]) => Promise<void>
   cloneRepo: (url: string, targetDir: string) => Promise<{ repoPath: string } | null>
+  resetToCommit: (repoPath: string, hash: string) => Promise<void>
 
   clearOperationError: () => void
   resetGitState: () => void
@@ -257,6 +258,20 @@ export function createGitSlice(
       } else {
         set({ operationError: res.error, activeOperation: null })
         return null
+      }
+    },
+
+    resetToCommit: async (repoPath: string, hash: string) => {
+      set({ activeOperation: 'reset', operationError: null })
+      const res: IpcResponse<any> = await window.electronAPI.gitReset(repoPath, hash)
+      if (res.success) {
+        await get().loadCommits(repoPath)
+        await get().loadStatus(repoPath)
+        await get().loadBranches(repoPath)
+        await get().loadCurrentBranch(repoPath)
+        set({ activeOperation: null })
+      } else {
+        set({ operationError: res.error, activeOperation: null })
       }
     },
 
