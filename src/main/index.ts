@@ -13,6 +13,7 @@ function createWindow(): void {
     minWidth: 900,
     minHeight: 600,
     title: 'GitManager',
+    icon: join(__dirname, '../../resources/icon.png'),
     autoHideMenuBar: true,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
