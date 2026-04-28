@@ -338,6 +338,7 @@ export default function DiffPanel({ diff, standalone, editable, repoPath, filePa
       <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
         {/* File list sidebar */}
         <div
+          className="show-scrollbar"
           style={{
             width: 240,
             flexShrink: 0,
@@ -405,7 +406,7 @@ export default function DiffPanel({ diff, standalone, editable, repoPath, filePa
         </div>
 
         {/* Diff content */}
-        <div style={{ flex: 1, overflow: 'auto', background: 'var(--bg-primary)' }}>
+        <div className="show-scrollbar" style={{ flex: 1, overflow: 'auto', background: 'var(--bg-primary)' }}>
           {activeFile ? (
             <>
               {(!editable || !filePath) && (
