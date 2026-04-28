@@ -13595,7 +13595,7 @@ var CheckCircleFilled = function CheckCircleFilled2(props, ref) {
     icon: CheckCircleFilled$1
   }));
 };
-var RefIcon$S = /* @__PURE__ */ reactExports.forwardRef(CheckCircleFilled);
+var RefIcon$T = /* @__PURE__ */ reactExports.forwardRef(CheckCircleFilled);
 var CloseCircleFilled$1 = { "icon": { "tag": "svg", "attrs": { "fill-rule": "evenodd", "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64c247.4 0 448 200.6 448 448S759.4 960 512 960 64 759.4 64 512 264.6 64 512 64zm127.98 274.82h-.04l-.08.06L512 466.75 384.14 338.88c-.04-.05-.06-.06-.08-.06a.12.12 0 00-.07 0c-.03 0-.05.01-.09.05l-45.02 45.02a.2.2 0 00-.05.09.12.12 0 000 .07v.02a.27.27 0 00.06.06L466.75 512 338.88 639.86c-.05.04-.06.06-.06.08a.12.12 0 000 .07c0 .03.01.05.05.09l45.02 45.02a.2.2 0 00.09.05.12.12 0 00.07 0c.02 0 .04-.01.08-.05L512 557.25l127.86 127.87c.04.04.06.05.08.05a.12.12 0 00.07 0c.03 0 .05-.01.09-.05l45.02-45.02a.2.2 0 00.05-.09.12.12 0 000-.07v-.02a.27.27 0 00-.05-.06L557.25 512l127.87-127.86c.04-.04.05-.06.05-.08a.12.12 0 000-.07c0-.03-.01-.05-.05-.09l-45.02-45.02a.2.2 0 00-.09-.05.12.12 0 00-.07 0z" } }] }, "name": "close-circle", "theme": "filled" };
 var CloseCircleFilled = function CloseCircleFilled2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -13603,7 +13603,7 @@ var CloseCircleFilled = function CloseCircleFilled2(props, ref) {
     icon: CloseCircleFilled$1
   }));
 };
-var RefIcon$R = /* @__PURE__ */ reactExports.forwardRef(CloseCircleFilled);
+var RefIcon$S = /* @__PURE__ */ reactExports.forwardRef(CloseCircleFilled);
 var CloseOutlined$1 = { "icon": { "tag": "svg", "attrs": { "fill-rule": "evenodd", "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M799.86 166.31c.02 0 .04.02.08.06l57.69 57.7c.04.03.05.05.06.08a.12.12 0 010 .06c0 .03-.02.05-.06.09L569.93 512l287.7 287.7c.04.04.05.06.06.09a.12.12 0 010 .07c0 .02-.02.04-.06.08l-57.7 57.69c-.03.04-.05.05-.07.06a.12.12 0 01-.07 0c-.03 0-.05-.02-.09-.06L512 569.93l-287.7 287.7c-.04.04-.06.05-.09.06a.12.12 0 01-.07 0c-.02 0-.04-.02-.08-.06l-57.69-57.7c-.04-.03-.05-.05-.06-.07a.12.12 0 010-.07c0-.03.02-.05.06-.09L454.07 512l-287.7-287.7c-.04-.04-.05-.06-.06-.09a.12.12 0 010-.07c0-.02.02-.04.06-.08l57.7-57.69c.03-.04.05-.05.07-.06a.12.12 0 01.07 0c.03 0 .05.02.09.06L512 454.07l287.7-287.7c.04-.04.06-.05.09-.06a.12.12 0 01.07 0z" } }] }, "name": "close", "theme": "outlined" };
 var CloseOutlined = function CloseOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -13611,7 +13611,7 @@ var CloseOutlined = function CloseOutlined2(props, ref) {
     icon: CloseOutlined$1
   }));
 };
-var RefIcon$Q = /* @__PURE__ */ reactExports.forwardRef(CloseOutlined);
+var RefIcon$R = /* @__PURE__ */ reactExports.forwardRef(CloseOutlined);
 var ExclamationCircleFilled$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm-32 232c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V296zm32 440a48.01 48.01 0 010-96 48.01 48.01 0 010 96z" } }] }, "name": "exclamation-circle", "theme": "filled" };
 var ExclamationCircleFilled = function ExclamationCircleFilled2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -13619,7 +13619,7 @@ var ExclamationCircleFilled = function ExclamationCircleFilled2(props, ref) {
     icon: ExclamationCircleFilled$1
   }));
 };
-var RefIcon$P = /* @__PURE__ */ reactExports.forwardRef(ExclamationCircleFilled);
+var RefIcon$Q = /* @__PURE__ */ reactExports.forwardRef(ExclamationCircleFilled);
 var InfoCircleFilled$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm32 664c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V456c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272zm-32-344a48.01 48.01 0 010-96 48.01 48.01 0 010 96z" } }] }, "name": "info-circle", "theme": "filled" };
 var InfoCircleFilled = function InfoCircleFilled2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -13627,7 +13627,7 @@ var InfoCircleFilled = function InfoCircleFilled2(props, ref) {
     icon: InfoCircleFilled$1
   }));
 };
-var RefIcon$O = /* @__PURE__ */ reactExports.forwardRef(InfoCircleFilled);
+var RefIcon$P = /* @__PURE__ */ reactExports.forwardRef(InfoCircleFilled);
 var attributes = "accept acceptCharset accessKey action allowFullScreen allowTransparency\n    alt async autoComplete autoFocus autoPlay capture cellPadding cellSpacing challenge\n    charSet checked classID className colSpan cols content contentEditable contextMenu\n    controls coords crossOrigin data dateTime default defer dir disabled download draggable\n    encType form formAction formEncType formMethod formNoValidate formTarget frameBorder\n    headers height hidden high href hrefLang htmlFor httpEquiv icon id inputMode integrity\n    is keyParams keyType kind label lang list loop low manifest marginHeight marginWidth max maxLength media\n    mediaGroup method min minLength multiple muted name noValidate nonce open\n    optimum pattern placeholder poster preload radioGroup readOnly rel required\n    reversed role rowSpan rows sandbox scope scoped scrolling seamless selected\n    shape size sizes span spellCheck src srcDoc srcLang srcSet start step style\n    summary tabIndex target title type useMap value width wmode wrap";
 var eventsName = "onCopy onCut onPaste onCompositionEnd onCompositionStart onCompositionUpdate onKeyDown\n    onKeyPress onKeyUp onFocus onBlur onChange onInput onSubmit onClick onContextMenu onDoubleClick\n    onDrag onDragEnd onDragEnter onDragExit onDragLeave onDragOver onDragStart onDrop onMouseDown\n    onMouseEnter onMouseLeave onMouseMove onMouseOut onMouseOver onMouseUp onSelect onTouchCancel\n    onTouchEnd onTouchMove onTouchStart onScroll onWheel onAbort onCanPlay onCanPlayThrough\n    onDurationChange onEmptied onEncrypted onEnded onError onLoadedData onLoadedMetadata\n    onLoadStart onPause onPlay onPlaying onProgress onRateChange onSeeked onSeeking onStalled onSuspend onTimeUpdate onVolumeChange onWaiting onLoad onError";
 var propList = "".concat(attributes, " ").concat(eventsName).split(/[\s\n]+/);
@@ -13860,10 +13860,10 @@ var __rest$15 = function(s, e2) {
   return t2;
 };
 const iconMapFilled = {
-  success: RefIcon$S,
-  info: RefIcon$O,
-  error: RefIcon$R,
-  warning: RefIcon$P
+  success: RefIcon$T,
+  info: RefIcon$P,
+  error: RefIcon$S,
+  warning: RefIcon$Q
 };
 const IconNode = (props) => {
   const {
@@ -13891,7 +13891,7 @@ const CloseIconNode = (props) => {
     handleClose,
     ariaProps
   } = props;
-  const mergedCloseIcon = closeIcon === true || closeIcon === void 0 ? /* @__PURE__ */ reactExports.createElement(RefIcon$Q, null) : closeIcon;
+  const mergedCloseIcon = closeIcon === true || closeIcon === void 0 ? /* @__PURE__ */ reactExports.createElement(RefIcon$R, null) : closeIcon;
   return isClosable ? /* @__PURE__ */ reactExports.createElement("button", Object.assign({
     type: "button",
     onClick: handleClose,
@@ -14842,7 +14842,7 @@ var LoadingOutlined = function LoadingOutlined2(props, ref) {
     icon: LoadingOutlined$1
   }));
 };
-var RefIcon$N = /* @__PURE__ */ reactExports.forwardRef(LoadingOutlined);
+var RefIcon$O = /* @__PURE__ */ reactExports.forwardRef(LoadingOutlined);
 function mergeProps$1(...items) {
   const ret = {};
   items.forEach((item) => {
@@ -14900,7 +14900,7 @@ const useClosable = (propCloseCollection, contextCloseCollection, fallbackCloseC
   const [contextLocale] = useLocale("global", localeValues$1.global);
   const closeBtnIsDisabled = typeof propCloseConfig !== "boolean" ? !!(propCloseConfig === null || propCloseConfig === void 0 ? void 0 : propCloseConfig.disabled) : false;
   const mergedFallbackCloseCollection = React.useMemo(() => Object.assign({
-    closeIcon: /* @__PURE__ */ React.createElement(RefIcon$Q, null)
+    closeIcon: /* @__PURE__ */ React.createElement(RefIcon$R, null)
   }, fallbackCloseCollection), [fallbackCloseCollection]);
   const mergedClosableConfig = React.useMemo(() => {
     if (propCloseConfig === false) {
@@ -15956,7 +15956,7 @@ const InnerLoadingIcon = /* @__PURE__ */ reactExports.forwardRef((props, ref) =>
     className: mergedIconCls,
     style: style2,
     ref
-  }, /* @__PURE__ */ React.createElement(RefIcon$N, {
+  }, /* @__PURE__ */ React.createElement(RefIcon$O, {
     className: iconClassName
   }));
 });
@@ -16251,7 +16251,7 @@ var RightOutlined = function RightOutlined2(props, ref) {
     icon: RightOutlined$1
   }));
 };
-var RefIcon$M = /* @__PURE__ */ reactExports.forwardRef(RightOutlined);
+var RefIcon$N = /* @__PURE__ */ reactExports.forwardRef(RightOutlined);
 const genCollapseMotion = (token2) => ({
   [token2.componentCls]: {
     // For common/openAnimation
@@ -22306,7 +22306,7 @@ const NormalOkBtn = () => {
 function renderCloseIcon(prefixCls, closeIcon) {
   return /* @__PURE__ */ React.createElement("span", {
     className: `${prefixCls}-close-x`
-  }, closeIcon || /* @__PURE__ */ React.createElement(RefIcon$Q, {
+  }, closeIcon || /* @__PURE__ */ React.createElement(RefIcon$R, {
     className: `${prefixCls}-close-icon`
   }));
 }
@@ -22892,7 +22892,7 @@ const Modal$1 = (props) => {
   })) : null;
   const [mergedClosable, mergedCloseIcon, closeBtnIsDisabled, ariaProps] = useClosable(pickClosable(props), pickClosable(modalContext), {
     closable: true,
-    closeIcon: /* @__PURE__ */ reactExports.createElement(RefIcon$Q, {
+    closeIcon: /* @__PURE__ */ reactExports.createElement(RefIcon$R, {
       className: `${prefixCls}-close-icon`
     }),
     closeIconRender: (icon) => renderCloseIcon(prefixCls, icon)
@@ -23085,16 +23085,16 @@ const ConfirmContent = (props) => {
   if (!icon && icon !== null) {
     switch (type4) {
       case "info":
-        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$O, null);
+        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$P, null);
         break;
       case "success":
-        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$S, null);
+        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$T, null);
         break;
       case "error":
-        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$R, null);
+        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$S, null);
         break;
       default:
-        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$P, null);
+        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$Q, null);
     }
   }
   const mergedOkCancel = okCancel !== null && okCancel !== void 0 ? okCancel : type4 === "confirm";
@@ -23968,15 +23968,15 @@ function getCloseIcon(prefixCls, closeIcon) {
   if (closeIcon === null || closeIcon === false) {
     return null;
   }
-  return closeIcon || /* @__PURE__ */ reactExports.createElement(RefIcon$Q, {
+  return closeIcon || /* @__PURE__ */ reactExports.createElement(RefIcon$R, {
     className: `${prefixCls}-close-icon`
   });
 }
 const typeToIcon = {
-  success: RefIcon$S,
-  info: RefIcon$O,
-  error: RefIcon$R,
-  warning: RefIcon$P
+  success: RefIcon$T,
+  info: RefIcon$P,
+  error: RefIcon$S,
+  warning: RefIcon$Q
 };
 const PureContent = (props) => {
   const {
@@ -30394,7 +30394,7 @@ var CheckOutlined = function CheckOutlined2(props, ref) {
     icon: CheckOutlined$1
   }));
 };
-var RefIcon$L = /* @__PURE__ */ reactExports.forwardRef(CheckOutlined);
+var RefIcon$M = /* @__PURE__ */ reactExports.forwardRef(CheckOutlined);
 var DownOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z" } }] }, "name": "down", "theme": "outlined" };
 var DownOutlined = function DownOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -30402,7 +30402,7 @@ var DownOutlined = function DownOutlined2(props, ref) {
     icon: DownOutlined$1
   }));
 };
-var RefIcon$K = /* @__PURE__ */ reactExports.forwardRef(DownOutlined);
+var RefIcon$L = /* @__PURE__ */ reactExports.forwardRef(DownOutlined);
 var SearchOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z" } }] }, "name": "search", "theme": "outlined" };
 var SearchOutlined = function SearchOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -30410,7 +30410,7 @@ var SearchOutlined = function SearchOutlined2(props, ref) {
     icon: SearchOutlined$1
   }));
 };
-var RefIcon$J = /* @__PURE__ */ reactExports.forwardRef(SearchOutlined);
+var RefIcon$K = /* @__PURE__ */ reactExports.forwardRef(SearchOutlined);
 function useIcons({
   suffixIcon,
   clearIcon,
@@ -30425,7 +30425,7 @@ function useIcons({
   showArrow,
   componentName
 }) {
-  const mergedClearIcon = clearIcon !== null && clearIcon !== void 0 ? clearIcon : /* @__PURE__ */ reactExports.createElement(RefIcon$R, null);
+  const mergedClearIcon = clearIcon !== null && clearIcon !== void 0 ? clearIcon : /* @__PURE__ */ reactExports.createElement(RefIcon$S, null);
   const getSuffixIconNode = (arrowIcon) => {
     if (suffixIcon === null && !hasFeedback && !showArrow) {
       return null;
@@ -30436,7 +30436,7 @@ function useIcons({
   if (suffixIcon !== void 0) {
     mergedSuffixIcon = getSuffixIconNode(suffixIcon);
   } else if (loading) {
-    mergedSuffixIcon = getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$N, {
+    mergedSuffixIcon = getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$O, {
       spin: true
     }));
   } else {
@@ -30446,11 +30446,11 @@ function useIcons({
       showSearch
     }) => {
       if (open2 && showSearch) {
-        return getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$J, {
+        return getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$K, {
           className: iconCls
         }));
       }
-      return getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$K, {
+      return getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$L, {
         className: iconCls
       }));
     };
@@ -30459,7 +30459,7 @@ function useIcons({
   if (menuItemSelectedIcon !== void 0) {
     mergedItemIcon = menuItemSelectedIcon;
   } else if (multiple) {
-    mergedItemIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$L, null);
+    mergedItemIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$M, null);
   } else {
     mergedItemIcon = null;
   }
@@ -30467,7 +30467,7 @@ function useIcons({
   if (removeIcon !== void 0) {
     mergedRemoveIcon = removeIcon;
   } else {
-    mergedRemoveIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$Q, null);
+    mergedRemoveIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$R, null);
   }
   return {
     clearIcon: mergedClearIcon,
@@ -33123,7 +33123,7 @@ var LeftOutlined = function LeftOutlined2(props, ref) {
     icon: LeftOutlined$1
   }));
 };
-var RefIcon$I = /* @__PURE__ */ reactExports.forwardRef(LeftOutlined);
+var RefIcon$J = /* @__PURE__ */ reactExports.forwardRef(LeftOutlined);
 var ESC$1 = KeyCode.ESC, TAB = KeyCode.TAB;
 function useAccessibility$1(_ref) {
   var visible = _ref.visible, triggerRef = _ref.triggerRef, onVisibleChange = _ref.onVisibleChange, autoFocus = _ref.autoFocus, overlayRef = _ref.overlayRef;
@@ -34698,7 +34698,7 @@ var BarsOutlined = function BarsOutlined2(props, ref) {
     icon: BarsOutlined$1
   }));
 };
-var RefIcon$H = /* @__PURE__ */ reactExports.forwardRef(BarsOutlined);
+var RefIcon$I = /* @__PURE__ */ reactExports.forwardRef(BarsOutlined);
 const LayoutContext = /* @__PURE__ */ reactExports.createContext({
   siderHook: {
     addSider: () => null,
@@ -35028,11 +35028,11 @@ const Sider$1 = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     onClick: toggle,
     className: classNames(`${prefixCls}-zero-width-trigger`, `${prefixCls}-zero-width-trigger-${reverseArrow ? "right" : "left"}`),
     style: zeroWidthTriggerStyle
-  }, trigger || /* @__PURE__ */ reactExports.createElement(RefIcon$H, null)) : null;
+  }, trigger || /* @__PURE__ */ reactExports.createElement(RefIcon$I, null)) : null;
   const reverseIcon = direction === "rtl" === !reverseArrow;
   const iconObj = {
-    expanded: reverseIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$M, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$I, null),
-    collapsed: reverseIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$I, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$M, null)
+    expanded: reverseIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$N, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$J, null),
+    collapsed: reverseIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$J, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$N, null)
   };
   const status = collapsed ? "collapsed" : "expanded";
   const defaultTrigger = iconObj[status];
@@ -35076,7 +35076,7 @@ var EllipsisOutlined = function EllipsisOutlined2(props, ref) {
     icon: EllipsisOutlined$1
   }));
 };
-var RefIcon$G = /* @__PURE__ */ reactExports.forwardRef(EllipsisOutlined);
+var RefIcon$H = /* @__PURE__ */ reactExports.forwardRef(EllipsisOutlined);
 const MenuContext = /* @__PURE__ */ reactExports.createContext({
   prefixCls: "",
   firstLevel: true,
@@ -36364,7 +36364,7 @@ const InternalMenu = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     value: contextValue
   }, /* @__PURE__ */ reactExports.createElement(ExportMenu, Object.assign({
     getPopupContainer,
-    overflowedIndicator: /* @__PURE__ */ reactExports.createElement(RefIcon$G, null),
+    overflowedIndicator: /* @__PURE__ */ reactExports.createElement(RefIcon$H, null),
     overflowedIndicatorPopupClassName: classNames(prefixCls, `${prefixCls}-${theme}`, overflowedIndicatorPopupClassName),
     mode: mergedMode,
     selectable: mergedSelectable,
@@ -36830,9 +36830,9 @@ const Dropdown$1 = (props) => {
       rootClassName: classNames(cssVarCls, rootCls),
       expandIcon: /* @__PURE__ */ reactExports.createElement("span", {
         className: `${prefixCls}-menu-submenu-arrow`
-      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$I, {
+      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$J, {
         className: `${prefixCls}-menu-submenu-arrow-icon`
-      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$M, {
+      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$N, {
         className: `${prefixCls}-menu-submenu-arrow-icon`
       })),
       mode: "vertical",
@@ -36990,7 +36990,7 @@ const InternalBreadcrumbItem = (props) => {
         placement: "bottom"
       }, mergeDropDownProps), /* @__PURE__ */ reactExports.createElement("span", {
         className: `${prefixCls}-overlay-link`
-      }, breadcrumbItem, /* @__PURE__ */ reactExports.createElement(RefIcon$K, null)));
+      }, breadcrumbItem, /* @__PURE__ */ reactExports.createElement(RefIcon$L, null)));
     }
     return breadcrumbItem;
   };
@@ -39115,7 +39115,7 @@ var PlusOutlined = function PlusOutlined2(props, ref) {
     icon: PlusOutlined$1
   }));
 };
-var RefIcon$F = /* @__PURE__ */ reactExports.forwardRef(PlusOutlined);
+var RefIcon$G = /* @__PURE__ */ reactExports.forwardRef(PlusOutlined);
 const TabContext = /* @__PURE__ */ reactExports.createContext(null);
 var useIndicator = function useIndicator2(options) {
   var activeTabOffset = options.activeTabOffset, horizontal = options.horizontal, rtl = options.rtl, _options$indicator = options.indicator, indicator = _options$indicator === void 0 ? {} : _options$indicator;
@@ -41380,8 +41380,8 @@ const InternalTabs = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
       }) => {
         onEdit === null || onEdit === void 0 ? void 0 : onEdit(editType === "add" ? event : key, editType);
       },
-      removeIcon: (_a = removeIcon !== null && removeIcon !== void 0 ? removeIcon : tabs === null || tabs === void 0 ? void 0 : tabs.removeIcon) !== null && _a !== void 0 ? _a : /* @__PURE__ */ reactExports.createElement(RefIcon$Q, null),
-      addIcon: (addIcon !== null && addIcon !== void 0 ? addIcon : tabs === null || tabs === void 0 ? void 0 : tabs.addIcon) || /* @__PURE__ */ reactExports.createElement(RefIcon$F, null),
+      removeIcon: (_a = removeIcon !== null && removeIcon !== void 0 ? removeIcon : tabs === null || tabs === void 0 ? void 0 : tabs.removeIcon) !== null && _a !== void 0 ? _a : /* @__PURE__ */ reactExports.createElement(RefIcon$R, null),
+      addIcon: (addIcon !== null && addIcon !== void 0 ? addIcon : tabs === null || tabs === void 0 ? void 0 : tabs.addIcon) || /* @__PURE__ */ reactExports.createElement(RefIcon$G, null),
       showAdd: hideAdd !== true
     };
   }
@@ -41410,7 +41410,7 @@ const InternalTabs = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     style: mergedStyle,
     editable,
     more: Object.assign({
-      icon: (_l = (_k = (_j = (_h = tabs === null || tabs === void 0 ? void 0 : tabs.more) === null || _h === void 0 ? void 0 : _h.icon) !== null && _j !== void 0 ? _j : tabs === null || tabs === void 0 ? void 0 : tabs.moreIcon) !== null && _k !== void 0 ? _k : moreIcon) !== null && _l !== void 0 ? _l : /* @__PURE__ */ reactExports.createElement(RefIcon$G, null),
+      icon: (_l = (_k = (_j = (_h = tabs === null || tabs === void 0 ? void 0 : tabs.more) === null || _h === void 0 ? void 0 : _h.icon) !== null && _j !== void 0 ? _j : tabs === null || tabs === void 0 ? void 0 : tabs.moreIcon) !== null && _k !== void 0 ? _k : moreIcon) !== null && _l !== void 0 ? _l : /* @__PURE__ */ reactExports.createElement(RefIcon$H, null),
       transitionName: `${rootPrefixCls}-slide-up`
     }, more),
     prefixCls,
@@ -42874,7 +42874,7 @@ const getAllowClear = (allowClear) => {
     mergedAllowClear = allowClear;
   } else if (allowClear) {
     mergedAllowClear = {
-      clearIcon: /* @__PURE__ */ React.createElement(RefIcon$R, null)
+      clearIcon: /* @__PURE__ */ React.createElement(RefIcon$S, null)
     };
   }
   return mergedAllowClear;
@@ -43908,7 +43908,7 @@ const DropdownButton = (props) => {
     placement,
     getPopupContainer,
     href,
-    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$G, null),
+    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$H, null),
     title,
     buttonsRender = (buttons) => buttons,
     mouseEnterDelay,
@@ -44001,7 +44001,7 @@ var FileTextOutlined = function FileTextOutlined2(props, ref) {
     icon: FileTextOutlined$1
   }));
 };
-var RefIcon$E = /* @__PURE__ */ reactExports.forwardRef(FileTextOutlined);
+var RefIcon$F = /* @__PURE__ */ reactExports.forwardRef(FileTextOutlined);
 function useDebounce(value) {
   const [cacheValue, setCacheValue] = reactExports.useState(value);
   reactExports.useEffect(() => {
@@ -44950,7 +44950,7 @@ var QuestionCircleOutlined = function QuestionCircleOutlined2(props, ref) {
     icon: QuestionCircleOutlined$1
   }));
 };
-var RefIcon$D = /* @__PURE__ */ reactExports.forwardRef(QuestionCircleOutlined);
+var RefIcon$E = /* @__PURE__ */ reactExports.forwardRef(QuestionCircleOutlined);
 var __rest$q = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
@@ -44997,7 +44997,7 @@ const FormItemLabel = ({
   const tooltipProps = convertToTooltipProps(tooltip);
   if (tooltipProps) {
     const {
-      icon = /* @__PURE__ */ reactExports.createElement(RefIcon$D, null)
+      icon = /* @__PURE__ */ reactExports.createElement(RefIcon$E, null)
     } = tooltipProps, restTooltipProps = __rest$q(tooltipProps, ["icon"]);
     const tooltipNode = /* @__PURE__ */ reactExports.createElement(Tooltip2, Object.assign({}, restTooltipProps), /* @__PURE__ */ reactExports.cloneElement(icon, {
       className: `${prefixCls}-item-tooltip`,
@@ -45042,10 +45042,10 @@ const FormItemLabel = ({
   }, labelChildren));
 };
 const iconMap = {
-  success: RefIcon$S,
-  warning: RefIcon$P,
-  error: RefIcon$R,
-  validating: RefIcon$N
+  success: RefIcon$T,
+  warning: RefIcon$Q,
+  error: RefIcon$S,
+  validating: RefIcon$O
 };
 function StatusProvider({
   children,
@@ -45520,7 +45520,7 @@ var EyeOutlined = function EyeOutlined2(props, ref) {
     icon: EyeOutlined$1
   }));
 };
-var RefIcon$C = /* @__PURE__ */ reactExports.forwardRef(EyeOutlined);
+var RefIcon$D = /* @__PURE__ */ reactExports.forwardRef(EyeOutlined);
 function addEventListenerWrap(target, eventType, cb2, option) {
   var callback = ReactDOM.unstable_batchedUpdates ? function run(e2) {
     ReactDOM.unstable_batchedUpdates(cb2, e2);
@@ -45543,7 +45543,7 @@ var SwapOutlined = function SwapOutlined2(props, ref) {
     icon: SwapOutlined$1
   }));
 };
-var RefIcon$B = /* @__PURE__ */ reactExports.forwardRef(SwapOutlined);
+var RefIcon$C = /* @__PURE__ */ reactExports.forwardRef(SwapOutlined);
 const Group = (props) => {
   const {
     getPrefixCls,
@@ -45892,7 +45892,7 @@ var EyeInvisibleOutlined = function EyeInvisibleOutlined2(props, ref) {
     icon: EyeInvisibleOutlined$1
   }));
 };
-var RefIcon$A = /* @__PURE__ */ reactExports.forwardRef(EyeInvisibleOutlined);
+var RefIcon$B = /* @__PURE__ */ reactExports.forwardRef(EyeInvisibleOutlined);
 var __rest$l = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
@@ -45901,7 +45901,7 @@ var __rest$l = function(s, e2) {
   }
   return t2;
 };
-const defaultIconRender = (visible) => visible ? /* @__PURE__ */ reactExports.createElement(RefIcon$C, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$A, null);
+const defaultIconRender = (visible) => visible ? /* @__PURE__ */ reactExports.createElement(RefIcon$D, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$B, null);
 const actionMap = {
   click: "onClick",
   hover: "onMouseOver"
@@ -46053,7 +46053,7 @@ const Search = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     customOnPressEnter === null || customOnPressEnter === void 0 ? void 0 : customOnPressEnter(e2);
     onSearch(e2);
   };
-  const searchIcon = typeof enterButton === "boolean" ? /* @__PURE__ */ reactExports.createElement(RefIcon$J, null) : null;
+  const searchIcon = typeof enterButton === "boolean" ? /* @__PURE__ */ reactExports.createElement(RefIcon$K, null) : null;
   const btnClassName = `${prefixCls}-button`;
   let button;
   const enterButtonAsElement = enterButton || {};
@@ -46832,7 +46832,7 @@ var DoubleLeftOutlined = function DoubleLeftOutlined2(props, ref) {
     icon: DoubleLeftOutlined$1
   }));
 };
-var RefIcon$z = /* @__PURE__ */ reactExports.forwardRef(DoubleLeftOutlined);
+var RefIcon$A = /* @__PURE__ */ reactExports.forwardRef(DoubleLeftOutlined);
 var DoubleRightOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M533.2 492.3L277.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H188c-6.7 0-10.4 7.7-6.3 12.9L447.1 512 181.7 851.1A7.98 7.98 0 00188 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5zm304 0L581.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H492c-6.7 0-10.4 7.7-6.3 12.9L751.1 512 485.7 851.1A7.98 7.98 0 00492 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5z" } }] }, "name": "double-right", "theme": "outlined" };
 var DoubleRightOutlined = function DoubleRightOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -46840,7 +46840,7 @@ var DoubleRightOutlined = function DoubleRightOutlined2(props, ref) {
     icon: DoubleRightOutlined$1
   }));
 };
-var RefIcon$y = /* @__PURE__ */ reactExports.forwardRef(DoubleRightOutlined);
+var RefIcon$z = /* @__PURE__ */ reactExports.forwardRef(DoubleRightOutlined);
 var locale$4 = {
   // Options
   items_per_page: "条/页",
@@ -48053,21 +48053,21 @@ const Pagination = (props) => {
       className: `${prefixCls}-item-link`,
       type: "button",
       tabIndex: -1
-    }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$M, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$I, null));
+    }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$N, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$J, null));
     const nextIcon = /* @__PURE__ */ reactExports.createElement("button", {
       className: `${prefixCls}-item-link`,
       type: "button",
       tabIndex: -1
-    }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$I, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$M, null));
+    }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$J, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$N, null));
     const jumpPrevIcon = (
       // biome-ignore lint/a11y/useValidAnchor: it is hard to refactor
       /* @__PURE__ */ reactExports.createElement("a", {
         className: `${prefixCls}-item-link`
       }, /* @__PURE__ */ reactExports.createElement("div", {
         className: `${prefixCls}-item-container`
-      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$y, {
+      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$z, {
         className: `${prefixCls}-item-link-icon`
-      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$z, {
+      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$A, {
         className: `${prefixCls}-item-link-icon`
       }), ellipsis))
     );
@@ -48077,9 +48077,9 @@ const Pagination = (props) => {
         className: `${prefixCls}-item-link`
       }, /* @__PURE__ */ reactExports.createElement("div", {
         className: `${prefixCls}-item-container`
-      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$z, {
+      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$A, {
         className: `${prefixCls}-item-link-icon`
-      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$y, {
+      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$z, {
         className: `${prefixCls}-item-link-icon`
       }), ellipsis))
     );
@@ -49582,7 +49582,7 @@ const Overlay = (props) => {
     cancelText,
     okText,
     okType = "primary",
-    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$P, null),
+    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$Q, null),
     showCancel = true,
     close,
     onConfirm,
@@ -49660,7 +49660,7 @@ const InternalPopconfirm = /* @__PURE__ */ reactExports.forwardRef((props, ref) 
     placement = "top",
     trigger = "click",
     okType = "primary",
-    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$P, null),
+    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$Q, null),
     children,
     overlayClassName,
     onOpenChange,
@@ -49745,7 +49745,7 @@ var ReloadOutlined = function ReloadOutlined2(props, ref) {
     icon: ReloadOutlined$1
   }));
 };
-var RefIcon$x = /* @__PURE__ */ reactExports.forwardRef(ReloadOutlined);
+var RefIcon$y = /* @__PURE__ */ reactExports.forwardRef(ReloadOutlined);
 var _excluded$9 = ["prefixCls", "className", "checked", "defaultChecked", "disabled", "loadingIcon", "checkedChildren", "unCheckedChildren", "onClick", "onChange", "onKeyDown"];
 var Switch$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref, ref) {
   var _classNames;
@@ -50144,7 +50144,7 @@ const InternalSwitch = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
   const prefixCls = getPrefixCls("switch", customizePrefixCls);
   const loadingIcon = /* @__PURE__ */ reactExports.createElement("div", {
     className: `${prefixCls}-handle`
-  }, loading && /* @__PURE__ */ reactExports.createElement(RefIcon$N, {
+  }, loading && /* @__PURE__ */ reactExports.createElement(RefIcon$O, {
     className: `${prefixCls}-loading-icon`
   }));
   const [wrapCSSVar, hashId, cssVarCls] = useStyle$4(prefixCls);
@@ -53400,7 +53400,7 @@ const useSelection = (config, rowSelection) => {
         }, /* @__PURE__ */ reactExports.createElement(Dropdown, {
           menu,
           getPopupContainer
-        }, /* @__PURE__ */ reactExports.createElement("span", null, /* @__PURE__ */ reactExports.createElement(RefIcon$K, null))));
+        }, /* @__PURE__ */ reactExports.createElement("span", null, /* @__PURE__ */ reactExports.createElement(RefIcon$L, null))));
       }
       const allDisabledData = flattedData.map((record, index2) => {
         const key = getRowKey(record, index2);
@@ -53672,7 +53672,7 @@ var FilterFilled = function FilterFilled2(props, ref) {
     icon: FilterFilled$1
   }));
 };
-var RefIcon$w = /* @__PURE__ */ reactExports.forwardRef(FilterFilled);
+var RefIcon$x = /* @__PURE__ */ reactExports.forwardRef(FilterFilled);
 var DropIndicator = function DropIndicator2(props) {
   var dropPosition = props.dropPosition, dropLevelOffset = props.dropLevelOffset, indent = props.indent;
   var style2 = {
@@ -54968,7 +54968,7 @@ var FileOutlined = function FileOutlined2(props, ref) {
     icon: FileOutlined$1
   }));
 };
-var RefIcon$v = /* @__PURE__ */ reactExports.forwardRef(FileOutlined);
+var RefIcon$w = /* @__PURE__ */ reactExports.forwardRef(FileOutlined);
 var FolderOpenOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M928 444H820V330.4c0-17.7-14.3-32-32-32H473L355.7 186.2a8.15 8.15 0 00-5.5-2.2H96c-17.7 0-32 14.3-32 32v592c0 17.7 14.3 32 32 32h698c13 0 24.8-7.9 29.7-20l134-332c1.5-3.8 2.3-7.9 2.3-12 0-17.7-14.3-32-32-32zM136 256h188.5l119.6 114.4H748V444H238c-13 0-24.8 7.9-29.7 20L136 643.2V256zm635.3 512H159l103.3-256h612.4L771.3 768z" } }] }, "name": "folder-open", "theme": "outlined" };
 var FolderOpenOutlined = function FolderOpenOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -54976,7 +54976,7 @@ var FolderOpenOutlined = function FolderOpenOutlined2(props, ref) {
     icon: FolderOpenOutlined$1
   }));
 };
-var RefIcon$u = /* @__PURE__ */ reactExports.forwardRef(FolderOpenOutlined);
+var RefIcon$v = /* @__PURE__ */ reactExports.forwardRef(FolderOpenOutlined);
 var FolderOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M880 298.4H521L403.7 186.2a8.15 8.15 0 00-5.5-2.2H144c-17.7 0-32 14.3-32 32v592c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V330.4c0-17.7-14.3-32-32-32zM840 768H184V256h188.5l119.6 114.4H840V768z" } }] }, "name": "folder", "theme": "outlined" };
 var FolderOutlined = function FolderOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -54984,7 +54984,7 @@ var FolderOutlined = function FolderOutlined2(props, ref) {
     icon: FolderOutlined$1
   }));
 };
-var RefIcon$t = /* @__PURE__ */ reactExports.forwardRef(FolderOutlined);
+var RefIcon$u = /* @__PURE__ */ reactExports.forwardRef(FolderOutlined);
 var HolderOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z" } }] }, "name": "holder", "theme": "outlined" };
 var HolderOutlined = function HolderOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -54992,7 +54992,7 @@ var HolderOutlined = function HolderOutlined2(props, ref) {
     icon: HolderOutlined$1
   }));
 };
-var RefIcon$s = /* @__PURE__ */ reactExports.forwardRef(HolderOutlined);
+var RefIcon$t = /* @__PURE__ */ reactExports.forwardRef(HolderOutlined);
 const genDirectoryStyle = ({
   treeCls,
   treeNodeCls,
@@ -55446,7 +55446,7 @@ var CaretDownFilled = function CaretDownFilled2(props, ref) {
     icon: CaretDownFilled$1
   }));
 };
-var RefIcon$r = /* @__PURE__ */ reactExports.forwardRef(CaretDownFilled);
+var RefIcon$s = /* @__PURE__ */ reactExports.forwardRef(CaretDownFilled);
 var MinusSquareOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "minus-square", "theme": "outlined" };
 var MinusSquareOutlined = function MinusSquareOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -55454,7 +55454,7 @@ var MinusSquareOutlined = function MinusSquareOutlined2(props, ref) {
     icon: MinusSquareOutlined$1
   }));
 };
-var RefIcon$q = /* @__PURE__ */ reactExports.forwardRef(MinusSquareOutlined);
+var RefIcon$r = /* @__PURE__ */ reactExports.forwardRef(MinusSquareOutlined);
 var PlusSquareOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "plus-square", "theme": "outlined" };
 var PlusSquareOutlined = function PlusSquareOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -55462,7 +55462,7 @@ var PlusSquareOutlined = function PlusSquareOutlined2(props, ref) {
     icon: PlusSquareOutlined$1
   }));
 };
-var RefIcon$p = /* @__PURE__ */ reactExports.forwardRef(PlusSquareOutlined);
+var RefIcon$q = /* @__PURE__ */ reactExports.forwardRef(PlusSquareOutlined);
 const SwitcherIconCom = (props) => {
   var _a, _b;
   const {
@@ -55481,7 +55481,7 @@ const SwitcherIconCom = (props) => {
     if (/* @__PURE__ */ reactExports.isValidElement(switcherLoadingIcon)) {
       return switcherLoadingIcon;
     }
-    return /* @__PURE__ */ reactExports.createElement(RefIcon$N, {
+    return /* @__PURE__ */ reactExports.createElement(RefIcon$O, {
       className: `${prefixCls}-switcher-loading-icon`
     });
   }
@@ -55503,7 +55503,7 @@ const SwitcherIconCom = (props) => {
       }
       return leafIcon;
     }
-    return showLeafIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$v, {
+    return showLeafIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$w, {
       className: `${prefixCls}-switcher-line-icon`
     }) : /* @__PURE__ */ reactExports.createElement("span", {
       className: `${prefixCls}-switcher-leaf-line`
@@ -55520,13 +55520,13 @@ const SwitcherIconCom = (props) => {
     return switcher;
   }
   if (showLine) {
-    return expanded ? /* @__PURE__ */ reactExports.createElement(RefIcon$q, {
+    return expanded ? /* @__PURE__ */ reactExports.createElement(RefIcon$r, {
       className: `${prefixCls}-switcher-line-icon`
-    }) : /* @__PURE__ */ reactExports.createElement(RefIcon$p, {
+    }) : /* @__PURE__ */ reactExports.createElement(RefIcon$q, {
       className: `${prefixCls}-switcher-line-icon`
     });
   }
-  return /* @__PURE__ */ reactExports.createElement(RefIcon$r, {
+  return /* @__PURE__ */ reactExports.createElement(RefIcon$s, {
     className: switcherCls
   });
 };
@@ -55588,7 +55588,7 @@ const Tree$1 = /* @__PURE__ */ React.forwardRef((props, ref) => {
         break;
     }
     if (mergedDraggable.icon !== false) {
-      mergedDraggable.icon = mergedDraggable.icon || /* @__PURE__ */ React.createElement(RefIcon$s, null);
+      mergedDraggable.icon = mergedDraggable.icon || /* @__PURE__ */ React.createElement(RefIcon$t, null);
     }
     return mergedDraggable;
   }, [draggable]);
@@ -55707,9 +55707,9 @@ function getIcon(props) {
     expanded
   } = props;
   if (isLeaf) {
-    return /* @__PURE__ */ reactExports.createElement(RefIcon$v, null);
+    return /* @__PURE__ */ reactExports.createElement(RefIcon$w, null);
   }
-  return expanded ? /* @__PURE__ */ reactExports.createElement(RefIcon$u, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$t, null);
+  return expanded ? /* @__PURE__ */ reactExports.createElement(RefIcon$v, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$u, null);
 }
 function getTreeData({
   treeData,
@@ -55852,7 +55852,7 @@ const FilterSearch = (props) => {
   return /* @__PURE__ */ reactExports.createElement("div", {
     className: `${tablePrefixCls}-filter-dropdown-search`
   }, /* @__PURE__ */ reactExports.createElement(Input$1, {
-    prefix: /* @__PURE__ */ reactExports.createElement(RefIcon$J, null),
+    prefix: /* @__PURE__ */ reactExports.createElement(RefIcon$K, null),
     placeholder: locale2.filterSearchPlaceholder,
     onChange,
     value,
@@ -56263,7 +56263,7 @@ const FilterDropdown = (props) => {
     } else if (column2.filterIcon) {
       filterIcon = column2.filterIcon;
     } else {
-      filterIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$w, null);
+      filterIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$x, null);
     }
     return /* @__PURE__ */ reactExports.createElement("span", {
       role: "button",
@@ -56573,7 +56573,7 @@ var CaretDownOutlined = function CaretDownOutlined2(props, ref) {
     icon: CaretDownOutlined$1
   }));
 };
-var RefIcon$o = /* @__PURE__ */ reactExports.forwardRef(CaretDownOutlined);
+var RefIcon$p = /* @__PURE__ */ reactExports.forwardRef(CaretDownOutlined);
 var CaretUpOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z" } }] }, "name": "caret-up", "theme": "outlined" };
 var CaretUpOutlined = function CaretUpOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -56581,7 +56581,7 @@ var CaretUpOutlined = function CaretUpOutlined2(props, ref) {
     icon: CaretUpOutlined$1
   }));
 };
-var RefIcon$n = /* @__PURE__ */ reactExports.forwardRef(CaretUpOutlined);
+var RefIcon$o = /* @__PURE__ */ reactExports.forwardRef(CaretUpOutlined);
 const ASCEND = "ascend";
 const DESCEND = "descend";
 const getMultiplePriority = (column2) => {
@@ -56656,12 +56656,12 @@ const injectSorter = (prefixCls, columns, sorterStates, triggerSorter, defaultSo
           sortOrder
         });
       } else {
-        const upNode = sortDirections.includes(ASCEND) && /* @__PURE__ */ reactExports.createElement(RefIcon$n, {
+        const upNode = sortDirections.includes(ASCEND) && /* @__PURE__ */ reactExports.createElement(RefIcon$o, {
           className: classNames(`${prefixCls}-column-sorter-up`, {
             active: sortOrder === ASCEND
           })
         });
-        const downNode = sortDirections.includes(DESCEND) && /* @__PURE__ */ reactExports.createElement(RefIcon$o, {
+        const downNode = sortDirections.includes(DESCEND) && /* @__PURE__ */ reactExports.createElement(RefIcon$p, {
           className: classNames(`${prefixCls}-column-sorter-down`, {
             active: sortOrder === DESCEND
           })
@@ -58995,7 +58995,7 @@ var DeleteOutlined = function DeleteOutlined2(props, ref) {
     icon: DeleteOutlined$1
   }));
 };
-var RefIcon$m = /* @__PURE__ */ reactExports.forwardRef(DeleteOutlined);
+var RefIcon$n = /* @__PURE__ */ reactExports.forwardRef(DeleteOutlined);
 var EditOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z" } }] }, "name": "edit", "theme": "outlined" };
 var EditOutlined = function EditOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -59003,7 +59003,7 @@ var EditOutlined = function EditOutlined2(props, ref) {
     icon: EditOutlined$1
   }));
 };
-var RefIcon$l = /* @__PURE__ */ reactExports.forwardRef(EditOutlined);
+var RefIcon$m = /* @__PURE__ */ reactExports.forwardRef(EditOutlined);
 var EnterOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M864 170h-60c-4.4 0-8 3.6-8 8v518H310v-73c0-6.7-7.8-10.5-13-6.3l-141.9 112a8 8 0 000 12.6l141.9 112c5.3 4.2 13 .4 13-6.3v-75h498c35.3 0 64-28.7 64-64V178c0-4.4-3.6-8-8-8z" } }] }, "name": "enter", "theme": "outlined" };
 var EnterOutlined = function EnterOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -59011,7 +59011,7 @@ var EnterOutlined = function EnterOutlined2(props, ref) {
     icon: EnterOutlined$1
   }));
 };
-var RefIcon$k = /* @__PURE__ */ reactExports.forwardRef(EnterOutlined);
+var RefIcon$l = /* @__PURE__ */ reactExports.forwardRef(EnterOutlined);
 const getTitleStyle = (fontSize, lineHeight, color, token2) => {
   const {
     titleMarginBottom,
@@ -59332,7 +59332,7 @@ const Editable = (props) => {
     onCancel,
     onEnd,
     component,
-    enterIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$k, null)
+    enterIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$l, null)
   } = props;
   const ref = reactExports.useRef(null);
   const inComposition = reactExports.useRef(false);
@@ -59695,7 +59695,7 @@ var CopyOutlined = function CopyOutlined2(props, ref) {
     icon: CopyOutlined$1
   }));
 };
-var RefIcon$j = /* @__PURE__ */ reactExports.forwardRef(CopyOutlined);
+var RefIcon$k = /* @__PURE__ */ reactExports.forwardRef(CopyOutlined);
 function toList(val) {
   if (val === false) {
     return [false, false];
@@ -59752,7 +59752,7 @@ const CopyBtn = ({
     onClick: onCopy,
     "aria-label": ariaLabel,
     tabIndex
-  }, copied ? getNode(iconNodes[1], /* @__PURE__ */ reactExports.createElement(RefIcon$L, null), true) : getNode(iconNodes[0], btnLoading ? /* @__PURE__ */ reactExports.createElement(RefIcon$N, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$j, null), true)));
+  }, copied ? getNode(iconNodes[1], /* @__PURE__ */ reactExports.createElement(RefIcon$M, null), true) : getNode(iconNodes[0], btnLoading ? /* @__PURE__ */ reactExports.createElement(RefIcon$O, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$k, null), true)));
 };
 const MeasureText = /* @__PURE__ */ reactExports.forwardRef(({
   style: style2,
@@ -60188,7 +60188,7 @@ const Base = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
       onClick: onEditClick,
       "aria-label": ariaLabel,
       tabIndex
-    }, icon || /* @__PURE__ */ reactExports.createElement(RefIcon$l, {
+    }, icon || /* @__PURE__ */ reactExports.createElement(RefIcon$m, {
       role: "button"
     }))) : null;
   };
@@ -60353,7 +60353,7 @@ var DownloadOutlined = function DownloadOutlined2(props, ref) {
     icon: DownloadOutlined$1
   }));
 };
-var RefIcon$i = /* @__PURE__ */ reactExports.forwardRef(DownloadOutlined);
+var RefIcon$j = /* @__PURE__ */ reactExports.forwardRef(DownloadOutlined);
 var zh_CN$6 = {};
 var interopRequireDefault = { exports: {} };
 (function(module) {
@@ -60919,6 +60919,7 @@ function createGitSlice(set2, get2) {
       const res = await window.electronAPI.gitPush(repoPath);
       if (res.success) {
         await get2().loadCommits(repoPath);
+        await get2().loadStatus(repoPath);
         set2({ activeOperation: null });
       } else {
         set2({ operationError: res.error, activeOperation: null });
@@ -60995,8 +60996,75 @@ function createGitSlice(set2, get2) {
         return null;
       }
     },
+    resetToCommit: async (repoPath, hash) => {
+      set2({ activeOperation: "reset", operationError: null });
+      const res = await window.electronAPI.gitReset(repoPath, hash);
+      if (res.success) {
+        await get2().loadCommits(repoPath);
+        await get2().loadStatus(repoPath);
+        await get2().loadBranches(repoPath);
+        await get2().loadCurrentBranch(repoPath);
+        set2({ activeOperation: null });
+      } else {
+        set2({ operationError: res.error, activeOperation: null });
+      }
+    },
     clearOperationError: () => {
       set2({ operationError: null });
+    },
+    loadGithubCommits: async (owner, repo) => {
+      set2({ commitsLoading: true, commitsError: null });
+      try {
+        const tokenRes = await window.electronAPI.githubGetToken();
+        if (!tokenRes.success || !tokenRes.data) {
+          set2({ commitsLoading: false });
+          return;
+        }
+        const res = await window.electronAPI.githubGetCommits(tokenRes.data, owner, repo);
+        if (res.success) {
+          set2({ commits: res.data, commitsLoading: false });
+        } else {
+          set2({ commitsError: res.error, commitsLoading: false });
+        }
+      } catch (err) {
+        set2({ commitsError: err.message, commitsLoading: false });
+      }
+    },
+    loadGithubBranches: async (owner, repo) => {
+      set2({ branchesLoading: true });
+      try {
+        const tokenRes = await window.electronAPI.githubGetToken();
+        if (!tokenRes.success || !tokenRes.data) {
+          set2({ branchesLoading: false });
+          return;
+        }
+        const res = await window.electronAPI.githubGetBranches(tokenRes.data, owner, repo);
+        if (res.success) {
+          set2({ branches: res.data, branchesLoading: false, currentBranch: null });
+        } else {
+          set2({ branchesLoading: false });
+        }
+      } catch {
+        set2({ branchesLoading: false });
+      }
+    },
+    loadGithubDiff: async (owner, repo, sha) => {
+      set2({ diffLoading: true, diffError: null });
+      try {
+        const tokenRes = await window.electronAPI.githubGetToken();
+        if (!tokenRes.success || !tokenRes.data) {
+          set2({ diffLoading: false });
+          return;
+        }
+        const res = await window.electronAPI.githubGetCommitDiff(tokenRes.data, owner, repo, sha);
+        if (res.success) {
+          set2({ currentDiff: res.data, diffLoading: false });
+        } else {
+          set2({ diffError: res.error, diffLoading: false });
+        }
+      } catch (err) {
+        set2({ diffError: err.message, diffLoading: false });
+      }
     },
     resetGitState: () => {
       set2({
@@ -61067,6 +61135,10 @@ function createUiSlice(set2, get2) {
     },
     setGithubRepos: (repos) => {
       set2({ githubRepos: repos });
+    },
+    viewingGithubRepo: null,
+    setViewingGithubRepo: (repo) => {
+      set2({ viewingGithubRepo: repo });
     },
     setCloneUrlPreset: (url2) => {
       set2({ cloneUrlPreset: url2 });
@@ -61208,7 +61280,7 @@ var BorderOutlined = function BorderOutlined2(props, ref) {
     icon: BorderOutlined$1
   }));
 };
-var RefIcon$h = /* @__PURE__ */ reactExports.forwardRef(BorderOutlined);
+var RefIcon$i = /* @__PURE__ */ reactExports.forwardRef(BorderOutlined);
 var BranchesOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M740 161c-61.8 0-112 50.2-112 112 0 50.1 33.1 92.6 78.5 106.9v95.9L320 602.4V318.1c44.2-15 76-56.9 76-106.1 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 49.2 31.8 91 76 106.1V706c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-27.8l423.5-138.7a50.52 50.52 0 0034.9-48.2V378.2c42.9-15.8 73.6-57 73.6-105.2 0-61.8-50.2-112-112-112zm-504 51a48.01 48.01 0 0196 0 48.01 48.01 0 01-96 0zm96 600a48.01 48.01 0 01-96 0 48.01 48.01 0 0196 0zm408-491a48.01 48.01 0 010-96 48.01 48.01 0 010 96z" } }] }, "name": "branches", "theme": "outlined" };
 var BranchesOutlined = function BranchesOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -61216,7 +61288,7 @@ var BranchesOutlined = function BranchesOutlined2(props, ref) {
     icon: BranchesOutlined$1
   }));
 };
-var RefIcon$g = /* @__PURE__ */ reactExports.forwardRef(BranchesOutlined);
+var RefIcon$h = /* @__PURE__ */ reactExports.forwardRef(BranchesOutlined);
 var CaretRightOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M715.8 493.5L335 165.1c-14.2-12.2-35-1.2-35 18.5v656.8c0 19.7 20.8 30.7 35 18.5l380.8-328.4c10.9-9.4 10.9-27.6 0-37z" } }] }, "name": "caret-right", "theme": "outlined" };
 var CaretRightOutlined = function CaretRightOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -61224,7 +61296,7 @@ var CaretRightOutlined = function CaretRightOutlined2(props, ref) {
     icon: CaretRightOutlined$1
   }));
 };
-var RefIcon$f = /* @__PURE__ */ reactExports.forwardRef(CaretRightOutlined);
+var RefIcon$g = /* @__PURE__ */ reactExports.forwardRef(CaretRightOutlined);
 var CheckSquareOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "check-square", "theme": "outlined" };
 var CheckSquareOutlined = function CheckSquareOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -61232,7 +61304,7 @@ var CheckSquareOutlined = function CheckSquareOutlined2(props, ref) {
     icon: CheckSquareOutlined$1
   }));
 };
-var RefIcon$e = /* @__PURE__ */ reactExports.forwardRef(CheckSquareOutlined);
+var RefIcon$f = /* @__PURE__ */ reactExports.forwardRef(CheckSquareOutlined);
 var CloudDownloadOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M624 706.3h-74.1V464c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v242.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.7a8 8 0 0012.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9z" } }, { "tag": "path", "attrs": { "d": "M811.4 366.7C765.6 245.9 648.9 160 512.2 160S258.8 245.8 213 366.6C127.3 389.1 64 467.2 64 560c0 110.5 89.5 200 199.9 200H304c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8h-40.1c-33.7 0-65.4-13.4-89-37.7-23.5-24.2-36-56.8-34.9-90.6.9-26.4 9.9-51.2 26.2-72.1 16.7-21.3 40.1-36.8 66.1-43.7l37.9-9.9 13.9-36.6c8.6-22.8 20.6-44.1 35.7-63.4a245.6 245.6 0 0152.4-49.9c41.1-28.9 89.5-44.2 140-44.2s98.9 15.3 140 44.2c19.9 14 37.5 30.8 52.4 49.9 15.1 19.3 27.1 40.7 35.7 63.4l13.8 36.5 37.8 10C846.1 454.5 884 503.8 884 560c0 33.1-12.9 64.3-36.3 87.7a123.07 123.07 0 01-87.6 36.3H720c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h40.1C870.5 760 960 670.5 960 560c0-92.7-63.1-170.7-148.6-193.3z" } }] }, "name": "cloud-download", "theme": "outlined" };
 var CloudDownloadOutlined = function CloudDownloadOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -61240,7 +61312,7 @@ var CloudDownloadOutlined = function CloudDownloadOutlined2(props, ref) {
     icon: CloudDownloadOutlined$1
   }));
 };
-var RefIcon$d = /* @__PURE__ */ reactExports.forwardRef(CloudDownloadOutlined);
+var RefIcon$e = /* @__PURE__ */ reactExports.forwardRef(CloudDownloadOutlined);
 var ExpandOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "defs", "attrs": {}, "children": [{ "tag": "style", "attrs": {} }] }, { "tag": "path", "attrs": { "d": "M342 88H120c-17.7 0-32 14.3-32 32v224c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16V168h174c8.8 0 16-7.2 16-16v-48c0-8.8-7.2-16-16-16zm578 576h-48c-8.8 0-16 7.2-16 16v176H682c-8.8 0-16 7.2-16 16v48c0 8.8 7.2 16 16 16h222c17.7 0 32-14.3 32-32V680c0-8.8-7.2-16-16-16zM342 856H168V680c0-8.8-7.2-16-16-16h-48c-8.8 0-16 7.2-16 16v224c0 17.7 14.3 32 32 32h222c8.8 0 16-7.2 16-16v-48c0-8.8-7.2-16-16-16zM904 88H682c-8.8 0-16 7.2-16 16v48c0 8.8 7.2 16 16 16h174v176c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16V120c0-17.7-14.3-32-32-32z" } }] }, "name": "expand", "theme": "outlined" };
 var ExpandOutlined = function ExpandOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -61248,7 +61320,15 @@ var ExpandOutlined = function ExpandOutlined2(props, ref) {
     icon: ExpandOutlined$1
   }));
 };
-var RefIcon$c = /* @__PURE__ */ reactExports.forwardRef(ExpandOutlined);
+var RefIcon$d = /* @__PURE__ */ reactExports.forwardRef(ExpandOutlined);
+var ForkOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M752 100c-61.8 0-112 50.2-112 112 0 47.7 29.9 88.5 72 104.6v27.6L512 601.4 312 344.2v-27.6c42.1-16.1 72-56.9 72-104.6 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 50.6 33.8 93.5 80 107.3v34.4c0 9.7 3.3 19.3 9.3 27L476 672.3v33.6c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-33.6l226.7-291.6c6-7.7 9.3-17.3 9.3-27v-34.4c46.2-13.8 80-56.7 80-107.3 0-61.8-50.2-112-112-112zM224 212a48.01 48.01 0 0196 0 48.01 48.01 0 01-96 0zm336 600a48.01 48.01 0 01-96 0 48.01 48.01 0 0196 0zm192-552a48.01 48.01 0 010-96 48.01 48.01 0 010 96z" } }] }, "name": "fork", "theme": "outlined" };
+var ForkOutlined = function ForkOutlined2(props, ref) {
+  return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
+    ref,
+    icon: ForkOutlined$1
+  }));
+};
+var RefIcon$c = /* @__PURE__ */ reactExports.forwardRef(ForkOutlined);
 var GithubOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0138.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z" } }] }, "name": "github", "theme": "outlined" };
 var GithubOutlined = function GithubOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -61372,7 +61452,14 @@ function AppSider() {
   const loadCommits = useStore((s) => s.loadCommits);
   const loadBranches = useStore((s) => s.loadBranches);
   const loadCurrentBranch = useStore((s) => s.loadCurrentBranch);
+  const viewingGithubRepo = useStore((s) => s.viewingGithubRepo);
+  const setViewingGithubRepo = useStore((s) => s.setViewingGithubRepo);
+  const loadGithubCommits = useStore((s) => s.loadGithubCommits);
+  const loadGithubBranches = useStore((s) => s.loadGithubBranches);
   const [collapsedSections, setCollapsedSections] = reactExports.useState(/* @__PURE__ */ new Set());
+  const [searchFocused, setSearchFocused] = reactExports.useState(false);
+  const [githubSearchResults, setGithubSearchResults] = reactExports.useState([]);
+  const [searchingGithub, setSearchingGithub] = reactExports.useState(false);
   const filteredRepos = reactExports.useMemo(() => {
     if (!repoSearchQuery) return repos;
     const q2 = repoSearchQuery.toLowerCase();
@@ -61422,6 +61509,7 @@ function AppSider() {
     setGithubLogin(false, "");
   };
   const [refreshingGithub, setRefreshingGithub] = reactExports.useState(false);
+  const [forkingRepoId, setForkingRepoId] = reactExports.useState(null);
   const toggleSection = (key) => {
     setCollapsedSections((prev2) => {
       const next2 = new Set(prev2);
@@ -61447,6 +61535,51 @@ function AppSider() {
       setRefreshingGithub(false);
     }
   };
+  const handleFork = async (gr) => {
+    setForkingRepoId(gr.id);
+    try {
+      const tokenRes = await window.electronAPI.githubGetToken();
+      if (!tokenRes.success || !tokenRes.data) return;
+      const [owner, repo] = gr.fullName.split("/");
+      const res = await window.electronAPI.githubForkRepo(tokenRes.data, owner, repo);
+      if (res.success) {
+        staticMethods.success({ message: `已 Fork "${gr.fullName}" 到你的账号` });
+        await handleRefreshGithubRepos();
+      } else {
+        staticMethods.error({ message: "Fork 失败", description: res.error });
+      }
+    } finally {
+      setForkingRepoId(null);
+    }
+  };
+  const handleSearchGitHub = async () => {
+    if (!repoSearchQuery.trim() || !githubLoggedIn) return;
+    setSearchingGithub(true);
+    try {
+      const tokenRes = await window.electronAPI.githubGetToken();
+      if (!tokenRes.success || !tokenRes.data) return;
+      const res = await window.electronAPI.githubSearchRepos(tokenRes.data, repoSearchQuery.trim());
+      if (res.success) {
+        setGithubSearchResults(res.data);
+      }
+    } finally {
+      setSearchingGithub(false);
+    }
+  };
+  const handleSearchSelectLocal = (repo) => {
+    handleSelectRepo(repo);
+    setRepoSearch("");
+    setSearchFocused(false);
+    setGithubSearchResults([]);
+  };
+  const handleSearchSelectGithub = (gr) => {
+    setCloneUrlPreset(gr.cloneUrl);
+    setModalOpen("cloneModalOpen", true);
+    setRepoSearch("");
+    setSearchFocused(false);
+    setGithubSearchResults([]);
+  };
+  const searchDropdownOpen = searchFocused && repoSearchQuery.length > 0;
   const renderLocalRepoItem = (repo) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "div",
     {
@@ -61472,7 +61605,7 @@ function AppSider() {
         }
       },
       children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$t, { style: { color: "var(--text-tertiary)", fontSize: 14 } }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$u, { style: { color: "var(--text-tertiary)", fontSize: 14 } }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { flex: 1, minWidth: 0 }, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
             fontWeight: selectedRepoId === repo.id ? 600 : 400,
@@ -61490,7 +61623,7 @@ function AppSider() {
             type: "text",
             size: "small",
             danger: true,
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$m, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$n, {}),
             onClick: (e2) => {
               e2.stopPropagation();
               removeRepo(repo.id);
@@ -61503,62 +61636,89 @@ function AppSider() {
   );
   const renderGitHubRepoItem = (gr, isCloned) => {
     const matchedLocal = isCloned ? repos.find((r2) => r2.remoteUrl && normalizeGitUrl(r2.remoteUrl) === normalizeGitUrl(gr.cloneUrl)) : null;
+    const isViewingRemote = !isCloned && viewingGithubRepo?.fullName === gr.fullName;
+    const isSelected = matchedLocal && selectedRepoId === matchedLocal.id || isViewingRemote;
+    const handleClick = () => {
+      if (matchedLocal) {
+        setViewingGithubRepo(null);
+        handleSelectRepo(matchedLocal);
+      } else {
+        selectRepo("");
+        setViewingGithubRepo({ fullName: gr.fullName, owner: gr.owner, repo: gr.name });
+        resetGitState();
+        loadGithubCommits(gr.owner, gr.name);
+        loadGithubBranches(gr.owner, gr.name);
+      }
+    };
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "div",
       {
-        onClick: () => {
-          if (matchedLocal) handleSelectRepo(matchedLocal);
-        },
+        onClick: handleClick,
         style: {
           padding: "6px 12px",
           display: "flex",
           alignItems: "center",
           gap: 6,
-          opacity: isCloned ? 1 : 0.6,
-          background: matchedLocal && selectedRepoId === matchedLocal.id ? "var(--bg-selected)" : "transparent",
-          borderLeft: matchedLocal && selectedRepoId === matchedLocal.id ? "3px solid var(--accent)" : "3px solid transparent",
-          cursor: isCloned ? "pointer" : "default",
+          opacity: isCloned || isViewingRemote ? 1 : 0.6,
+          background: isSelected ? "var(--bg-selected)" : "transparent",
+          borderLeft: isSelected ? "3px solid var(--accent)" : "3px solid transparent",
+          cursor: "pointer",
           transition: "all 0.15s"
         },
         onMouseEnter: (e2) => {
-          if (matchedLocal && selectedRepoId !== matchedLocal.id) {
+          if (!isSelected) {
             e2.currentTarget.style.background = "var(--bg-hover)";
           }
         },
         onMouseLeave: (e2) => {
-          if (matchedLocal && selectedRepoId !== matchedLocal.id) {
+          if (!isSelected) {
             e2.currentTarget.style.background = "transparent";
           }
         },
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { color: isCloned ? "var(--accent)" : "var(--text-tertiary)", fontSize: 14 } }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { color: isCloned || isViewingRemote ? "var(--accent)" : "var(--text-tertiary)", fontSize: 14 } }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { flex: 1, minWidth: 0 }, children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
               fontSize: 13,
-              color: isCloned ? "var(--text-primary)" : "var(--text-secondary)",
+              color: isCloned || isViewingRemote ? "var(--text-primary)" : "var(--text-secondary)",
               overflow: "hidden",
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
-              fontWeight: matchedLocal && selectedRepoId === matchedLocal.id ? 600 : isCloned ? 500 : 400
+              fontWeight: isSelected ? 600 : isCloned ? 500 : 400
             }, children: gr.name }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$a, { type: "secondary", style: { fontSize: 10, display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }, children: [
               gr.fullName,
               gr.private ? " · 私有" : ""
             ] })
           ] }),
-          !isCloned && /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "克隆到本地", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Button$1,
-            {
-              type: "text",
-              size: "small",
-              icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$i, {}),
-              onClick: (e2) => {
-                e2.stopPropagation();
-                setCloneUrlPreset(gr.cloneUrl);
-                setModalOpen("cloneModalOpen", true);
+          !isCloned && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+            gr.owner !== githubUsername && /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "Fork 到你的账号", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button$1,
+              {
+                type: "text",
+                size: "small",
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$c, {}),
+                loading: forkingRepoId === gr.id,
+                onClick: (e2) => {
+                  e2.stopPropagation();
+                  handleFork(gr);
+                }
               }
-            }
-          ) })
+            ) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "克隆到本地", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button$1,
+              {
+                type: "text",
+                size: "small",
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$j, {}),
+                onClick: (e2) => {
+                  e2.stopPropagation();
+                  setCloneUrlPreset(gr.cloneUrl);
+                  setModalOpen("cloneModalOpen", true);
+                }
+              }
+            ) })
+          ] })
         ]
       },
       gr.id
@@ -61593,7 +61753,7 @@ function AppSider() {
           Button$1,
           {
             type: "text",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$F, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$G, {}),
             onClick: () => setModalOpen("addRepoModalOpen", true)
           }
         ) }),
@@ -61601,7 +61761,7 @@ function AppSider() {
           Button$1,
           {
             type: "text",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$e, {}),
             onClick: () => {
               setCloneUrlPreset("");
               setModalOpen("cloneModalOpen", true);
@@ -61668,24 +61828,153 @@ function AppSider() {
           ] })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { padding: "8px 12px", display: "flex", gap: 8 }, children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Input.Search,
-            {
-              placeholder: "搜索仓库...",
-              allowClear: true,
-              size: "small",
-              value: repoSearchQuery,
-              onChange: (e2) => setRepoSearch(e2.target.value),
-              style: { flex: 1 }
-            }
-          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { flex: 1, position: "relative" }, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Input,
+              {
+                placeholder: "搜索仓库...",
+                allowClear: true,
+                size: "small",
+                prefix: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$K, { style: { color: "var(--text-tertiary)" } }),
+                value: repoSearchQuery,
+                onChange: (e2) => {
+                  setRepoSearch(e2.target.value);
+                  setGithubSearchResults([]);
+                  setSearchFocused(true);
+                },
+                onFocus: () => setSearchFocused(true),
+                onBlur: () => setTimeout(() => setSearchFocused(false), 200)
+              }
+            ),
+            searchDropdownOpen && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "div",
+              {
+                style: {
+                  position: "absolute",
+                  top: "100%",
+                  left: 0,
+                  right: 0,
+                  zIndex: 1050,
+                  marginTop: 4,
+                  background: "var(--bg-secondary)",
+                  border: "1px solid var(--border-primary)",
+                  borderRadius: 8,
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
+                  maxHeight: 360,
+                  overflow: "auto"
+                },
+                onMouseDown: (e2) => e2.preventDefault(),
+                children: [
+                  filteredRepos.length > 0 && filteredRepos.slice(0, 8).map((r2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                    "div",
+                    {
+                      onClick: () => handleSearchSelectLocal(r2),
+                      style: {
+                        padding: "8px 12px",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
+                        borderBottom: "1px solid var(--border-secondary)"
+                      },
+                      onMouseEnter: (e2) => {
+                        e2.currentTarget.style.background = "var(--bg-hover)";
+                      },
+                      onMouseLeave: (e2) => {
+                        e2.currentTarget.style.background = "transparent";
+                      },
+                      children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$u, { style: { color: "var(--text-tertiary)", fontSize: 14 } }),
+                        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { flex: 1, minWidth: 0 }, children: [
+                          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { fontSize: 13, color: "var(--text-primary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }, children: r2.name }),
+                          /* @__PURE__ */ jsxRuntimeExports.jsx(Text$a, { type: "secondary", style: { fontSize: 11, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", display: "block" }, children: r2.path })
+                        ] })
+                      ]
+                    },
+                    r2.id
+                  )),
+                  githubLoggedIn && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                    "div",
+                    {
+                      onClick: handleSearchGitHub,
+                      style: {
+                        padding: "10px 12px",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 8,
+                        borderTop: filteredRepos.length > 0 ? "1px solid var(--border-primary)" : "none",
+                        color: "var(--accent)",
+                        fontWeight: 500,
+                        fontSize: 13
+                      },
+                      onMouseEnter: (e2) => {
+                        e2.currentTarget.style.background = "var(--bg-hover)";
+                      },
+                      onMouseLeave: (e2) => {
+                        e2.currentTarget.style.background = "transparent";
+                      },
+                      children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, {}),
+                        searchingGithub ? /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { size: "small" }) : `在 GitHub 上搜索 "${repoSearchQuery}"`
+                      ]
+                    }
+                  ),
+                  githubSearchResults.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: {
+                      padding: "6px 12px",
+                      fontSize: 11,
+                      color: "var(--text-tertiary)",
+                      fontWeight: 600,
+                      borderTop: "1px solid var(--border-primary)",
+                      borderBottom: "1px solid var(--border-secondary)"
+                    }, children: [
+                      "GitHub 搜索结果 (",
+                      githubSearchResults.length,
+                      ")"
+                    ] }),
+                    githubSearchResults.map((gr) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                      "div",
+                      {
+                        onClick: () => handleSearchSelectGithub(gr),
+                        style: {
+                          padding: "8px 12px",
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 8,
+                          borderBottom: "1px solid var(--border-secondary)"
+                        },
+                        onMouseEnter: (e2) => {
+                          e2.currentTarget.style.background = "var(--bg-hover)";
+                        },
+                        onMouseLeave: (e2) => {
+                          e2.currentTarget.style.background = "transparent";
+                        },
+                        children: [
+                          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { color: "var(--text-tertiary)", fontSize: 14 } }),
+                          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { flex: 1, minWidth: 0 }, children: [
+                            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { fontSize: 13, color: "var(--text-primary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }, children: gr.fullName }),
+                            gr.description && /* @__PURE__ */ jsxRuntimeExports.jsx(Text$a, { type: "secondary", style: { fontSize: 11, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", display: "block" }, children: gr.description })
+                          ] }),
+                          /* @__PURE__ */ jsxRuntimeExports.jsx(Text$a, { type: "secondary", style: { fontSize: 10, whiteSpace: "nowrap" }, children: gr.private ? "私有" : "公开" })
+                        ]
+                      },
+                      gr.id
+                    ))
+                  ] }),
+                  filteredRepos.length === 0 && !githubLoggedIn && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { padding: "16px 12px", textAlign: "center" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Text$a, { type: "secondary", children: "未找到匹配的仓库" }) })
+                ]
+              }
+            )
+          ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", gap: 4 }, children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "添加仓库", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
               Button$1,
               {
                 type: "primary",
                 size: "small",
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$F, {}),
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$G, {}),
                 onClick: () => setModalOpen("addRepoModalOpen", true)
               }
             ) }),
@@ -61693,7 +61982,7 @@ function AppSider() {
               Button$1,
               {
                 size: "small",
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, {}),
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$e, {}),
                 onClick: () => {
                   setCloneUrlPreset("");
                   setModalOpen("cloneModalOpen", true);
@@ -61722,7 +62011,7 @@ function AppSider() {
                   userSelect: "none"
                 },
                 children: [
-                  collapsedSections.has("myRepos") ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$f, { style: { fontSize: 10 } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$o, { style: { fontSize: 10 } }),
+                  collapsedSections.has("myRepos") ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$g, { style: { fontSize: 10 } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$p, { style: { fontSize: 10 } }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { color: "var(--accent)" } }),
                   "我的仓库 (",
                   githubRepos.length,
@@ -61732,7 +62021,7 @@ function AppSider() {
                     {
                       type: "text",
                       size: "small",
-                      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$x, {}),
+                      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$y, {}),
                       loading: refreshingGithub,
                       onClick: (e2) => {
                         e2.stopPropagation();
@@ -61765,7 +62054,7 @@ function AppSider() {
                       gap: 4
                     },
                     children: [
-                      collapsedSections.has("uncloned") ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$f, { style: { fontSize: 9 } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$o, { style: { fontSize: 9 } }),
+                      collapsedSections.has("uncloned") ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$g, { style: { fontSize: 9 } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$p, { style: { fontSize: 9 } }),
                       "未克隆 (",
                       myRepos.ghNotCloned.length,
                       ")"
@@ -61796,7 +62085,7 @@ function AppSider() {
                   gap: 4
                 },
                 children: [
-                  collapsedSections.has("otherRepos") ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$f, { style: { fontSize: 10 } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$o, { style: { fontSize: 10 } }),
+                  collapsedSections.has("otherRepos") ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$g, { style: { fontSize: 10 } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$p, { style: { fontSize: 10 } }),
                   "其他仓库 (",
                   otherRepos.length,
                   ")"
@@ -61810,7 +62099,7 @@ function AppSider() {
           {
             type: "primary",
             size: "small",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$F, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$G, {}),
             onClick: () => setModalOpen("addRepoModalOpen", true),
             children: "添加仓库"
           }
@@ -61910,7 +62199,7 @@ function AddRepoModal() {
             placeholder: "仓库路径...",
             value: path2,
             onChange: handlePathChange,
-            addonAfter: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "text", size: "small", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$u, {}), onClick: handleBrowse }),
+            addonAfter: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "text", size: "small", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$v, {}), onClick: handleBrowse }),
             onPressEnter: handleAdd
           }
         ),
@@ -61975,7 +62264,7 @@ function CloneModal() {
     Modal,
     {
       title: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, { style: { marginRight: 8, color: "var(--accent)" } }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$e, { style: { marginRight: 8, color: "var(--accent)" } }),
         "克隆远程仓库"
       ] }),
       open: open2,
@@ -62003,7 +62292,7 @@ function CloneModal() {
           Button$1,
           {
             type: "primary",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$e, {}),
             loading: loading || activeOperation === "clone",
             onClick: handleClone,
             disabled: !url2.trim() || !targetDir.trim(),
@@ -62022,7 +62311,7 @@ function CloneModal() {
               value: url2,
               onChange: (e2) => setUrl(e2.target.value),
               onPressEnter: handleClone,
-              prefix: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, { style: { color: "var(--text-tertiary)" } })
+              prefix: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$e, { style: { color: "var(--text-tertiary)" } })
             }
           )
         ] }),
@@ -62035,7 +62324,7 @@ function CloneModal() {
               value: targetDir,
               onChange: (e2) => setTargetDir(e2.target.value),
               readOnly: true,
-              addonAfter: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "text", size: "small", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$u, {}), onClick: handleBrowseDir })
+              addonAfter: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "text", size: "small", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$v, {}), onClick: handleBrowseDir })
             }
           )
         ] })
@@ -62171,12 +62460,16 @@ function CommitHistory() {
   const selectedRepoId = useStore((s) => s.selectedRepoId);
   const selectCommit = useStore((s) => s.selectCommit);
   const loadDiff = useStore((s) => s.loadDiff);
+  const loadGithubDiff = useStore((s) => s.loadGithubDiff);
+  const resetToCommit = useStore((s) => s.resetToCommit);
+  const viewingGithubRepo = useStore((s) => s.viewingGithubRepo);
   const commitSearchQuery = useStore((s) => s.commitSearchQuery);
   const setCommitSearch = useStore((s) => s.setCommitSearch);
   const themeMode = useStore((s) => s.themeMode);
   const selectedRepo = repos.find((r2) => r2.id === selectedRepoId);
   const [topRatio, setTopRatio] = reactExports.useState(DEFAULT_TOP_RATIO);
   const [dragging, setDragging] = reactExports.useState(false);
+  const [contextMenu, setContextMenu] = reactExports.useState(null);
   const containerRef = reactExports.useRef(null);
   const draggingRef = reactExports.useRef(false);
   const dragStartYRef = reactExports.useRef(0);
@@ -62201,8 +62494,10 @@ function CommitHistory() {
     selectCommit(record.hash);
     if (selectedRepo) {
       loadDiff(selectedRepo.path, record.hash);
+    } else if (viewingGithubRepo) {
+      loadGithubDiff(viewingGithubRepo.owner, viewingGithubRepo.repo, record.hash);
     }
-  }, [selectCommit, loadDiff, selectedRepo]);
+  }, [selectCommit, loadDiff, loadGithubDiff, selectedRepo, viewingGithubRepo]);
   const handleFileClick = reactExports.useCallback((filePath) => {
     if (!currentDiff) return;
     const fileDiff = extractFileDiff(currentDiff, filePath);
@@ -62210,6 +62505,30 @@ function CommitHistory() {
       window.electronAPI.windowOpenDiff({ diff: fileDiff, editable: false, theme: themeMode });
     }
   }, [currentDiff, themeMode]);
+  const handleReset = reactExports.useCallback((record) => {
+    if (!selectedRepo || viewingGithubRepo) return;
+    setContextMenu(null);
+    Modal.confirm({
+      title: "回滚到此提交",
+      content: `确定要将仓库回滚到提交 ${record.hash.slice(0, 7)} 吗？此操作将丢弃该提交之后的所有更改，不可撤销。`,
+      okText: "确认回滚",
+      okButtonProps: { danger: true },
+      cancelText: "取消",
+      onOk: async () => {
+        await resetToCommit(selectedRepo.path, record.hash);
+        staticMethods.success({ message: `已回滚到 ${record.hash.slice(0, 7)}` });
+      }
+    });
+  }, [selectedRepo, resetToCommit]);
+  const contextMenuItems = contextMenu && selectedRepo ? [
+    {
+      key: "reset",
+      label: "回退到此版本",
+      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$3, {}),
+      danger: true,
+      onClick: () => handleReset(contextMenu.record)
+    }
+  ] : [];
   const topPanelRef = reactExports.useRef(null);
   const bottomPanelRef = reactExports.useRef(null);
   reactExports.useEffect(() => {
@@ -62280,7 +62599,7 @@ function CommitHistory() {
       render: (msg, record) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Text$7, { children: msg.split("\n")[0] }),
         record.refs.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { marginLeft: 8 }, children: record.refs.map((ref) => /* @__PURE__ */ jsxRuntimeExports.jsxs(Tag, { color: "blue", style: { fontSize: 11, marginRight: 2 }, children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$g, {}),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$h, {}),
           " ",
           ref.replace("refs/heads/", "")
         ] }, ref)) })
@@ -62318,7 +62637,7 @@ function CommitHistory() {
           placeholder: "搜索提交记录...",
           allowClear: true,
           size: "small",
-          prefix: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$J, {}),
+          prefix: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$K, {}),
           value: commitSearchQuery,
           onChange: (e2) => setCommitSearch(e2.target.value),
           style: { width: 280 }
@@ -62336,6 +62655,10 @@ function CommitHistory() {
         pagination: { pageSize: 30, showSizeChanger: true, showTotal: (t2) => `共 ${t2} 条` },
         onRow: (record) => ({
           onClick: () => handleRowClick(record),
+          onContextMenu: (e2) => {
+            e2.preventDefault();
+            setContextMenu({ record, x: e2.clientX, y: e2.clientY });
+          },
           style: {
             cursor: "pointer",
             background: record.hash === selectedCommitHash ? "var(--bg-selected)" : void 0
@@ -62398,7 +62721,7 @@ function CommitHistory() {
             /* @__PURE__ */ jsxRuntimeExports.jsx(Descriptions.Item, { label: "日期", children: formatDate(selectedCommit.date) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(Descriptions.Item, { label: "提交信息", span: 2, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Paragraph, { style: { margin: 0, whiteSpace: "pre-wrap", fontSize: 13 }, children: selectedCommit.message }) }),
             selectedCommit.refs.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(Descriptions.Item, { label: "引用", span: 2, children: selectedCommit.refs.map((ref) => /* @__PURE__ */ jsxRuntimeExports.jsxs(Tag, { color: "blue", style: { marginRight: 4 }, children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$g, {}),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$h, {}),
               " ",
               ref
             ] }, ref)) })
@@ -62441,13 +62764,38 @@ function CommitHistory() {
                     "-",
                     f2.deletions
                   ] }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$c, { style: { color: "var(--text-tertiary)", fontSize: 11 } })
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, { style: { color: "var(--text-tertiary)", fontSize: 11 } })
                 ] })
               ]
             },
             f2.path
           )) })
         ]
+      }
+    ),
+    contextMenu && /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Dropdown,
+      {
+        open: true,
+        onOpenChange: (open2) => {
+          if (!open2) setContextMenu(null);
+        },
+        menu: { items: contextMenuItems },
+        placement: "bottomLeft",
+        trigger: ["contextMenu"],
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            style: {
+              position: "fixed",
+              left: contextMenu.x,
+              top: contextMenu.y,
+              width: 1,
+              height: 1,
+              pointerEvents: "none"
+            }
+          }
+        )
       }
     )
   ] });
@@ -62635,7 +62983,7 @@ function StageArea() {
           Button$1,
           {
             size: "small",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$e, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$f, {}),
             onClick: handleStageAll,
             loading: activeOperation === "stage-all",
             disabled: isClean,
@@ -62646,7 +62994,7 @@ function StageArea() {
           Button$1,
           {
             size: "small",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$h, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$i, {}),
             onClick: handleStage,
             disabled: selectedRowKeys.length === 0,
             loading: activeOperation === "stage",
@@ -62675,9 +63023,10 @@ function StageArea() {
             children: /* @__PURE__ */ jsxRuntimeExports.jsx(
               Button$1,
               {
+                type: "primary",
                 size: "small",
                 danger: true,
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$m, {}),
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$n, {}),
                 disabled: selectedRowKeys.length === 0,
                 loading: activeOperation === "discard",
                 children: "丢弃选中"
@@ -62838,7 +63187,7 @@ function BranchList() {
       key: "name",
       render: (name, record) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
-          RefIcon$g,
+          RefIcon$h,
           {
             style: {
               marginRight: 8,
@@ -62874,7 +63223,7 @@ function BranchList() {
           Button$1,
           {
             size: "small",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$B, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$C, {}),
             onClick: () => handleSwitch(record.name),
             loading: activeOperation === "switch-branch",
             children: "切换"
@@ -62891,7 +63240,7 @@ function BranchList() {
               {
                 size: "small",
                 danger: true,
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$m, {}),
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$n, {}),
                 loading: activeOperation === "delete-branch"
               }
             )
@@ -62925,7 +63274,7 @@ function BranchList() {
           {
             type: "primary",
             size: "small",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$g, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$h, {}),
             onClick: () => setModalOpen("createBranchModalOpen", true),
             children: "新建分支"
           }
@@ -63351,8 +63700,14 @@ function AppContent() {
   const pull = useStore((s) => s.pull);
   const push = useStore((s) => s.push);
   const switchBranch = useStore((s) => s.switchBranch);
+  const viewingGithubRepo = useStore((s) => s.viewingGithubRepo);
+  useStore((s) => s.setViewingGithubRepo);
+  const githubRepos = useStore((s) => s.githubRepos);
+  const setCloneUrlPreset = useStore((s) => s.setCloneUrlPreset);
   const selectedRepo = repos.find((r2) => r2.id === selectedRepoId);
+  const isRemoteViewing = !!viewingGithubRepo && !selectedRepo;
   const [githubModalOpen, setGithubModalOpen] = reactExports.useState(false);
+  const changedFileCount = selectedRepo && workingStatus ? workingStatus.staged.length + workingStatus.unstaged.length + workingStatus.created.length + workingStatus.deleted.length : 0;
   if (operationError) {
     staticMethods.error({
       message: "操作失败",
@@ -63378,23 +63733,24 @@ function AppContent() {
     },
     [selectedRepo, currentBranch, switchBranch]
   );
-  const tabItems = selectedRepo ? [
+  const tabItems = selectedRepo || isRemoteViewing ? [
     {
       key: "history",
       label: "提交记录",
       children: /* @__PURE__ */ jsxRuntimeExports.jsx(CommitHistory, {})
     },
-    {
+    ...isRemoteViewing ? [] : [{
       key: "changes",
-      label: "文件变更",
+      label: /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { count: changedFileCount, overflowCount: 99, size: "small", offset: [6, -4], children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "文件变更" }) }),
       children: /* @__PURE__ */ jsxRuntimeExports.jsx(StageArea, {})
-    },
+    }],
     {
       key: "branches",
       label: "分支管理",
       children: /* @__PURE__ */ jsxRuntimeExports.jsx(BranchList, {})
     }
   ] : [];
+  const displayName = selectedRepo?.name || viewingGithubRepo?.fullName || "";
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Layout, { style: { flex: 1, background: "var(--bg-primary)" }, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(AddRepoModal, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(CloneModal, {}),
@@ -63417,7 +63773,7 @@ function AppContent() {
         onClose: () => setModalOpen("githubLoginModalOpen", false)
       }
     ),
-    !selectedRepo ? /* @__PURE__ */ jsxRuntimeExports.jsx(Content, { style: { display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg-primary)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "请从左侧选择一个仓库", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "primary", onClick: () => setModalOpen("addRepoModalOpen", true), children: "添加仓库" }) }) }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+    !selectedRepo && !isRemoteViewing ? /* @__PURE__ */ jsxRuntimeExports.jsx(Content, { style: { display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg-primary)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "请从左侧选择一个仓库", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "primary", onClick: () => setModalOpen("addRepoModalOpen", true), children: "添加仓库" }) }) }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "div",
         {
@@ -63436,10 +63792,11 @@ function AppContent() {
               /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Breadcrumb,
                 {
-                  items: [{ title: /* @__PURE__ */ jsxRuntimeExports.jsx(Text$1, { strong: true, style: { color: "var(--text-primary)" }, children: selectedRepo.name }) }]
+                  items: [{ title: /* @__PURE__ */ jsxRuntimeExports.jsx(Text$1, { strong: true, style: { color: "var(--text-primary)" }, children: displayName }) }]
                 }
               ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
+              isRemoteViewing && /* @__PURE__ */ jsxRuntimeExports.jsx(Tag, { color: "purple", style: { fontSize: 11 }, children: "远程浏览" }),
+              !isRemoteViewing && /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Select,
                 {
                   size: "small",
@@ -63450,19 +63807,36 @@ function AppContent() {
                   options: branches.map((b2) => ({
                     value: b2.name,
                     label: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$g, { style: { marginRight: 4 } }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$h, { style: { marginRight: 4 } }),
                       b2.name
                     ] })
                   }))
                 }
               )
             ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(Space, { size: "small", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Space, { size: "small", children: isRemoteViewing ? /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "克隆到本地", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button$1,
+              {
+                size: "small",
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$j, {}),
+                type: "primary",
+                onClick: () => {
+                  if (viewingGithubRepo) {
+                    const gr = githubRepos.find((g2) => g2.fullName === viewingGithubRepo.fullName);
+                    if (gr) {
+                      setCloneUrlPreset(gr.cloneUrl);
+                      setModalOpen("cloneModalOpen", true);
+                    }
+                  }
+                },
+                children: "克隆到本地"
+              }
+            ) }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { count: workingStatus?.behind || 0, overflowCount: 99, size: "small", offset: [-2, 2], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Button$1,
                 {
                   size: "small",
-                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$i, {}),
+                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$j, {}),
                   loading: activeOperation === "pull",
                   onClick: handlePull,
                   children: "拉取"
@@ -63487,7 +63861,7 @@ function AppContent() {
                   children: "推送 GitHub"
                 }
               )
-            ] })
+            ] }) })
           ]
         }
       ),
@@ -63533,7 +63907,8 @@ function AppContent() {
             activeOperation === "merge" && "正在合并...",
             activeOperation === "delete-branch" && "正在删除分支...",
             activeOperation === "discard" && "正在丢弃修改...",
-            activeOperation === "clone" && "正在克隆仓库..."
+            activeOperation === "clone" && "正在克隆仓库...",
+            activeOperation === "reset" && "正在回滚..."
           ] })
         ]
       }
@@ -63792,7 +64167,7 @@ function DiffPanel({ diff, standalone, editable, repoPath, filePath, staged, onR
               Button$1,
               {
                 size: "small",
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$c, {}),
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, {}),
                 type: fullFile ? "primary" : "default",
                 onClick: handleToggleFullFile,
                 loading: loadingFullDiff,
@@ -63805,6 +64180,7 @@ function DiffPanel({ diff, standalone, editable, repoPath, filePath, staged, onR
           /* @__PURE__ */ jsxRuntimeExports.jsxs(
             "div",
             {
+              className: "show-scrollbar",
               style: {
                 width: 240,
                 flexShrink: 0,
@@ -63861,7 +64237,7 @@ function DiffPanel({ diff, standalone, editable, repoPath, filePath, staged, onR
                       transition: "background 0.15s"
                     },
                     children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$E, { style: { color: "var(--text-tertiary)", fontSize: 13 } }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$F, { style: { color: "var(--text-tertiary)", fontSize: 13 } }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: {
                         flex: 1,
                         overflow: "hidden",
@@ -63872,7 +64248,7 @@ function DiffPanel({ diff, standalone, editable, repoPath, filePath, staged, onR
                       }, children: file.path }),
                       /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { style: { display: "flex", gap: 4, flexShrink: 0 }, children: [
                         file.additions > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { style: { color: "#6fcf97", fontSize: 11, display: "flex", alignItems: "center", gap: 1 }, children: [
-                          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$F, { style: { fontSize: 9 } }),
+                          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$G, { style: { fontSize: 9 } }),
                           file.additions
                         ] }),
                         file.deletions > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { style: { color: "#e8837a", fontSize: 11, display: "flex", alignItems: "center", gap: 1 }, children: [
@@ -63887,7 +64263,7 @@ function DiffPanel({ diff, standalone, editable, repoPath, filePath, staged, onR
               ]
             }
           ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { flex: 1, overflow: "auto", background: "var(--bg-primary)" }, children: activeFile ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "show-scrollbar", style: { flex: 1, overflow: "auto", background: "var(--bg-primary)" }, children: activeFile ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
             (!editable || !filePath) && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: {
               padding: "10px 16px",
               borderBottom: "1px solid var(--border-primary)",
@@ -63921,7 +64297,7 @@ function DiffPanel({ diff, standalone, editable, repoPath, filePath, staged, onR
                   Button$1,
                   {
                     size: "small",
-                    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$c, {}),
+                    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, {}),
                     type: fullFile ? "primary" : "default",
                     onClick: handleToggleFullFile,
                     loading: loadingFullDiff,
