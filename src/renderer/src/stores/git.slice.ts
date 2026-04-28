@@ -178,6 +178,7 @@ export function createGitSlice(
       const res: IpcResponse<any> = await window.electronAPI.gitPush(repoPath)
       if (res.success) {
         await get().loadCommits(repoPath)
+        await get().loadStatus(repoPath)
         set({ activeOperation: null })
       } else {
         set({ operationError: res.error, activeOperation: null })
