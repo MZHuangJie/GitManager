@@ -72,6 +72,16 @@ const api = {
   githubSaveToken: (token: string) => ipcRenderer.invoke(IPC.GITHUB_SAVE_TOKEN, token),
   githubValidateToken: (token: string) => ipcRenderer.invoke('github:validate-token', token),
   githubListRepos: (token: string) => ipcRenderer.invoke(IPC.GITHUB_LIST_REPOS, token),
+  githubForkRepo: (token: string, owner: string, repo: string) =>
+    ipcRenderer.invoke(IPC.GITHUB_FORK_REPO, token, owner, repo),
+  githubSearchRepos: (token: string, query: string) =>
+    ipcRenderer.invoke(IPC.GITHUB_SEARCH_REPOS, token, query),
+  githubGetCommits: (token: string, owner: string, repo: string) =>
+    ipcRenderer.invoke(IPC.GITHUB_GET_COMMITS, token, owner, repo),
+  githubGetBranches: (token: string, owner: string, repo: string) =>
+    ipcRenderer.invoke(IPC.GITHUB_GET_BRANCHES, token, owner, repo),
+  githubGetCommitDiff: (token: string, owner: string, repo: string, sha: string) =>
+    ipcRenderer.invoke(IPC.GITHUB_GET_COMMIT_DIFF, token, owner, repo, sha),
 
   // Window management
   windowOpenDiff: (data: { diff: string; repoPath?: string; filePath?: string; staged?: boolean; editable?: boolean; theme?: string }) =>

@@ -1,4 +1,4 @@
-import { Layout, Tabs, Breadcrumb, Select, Button, Space, Spin, Empty, Typography, notification, Badge } from 'antd'
+import { Layout, Tabs, Breadcrumb, Select, Button, Space, Spin, Empty, Typography, notification, Badge, Tag, Tooltip } from 'antd'
 import {
   DownloadOutlined,
   UploadOutlined,
@@ -37,8 +37,13 @@ export default function AppContent() {
   const pull = useStore((s) => s.pull)
   const push = useStore((s) => s.push)
   const switchBranch = useStore((s) => s.switchBranch)
+  const viewingGithubRepo = useStore((s) => s.viewingGithubRepo)
+  const setViewingGithubRepo = useStore((s) => s.setViewingGithubRepo)
+  const githubRepos = useStore((s) => s.githubRepos)
+  const setCloneUrlPreset = useStore((s) => s.setCloneUrlPreset)
 
   const selectedRepo = repos.find((r) => r.id === selectedRepoId)
+  const isRemoteViewing = !!viewingGithubRepo && !selectedRepo
   const [githubModalOpen, setGithubModalOpen] = useState(false)
 
   const changedFileCount = selectedRepo && workingStatus
@@ -74,22 +79,22 @@ export default function AppContent() {
     [selectedRepo, currentBranch, switchBranch]
   )
 
-  const tabItems = selectedRepo
+  const tabItems = selectedRepo || isRemoteViewing
     ? [
         {
           key: 'history',
           label: '提交记录',
           children: <CommitHistory />
         },
-        {
-          key: 'changes',
+        ...(isRemoteViewing ? [] : [{
+          key: 'changes' as const,
           label: (
             <Badge count={changedFileCount} overflowCount={99} size="small" offset={[6, -4]}>
               <span>文件变更</span>
             </Badge>
           ),
           children: <StageArea />
-        },
+        }]),
         {
           key: 'branches',
           label: '分支管理',
@@ -97,6 +102,8 @@ export default function AppContent() {
         }
       ]
     : []
+
+  const displayName = selectedRepo?.name || viewingGithubRepo?.fullName || ''
 
   return (
     <Layout style={{ flex: 1, background: 'var(--bg-primary)' }}>
@@ -119,7 +126,7 @@ export default function AppContent() {
         onClose={() => setModalOpen('githubLoginModalOpen', false)}
       />
 
-      {!selectedRepo ? (
+      {!selectedRepo && !isRemoteViewing ? (
         <Content style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-primary)' }}>
           <Empty description="请从左侧选择一个仓库">
             <Button type="primary" onClick={() => setModalOpen('addRepoModalOpen', true)}>
@@ -144,55 +151,83 @@ export default function AppContent() {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <Breadcrumb
-                items={[{ title: <Text strong style={{ color: 'var(--text-primary)' }}>{selectedRepo.name}</Text> }]}
+                items={[{ title: <Text strong style={{ color: 'var(--text-primary)' }}>{displayName}</Text> }]}
               />
-              <Select
-                size="small"
-                value={currentBranch || undefined}
-                onChange={handleBranchChange}
-                style={{ minWidth: 140 }}
-                loading={branches.length === 0}
-                options={branches.map((b) => ({
-                  value: b.name,
-                  label: (
-                    <span>
-                      <BranchesOutlined style={{ marginRight: 4 }} />
-                      {b.name}
-                    </span>
-                  )
-                }))}
-              />
+              {isRemoteViewing && (
+                <Tag color="purple" style={{ fontSize: 11 }}>远程浏览</Tag>
+              )}
+              {!isRemoteViewing && (
+                <Select
+                  size="small"
+                  value={currentBranch || undefined}
+                  onChange={handleBranchChange}
+                  style={{ minWidth: 140 }}
+                  loading={branches.length === 0}
+                  options={branches.map((b) => ({
+                    value: b.name,
+                    label: (
+                      <span>
+                        <BranchesOutlined style={{ marginRight: 4 }} />
+                        {b.name}
+                      </span>
+                    )
+                  }))}
+                />
+              )}
             </div>
 
             <Space size="small">
-              <Badge count={workingStatus?.behind || 0} overflowCount={99} size="small" offset={[-2, 2]}>
-                <Button
-                  size="small"
-                  icon={<DownloadOutlined />}
-                  loading={activeOperation === 'pull'}
-                  onClick={handlePull}
-                >
-                  拉取
-                </Button>
-              </Badge>
-              <Badge count={workingStatus?.ahead || 0} overflowCount={99} size="small" offset={[-2, 2]}>
-                <Button
-                  size="small"
-                  icon={<UploadOutlined />}
-                  loading={activeOperation === 'push'}
-                  onClick={handlePush}
-                >
-                  推送
-                </Button>
-              </Badge>
-              {selectedRepo && !selectedRepo.remoteUrl && (
-                <Button
-                  size="small"
-                  icon={<GithubOutlined />}
-                  onClick={() => setGithubModalOpen(true)}
-                >
-                  推送 GitHub
-                </Button>
+              {isRemoteViewing ? (
+                <Tooltip title="克隆到本地">
+                  <Button
+                    size="small"
+                    icon={<DownloadOutlined />}
+                    type="primary"
+                    onClick={() => {
+                      if (viewingGithubRepo) {
+                        const gr = githubRepos.find(g => g.fullName === viewingGithubRepo.fullName)
+                        if (gr) {
+                          setCloneUrlPreset(gr.cloneUrl)
+                          setModalOpen('cloneModalOpen', true)
+                        }
+                      }
+                    }}
+                  >
+                    克隆到本地
+                  </Button>
+                </Tooltip>
+              ) : (
+                <>
+                  <Badge count={workingStatus?.behind || 0} overflowCount={99} size="small" offset={[-2, 2]}>
+                    <Button
+                      size="small"
+                      icon={<DownloadOutlined />}
+                      loading={activeOperation === 'pull'}
+                      onClick={handlePull}
+                    >
+                      拉取
+                    </Button>
+                  </Badge>
+                  <Badge count={workingStatus?.ahead || 0} overflowCount={99} size="small" offset={[-2, 2]}>
+                    <Button
+                      size="small"
+                      icon={<UploadOutlined />}
+                      loading={activeOperation === 'push'}
+                      onClick={handlePush}
+                    >
+                      推送
+                    </Button>
+                  </Badge>
+                  {selectedRepo && !selectedRepo.remoteUrl && (
+                    <Button
+                      size="small"
+                      icon={<GithubOutlined />}
+                      onClick={() => setGithubModalOpen(true)}
+                    >
+                      推送 GitHub
+                    </Button>
+                  )}
+                </>
               )}
             </Space>
           </div>

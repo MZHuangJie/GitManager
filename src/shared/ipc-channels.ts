@@ -48,6 +48,11 @@ export const IPC = {
   GITHUB_GET_TOKEN: 'github:get-token',
   GITHUB_SAVE_TOKEN: 'github:save-token',
   GITHUB_LIST_REPOS: 'github:list-repos',
+  GITHUB_FORK_REPO: 'github:fork-repo',
+  GITHUB_SEARCH_REPOS: 'github:search-repos',
+  GITHUB_GET_COMMITS: 'github:get-commits',
+  GITHUB_GET_BRANCHES: 'github:get-branches',
+  GITHUB_GET_COMMIT_DIFF: 'github:get-commit-diff',
 
   // Window Management
   WINDOW_OPEN_DIFF: 'window:open-diff'

@@ -26,7 +26,9 @@ export default function CommitHistory() {
 
   const selectCommit = useStore((s) => s.selectCommit)
   const loadDiff = useStore((s) => s.loadDiff)
+  const loadGithubDiff = useStore((s) => s.loadGithubDiff)
   const resetToCommit = useStore((s) => s.resetToCommit)
+  const viewingGithubRepo = useStore((s) => s.viewingGithubRepo)
   const commitSearchQuery = useStore((s) => s.commitSearchQuery)
   const setCommitSearch = useStore((s) => s.setCommitSearch)
   const themeMode = useStore((s) => s.themeMode)
@@ -67,8 +69,10 @@ export default function CommitHistory() {
     selectCommit(record.hash)
     if (selectedRepo) {
       loadDiff(selectedRepo.path, record.hash)
+    } else if (viewingGithubRepo) {
+      loadGithubDiff(viewingGithubRepo.owner, viewingGithubRepo.repo, record.hash)
     }
-  }, [selectCommit, loadDiff, selectedRepo])
+  }, [selectCommit, loadDiff, loadGithubDiff, selectedRepo, viewingGithubRepo])
 
   const handleFileClick = useCallback((filePath: string) => {
     if (!currentDiff) return
@@ -79,7 +83,7 @@ export default function CommitHistory() {
   }, [currentDiff, themeMode])
 
   const handleReset = useCallback((record: CommitEntry) => {
-    if (!selectedRepo) return
+    if (!selectedRepo || viewingGithubRepo) return
     setContextMenu(null)
     Modal.confirm({
       title: '回滚到此提交',
@@ -94,7 +98,7 @@ export default function CommitHistory() {
     })
   }, [selectedRepo, resetToCommit])
 
-  const contextMenuItems: MenuProps['items'] = contextMenu
+  const contextMenuItems: MenuProps['items'] = contextMenu && selectedRepo
     ? [
         {
           key: 'reset',

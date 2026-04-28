@@ -39,6 +39,9 @@ export interface GitSlice {
   discardFiles: (repoPath: string, files: string[]) => Promise<void>
   cloneRepo: (url: string, targetDir: string) => Promise<{ repoPath: string } | null>
   resetToCommit: (repoPath: string, hash: string) => Promise<void>
+  loadGithubCommits: (owner: string, repo: string) => Promise<void>
+  loadGithubBranches: (owner: string, repo: string) => Promise<void>
+  loadGithubDiff: (owner: string, repo: string, sha: string) => Promise<void>
 
   clearOperationError: () => void
   resetGitState: () => void
@@ -278,6 +281,63 @@ export function createGitSlice(
 
     clearOperationError: () => {
       set({ operationError: null })
+    },
+
+    loadGithubCommits: async (owner: string, repo: string) => {
+      set({ commitsLoading: true, commitsError: null })
+      try {
+        const tokenRes: any = await window.electronAPI.githubGetToken()
+        if (!tokenRes.success || !tokenRes.data) {
+          set({ commitsLoading: false })
+          return
+        }
+        const res: any = await window.electronAPI.githubGetCommits(tokenRes.data, owner, repo)
+        if (res.success) {
+          set({ commits: res.data, commitsLoading: false })
+        } else {
+          set({ commitsError: res.error, commitsLoading: false })
+        }
+      } catch (err: any) {
+        set({ commitsError: err.message, commitsLoading: false })
+      }
+    },
+
+    loadGithubBranches: async (owner: string, repo: string) => {
+      set({ branchesLoading: true })
+      try {
+        const tokenRes: any = await window.electronAPI.githubGetToken()
+        if (!tokenRes.success || !tokenRes.data) {
+          set({ branchesLoading: false })
+          return
+        }
+        const res: any = await window.electronAPI.githubGetBranches(tokenRes.data, owner, repo)
+        if (res.success) {
+          set({ branches: res.data, branchesLoading: false, currentBranch: null })
+        } else {
+          set({ branchesLoading: false })
+        }
+      } catch {
+        set({ branchesLoading: false })
+      }
+    },
+
+    loadGithubDiff: async (owner: string, repo: string, sha: string) => {
+      set({ diffLoading: true, diffError: null })
+      try {
+        const tokenRes: any = await window.electronAPI.githubGetToken()
+        if (!tokenRes.success || !tokenRes.data) {
+          set({ diffLoading: false })
+          return
+        }
+        const res: any = await window.electronAPI.githubGetCommitDiff(tokenRes.data, owner, repo, sha)
+        if (res.success) {
+          set({ currentDiff: res.data, diffLoading: false })
+        } else {
+          set({ diffError: res.error, diffLoading: false })
+        }
+      } catch (err: any) {
+        set({ diffError: err.message, diffLoading: false })
+      }
     },
 
     resetGitState: () => {

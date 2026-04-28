@@ -46,6 +46,11 @@ const IPC = {
   GITHUB_GET_TOKEN: "github:get-token",
   GITHUB_SAVE_TOKEN: "github:save-token",
   GITHUB_LIST_REPOS: "github:list-repos",
+  GITHUB_FORK_REPO: "github:fork-repo",
+  GITHUB_SEARCH_REPOS: "github:search-repos",
+  GITHUB_GET_COMMITS: "github:get-commits",
+  GITHUB_GET_BRANCHES: "github:get-branches",
+  GITHUB_GET_COMMIT_DIFF: "github:get-commit-diff",
   // Window Management
   WINDOW_OPEN_DIFF: "window:open-diff"
 };
@@ -97,6 +102,11 @@ const api = {
   githubSaveToken: (token) => electron.ipcRenderer.invoke(IPC.GITHUB_SAVE_TOKEN, token),
   githubValidateToken: (token) => electron.ipcRenderer.invoke("github:validate-token", token),
   githubListRepos: (token) => electron.ipcRenderer.invoke(IPC.GITHUB_LIST_REPOS, token),
+  githubForkRepo: (token, owner, repo) => electron.ipcRenderer.invoke(IPC.GITHUB_FORK_REPO, token, owner, repo),
+  githubSearchRepos: (token, query) => electron.ipcRenderer.invoke(IPC.GITHUB_SEARCH_REPOS, token, query),
+  githubGetCommits: (token, owner, repo) => electron.ipcRenderer.invoke(IPC.GITHUB_GET_COMMITS, token, owner, repo),
+  githubGetBranches: (token, owner, repo) => electron.ipcRenderer.invoke(IPC.GITHUB_GET_BRANCHES, token, owner, repo),
+  githubGetCommitDiff: (token, owner, repo, sha) => electron.ipcRenderer.invoke(IPC.GITHUB_GET_COMMIT_DIFF, token, owner, repo, sha),
   // Window management
   windowOpenDiff: (data) => electron.ipcRenderer.invoke(IPC.WINDOW_OPEN_DIFF, data),
   // Diff window detection

@@ -29,6 +29,7 @@ export interface UiSlice {
     id: number
     name: string
     fullName: string
+    owner: string
     cloneUrl: string
     htmlUrl: string
     private: boolean
@@ -48,6 +49,8 @@ export interface UiSlice {
   setThemeMode: (mode: ThemeMode) => void
   setGithubLogin: (loggedIn: boolean, username?: string, avatarUrl?: string) => void
   setGithubRepos: (repos: UiSlice['githubRepos']) => void
+  viewingGithubRepo: { fullName: string; owner: string; repo: string } | null
+  setViewingGithubRepo: (repo: UiSlice['viewingGithubRepo']) => void
 }
 
 export function createUiSlice(
@@ -121,6 +124,11 @@ export function createUiSlice(
 
     setGithubRepos: (repos) => {
       set({ githubRepos: repos })
+    },
+
+    viewingGithubRepo: null,
+    setViewingGithubRepo: (repo) => {
+      set({ viewingGithubRepo: repo })
     },
 
     setCloneUrlPreset: (url) => {

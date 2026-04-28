@@ -51,6 +51,11 @@ const IPC = {
   GITHUB_GET_TOKEN: "github:get-token",
   GITHUB_SAVE_TOKEN: "github:save-token",
   GITHUB_LIST_REPOS: "github:list-repos",
+  GITHUB_FORK_REPO: "github:fork-repo",
+  GITHUB_SEARCH_REPOS: "github:search-repos",
+  GITHUB_GET_COMMITS: "github:get-commits",
+  GITHUB_GET_BRANCHES: "github:get-branches",
+  GITHUB_GET_COMMIT_DIFF: "github:get-commit-diff",
   // Window Management
   WINDOW_OPEN_DIFF: "window:open-diff"
 };
@@ -941,6 +946,7 @@ const githubService = {
       id: r.id,
       name: r.name,
       fullName: r.full_name,
+      owner: r.owner?.login || "",
       cloneUrl: r.clone_url,
       htmlUrl: r.html_url,
       private: r.private,
@@ -972,12 +978,133 @@ const githubService = {
       id: data.id,
       name: data.name,
       fullName: data.full_name,
+      owner: data.owner?.login || "",
       cloneUrl: data.clone_url,
       htmlUrl: data.html_url,
       private: data.private,
       description: data.description,
       updatedAt: data.updated_at
     };
+  },
+  async forkRepo(token, owner, repo) {
+    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/forks`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github+json",
+        "User-Agent": "GitManager"
+      }
+    });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.message || `GitHub API error: ${res.status}`);
+    }
+    const data = await res.json();
+    return {
+      id: data.id,
+      name: data.name,
+      fullName: data.full_name,
+      owner: data.owner?.login || "",
+      cloneUrl: data.clone_url,
+      htmlUrl: data.html_url,
+      private: data.private,
+      description: data.description,
+      updatedAt: data.updated_at
+    };
+  },
+  async searchRepos(token, query) {
+    const res = await fetch(
+      `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&per_page=20&sort=stars`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github+json",
+          "User-Agent": "GitManager"
+        }
+      }
+    );
+    if (!res.ok) {
+      throw new Error(`GitHub 搜索失败: ${res.status}`);
+    }
+    const data = await res.json();
+    return (data.items || []).map((r) => ({
+      id: r.id,
+      name: r.name,
+      fullName: r.full_name,
+      owner: r.owner?.login || "",
+      cloneUrl: r.clone_url,
+      htmlUrl: r.html_url,
+      private: r.private,
+      description: r.description,
+      updatedAt: r.updated_at
+    }));
+  },
+  async getRepoCommits(token, owner, repo) {
+    const res = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/commits?per_page=50`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github+json",
+          "User-Agent": "GitManager"
+        }
+      }
+    );
+    if (!res.ok) {
+      throw new Error(`GitHub API error: ${res.status}`);
+    }
+    const data = await res.json();
+    return (data || []).map((c) => ({
+      hash: c.sha,
+      message: c.commit?.message || "",
+      author: c.commit?.author?.name || c.author?.login || "",
+      email: c.commit?.author?.email || "",
+      date: c.commit?.author?.date || "",
+      refs: []
+    }));
+  },
+  async getCommitDiff(token, owner, repo, sha) {
+    const res = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/commits/${sha}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3.diff",
+          "User-Agent": "GitManager"
+        }
+      }
+    );
+    if (!res.ok) {
+      throw new Error(`GitHub API error: ${res.status}`);
+    }
+    const diff = await res.text();
+    const lines = diff.split("\n");
+    if (lines.length > 5e3) {
+      return lines.slice(0, 5e3).join("\n") + "\n\n... (diff truncated at 5000 lines)";
+    }
+    return diff;
+  },
+  async getRepoBranches(token, owner, repo) {
+    const res = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/branches?per_page=50`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github+json",
+          "User-Agent": "GitManager"
+        }
+      }
+    );
+    if (!res.ok) {
+      throw new Error(`GitHub API error: ${res.status}`);
+    }
+    const data = await res.json();
+    return (data || []).map((b) => ({
+      name: b.name,
+      current: false,
+      commit: b.commit?.sha || "",
+      label: b.name
+    }));
   }
 };
 function registerGithubIpc() {
@@ -1020,6 +1147,61 @@ function registerGithubIpc() {
       try {
         const token = githubService.getToken();
         return { success: true, data: token };
+      } catch (err) {
+        return { success: false, error: err.message };
+      }
+    }
+  );
+  electron.ipcMain.handle(
+    IPC.GITHUB_FORK_REPO,
+    async (_e, token, owner, repo) => {
+      try {
+        const result = await githubService.forkRepo(token, owner, repo);
+        return { success: true, data: result };
+      } catch (err) {
+        return { success: false, error: err.message };
+      }
+    }
+  );
+  electron.ipcMain.handle(
+    IPC.GITHUB_SEARCH_REPOS,
+    async (_e, token, query) => {
+      try {
+        const repos = await githubService.searchRepos(token, query);
+        return { success: true, data: repos };
+      } catch (err) {
+        return { success: false, error: err.message };
+      }
+    }
+  );
+  electron.ipcMain.handle(
+    IPC.GITHUB_GET_COMMITS,
+    async (_e, token, owner, repo) => {
+      try {
+        const commits = await githubService.getRepoCommits(token, owner, repo);
+        return { success: true, data: commits };
+      } catch (err) {
+        return { success: false, error: err.message };
+      }
+    }
+  );
+  electron.ipcMain.handle(
+    IPC.GITHUB_GET_BRANCHES,
+    async (_e, token, owner, repo) => {
+      try {
+        const branches = await githubService.getRepoBranches(token, owner, repo);
+        return { success: true, data: branches };
+      } catch (err) {
+        return { success: false, error: err.message };
+      }
+    }
+  );
+  electron.ipcMain.handle(
+    IPC.GITHUB_GET_COMMIT_DIFF,
+    async (_e, token, owner, repo, sha) => {
+      try {
+        const diff = await githubService.getCommitDiff(token, owner, repo, sha);
+        return { success: true, data: diff };
       } catch (err) {
         return { success: false, error: err.message };
       }

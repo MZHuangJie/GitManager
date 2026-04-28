@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Layout, Button, Input, List, Tooltip, Spin, Empty, Typography, Avatar } from 'antd'
+import { Layout, Button, Input, List, Tooltip, Spin, Empty, Typography, Avatar, notification } from 'antd'
 import {
   PlusOutlined,
   DeleteOutlined,
@@ -16,7 +16,8 @@ import {
   CaretDownOutlined,
   CaretRightOutlined,
   ReloadOutlined,
-  SearchOutlined
+  SearchOutlined,
+  ForkOutlined
 } from '@ant-design/icons'
 import { useStore } from '../stores'
 import { RepoInfo } from '../../shared/types'
@@ -51,8 +52,15 @@ export default function AppSider() {
   const loadCommits = useStore((s) => s.loadCommits)
   const loadBranches = useStore((s) => s.loadBranches)
   const loadCurrentBranch = useStore((s) => s.loadCurrentBranch)
+  const viewingGithubRepo = useStore((s) => s.viewingGithubRepo)
+  const setViewingGithubRepo = useStore((s) => s.setViewingGithubRepo)
+  const loadGithubCommits = useStore((s) => s.loadGithubCommits)
+  const loadGithubBranches = useStore((s) => s.loadGithubBranches)
 
   const [collapsedSections, setCollapsedSections] = useState<Set<string>>(new Set())
+  const [searchFocused, setSearchFocused] = useState(false)
+  const [githubSearchResults, setGithubSearchResults] = useState<typeof githubRepos>([])
+  const [searchingGithub, setSearchingGithub] = useState(false)
 
   const filteredRepos = useMemo(() => {
     if (!repoSearchQuery) return repos
@@ -117,6 +125,7 @@ export default function AppSider() {
   }
 
   const [refreshingGithub, setRefreshingGithub] = useState(false)
+  const [forkingRepoId, setForkingRepoId] = useState<number | null>(null)
 
   const toggleSection = (key: string) => {
     setCollapsedSections(prev => {
@@ -144,6 +153,56 @@ export default function AppSider() {
       setRefreshingGithub(false)
     }
   }
+
+  const handleFork = async (gr: typeof githubRepos[0]) => {
+    setForkingRepoId(gr.id)
+    try {
+      const tokenRes: any = await window.electronAPI.githubGetToken()
+      if (!tokenRes.success || !tokenRes.data) return
+      const [owner, repo] = gr.fullName.split('/')
+      const res: any = await window.electronAPI.githubForkRepo(tokenRes.data, owner, repo)
+      if (res.success) {
+        notification.success({ message: `已 Fork "${gr.fullName}" 到你的账号` })
+        await handleRefreshGithubRepos()
+      } else {
+        notification.error({ message: 'Fork 失败', description: res.error })
+      }
+    } finally {
+      setForkingRepoId(null)
+    }
+  }
+
+  const handleSearchGitHub = async () => {
+    if (!repoSearchQuery.trim() || !githubLoggedIn) return
+    setSearchingGithub(true)
+    try {
+      const tokenRes: any = await window.electronAPI.githubGetToken()
+      if (!tokenRes.success || !tokenRes.data) return
+      const res: any = await window.electronAPI.githubSearchRepos(tokenRes.data, repoSearchQuery.trim())
+      if (res.success) {
+        setGithubSearchResults(res.data)
+      }
+    } finally {
+      setSearchingGithub(false)
+    }
+  }
+
+  const handleSearchSelectLocal = (repo: RepoInfo) => {
+    handleSelectRepo(repo)
+    setRepoSearch('')
+    setSearchFocused(false)
+    setGithubSearchResults([])
+  }
+
+  const handleSearchSelectGithub = (gr: typeof githubRepos[0]) => {
+    setCloneUrlPreset(gr.cloneUrl)
+    setModalOpen('cloneModalOpen', true)
+    setRepoSearch('')
+    setSearchFocused(false)
+    setGithubSearchResults([])
+  }
+
+  const searchDropdownOpen = searchFocused && repoSearchQuery.length > 0
 
   const renderLocalRepoItem = (repo: RepoInfo) => (
     <div
@@ -198,43 +257,57 @@ export default function AppSider() {
       ? repos.find((r) => r.remoteUrl && normalizeGitUrl(r.remoteUrl) === normalizeGitUrl(gr.cloneUrl))
       : null
 
+    const isViewingRemote = !isCloned && viewingGithubRepo?.fullName === gr.fullName
+    const isSelected = (matchedLocal && selectedRepoId === matchedLocal.id) || isViewingRemote
+
+    const handleClick = () => {
+      if (matchedLocal) {
+        setViewingGithubRepo(null)
+        handleSelectRepo(matchedLocal)
+      } else {
+        selectRepo('')
+        setViewingGithubRepo({ fullName: gr.fullName, owner: gr.owner, repo: gr.name })
+        resetGitState()
+        loadGithubCommits(gr.owner, gr.name)
+        loadGithubBranches(gr.owner, gr.name)
+      }
+    }
+
     return (
     <div
       key={gr.id}
-      onClick={() => {
-        if (matchedLocal) handleSelectRepo(matchedLocal)
-      }}
+      onClick={handleClick}
       style={{
         padding: '6px 12px',
         display: 'flex',
         alignItems: 'center',
         gap: 6,
-        opacity: isCloned ? 1 : 0.6,
-        background: matchedLocal && selectedRepoId === matchedLocal.id ? 'var(--bg-selected)' : 'transparent',
-        borderLeft: matchedLocal && selectedRepoId === matchedLocal.id ? '3px solid var(--accent)' : '3px solid transparent',
-        cursor: isCloned ? 'pointer' : 'default',
+        opacity: isCloned || isViewingRemote ? 1 : 0.6,
+        background: isSelected ? 'var(--bg-selected)' : 'transparent',
+        borderLeft: isSelected ? '3px solid var(--accent)' : '3px solid transparent',
+        cursor: 'pointer',
         transition: 'all 0.15s'
       }}
       onMouseEnter={(e) => {
-        if (matchedLocal && selectedRepoId !== matchedLocal.id) {
+        if (!isSelected) {
           (e.currentTarget as HTMLElement).style.background = 'var(--bg-hover)'
         }
       }}
       onMouseLeave={(e) => {
-        if (matchedLocal && selectedRepoId !== matchedLocal.id) {
+        if (!isSelected) {
           (e.currentTarget as HTMLElement).style.background = 'transparent'
         }
       }}
     >
-      <GithubOutlined style={{ color: isCloned ? 'var(--accent)' : 'var(--text-tertiary)', fontSize: 14 }} />
+      <GithubOutlined style={{ color: isCloned || isViewingRemote ? 'var(--accent)' : 'var(--text-tertiary)', fontSize: 14 }} />
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{
           fontSize: 13,
-          color: isCloned ? 'var(--text-primary)' : 'var(--text-secondary)',
+          color: isCloned || isViewingRemote ? 'var(--text-primary)' : 'var(--text-secondary)',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
           whiteSpace: 'nowrap',
-          fontWeight: matchedLocal && selectedRepoId === matchedLocal.id ? 600 : isCloned ? 500 : 400
+          fontWeight: isSelected ? 600 : isCloned ? 500 : 400
         }}>
           {gr.name}
         </div>
@@ -244,10 +317,19 @@ export default function AppSider() {
         </Text>
       </div>
       {!isCloned && (
-        <Tooltip title="克隆到本地">
-          <Button type="text" size="small" icon={<DownloadOutlined />}
-            onClick={(e) => { e.stopPropagation(); setCloneUrlPreset(gr.cloneUrl); setModalOpen('cloneModalOpen', true) }} />
-        </Tooltip>
+        <>
+          {gr.owner !== githubUsername && (
+            <Tooltip title="Fork 到你的账号">
+              <Button type="text" size="small" icon={<ForkOutlined />}
+                loading={forkingRepoId === gr.id}
+                onClick={(e) => { e.stopPropagation(); handleFork(gr) }} />
+            </Tooltip>
+          )}
+          <Tooltip title="克隆到本地">
+            <Button type="text" size="small" icon={<DownloadOutlined />}
+              onClick={(e) => { e.stopPropagation(); setCloneUrlPreset(gr.cloneUrl); setModalOpen('cloneModalOpen', true) }} />
+          </Tooltip>
+        </>
       )}
     </div>
   )}
@@ -348,14 +430,143 @@ export default function AppSider() {
 
           {/* 搜索 + 添加 */}
           <div style={{ padding: '8px 12px', display: 'flex', gap: 8 }}>
-            <Input
-              placeholder="搜索仓库..."
-              allowClear size="small"
-              prefix={<SearchOutlined style={{ color: 'var(--text-tertiary)' }} />}
-              value={repoSearchQuery}
-              onChange={(e) => setRepoSearch(e.target.value)}
-              style={{ flex: 1 }}
-            />
+            <div style={{ flex: 1, position: 'relative' }}>
+              <Input
+                placeholder="搜索仓库..."
+                allowClear size="small"
+                prefix={<SearchOutlined style={{ color: 'var(--text-tertiary)' }} />}
+                value={repoSearchQuery}
+                onChange={(e) => { setRepoSearch(e.target.value); setGithubSearchResults([]); setSearchFocused(true) }}
+                onFocus={() => setSearchFocused(true)}
+                onBlur={() => setTimeout(() => setSearchFocused(false), 200)}
+              />
+              {searchDropdownOpen && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: 0,
+                    right: 0,
+                    zIndex: 1050,
+                    marginTop: 4,
+                    background: 'var(--bg-secondary)',
+                    border: '1px solid var(--border-primary)',
+                    borderRadius: 8,
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+                    maxHeight: 360,
+                    overflow: 'auto'
+                  }}
+                  onMouseDown={(e) => e.preventDefault()}
+                >
+                  {/* 本地匹配 */}
+                  {filteredRepos.length > 0 && (
+                    filteredRepos.slice(0, 8).map((r) => (
+                      <div
+                        key={r.id}
+                        onClick={() => handleSearchSelectLocal(r)}
+                        style={{
+                          padding: '8px 12px',
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 8,
+                          borderBottom: '1px solid var(--border-secondary)'
+                        }}
+                        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'var(--bg-hover)' }}
+                        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}
+                      >
+                        <FolderOutlined style={{ color: 'var(--text-tertiary)', fontSize: 14 }} />
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontSize: 13, color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {r.name}
+                          </div>
+                          <Text type="secondary" style={{ fontSize: 11, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}>
+                            {r.path}
+                          </Text>
+                        </div>
+                      </div>
+                    ))
+                  )}
+
+                  {/* GitHub 搜索入口 */}
+                  {githubLoggedIn && (
+                    <div
+                      onClick={handleSearchGitHub}
+                      style={{
+                        padding: '10px 12px',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        borderTop: filteredRepos.length > 0 ? '1px solid var(--border-primary)' : 'none',
+                        color: 'var(--accent)',
+                        fontWeight: 500,
+                        fontSize: 13
+                      }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'var(--bg-hover)' }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}
+                    >
+                      <GithubOutlined />
+                      {searchingGithub ? <Spin size="small" /> : `在 GitHub 上搜索 "${repoSearchQuery}"`}
+                    </div>
+                  )}
+
+                  {/* GitHub 搜索结果 */}
+                  {githubSearchResults.length > 0 && (
+                    <>
+                      <div style={{
+                        padding: '6px 12px',
+                        fontSize: 11,
+                        color: 'var(--text-tertiary)',
+                        fontWeight: 600,
+                        borderTop: '1px solid var(--border-primary)',
+                        borderBottom: '1px solid var(--border-secondary)'
+                      }}>
+                        GitHub 搜索结果 ({githubSearchResults.length})
+                      </div>
+                      {githubSearchResults.map((gr) => (
+                        <div
+                          key={gr.id}
+                          onClick={() => handleSearchSelectGithub(gr)}
+                          style={{
+                            padding: '8px 12px',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 8,
+                            borderBottom: '1px solid var(--border-secondary)'
+                          }}
+                          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'var(--bg-hover)' }}
+                          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}
+                        >
+                          <GithubOutlined style={{ color: 'var(--text-tertiary)', fontSize: 14 }} />
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ fontSize: 13, color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              {gr.fullName}
+                            </div>
+                            {gr.description && (
+                              <Text type="secondary" style={{ fontSize: 11, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }}>
+                                {gr.description}
+                              </Text>
+                            )}
+                          </div>
+                          <Text type="secondary" style={{ fontSize: 10, whiteSpace: 'nowrap' }}>
+                            {gr.private ? '私有' : '公开'}
+                          </Text>
+                        </div>
+                      ))}
+                    </>
+                  )}
+
+                  {/* 无结果 */}
+                  {filteredRepos.length === 0 && !githubLoggedIn && (
+                    <div style={{ padding: '16px 12px', textAlign: 'center' }}>
+                      <Text type="secondary">未找到匹配的仓库</Text>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
             <div style={{ display: 'flex', gap: 4 }}>
               <Tooltip title="添加仓库">
                 <Button type="primary" size="small" icon={<PlusOutlined />}
