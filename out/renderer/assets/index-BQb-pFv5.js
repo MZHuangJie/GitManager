@@ -10191,17 +10191,18 @@ class FastColor {
     }
     if (!input) ;
     else if (typeof input === "string") {
-      let matchPrefix = function(prefix) {
+      let matchPrefix2 = function(prefix) {
         return trimStr.startsWith(prefix);
       };
+      var matchPrefix = matchPrefix2;
       const trimStr = input.trim();
       if (/^#?[A-F\d]{3,8}$/i.test(trimStr)) {
         this.fromHexString(trimStr);
-      } else if (matchPrefix("rgb")) {
+      } else if (matchPrefix2("rgb")) {
         this.fromRgbString(trimStr);
-      } else if (matchPrefix("hsl")) {
+      } else if (matchPrefix2("hsl")) {
         this.fromHslString(trimStr);
-      } else if (matchPrefix("hsv") || matchPrefix("hsb")) {
+      } else if (matchPrefix2("hsv") || matchPrefix2("hsb")) {
         this.fromHsvString(trimStr);
       }
     } else if (input instanceof FastColor) {
@@ -11876,7 +11877,7 @@ function getAlphaColor(frontColor, backgroundColor) {
     a: 1
   }).toRgbString();
 }
-var __rest$15 = function(s, e2) {
+var __rest$18 = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -11887,7 +11888,7 @@ var __rest$15 = function(s, e2) {
 function formatToken(derivativeToken) {
   const {
     override
-  } = derivativeToken, restToken = __rest$15(derivativeToken, ["override"]);
+  } = derivativeToken, restToken = __rest$18(derivativeToken, ["override"]);
   const overrideTokens = Object.assign({}, override);
   Object.keys(seedToken).forEach((token2) => {
     delete overrideTokens[token2];
@@ -12041,7 +12042,7 @@ function formatToken(derivativeToken) {
   }), overrideTokens);
   return aliasToken;
 }
-var __rest$14 = function(s, e2) {
+var __rest$17 = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -12091,7 +12092,7 @@ const getComputedToken = (originToken, overrideToken, theme) => {
   const derivativeToken = theme.getDerivativeToken(originToken);
   const {
     override
-  } = overrideToken, components = __rest$14(overrideToken, ["override"]);
+  } = overrideToken, components = __rest$17(overrideToken, ["override"]);
   let mergedDerivativeToken = Object.assign(Object.assign({}, derivativeToken), {
     override
   });
@@ -12100,7 +12101,7 @@ const getComputedToken = (originToken, overrideToken, theme) => {
     Object.entries(components).forEach(([key, value]) => {
       const {
         theme: componentTheme
-      } = value, componentTokens = __rest$14(value, ["theme"]);
+      } = value, componentTokens = __rest$17(value, ["theme"]);
       let mergedComponentToken = componentTokens;
       if (componentTheme) {
         mergedComponentToken = getComputedToken(Object.assign(Object.assign({}, mergedDerivativeToken), componentTokens), {
@@ -13043,7 +13044,7 @@ function MotionWrapper(props) {
   return children;
 }
 const PropWarning = () => null;
-var __rest$13 = function(s, e2) {
+var __rest$16 = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -13346,7 +13347,7 @@ const ProviderChildren = (props) => {
       token: token2,
       components,
       cssVar
-    } = _a, rest = __rest$13(_a, ["algorithm", "token", "components", "cssVar"]);
+    } = _a, rest = __rest$16(_a, ["algorithm", "token", "components", "cssVar"]);
     const themeObj = algorithm && (!Array.isArray(algorithm) || algorithm.length > 0) ? createTheme(algorithm) : defaultTheme;
     const parsedComponents = {};
     Object.entries(components || {}).forEach(([componentName, componentToken]) => {
@@ -13594,7 +13595,7 @@ var CheckCircleFilled = function CheckCircleFilled2(props, ref) {
     icon: CheckCircleFilled$1
   }));
 };
-var RefIcon$M = /* @__PURE__ */ reactExports.forwardRef(CheckCircleFilled);
+var RefIcon$S = /* @__PURE__ */ reactExports.forwardRef(CheckCircleFilled);
 var CloseCircleFilled$1 = { "icon": { "tag": "svg", "attrs": { "fill-rule": "evenodd", "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64c247.4 0 448 200.6 448 448S759.4 960 512 960 64 759.4 64 512 264.6 64 512 64zm127.98 274.82h-.04l-.08.06L512 466.75 384.14 338.88c-.04-.05-.06-.06-.08-.06a.12.12 0 00-.07 0c-.03 0-.05.01-.09.05l-45.02 45.02a.2.2 0 00-.05.09.12.12 0 000 .07v.02a.27.27 0 00.06.06L466.75 512 338.88 639.86c-.05.04-.06.06-.06.08a.12.12 0 000 .07c0 .03.01.05.05.09l45.02 45.02a.2.2 0 00.09.05.12.12 0 00.07 0c.02 0 .04-.01.08-.05L512 557.25l127.86 127.87c.04.04.06.05.08.05a.12.12 0 00.07 0c.03 0 .05-.01.09-.05l45.02-45.02a.2.2 0 00.05-.09.12.12 0 000-.07v-.02a.27.27 0 00-.05-.06L557.25 512l127.87-127.86c.04-.04.05-.06.05-.08a.12.12 0 000-.07c0-.03-.01-.05-.05-.09l-45.02-45.02a.2.2 0 00-.09-.05.12.12 0 00-.07 0z" } }] }, "name": "close-circle", "theme": "filled" };
 var CloseCircleFilled = function CloseCircleFilled2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -13602,7 +13603,7 @@ var CloseCircleFilled = function CloseCircleFilled2(props, ref) {
     icon: CloseCircleFilled$1
   }));
 };
-var RefIcon$L = /* @__PURE__ */ reactExports.forwardRef(CloseCircleFilled);
+var RefIcon$R = /* @__PURE__ */ reactExports.forwardRef(CloseCircleFilled);
 var CloseOutlined$1 = { "icon": { "tag": "svg", "attrs": { "fill-rule": "evenodd", "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M799.86 166.31c.02 0 .04.02.08.06l57.69 57.7c.04.03.05.05.06.08a.12.12 0 010 .06c0 .03-.02.05-.06.09L569.93 512l287.7 287.7c.04.04.05.06.06.09a.12.12 0 010 .07c0 .02-.02.04-.06.08l-57.7 57.69c-.03.04-.05.05-.07.06a.12.12 0 01-.07 0c-.03 0-.05-.02-.09-.06L512 569.93l-287.7 287.7c-.04.04-.06.05-.09.06a.12.12 0 01-.07 0c-.02 0-.04-.02-.08-.06l-57.69-57.7c-.04-.03-.05-.05-.06-.07a.12.12 0 010-.07c0-.03.02-.05.06-.09L454.07 512l-287.7-287.7c-.04-.04-.05-.06-.06-.09a.12.12 0 010-.07c0-.02.02-.04.06-.08l57.7-57.69c.03-.04.05-.05.07-.06a.12.12 0 01.07 0c.03 0 .05.02.09.06L512 454.07l287.7-287.7c.04-.04.06-.05.09-.06a.12.12 0 01.07 0z" } }] }, "name": "close", "theme": "outlined" };
 var CloseOutlined = function CloseOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -13610,7 +13611,7 @@ var CloseOutlined = function CloseOutlined2(props, ref) {
     icon: CloseOutlined$1
   }));
 };
-var RefIcon$K = /* @__PURE__ */ reactExports.forwardRef(CloseOutlined);
+var RefIcon$Q = /* @__PURE__ */ reactExports.forwardRef(CloseOutlined);
 var ExclamationCircleFilled$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm-32 232c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V296zm32 440a48.01 48.01 0 010-96 48.01 48.01 0 010 96z" } }] }, "name": "exclamation-circle", "theme": "filled" };
 var ExclamationCircleFilled = function ExclamationCircleFilled2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -13618,7 +13619,7 @@ var ExclamationCircleFilled = function ExclamationCircleFilled2(props, ref) {
     icon: ExclamationCircleFilled$1
   }));
 };
-var RefIcon$J = /* @__PURE__ */ reactExports.forwardRef(ExclamationCircleFilled);
+var RefIcon$P = /* @__PURE__ */ reactExports.forwardRef(ExclamationCircleFilled);
 var InfoCircleFilled$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm32 664c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V456c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272zm-32-344a48.01 48.01 0 010-96 48.01 48.01 0 010 96z" } }] }, "name": "info-circle", "theme": "filled" };
 var InfoCircleFilled = function InfoCircleFilled2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -13626,7 +13627,7 @@ var InfoCircleFilled = function InfoCircleFilled2(props, ref) {
     icon: InfoCircleFilled$1
   }));
 };
-var RefIcon$I = /* @__PURE__ */ reactExports.forwardRef(InfoCircleFilled);
+var RefIcon$O = /* @__PURE__ */ reactExports.forwardRef(InfoCircleFilled);
 var attributes = "accept acceptCharset accessKey action allowFullScreen allowTransparency\n    alt async autoComplete autoFocus autoPlay capture cellPadding cellSpacing challenge\n    charSet checked classID className colSpan cols content contentEditable contextMenu\n    controls coords crossOrigin data dateTime default defer dir disabled download draggable\n    encType form formAction formEncType formMethod formNoValidate formTarget frameBorder\n    headers height hidden high href hrefLang htmlFor httpEquiv icon id inputMode integrity\n    is keyParams keyType kind label lang list loop low manifest marginHeight marginWidth max maxLength media\n    mediaGroup method min minLength multiple muted name noValidate nonce open\n    optimum pattern placeholder poster preload radioGroup readOnly rel required\n    reversed role rowSpan rows sandbox scope scoped scrolling seamless selected\n    shape size sizes span spellCheck src srcDoc srcLang srcSet start step style\n    summary tabIndex target title type useMap value width wmode wrap";
 var eventsName = "onCopy onCut onPaste onCompositionEnd onCompositionStart onCompositionUpdate onKeyDown\n    onKeyPress onKeyUp onFocus onBlur onChange onInput onSubmit onClick onContextMenu onDoubleClick\n    onDrag onDragEnd onDragEnter onDragExit onDragLeave onDragOver onDragStart onDrop onMouseDown\n    onMouseEnter onMouseLeave onMouseMove onMouseOut onMouseOver onMouseUp onSelect onTouchCancel\n    onTouchEnd onTouchMove onTouchStart onScroll onWheel onAbort onCanPlay onCanPlayThrough\n    onDurationChange onEmptied onEncrypted onEnded onError onLoadedData onLoadedMetadata\n    onLoadStart onPause onPlay onPlaying onProgress onRateChange onSeeked onSeeking onStalled onSuspend onTimeUpdate onVolumeChange onWaiting onLoad onError";
 var propList = "".concat(attributes, " ").concat(eventsName).split(/[\s\n]+/);
@@ -13683,7 +13684,7 @@ const genAlertTypeStyle = (bgColor, borderColor, iconColor, token2, alertCls) =>
     color: iconColor
   }
 });
-const genBaseStyle$8 = (token2) => {
+const genBaseStyle$9 = (token2) => {
   const {
     componentCls,
     motionDurationSlow: duration,
@@ -13841,7 +13842,7 @@ const genActionStyle = (token2) => {
     }
   };
 };
-const prepareComponentToken$o = (token2) => {
+const prepareComponentToken$q = (token2) => {
   const paddingHorizontal = 12;
   return {
     withDescriptionIconSize: token2.fontSizeHeading3,
@@ -13849,8 +13850,8 @@ const prepareComponentToken$o = (token2) => {
     withDescriptionPadding: `${token2.paddingMD}px ${token2.paddingContentHorizontalLG}px`
   };
 };
-const useStyle$x = genStyleHooks("Alert", (token2) => [genBaseStyle$8(token2), genTypeStyle(token2), genActionStyle(token2)], prepareComponentToken$o);
-var __rest$12 = function(s, e2) {
+const useStyle$A = genStyleHooks("Alert", (token2) => [genBaseStyle$9(token2), genTypeStyle(token2), genActionStyle(token2)], prepareComponentToken$q);
+var __rest$15 = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -13859,10 +13860,10 @@ var __rest$12 = function(s, e2) {
   return t2;
 };
 const iconMapFilled = {
-  success: RefIcon$M,
-  info: RefIcon$I,
-  error: RefIcon$L,
-  warning: RefIcon$J
+  success: RefIcon$S,
+  info: RefIcon$O,
+  error: RefIcon$R,
+  warning: RefIcon$P
 };
 const IconNode = (props) => {
   const {
@@ -13890,7 +13891,7 @@ const CloseIconNode = (props) => {
     handleClose,
     ariaProps
   } = props;
-  const mergedCloseIcon = closeIcon === true || closeIcon === void 0 ? /* @__PURE__ */ reactExports.createElement(RefIcon$K, null) : closeIcon;
+  const mergedCloseIcon = closeIcon === true || closeIcon === void 0 ? /* @__PURE__ */ reactExports.createElement(RefIcon$Q, null) : closeIcon;
   return isClosable ? /* @__PURE__ */ reactExports.createElement("button", Object.assign({
     type: "button",
     onClick: handleClose,
@@ -13917,7 +13918,7 @@ const Alert$1 = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     closeIcon,
     action,
     id: id2
-  } = props, otherProps = __rest$12(props, ["description", "prefixCls", "message", "banner", "className", "rootClassName", "style", "onMouseEnter", "onMouseLeave", "onClick", "afterClose", "showIcon", "closable", "closeText", "closeIcon", "action", "id"]);
+  } = props, otherProps = __rest$15(props, ["description", "prefixCls", "message", "banner", "className", "rootClassName", "style", "onMouseEnter", "onMouseLeave", "onClick", "afterClose", "showIcon", "closable", "closeText", "closeIcon", "action", "id"]);
   const [closed, setClosed] = reactExports.useState(false);
   const internalRef = reactExports.useRef(null);
   reactExports.useImperativeHandle(ref, () => ({
@@ -13932,7 +13933,7 @@ const Alert$1 = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     style: contextStyle
   } = useComponentConfig("alert");
   const prefixCls = getPrefixCls("alert", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$x(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$A(prefixCls);
   const handleClose = (e2) => {
     var _a;
     setClosed(true);
@@ -13990,7 +13991,7 @@ const Alert$1 = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     if (typeof merged === "object") {
       const {
         closeIcon: _
-      } = merged, ariaProps = __rest$12(merged, ["closeIcon"]);
+      } = merged, ariaProps = __rest$15(merged, ["closeIcon"]);
       return ariaProps;
     }
     return {};
@@ -14841,7 +14842,7 @@ var LoadingOutlined = function LoadingOutlined2(props, ref) {
     icon: LoadingOutlined$1
   }));
 };
-var RefIcon$H = /* @__PURE__ */ reactExports.forwardRef(LoadingOutlined);
+var RefIcon$N = /* @__PURE__ */ reactExports.forwardRef(LoadingOutlined);
 function mergeProps$1(...items) {
   const ret = {};
   items.forEach((item) => {
@@ -14899,7 +14900,7 @@ const useClosable = (propCloseCollection, contextCloseCollection, fallbackCloseC
   const [contextLocale] = useLocale("global", localeValues$1.global);
   const closeBtnIsDisabled = typeof propCloseConfig !== "boolean" ? !!(propCloseConfig === null || propCloseConfig === void 0 ? void 0 : propCloseConfig.disabled) : false;
   const mergedFallbackCloseCollection = React.useMemo(() => Object.assign({
-    closeIcon: /* @__PURE__ */ React.createElement(RefIcon$K, null)
+    closeIcon: /* @__PURE__ */ React.createElement(RefIcon$Q, null)
   }, fallbackCloseCollection), [fallbackCloseCollection]);
   const mergedClosableConfig = React.useMemo(() => {
     if (propCloseConfig === false) {
@@ -15497,7 +15498,7 @@ const genWaveStyle = (token2) => {
     }
   };
 };
-const useStyle$w = genComponentStyleHook("Wave", genWaveStyle);
+const useStyle$z = genComponentStyleHook("Wave", genWaveStyle);
 const TARGET_CLS = `${defaultPrefixCls}-wave-target`;
 function isValidWaveColor(color) {
   return color && color !== "#fff" && color !== "#ffffff" && color !== "rgb(255, 255, 255)" && color !== "rgba(255, 255, 255, 1)" && !/rgba\((?:\d*, ){3}0\)/.test(color) && // any transparent rgba color
@@ -15675,7 +15676,7 @@ const Wave = (props) => {
   } = reactExports.useContext(ConfigContext);
   const containerRef = reactExports.useRef(null);
   const prefixCls = getPrefixCls("wave");
-  const [, hashId] = useStyle$w(prefixCls);
+  const [, hashId] = useStyle$z(prefixCls);
   const showWave = useWave(containerRef, classNames(prefixCls, hashId), component);
   React.useEffect(() => {
     const node2 = containerRef.current;
@@ -15738,12 +15739,12 @@ const genSpaceCompactStyle = (token2) => {
     }
   };
 };
-const useStyle$v = genStyleHooks(["Space", "Compact"], (token2) => [genSpaceCompactStyle(token2)], () => ({}), {
+const useStyle$y = genStyleHooks(["Space", "Compact"], (token2) => [genSpaceCompactStyle(token2)], () => ({}), {
   // Space component don't apply extra font style
   // https://github.com/ant-design/ant-design/issues/40315
   resetStyle: false
 });
-var __rest$11 = function(s, e2) {
+var __rest$14 = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -15787,7 +15788,7 @@ const NoCompactStyle = (props) => {
 const CompactItem = (props) => {
   const {
     children
-  } = props, others = __rest$11(props, ["children"]);
+  } = props, others = __rest$14(props, ["children"]);
   return /* @__PURE__ */ reactExports.createElement(SpaceCompactItemContext.Provider, {
     value: reactExports.useMemo(() => others, [others])
   }, children);
@@ -15805,10 +15806,10 @@ const Compact$1 = (props) => {
     className,
     rootClassName,
     children
-  } = props, restProps = __rest$11(props, ["size", "direction", "block", "prefixCls", "className", "rootClassName", "children"]);
+  } = props, restProps = __rest$14(props, ["size", "direction", "block", "prefixCls", "className", "rootClassName", "children"]);
   const mergedSize = useSize((ctx) => size !== null && size !== void 0 ? size : ctx);
   const prefixCls = getPrefixCls("space-compact", customizePrefixCls);
-  const [wrapCSSVar, hashId] = useStyle$v(prefixCls);
+  const [wrapCSSVar, hashId] = useStyle$y(prefixCls);
   const clx = classNames(prefixCls, hashId, {
     [`${prefixCls}-rtl`]: directionConfig === "rtl",
     [`${prefixCls}-block`]: block,
@@ -15833,7 +15834,7 @@ const Compact$1 = (props) => {
     className: clx
   }, restProps), nodes));
 };
-var __rest$10 = function(s, e2) {
+var __rest$13 = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -15851,7 +15852,7 @@ const ButtonGroup = (props) => {
     prefixCls: customizePrefixCls,
     size,
     className
-  } = props, others = __rest$10(props, ["prefixCls", "size", "className"]);
+  } = props, others = __rest$13(props, ["prefixCls", "size", "className"]);
   const prefixCls = getPrefixCls("btn-group", customizePrefixCls);
   const [, , hashId] = useToken();
   const sizeCls = reactExports.useMemo(() => {
@@ -15955,7 +15956,7 @@ const InnerLoadingIcon = /* @__PURE__ */ reactExports.forwardRef((props, ref) =>
     className: mergedIconCls,
     style: style2,
     ref
-  }, /* @__PURE__ */ React.createElement(RefIcon$H, {
+  }, /* @__PURE__ */ React.createElement(RefIcon$N, {
     className: iconClassName
   }));
 });
@@ -16032,7 +16033,7 @@ const genButtonBorderStyle = (buttonTypeCls, borderColor) => ({
     }
   }
 });
-const genGroupStyle$1 = (token2) => {
+const genGroupStyle$2 = (token2) => {
   const {
     componentCls,
     fontSize,
@@ -16250,7 +16251,7 @@ var RightOutlined = function RightOutlined2(props, ref) {
     icon: RightOutlined$1
   }));
 };
-var RefIcon$G = /* @__PURE__ */ reactExports.forwardRef(RightOutlined);
+var RefIcon$M = /* @__PURE__ */ reactExports.forwardRef(RightOutlined);
 const genCollapseMotion = (token2) => ({
   [token2.componentCls]: {
     // For common/openAnimation
@@ -16815,7 +16816,7 @@ const isBright = (value, bgColorToken) => {
   }
   return r2 * 0.299 + g2 * 0.587 + b2 * 0.114 > 192;
 };
-const prepareToken$4 = (token2) => {
+const prepareToken$5 = (token2) => {
   const {
     paddingInline,
     onlyIconSize
@@ -16827,7 +16828,7 @@ const prepareToken$4 = (token2) => {
   });
   return buttonToken;
 };
-const prepareComponentToken$n = (token2) => {
+const prepareComponentToken$p = (token2) => {
   var _a, _b, _c, _d, _e, _f;
   const contentFontSize = (_a = token2.contentFontSize) !== null && _a !== void 0 ? _a : token2.fontSize;
   const contentFontSizeSM = (_b = token2.contentFontSizeSM) !== null && _b !== void 0 ? _b : token2.fontSize;
@@ -17330,8 +17331,8 @@ const genBlockButtonStyle = (token2) => {
     }
   };
 };
-const useStyle$u = genStyleHooks("Button", (token2) => {
-  const buttonToken = prepareToken$4(token2);
+const useStyle$x = genStyleHooks("Button", (token2) => {
+  const buttonToken = prepareToken$5(token2);
   return [
     // Shared
     genSharedButtonStyle(buttonToken),
@@ -17346,9 +17347,9 @@ const useStyle$u = genStyleHooks("Button", (token2) => {
     // https://github.com/ant-design/ant-design/issues/50969
     genCompatibleButtonStyle(buttonToken),
     // Button Group
-    genGroupStyle$1(buttonToken)
+    genGroupStyle$2(buttonToken)
   ];
-}, prepareComponentToken$n, {
+}, prepareComponentToken$p, {
   unitless: {
     fontWeight: true,
     contentLineHeight: true,
@@ -17493,15 +17494,15 @@ const genButtonCompactStyle = (token2) => {
   return Object.assign(Object.assign({}, getCompactBorderStyle()), getCompactBorderStyle(true));
 };
 const Compact = genSubStyleComponent(["Button", "compact"], (token2) => {
-  const buttonToken = prepareToken$4(token2);
+  const buttonToken = prepareToken$5(token2);
   return [
     // Space Compact
     genCompactItemStyle(buttonToken),
     genCompactItemVerticalStyle(buttonToken),
     genButtonCompactStyle(buttonToken)
   ];
-}, prepareComponentToken$n);
-var __rest$$ = function(s, e2) {
+}, prepareComponentToken$p);
+var __rest$12 = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -17557,7 +17558,7 @@ const InternalCompoundedButton = /* @__PURE__ */ React.forwardRef((props, ref) =
     style: customStyle = {},
     autoInsertSpace,
     autoFocus
-  } = props, rest = __rest$$(props, ["loading", "prefixCls", "color", "variant", "type", "danger", "shape", "size", "styles", "disabled", "className", "rootClassName", "children", "icon", "iconPosition", "ghost", "block", "htmlType", "classNames", "style", "autoInsertSpace", "autoFocus"]);
+  } = props, rest = __rest$12(props, ["loading", "prefixCls", "color", "variant", "type", "danger", "shape", "size", "styles", "disabled", "className", "rootClassName", "children", "icon", "iconPosition", "ghost", "block", "htmlType", "classNames", "style", "autoInsertSpace", "autoFocus"]);
   const mergedType = type4 || "default";
   const {
     button
@@ -17592,7 +17593,7 @@ const InternalCompoundedButton = /* @__PURE__ */ React.forwardRef((props, ref) =
   } = useComponentConfig("button");
   const mergedInsertSpace = (_a = autoInsertSpace !== null && autoInsertSpace !== void 0 ? autoInsertSpace : contextAutoInsertSpace) !== null && _a !== void 0 ? _a : true;
   const prefixCls = getPrefixCls("btn", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$u(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$x(prefixCls);
   const disabled = reactExports.useContext(DisabledContext);
   const mergedDisabled = customDisabled !== null && customDisabled !== void 0 ? customDisabled : disabled;
   const groupSize = reactExports.useContext(GroupSizeContext);
@@ -18083,7 +18084,7 @@ var Portal = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
     value: queueCreate
   }, renderInline ? reffedChildren : /* @__PURE__ */ reactDomExports.createPortal(reffedChildren, mergedContainer));
 });
-var RefContext$1 = /* @__PURE__ */ reactExports.createContext({});
+var RefContext = /* @__PURE__ */ reactExports.createContext({});
 function getUseId() {
   var fullClone2 = _objectSpread2$1({}, React$1);
   return fullClone2.useId;
@@ -18152,7 +18153,7 @@ const MemoChildren = /* @__PURE__ */ reactExports.memo(function(_ref) {
   var shouldUpdate = _ref2.shouldUpdate;
   return !shouldUpdate;
 });
-var sentinelStyle$1 = {
+var sentinelStyle = {
   width: 0,
   height: 0,
   overflow: "hidden",
@@ -18163,7 +18164,7 @@ var entityStyle = {
 };
 var Panel$1 = /* @__PURE__ */ React.forwardRef(function(props, ref) {
   var prefixCls = props.prefixCls, className = props.className, style2 = props.style, title = props.title, ariaId = props.ariaId, footer = props.footer, closable = props.closable, closeIcon = props.closeIcon, onClose = props.onClose, children = props.children, bodyStyle = props.bodyStyle, bodyProps = props.bodyProps, modalRender = props.modalRender, onMouseDown = props.onMouseDown, onMouseUp = props.onMouseUp, holderRef = props.holderRef, visible = props.visible, forceRender = props.forceRender, width = props.width, height = props.height, modalClassNames = props.classNames, modalStyles = props.styles;
-  var _React$useContext = React.useContext(RefContext$1), panelRef = _React$useContext.panel;
+  var _React$useContext = React.useContext(RefContext), panelRef = _React$useContext.panel;
   var mergedRef = useComposeRef(holderRef, panelRef);
   var sentinelStartRef = reactExports.useRef();
   var sentinelEndRef = reactExports.useRef();
@@ -18256,7 +18257,7 @@ var Panel$1 = /* @__PURE__ */ React.forwardRef(function(props, ref) {
   }, modalRender ? modalRender(content) : content)), /* @__PURE__ */ React.createElement("div", {
     tabIndex: 0,
     ref: sentinelEndRef,
-    style: sentinelStyle$1
+    style: sentinelStyle
   }));
 });
 var Content$2 = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
@@ -18447,7 +18448,7 @@ var DialogWrap = function DialogWrap2(props) {
   if (!forceRender && destroyOnClose && !animatedVisible) {
     return null;
   }
-  return /* @__PURE__ */ reactExports.createElement(RefContext$1.Provider, {
+  return /* @__PURE__ */ reactExports.createElement(RefContext.Provider, {
     value: refContext
   }, /* @__PURE__ */ reactExports.createElement(Portal, {
     open: visible || forceRender || animatedVisible,
@@ -21801,7 +21802,7 @@ const genSkeletonElementButton = (token2) => {
     [`${skeletonButtonCls}-sm`]: Object.assign({}, genSkeletonElementButtonSize(controlHeightSM, calc))
   }), genSkeletonElementButtonShape(token2, controlHeightSM, `${skeletonButtonCls}-sm`));
 };
-const genBaseStyle$7 = (token2) => {
+const genBaseStyle$8 = (token2) => {
   const {
     componentCls,
     skeletonAvatarCls,
@@ -21918,7 +21919,7 @@ const genBaseStyle$7 = (token2) => {
     }
   };
 };
-const prepareComponentToken$m = (token2) => {
+const prepareComponentToken$o = (token2) => {
   const {
     colorFillContent,
     colorFill
@@ -21936,7 +21937,7 @@ const prepareComponentToken$m = (token2) => {
     paragraphLiHeight: token2.controlHeight / 2
   };
 };
-const useStyle$t = genStyleHooks("Skeleton", (token2) => {
+const useStyle$w = genStyleHooks("Skeleton", (token2) => {
   const {
     componentCls,
     calc
@@ -21954,8 +21955,8 @@ const useStyle$t = genStyleHooks("Skeleton", (token2) => {
     skeletonLoadingBackground: `linear-gradient(90deg, ${token2.gradientFromColor} 25%, ${token2.gradientToColor} 37%, ${token2.gradientFromColor} 63%)`,
     skeletonLoadingMotionDuration: "1.4s"
   });
-  return genBaseStyle$7(skeletonToken);
-}, prepareComponentToken$m, {
+  return genBaseStyle$8(skeletonToken);
+}, prepareComponentToken$o, {
   deprecatedTokens: [["color", "gradientFromColor"], ["colorGradientEnd", "gradientToColor"]]
 });
 const SkeletonAvatar = (props) => {
@@ -21971,7 +21972,7 @@ const SkeletonAvatar = (props) => {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("skeleton", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$t(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$w(prefixCls);
   const otherProps = omit(props, ["prefixCls", "className"]);
   const cls = classNames(prefixCls, `${prefixCls}-element`, {
     [`${prefixCls}-active`]: active
@@ -21997,7 +21998,7 @@ const SkeletonButton = (props) => {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("skeleton", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$t(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$w(prefixCls);
   const otherProps = omit(props, ["prefixCls"]);
   const cls = classNames(prefixCls, `${prefixCls}-element`, {
     [`${prefixCls}-active`]: active,
@@ -22023,7 +22024,7 @@ const SkeletonImage = (props) => {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("skeleton", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$t(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$w(prefixCls);
   const cls = classNames(prefixCls, `${prefixCls}-element`, {
     [`${prefixCls}-active`]: active
   }, className, rootClassName, hashId, cssVarCls);
@@ -22054,7 +22055,7 @@ const SkeletonInput = (props) => {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("skeleton", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$t(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$w(prefixCls);
   const otherProps = omit(props, ["prefixCls"]);
   const cls = classNames(prefixCls, `${prefixCls}-element`, {
     [`${prefixCls}-active`]: active,
@@ -22080,7 +22081,7 @@ const SkeletonNode = (props) => {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("skeleton", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$t(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$w(prefixCls);
   const cls = classNames(prefixCls, `${prefixCls}-element`, {
     [`${prefixCls}-active`]: active
   }, hashId, className, rootClassName, cssVarCls);
@@ -22205,7 +22206,7 @@ const Skeleton = (props) => {
     style: contextStyle
   } = useComponentConfig("skeleton");
   const prefixCls = getPrefixCls("skeleton", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$t(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$w(prefixCls);
   if (loading || !("loading" in props)) {
     const hasAvatar = !!avatar;
     const hasTitle = !!title;
@@ -22305,7 +22306,7 @@ const NormalOkBtn = () => {
 function renderCloseIcon(prefixCls, closeIcon) {
   return /* @__PURE__ */ React.createElement("span", {
     className: `${prefixCls}-close-x`
-  }, closeIcon || /* @__PURE__ */ React.createElement(RefIcon$K, {
+  }, closeIcon || /* @__PURE__ */ React.createElement(RefIcon$Q, {
     className: `${prefixCls}-close-icon`
   }));
 }
@@ -22766,7 +22767,7 @@ const genResponsiveWidthStyle = (token2) => {
     }
   };
 };
-const prepareToken$3 = (token2) => {
+const prepareToken$4 = (token2) => {
   const headerPaddingVertical = token2.padding;
   const headerFontSize = token2.fontSizeHeading5;
   const headerLineHeight = token2.lineHeightHeading5;
@@ -22783,7 +22784,7 @@ const prepareToken$3 = (token2) => {
   });
   return modalToken;
 };
-const prepareComponentToken$l = (token2) => ({
+const prepareComponentToken$n = (token2) => ({
   footerBg: "transparent",
   headerBg: token2.colorBgElevated,
   titleLineHeight: token2.lineHeightHeading5,
@@ -22804,15 +22805,15 @@ const prepareComponentToken$l = (token2) => ({
   confirmIconMarginInlineEnd: token2.wireframe ? token2.margin : token2.marginSM,
   confirmBtnsMarginTop: token2.wireframe ? token2.marginLG : token2.marginSM
 });
-const useStyle$s = genStyleHooks("Modal", (token2) => {
-  const modalToken = prepareToken$3(token2);
+const useStyle$v = genStyleHooks("Modal", (token2) => {
+  const modalToken = prepareToken$4(token2);
   return [genModalStyle(modalToken), genRTLStyle(modalToken), genModalMaskStyle(modalToken), initZoomMotion(modalToken, "zoom"), genResponsiveWidthStyle(modalToken)];
-}, prepareComponentToken$l, {
+}, prepareComponentToken$n, {
   unitless: {
     titleLineHeight: true
   }
 });
-var __rest$_ = function(s, e2) {
+var __rest$11 = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -22861,7 +22862,7 @@ const Modal$1 = (props) => {
     destroyOnClose,
     panelRef = null,
     modalRender
-  } = props, restProps = __rest$_(props, ["prefixCls", "className", "rootClassName", "open", "wrapClassName", "centered", "getContainer", "focusTriggerAfterClose", "style", "visible", "width", "footer", "classNames", "styles", "children", "loading", "confirmLoading", "zIndex", "mousePosition", "onOk", "onCancel", "destroyOnHidden", "destroyOnClose", "panelRef", "modalRender"]);
+  } = props, restProps = __rest$11(props, ["prefixCls", "className", "rootClassName", "open", "wrapClassName", "centered", "getContainer", "focusTriggerAfterClose", "style", "visible", "width", "footer", "classNames", "styles", "children", "loading", "confirmLoading", "zIndex", "mousePosition", "onOk", "onCancel", "destroyOnHidden", "destroyOnClose", "panelRef", "modalRender"]);
   const {
     getPopupContainer: getContextPopupContainer,
     getPrefixCls,
@@ -22880,7 +22881,7 @@ const Modal$1 = (props) => {
   const prefixCls = getPrefixCls("modal", customizePrefixCls);
   const rootPrefixCls = getPrefixCls();
   const rootCls = useCSSVarCls(prefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$s(prefixCls, rootCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$v(prefixCls, rootCls);
   const wrapClassNameExtended = classNames(wrapClassName, {
     [`${prefixCls}-centered`]: centered !== null && centered !== void 0 ? centered : modalContext === null || modalContext === void 0 ? void 0 : modalContext.centered,
     [`${prefixCls}-wrap-rtl`]: direction === "rtl"
@@ -22891,7 +22892,7 @@ const Modal$1 = (props) => {
   })) : null;
   const [mergedClosable, mergedCloseIcon, closeBtnIsDisabled, ariaProps] = useClosable(pickClosable(props), pickClosable(modalContext), {
     closable: true,
-    closeIcon: /* @__PURE__ */ reactExports.createElement(RefIcon$K, {
+    closeIcon: /* @__PURE__ */ reactExports.createElement(RefIcon$Q, {
       className: `${prefixCls}-close-icon`
     }),
     closeIconRender: (icon) => renderCloseIcon(prefixCls, icon)
@@ -23053,13 +23054,13 @@ const genModalConfirmStyle = (token2) => {
   };
 };
 const Confirm = genSubStyleComponent(["Modal", "confirm"], (token2) => {
-  const modalToken = prepareToken$3(token2);
+  const modalToken = prepareToken$4(token2);
   return genModalConfirmStyle(modalToken);
-}, prepareComponentToken$l, {
+}, prepareComponentToken$n, {
   // confirm is weak than modal since no conflict here
   order: -1e3
 });
-var __rest$Z = function(s, e2) {
+var __rest$10 = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -23079,21 +23080,21 @@ const ConfirmContent = (props) => {
     footer,
     // Legacy for static function usage
     locale: staticLocale
-  } = props, resetProps = __rest$Z(props, ["prefixCls", "icon", "okText", "cancelText", "confirmPrefixCls", "type", "okCancel", "footer", "locale"]);
+  } = props, resetProps = __rest$10(props, ["prefixCls", "icon", "okText", "cancelText", "confirmPrefixCls", "type", "okCancel", "footer", "locale"]);
   let mergedIcon = icon;
   if (!icon && icon !== null) {
     switch (type4) {
       case "info":
-        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$I, null);
+        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$O, null);
         break;
       case "success":
-        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$M, null);
+        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$S, null);
         break;
       case "error":
-        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$L, null);
+        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$R, null);
         break;
       default:
-        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$J, null);
+        mergedIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$P, null);
     }
   }
   const mergedOkCancel = okCancel !== null && okCancel !== void 0 ? okCancel : type4 === "confirm";
@@ -23340,7 +23341,7 @@ function modalGlobalConfig({
 }) {
   defaultRootPrefixCls = rootPrefixCls;
 }
-var __rest$Y = function(s, e2) {
+var __rest$$ = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -23353,7 +23354,7 @@ const HookModal = (_a, ref) => {
   var {
     afterClose: hookAfterClose,
     config
-  } = _a, restProps = __rest$Y(_a, ["afterClose", "config"]);
+  } = _a, restProps = __rest$$(_a, ["afterClose", "config"]);
   const [open2, setOpen] = reactExports.useState(true);
   const [innerConfig, setInnerConfig] = reactExports.useState(config);
   const {
@@ -23910,7 +23911,7 @@ const genNotificationStyle = (token2) => {
     }
   ];
 };
-const prepareComponentToken$k = (token2) => ({
+const prepareComponentToken$m = (token2) => ({
   zIndexPopup: token2.zIndexPopupBase + CONTAINER_MAX_OFFSET + 50,
   width: 384,
   // Fix notification background color issue
@@ -23940,10 +23941,10 @@ const prepareNotificationToken = (token2) => {
   });
   return notificationToken;
 };
-const useStyle$r = genStyleHooks("Notification", (token2) => {
+const useStyle$u = genStyleHooks("Notification", (token2) => {
   const notificationToken = prepareNotificationToken(token2);
   return [genNotificationStyle(notificationToken), genNotificationPlacementStyle(notificationToken), genStackStyle(notificationToken)];
-}, prepareComponentToken$k);
+}, prepareComponentToken$m);
 const PurePanelStyle = genSubStyleComponent(["Notification", "PurePanel"], (token2) => {
   const noticeCls = `${token2.componentCls}-notice`;
   const notificationToken = prepareNotificationToken(token2);
@@ -23954,8 +23955,8 @@ const PurePanelStyle = genSubStyleComponent(["Notification", "PurePanel"], (toke
       margin: 0
     })
   };
-}, prepareComponentToken$k);
-var __rest$X = function(s, e2) {
+}, prepareComponentToken$m);
+var __rest$_ = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -23967,15 +23968,15 @@ function getCloseIcon(prefixCls, closeIcon) {
   if (closeIcon === null || closeIcon === false) {
     return null;
   }
-  return closeIcon || /* @__PURE__ */ reactExports.createElement(RefIcon$K, {
+  return closeIcon || /* @__PURE__ */ reactExports.createElement(RefIcon$Q, {
     className: `${prefixCls}-close-icon`
   });
 }
 const typeToIcon = {
-  success: RefIcon$M,
-  info: RefIcon$I,
-  error: RefIcon$L,
-  warning: RefIcon$J
+  success: RefIcon$S,
+  info: RefIcon$O,
+  error: RefIcon$R,
+  warning: RefIcon$P
 };
 const PureContent = (props) => {
   const {
@@ -24010,7 +24011,7 @@ const PureContent = (props) => {
     className: `${prefixCls}-actions`
   }, actions));
 };
-const PurePanel$8 = (props) => {
+const PurePanel$7 = (props) => {
   const {
     prefixCls: staticPrefixCls,
     className,
@@ -24023,7 +24024,7 @@ const PurePanel$8 = (props) => {
     closable = true,
     closeIcon,
     className: notificationClassName
-  } = props, restProps = __rest$X(props, ["prefixCls", "className", "icon", "type", "message", "description", "btn", "actions", "closable", "closeIcon", "className"]);
+  } = props, restProps = __rest$_(props, ["prefixCls", "className", "icon", "type", "message", "description", "btn", "actions", "closable", "closeIcon", "className"]);
   const {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
@@ -24031,7 +24032,7 @@ const PurePanel$8 = (props) => {
   const prefixCls = staticPrefixCls || getPrefixCls("notification");
   const noticePrefixCls = `${prefixCls}-notice`;
   const rootCls = useCSSVarCls(prefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$r(prefixCls, rootCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$u(prefixCls, rootCls);
   return wrapCSSVar(/* @__PURE__ */ reactExports.createElement("div", {
     className: classNames(`${noticePrefixCls}-pure-panel`, hashId, className, cssVarCls, rootCls)
   }, /* @__PURE__ */ reactExports.createElement(PurePanelStyle, {
@@ -24121,7 +24122,7 @@ function getCloseIconConfig(closeIcon, notificationConfig, notification2) {
   }
   return notification2 === null || notification2 === void 0 ? void 0 : notification2.closeIcon;
 }
-var __rest$W = function(s, e2) {
+var __rest$Z = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -24137,7 +24138,7 @@ const Wrapper = ({
   prefixCls
 }) => {
   const rootCls = useCSSVarCls(prefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$r(prefixCls, rootCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$u(prefixCls, rootCls);
   return wrapCSSVar(/* @__PURE__ */ React.createElement(NotificationProvider, {
     classNames: {
       list: classNames(hashId, cssVarCls, rootCls)
@@ -24231,7 +24232,7 @@ function useInternalNotification(notificationConfig) {
         role = "alert",
         closeIcon,
         closable
-      } = config, restConfig = __rest$W(config, ["message", "description", "icon", "type", "btn", "actions", "className", "style", "role", "closeIcon", "closable"]);
+      } = config, restConfig = __rest$Z(config, ["message", "description", "icon", "type", "btn", "actions", "className", "style", "role", "closeIcon", "closable"]);
       const mergedActions = actions !== null && actions !== void 0 ? actions : btn;
       const realCloseIcon = getCloseIcon(noticePrefixCls, getCloseIconConfig(closeIcon, notificationConfig, notification2));
       return originOpen(Object.assign(Object.assign({
@@ -25652,7 +25653,7 @@ function useAlign(open2, popupEle, target, placement, builtinPlacements, popupAl
   }
   var onAlign = useEvent(function() {
     if (popupEle && target && open2) {
-      let getIntersectionVisibleArea = function(offsetX, offsetY) {
+      let getIntersectionVisibleArea2 = function(offsetX, offsetY) {
         var area = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : visibleArea;
         var l2 = popupRect.x + offsetX;
         var t2 = popupRect.y + offsetY;
@@ -25663,12 +25664,13 @@ function useAlign(open2, popupEle, target, placement, builtinPlacements, popupAl
         var visibleR = Math.min(r2, area.right);
         var visibleB = Math.min(b2, area.bottom);
         return Math.max(0, (visibleR - visibleL) * (visibleB - visibleT));
-      }, syncNextPopupPosition = function() {
+      }, syncNextPopupPosition2 = function() {
         nextPopupY = popupRect.y + nextOffsetY;
         nextPopupBottom = nextPopupY + popupHeight;
         nextPopupX = popupRect.x + nextOffsetX;
         nextPopupRight = nextPopupX + popupWidth;
       };
+      var getIntersectionVisibleArea = getIntersectionVisibleArea2, syncNextPopupPosition = syncNextPopupPosition2;
       var _popupElement$parentE, _popupRect$x, _popupRect$y, _popupElement$parentE2;
       var popupElement = popupEle;
       var doc = popupElement.ownerDocument;
@@ -25773,8 +25775,8 @@ function useAlign(open2, popupEle, target, placement, builtinPlacements, popupAl
       var nextAlignInfo = _objectSpread2$1({}, placementInfo);
       var nextOffsetX = targetAlignPoint.x - popupAlignPoint.x + popupOffsetX;
       var nextOffsetY = targetAlignPoint.y - popupAlignPoint.y + popupOffsetY;
-      var originIntersectionVisibleArea = getIntersectionVisibleArea(nextOffsetX, nextOffsetY);
-      var originIntersectionRecommendArea = getIntersectionVisibleArea(nextOffsetX, nextOffsetY, visibleRegionArea);
+      var originIntersectionVisibleArea = getIntersectionVisibleArea2(nextOffsetX, nextOffsetY);
+      var originIntersectionRecommendArea = getIntersectionVisibleArea2(nextOffsetX, nextOffsetY, visibleRegionArea);
       var targetAlignPointTL = getAlignPoint(targetRect, ["t", "l"]);
       var popupAlignPointTL = getAlignPoint(popupRect, ["t", "l"]);
       var targetAlignPointBR = getAlignPoint(targetRect, ["b", "r"]);
@@ -25791,7 +25793,7 @@ function useAlign(open2, popupEle, target, placement, builtinPlacements, popupAl
       var nextPopupBottom;
       var nextPopupX;
       var nextPopupRight;
-      syncNextPopupPosition();
+      syncNextPopupPosition2();
       var needAdjustY = supportAdjust(adjustY);
       var sameTB = popupPoints[0] === targetPoints[0];
       if (needAdjustY && popupPoints[0] === "t" && (nextPopupBottom > adjustCheckVisibleArea.bottom || prevFlipRef.current.bt)) {
@@ -25801,8 +25803,8 @@ function useAlign(open2, popupEle, target, placement, builtinPlacements, popupAl
         } else {
           tmpNextOffsetY = targetAlignPointTL.y - popupAlignPointBR.y - popupOffsetY;
         }
-        var newVisibleArea = getIntersectionVisibleArea(nextOffsetX, tmpNextOffsetY);
-        var newVisibleRecommendArea = getIntersectionVisibleArea(nextOffsetX, tmpNextOffsetY, visibleRegionArea);
+        var newVisibleArea = getIntersectionVisibleArea2(nextOffsetX, tmpNextOffsetY);
+        var newVisibleRecommendArea = getIntersectionVisibleArea2(nextOffsetX, tmpNextOffsetY, visibleRegionArea);
         if (
           // Of course use larger one
           newVisibleArea > originIntersectionVisibleArea || newVisibleArea === originIntersectionVisibleArea && (!isVisibleFirst || // Choose recommend one
@@ -25823,8 +25825,8 @@ function useAlign(open2, popupEle, target, placement, builtinPlacements, popupAl
         } else {
           _tmpNextOffsetY = targetAlignPointBR.y - popupAlignPointTL.y - popupOffsetY;
         }
-        var _newVisibleArea = getIntersectionVisibleArea(nextOffsetX, _tmpNextOffsetY);
-        var _newVisibleRecommendArea = getIntersectionVisibleArea(nextOffsetX, _tmpNextOffsetY, visibleRegionArea);
+        var _newVisibleArea = getIntersectionVisibleArea2(nextOffsetX, _tmpNextOffsetY);
+        var _newVisibleRecommendArea = getIntersectionVisibleArea2(nextOffsetX, _tmpNextOffsetY, visibleRegionArea);
         if (
           // Of course use larger one
           _newVisibleArea > originIntersectionVisibleArea || _newVisibleArea === originIntersectionVisibleArea && (!isVisibleFirst || // Choose recommend one
@@ -25847,8 +25849,8 @@ function useAlign(open2, popupEle, target, placement, builtinPlacements, popupAl
         } else {
           tmpNextOffsetX = targetAlignPointTL.x - popupAlignPointBR.x - popupOffsetX;
         }
-        var _newVisibleArea2 = getIntersectionVisibleArea(tmpNextOffsetX, nextOffsetY);
-        var _newVisibleRecommendArea2 = getIntersectionVisibleArea(tmpNextOffsetX, nextOffsetY, visibleRegionArea);
+        var _newVisibleArea2 = getIntersectionVisibleArea2(tmpNextOffsetX, nextOffsetY);
+        var _newVisibleRecommendArea2 = getIntersectionVisibleArea2(tmpNextOffsetX, nextOffsetY, visibleRegionArea);
         if (
           // Of course use larger one
           _newVisibleArea2 > originIntersectionVisibleArea || _newVisibleArea2 === originIntersectionVisibleArea && (!isVisibleFirst || // Choose recommend one
@@ -25869,8 +25871,8 @@ function useAlign(open2, popupEle, target, placement, builtinPlacements, popupAl
         } else {
           _tmpNextOffsetX = targetAlignPointBR.x - popupAlignPointTL.x - popupOffsetX;
         }
-        var _newVisibleArea3 = getIntersectionVisibleArea(_tmpNextOffsetX, nextOffsetY);
-        var _newVisibleRecommendArea3 = getIntersectionVisibleArea(_tmpNextOffsetX, nextOffsetY, visibleRegionArea);
+        var _newVisibleArea3 = getIntersectionVisibleArea2(_tmpNextOffsetX, nextOffsetY);
+        var _newVisibleRecommendArea3 = getIntersectionVisibleArea2(_tmpNextOffsetX, nextOffsetY, visibleRegionArea);
         if (
           // Of course use larger one
           _newVisibleArea3 > originIntersectionVisibleArea || _newVisibleArea3 === originIntersectionVisibleArea && (!isVisibleFirst || // Choose recommend one
@@ -25884,7 +25886,7 @@ function useAlign(open2, popupEle, target, placement, builtinPlacements, popupAl
           prevFlipRef.current.lr = false;
         }
       }
-      syncNextPopupPosition();
+      syncNextPopupPosition2();
       var numShiftX = shiftX === true ? 0 : shiftX;
       if (typeof numShiftX === "number") {
         if (nextPopupX < visibleRegionArea.left) {
@@ -25984,10 +25986,11 @@ function useAlign(open2, popupEle, target, placement, builtinPlacements, popupAl
 function useWatch(open2, target, popup, onAlign, onScroll) {
   useLayoutEffect$1(function() {
     if (open2 && target && popup) {
-      let notifyScroll = function() {
+      let notifyScroll2 = function() {
         onAlign();
         onScroll();
       };
+      var notifyScroll = notifyScroll2;
       var targetElement = target;
       var popupElement = popup;
       var targetScrollList = collectScroller(targetElement);
@@ -25995,18 +25998,18 @@ function useWatch(open2, target, popup, onAlign, onScroll) {
       var win = getWin(popupElement);
       var mergedList = new Set([win].concat(_toConsumableArray(targetScrollList), _toConsumableArray(popupScrollList)));
       mergedList.forEach(function(scroller) {
-        scroller.addEventListener("scroll", notifyScroll, {
+        scroller.addEventListener("scroll", notifyScroll2, {
           passive: true
         });
       });
-      win.addEventListener("resize", notifyScroll, {
+      win.addEventListener("resize", notifyScroll2, {
         passive: true
       });
       onAlign();
       return function() {
         mergedList.forEach(function(scroller) {
-          scroller.removeEventListener("scroll", notifyScroll);
-          win.removeEventListener("resize", notifyScroll);
+          scroller.removeEventListener("scroll", notifyScroll2);
+          win.removeEventListener("resize", notifyScroll2);
         });
       };
     }
@@ -29138,7 +29141,7 @@ const genSharedEmptyStyle = (token2) => {
     }
   };
 };
-const useStyle$q = genStyleHooks("Empty", (token2) => {
+const useStyle$t = genStyleHooks("Empty", (token2) => {
   const {
     componentCls,
     controlHeightLG,
@@ -29152,7 +29155,7 @@ const useStyle$q = genStyleHooks("Empty", (token2) => {
   });
   return genSharedEmptyStyle(emptyToken);
 });
-var __rest$V = function(s, e2) {
+var __rest$Y = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -29175,7 +29178,7 @@ const Empty = (props) => {
     style: style2,
     classNames: emptyClassNames,
     styles
-  } = props, restProps = __rest$V(props, ["className", "rootClassName", "prefixCls", "image", "description", "children", "imageStyle", "style", "classNames", "styles"]);
+  } = props, restProps = __rest$Y(props, ["className", "rootClassName", "prefixCls", "image", "description", "children", "imageStyle", "style", "classNames", "styles"]);
   const {
     getPrefixCls,
     direction,
@@ -29186,7 +29189,7 @@ const Empty = (props) => {
     image: contextImage
   } = useComponentConfig("empty");
   const prefixCls = getPrefixCls("empty", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$q(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$t(prefixCls);
   const [locale2] = useLocale("Empty");
   const des = typeof description !== "undefined" ? description : locale2 === null || locale2 === void 0 ? void 0 : locale2.description;
   const alt = typeof des === "string" ? des : "empty";
@@ -29872,7 +29875,7 @@ function genSingleStyle(token2) {
     }), "lg")
   ];
 }
-const prepareComponentToken$j = (token2) => {
+const prepareComponentToken$l = (token2) => {
   const {
     fontSize,
     lineHeight,
@@ -30191,7 +30194,7 @@ const getSearchInputWithoutBorderStyle = (token2) => {
     }
   };
 };
-const genBaseStyle$6 = (token2) => {
+const genBaseStyle$7 = (token2) => {
   const {
     antCls,
     componentCls,
@@ -30344,7 +30347,7 @@ const genSelectStyle = (token2) => {
     // ==                       LTR                       ==
     // =====================================================
     // Base
-    genBaseStyle$6(token2),
+    genBaseStyle$7(token2),
     // Single
     genSingleStyle(token2),
     // Multiple
@@ -30378,7 +30381,7 @@ const useSelectStyle = genStyleHooks("Select", (token2, {
     selectHeight: token2.controlHeight
   });
   return [genSelectStyle(selectToken), genVariantsStyle(selectToken)];
-}, prepareComponentToken$j, {
+}, prepareComponentToken$l, {
   unitless: {
     optionLineHeight: true,
     optionSelectedFontWeight: true
@@ -30391,7 +30394,7 @@ var CheckOutlined = function CheckOutlined2(props, ref) {
     icon: CheckOutlined$1
   }));
 };
-var RefIcon$F = /* @__PURE__ */ reactExports.forwardRef(CheckOutlined);
+var RefIcon$L = /* @__PURE__ */ reactExports.forwardRef(CheckOutlined);
 var DownOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z" } }] }, "name": "down", "theme": "outlined" };
 var DownOutlined = function DownOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -30399,7 +30402,7 @@ var DownOutlined = function DownOutlined2(props, ref) {
     icon: DownOutlined$1
   }));
 };
-var RefIcon$E = /* @__PURE__ */ reactExports.forwardRef(DownOutlined);
+var RefIcon$K = /* @__PURE__ */ reactExports.forwardRef(DownOutlined);
 var SearchOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0011.6 0l43.6-43.5a8.2 8.2 0 000-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z" } }] }, "name": "search", "theme": "outlined" };
 var SearchOutlined = function SearchOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -30407,7 +30410,7 @@ var SearchOutlined = function SearchOutlined2(props, ref) {
     icon: SearchOutlined$1
   }));
 };
-var RefIcon$D = /* @__PURE__ */ reactExports.forwardRef(SearchOutlined);
+var RefIcon$J = /* @__PURE__ */ reactExports.forwardRef(SearchOutlined);
 function useIcons({
   suffixIcon,
   clearIcon,
@@ -30422,7 +30425,7 @@ function useIcons({
   showArrow,
   componentName
 }) {
-  const mergedClearIcon = clearIcon !== null && clearIcon !== void 0 ? clearIcon : /* @__PURE__ */ reactExports.createElement(RefIcon$L, null);
+  const mergedClearIcon = clearIcon !== null && clearIcon !== void 0 ? clearIcon : /* @__PURE__ */ reactExports.createElement(RefIcon$R, null);
   const getSuffixIconNode = (arrowIcon) => {
     if (suffixIcon === null && !hasFeedback && !showArrow) {
       return null;
@@ -30433,7 +30436,7 @@ function useIcons({
   if (suffixIcon !== void 0) {
     mergedSuffixIcon = getSuffixIconNode(suffixIcon);
   } else if (loading) {
-    mergedSuffixIcon = getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$H, {
+    mergedSuffixIcon = getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$N, {
       spin: true
     }));
   } else {
@@ -30443,11 +30446,11 @@ function useIcons({
       showSearch
     }) => {
       if (open2 && showSearch) {
-        return getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$D, {
+        return getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$J, {
           className: iconCls
         }));
       }
-      return getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$E, {
+      return getSuffixIconNode(/* @__PURE__ */ reactExports.createElement(RefIcon$K, {
         className: iconCls
       }));
     };
@@ -30456,7 +30459,7 @@ function useIcons({
   if (menuItemSelectedIcon !== void 0) {
     mergedItemIcon = menuItemSelectedIcon;
   } else if (multiple) {
-    mergedItemIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$F, null);
+    mergedItemIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$L, null);
   } else {
     mergedItemIcon = null;
   }
@@ -30464,7 +30467,7 @@ function useIcons({
   if (removeIcon !== void 0) {
     mergedRemoveIcon = removeIcon;
   } else {
-    mergedRemoveIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$K, null);
+    mergedRemoveIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$Q, null);
   }
   return {
     clearIcon: mergedClearIcon,
@@ -30486,7 +30489,7 @@ function usePopupRender(renderFn) {
 function useShowArrow(suffixIcon, showArrow) {
   return showArrow !== void 0 ? showArrow : suffixIcon !== null;
 }
-var __rest$U = function(s, e2) {
+var __rest$X = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -30530,7 +30533,7 @@ const InternalSelect = (props, ref) => {
     onOpenChange,
     styles,
     classNames: classNames$1
-  } = props, rest = __rest$U(props, ["prefixCls", "bordered", "className", "rootClassName", "getPopupContainer", "popupClassName", "dropdownClassName", "listHeight", "placement", "listItemHeight", "size", "disabled", "notFoundContent", "status", "builtinPlacements", "dropdownMatchSelectWidth", "popupMatchSelectWidth", "direction", "style", "allowClear", "variant", "dropdownStyle", "transitionName", "tagRender", "maxCount", "prefix", "dropdownRender", "popupRender", "onDropdownVisibleChange", "onOpenChange", "styles", "classNames"]);
+  } = props, rest = __rest$X(props, ["prefixCls", "bordered", "className", "rootClassName", "getPopupContainer", "popupClassName", "dropdownClassName", "listHeight", "placement", "listItemHeight", "size", "disabled", "notFoundContent", "status", "builtinPlacements", "dropdownMatchSelectWidth", "popupMatchSelectWidth", "direction", "style", "allowClear", "variant", "dropdownStyle", "transitionName", "tagRender", "maxCount", "prefix", "dropdownRender", "popupRender", "onDropdownVisibleChange", "onOpenChange", "styles", "classNames"]);
   const {
     getPopupContainer: getContextPopupContainer,
     getPrefixCls,
@@ -30669,11 +30672,11 @@ const InternalSelect = (props, ref) => {
   })));
 };
 const Select = /* @__PURE__ */ reactExports.forwardRef(InternalSelect);
-const PurePanel$7 = genPurePanel(Select, "dropdownAlign");
+const PurePanel$6 = genPurePanel(Select, "dropdownAlign");
 Select.SECRET_COMBOBOX_MODE_DO_NOT_USE = SECRET_COMBOBOX_MODE_DO_NOT_USE;
 Select.Option = Option;
 Select.OptGroup = OptGroup;
-Select._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$7;
+Select._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$6;
 const addMediaQueryListener = (mql, handler) => {
   if (typeof (mql === null || mql === void 0 ? void 0 : mql.addEventListener) !== "undefined") {
     mql.addEventListener("change", handler);
@@ -30804,6 +30807,280 @@ function useBreakpoint(refreshOnChange = true, defaultScreens = {}) {
   }, []);
   return screensRef.current;
 }
+const AvatarContext = /* @__PURE__ */ reactExports.createContext({});
+const genBaseStyle$6 = (token2) => {
+  const {
+    antCls,
+    componentCls,
+    iconCls,
+    avatarBg,
+    avatarColor,
+    containerSize,
+    containerSizeLG,
+    containerSizeSM,
+    textFontSize,
+    textFontSizeLG,
+    textFontSizeSM,
+    iconFontSize,
+    iconFontSizeLG,
+    iconFontSizeSM,
+    borderRadius,
+    borderRadiusLG,
+    borderRadiusSM,
+    lineWidth,
+    lineType
+  } = token2;
+  const avatarSizeStyle = (size, fontSize, iconFontSize2, radius2) => ({
+    width: size,
+    height: size,
+    borderRadius: "50%",
+    fontSize,
+    [`&${componentCls}-square`]: {
+      borderRadius: radius2
+    },
+    [`&${componentCls}-icon`]: {
+      fontSize: iconFontSize2,
+      [`> ${iconCls}`]: {
+        margin: 0
+      }
+    }
+  });
+  return {
+    [componentCls]: Object.assign(Object.assign(Object.assign(Object.assign({}, resetComponent(token2)), {
+      position: "relative",
+      display: "inline-flex",
+      justifyContent: "center",
+      alignItems: "center",
+      overflow: "hidden",
+      color: avatarColor,
+      whiteSpace: "nowrap",
+      textAlign: "center",
+      verticalAlign: "middle",
+      background: avatarBg,
+      border: `${unit$1(lineWidth)} ${lineType} transparent`,
+      "&-image": {
+        background: "transparent"
+      },
+      [`${antCls}-image-img`]: {
+        display: "block"
+      }
+    }), avatarSizeStyle(containerSize, textFontSize, iconFontSize, borderRadius)), {
+      "&-lg": Object.assign({}, avatarSizeStyle(containerSizeLG, textFontSizeLG, iconFontSizeLG, borderRadiusLG)),
+      "&-sm": Object.assign({}, avatarSizeStyle(containerSizeSM, textFontSizeSM, iconFontSizeSM, borderRadiusSM)),
+      "> img": {
+        display: "block",
+        width: "100%",
+        height: "100%",
+        objectFit: "cover"
+      }
+    })
+  };
+};
+const genGroupStyle$1 = (token2) => {
+  const {
+    componentCls,
+    groupBorderColor,
+    groupOverlapping,
+    groupSpace
+  } = token2;
+  return {
+    [`${componentCls}-group`]: {
+      display: "inline-flex",
+      [componentCls]: {
+        borderColor: groupBorderColor
+      },
+      "> *:not(:first-child)": {
+        marginInlineStart: groupOverlapping
+      }
+    },
+    [`${componentCls}-group-popover`]: {
+      [`${componentCls} + ${componentCls}`]: {
+        marginInlineStart: groupSpace
+      }
+    }
+  };
+};
+const prepareComponentToken$k = (token2) => {
+  const {
+    controlHeight,
+    controlHeightLG,
+    controlHeightSM,
+    fontSize,
+    fontSizeLG,
+    fontSizeXL,
+    fontSizeHeading3,
+    marginXS,
+    marginXXS,
+    colorBorderBg
+  } = token2;
+  return {
+    containerSize: controlHeight,
+    containerSizeLG: controlHeightLG,
+    containerSizeSM: controlHeightSM,
+    textFontSize: fontSize,
+    textFontSizeLG: fontSize,
+    textFontSizeSM: fontSize,
+    iconFontSize: Math.round((fontSizeLG + fontSizeXL) / 2),
+    iconFontSizeLG: fontSizeHeading3,
+    iconFontSizeSM: fontSize,
+    groupSpace: marginXXS,
+    groupOverlapping: -marginXS,
+    groupBorderColor: colorBorderBg
+  };
+};
+const useStyle$s = genStyleHooks("Avatar", (token2) => {
+  const {
+    colorTextLightSolid,
+    colorTextPlaceholder
+  } = token2;
+  const avatarToken = merge(token2, {
+    avatarBg: colorTextPlaceholder,
+    avatarColor: colorTextLightSolid
+  });
+  return [genBaseStyle$6(avatarToken), genGroupStyle$1(avatarToken)];
+}, prepareComponentToken$k);
+var __rest$W = function(s, e2) {
+  var t2 = {};
+  for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
+    if (e2.indexOf(p2[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p2[i])) t2[p2[i]] = s[p2[i]];
+  }
+  return t2;
+};
+const Avatar$1 = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
+  const {
+    prefixCls: customizePrefixCls,
+    shape,
+    size: customSize,
+    src,
+    srcSet,
+    icon,
+    className,
+    rootClassName,
+    style: style2,
+    alt,
+    draggable,
+    children,
+    crossOrigin,
+    gap = 4,
+    onError
+  } = props, others = __rest$W(props, ["prefixCls", "shape", "size", "src", "srcSet", "icon", "className", "rootClassName", "style", "alt", "draggable", "children", "crossOrigin", "gap", "onError"]);
+  const [scale, setScale] = reactExports.useState(1);
+  const [mounted, setMounted] = reactExports.useState(false);
+  const [isImgExist, setIsImgExist] = reactExports.useState(true);
+  const avatarNodeRef = reactExports.useRef(null);
+  const avatarChildrenRef = reactExports.useRef(null);
+  const avatarNodeMergedRef = composeRef(ref, avatarNodeRef);
+  const {
+    getPrefixCls,
+    avatar
+  } = reactExports.useContext(ConfigContext);
+  const avatarCtx = reactExports.useContext(AvatarContext);
+  const setScaleParam = () => {
+    if (!avatarChildrenRef.current || !avatarNodeRef.current) {
+      return;
+    }
+    const childrenWidth = avatarChildrenRef.current.offsetWidth;
+    const nodeWidth = avatarNodeRef.current.offsetWidth;
+    if (childrenWidth !== 0 && nodeWidth !== 0) {
+      if (gap * 2 < nodeWidth) {
+        setScale(nodeWidth - gap * 2 < childrenWidth ? (nodeWidth - gap * 2) / childrenWidth : 1);
+      }
+    }
+  };
+  reactExports.useEffect(() => {
+    setMounted(true);
+  }, []);
+  reactExports.useEffect(() => {
+    setIsImgExist(true);
+    setScale(1);
+  }, [src]);
+  reactExports.useEffect(setScaleParam, [gap]);
+  const handleImgLoadError = () => {
+    const errorFlag = onError === null || onError === void 0 ? void 0 : onError();
+    if (errorFlag !== false) {
+      setIsImgExist(false);
+    }
+  };
+  const size = useSize((ctxSize) => {
+    var _a, _b;
+    return (_b = (_a = customSize !== null && customSize !== void 0 ? customSize : avatarCtx === null || avatarCtx === void 0 ? void 0 : avatarCtx.size) !== null && _a !== void 0 ? _a : ctxSize) !== null && _b !== void 0 ? _b : "default";
+  });
+  const needResponsive = Object.keys(typeof size === "object" ? size || {} : {}).some((key) => ["xs", "sm", "md", "lg", "xl", "xxl"].includes(key));
+  const screens = useBreakpoint(needResponsive);
+  const responsiveSizeStyle = reactExports.useMemo(() => {
+    if (typeof size !== "object") {
+      return {};
+    }
+    const currentBreakpoint = responsiveArray.find((screen) => screens[screen]);
+    const currentSize = size[currentBreakpoint];
+    return currentSize ? {
+      width: currentSize,
+      height: currentSize,
+      fontSize: currentSize && (icon || children) ? currentSize / 2 : 18
+    } : {};
+  }, [screens, size, icon, children]);
+  const prefixCls = getPrefixCls("avatar", customizePrefixCls);
+  const rootCls = useCSSVarCls(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$s(prefixCls, rootCls);
+  const sizeCls = classNames({
+    [`${prefixCls}-lg`]: size === "large",
+    [`${prefixCls}-sm`]: size === "small"
+  });
+  const hasImageElement = /* @__PURE__ */ reactExports.isValidElement(src);
+  const mergedShape = shape || (avatarCtx === null || avatarCtx === void 0 ? void 0 : avatarCtx.shape) || "circle";
+  const classString = classNames(prefixCls, sizeCls, avatar === null || avatar === void 0 ? void 0 : avatar.className, `${prefixCls}-${mergedShape}`, {
+    [`${prefixCls}-image`]: hasImageElement || src && isImgExist,
+    [`${prefixCls}-icon`]: !!icon
+  }, cssVarCls, rootCls, className, rootClassName, hashId);
+  const sizeStyle = typeof size === "number" ? {
+    width: size,
+    height: size,
+    fontSize: icon ? size / 2 : 18
+  } : {};
+  let childrenToRender;
+  if (typeof src === "string" && isImgExist) {
+    childrenToRender = /* @__PURE__ */ reactExports.createElement("img", {
+      src,
+      draggable,
+      srcSet,
+      onError: handleImgLoadError,
+      alt,
+      crossOrigin
+    });
+  } else if (hasImageElement) {
+    childrenToRender = src;
+  } else if (icon) {
+    childrenToRender = icon;
+  } else if (mounted || scale !== 1) {
+    const transformString = `scale(${scale})`;
+    const childrenStyle = {
+      msTransform: transformString,
+      WebkitTransform: transformString,
+      transform: transformString
+    };
+    childrenToRender = /* @__PURE__ */ reactExports.createElement(RefResizeObserver, {
+      onResize: setScaleParam
+    }, /* @__PURE__ */ reactExports.createElement("span", {
+      className: `${prefixCls}-string`,
+      ref: avatarChildrenRef,
+      style: childrenStyle
+    }, children));
+  } else {
+    childrenToRender = /* @__PURE__ */ reactExports.createElement("span", {
+      className: `${prefixCls}-string`,
+      style: {
+        opacity: 0
+      },
+      ref: avatarChildrenRef
+    }, children);
+  }
+  return wrapCSSVar(/* @__PURE__ */ reactExports.createElement("span", Object.assign({}, others, {
+    style: Object.assign(Object.assign(Object.assign(Object.assign({}, sizeStyle), responsiveSizeStyle), avatar === null || avatar === void 0 ? void 0 : avatar.style), style2),
+    className: classString,
+    ref: avatarNodeMergedRef
+  }), childrenToRender));
+});
 const getRenderPropValue = (propValue) => {
   if (!propValue) {
     return null;
@@ -31450,7 +31727,7 @@ const genTooltipStyle = (token2) => {
     }
   ];
 };
-const prepareComponentToken$i = (token2) => Object.assign(Object.assign({
+const prepareComponentToken$j = (token2) => Object.assign(Object.assign({
   zIndexPopup: token2.zIndexPopupBase + 70
 }, getArrowOffsetToken({
   contentRadius: token2.borderRadius,
@@ -31458,7 +31735,7 @@ const prepareComponentToken$i = (token2) => Object.assign(Object.assign({
 })), getArrowToken(merge(token2, {
   borderRadiusOuter: Math.min(token2.borderRadiusOuter, 4)
 })));
-const useStyle$p = (prefixCls, injectStyle = true) => {
+const useStyle$r = (prefixCls, injectStyle = true) => {
   const useStyle2 = genStyleHooks("Tooltip", (token2) => {
     const {
       borderRadius,
@@ -31473,7 +31750,7 @@ const useStyle$p = (prefixCls, injectStyle = true) => {
       tooltipBg: colorBgSpotlight
     });
     return [genTooltipStyle(TooltipToken), initZoomMotion(token2, "zoom-big-fast")];
-  }, prepareComponentToken$i, {
+  }, prepareComponentToken$j, {
     resetStyle: false,
     // Popover use Tooltip as internal component. We do not need to handle this.
     injectStyle
@@ -31512,7 +31789,7 @@ function parseColor(prefixCls, color) {
     arrowStyle
   };
 }
-const PurePanel$6 = (props) => {
+const PurePanel$5 = (props) => {
   const {
     prefixCls: customizePrefixCls,
     className,
@@ -31525,7 +31802,7 @@ const PurePanel$6 = (props) => {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("tooltip", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$p(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$r(prefixCls);
   const colorInfo = parseColor(prefixCls, color);
   const arrowContentStyle = colorInfo.arrowStyle;
   const formattedOverlayInnerStyle = Object.assign(Object.assign({}, overlayInnerStyle), colorInfo.overlayStyle);
@@ -31541,7 +31818,7 @@ const PurePanel$6 = (props) => {
     overlayInnerStyle: formattedOverlayInnerStyle
   }), title)));
 };
-var __rest$T = function(s, e2) {
+var __rest$V = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -31578,7 +31855,7 @@ const InternalTooltip = /* @__PURE__ */ reactExports.forwardRef((props, ref) => 
     overlayClassName,
     styles,
     classNames: tooltipClassNames
-  } = props, restProps = __rest$T(props, ["prefixCls", "openClassName", "getTooltipContainer", "color", "overlayInnerStyle", "children", "afterOpenChange", "afterVisibleChange", "destroyTooltipOnHide", "destroyOnHidden", "arrow", "title", "overlay", "builtinPlacements", "arrowPointAtCenter", "autoAdjustOverflow", "motion", "getPopupContainer", "placement", "mouseEnterDelay", "mouseLeaveDelay", "overlayStyle", "rootClassName", "overlayClassName", "styles", "classNames"]);
+  } = props, restProps = __rest$V(props, ["prefixCls", "openClassName", "getTooltipContainer", "color", "overlayInnerStyle", "children", "afterOpenChange", "afterVisibleChange", "destroyTooltipOnHide", "destroyOnHidden", "arrow", "title", "overlay", "builtinPlacements", "arrowPointAtCenter", "autoAdjustOverflow", "motion", "getPopupContainer", "placement", "mouseEnterDelay", "mouseLeaveDelay", "overlayStyle", "rootClassName", "overlayClassName", "styles", "classNames"]);
   const mergedShowArrow = !!arrow;
   const [, token2] = useToken();
   const {
@@ -31655,7 +31932,7 @@ const InternalTooltip = /* @__PURE__ */ reactExports.forwardRef((props, ref) => 
   const child = /* @__PURE__ */ reactExports.isValidElement(children) && !isFragment(children) ? children : /* @__PURE__ */ reactExports.createElement("span", null, children);
   const childProps = child.props;
   const childCls = !childProps.className || typeof childProps.className === "string" ? classNames(childProps.className, openClassName || `${prefixCls}-open`) : childProps.className;
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$p(prefixCls, !injectFromPopover);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$r(prefixCls, !injectFromPopover);
   const colorInfo = parseColor(prefixCls, color);
   const arrowContentStyle = colorInfo.arrowStyle;
   const rootClassNames = classNames(overlayClassName, {
@@ -31702,7 +31979,7 @@ const InternalTooltip = /* @__PURE__ */ reactExports.forwardRef((props, ref) => 
   }, content));
 });
 const Tooltip2 = InternalTooltip;
-Tooltip2._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$6;
+Tooltip2._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$5;
 const genBaseStyle$5 = (token2) => {
   const {
     componentCls,
@@ -31810,7 +32087,7 @@ const genColorStyle = (token2) => {
     })
   };
 };
-const prepareComponentToken$h = (token2) => {
+const prepareComponentToken$i = (token2) => {
   const {
     lineWidth,
     controlHeight,
@@ -31843,7 +32120,7 @@ const prepareComponentToken$h = (token2) => {
     innerContentPadding: wireframe ? `${paddingSM}px ${popoverPaddingHorizontal}px` : 0
   });
 };
-const useStyle$o = genStyleHooks("Popover", (token2) => {
+const useStyle$q = genStyleHooks("Popover", (token2) => {
   const {
     colorBgElevated,
     colorText
@@ -31853,11 +32130,11 @@ const useStyle$o = genStyleHooks("Popover", (token2) => {
     popoverColor: colorText
   });
   return [genBaseStyle$5(popoverToken), genColorStyle(popoverToken), initZoomMotion(popoverToken, "zoom-big")];
-}, prepareComponentToken$h, {
+}, prepareComponentToken$i, {
   resetStyle: false,
   deprecatedTokens: [["width", "titleMinWidth"], ["minWidth", "titleMinWidth"]]
 });
-var __rest$S = function(s, e2) {
+var __rest$U = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -31907,23 +32184,23 @@ const RawPurePanel = (props) => {
     content: contentNode
   })));
 };
-const PurePanel$5 = (props) => {
+const PurePanel$4 = (props) => {
   const {
     prefixCls: customizePrefixCls,
     className
-  } = props, restProps = __rest$S(props, ["prefixCls", "className"]);
+  } = props, restProps = __rest$U(props, ["prefixCls", "className"]);
   const {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("popover", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$o(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$q(prefixCls);
   return wrapCSSVar(/* @__PURE__ */ reactExports.createElement(RawPurePanel, Object.assign({}, restProps, {
     prefixCls,
     hashId,
     className: classNames(className, cssVarCls)
   })));
 };
-var __rest$R = function(s, e2) {
+var __rest$T = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -31947,7 +32224,7 @@ const InternalPopover = /* @__PURE__ */ reactExports.forwardRef((props, ref) => 
     overlayStyle = {},
     styles,
     classNames: popoverClassNames
-  } = props, otherProps = __rest$R(props, ["prefixCls", "title", "content", "overlayClassName", "placement", "trigger", "children", "mouseEnterDelay", "mouseLeaveDelay", "onOpenChange", "overlayStyle", "styles", "classNames"]);
+  } = props, otherProps = __rest$T(props, ["prefixCls", "title", "content", "overlayClassName", "placement", "trigger", "children", "mouseEnterDelay", "mouseLeaveDelay", "onOpenChange", "overlayStyle", "styles", "classNames"]);
   const {
     getPrefixCls,
     className: contextClassName,
@@ -31956,7 +32233,7 @@ const InternalPopover = /* @__PURE__ */ reactExports.forwardRef((props, ref) => 
     styles: contextStyles
   } = useComponentConfig("popover");
   const prefixCls = getPrefixCls("popover", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$o(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$q(prefixCls);
   const rootPrefixCls = getPrefixCls();
   const rootClassNames = classNames(overlayClassName, hashId, cssVarCls, contextClassName, contextClassNames.root, popoverClassNames === null || popoverClassNames === void 0 ? void 0 : popoverClassNames.root);
   const bodyClassNames = classNames(contextClassNames.body, popoverClassNames === null || popoverClassNames === void 0 ? void 0 : popoverClassNames.body);
@@ -32014,7 +32291,831 @@ const InternalPopover = /* @__PURE__ */ reactExports.forwardRef((props, ref) => 
   })));
 });
 const Popover = InternalPopover;
-Popover._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$5;
+Popover._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$4;
+const AvatarContextProvider = (props) => {
+  const {
+    size,
+    shape
+  } = reactExports.useContext(AvatarContext);
+  const avatarContextValue = reactExports.useMemo(() => ({
+    size: props.size || size,
+    shape: props.shape || shape
+  }), [props.size, props.shape, size, shape]);
+  return /* @__PURE__ */ reactExports.createElement(AvatarContext.Provider, {
+    value: avatarContextValue
+  }, props.children);
+};
+const AvatarGroup = (props) => {
+  var _a, _b, _c, _d;
+  const {
+    getPrefixCls,
+    direction
+  } = reactExports.useContext(ConfigContext);
+  const {
+    prefixCls: customizePrefixCls,
+    className,
+    rootClassName,
+    style: style2,
+    maxCount,
+    maxStyle,
+    size,
+    shape,
+    maxPopoverPlacement,
+    maxPopoverTrigger,
+    children,
+    max
+  } = props;
+  const prefixCls = getPrefixCls("avatar", customizePrefixCls);
+  const groupPrefixCls = `${prefixCls}-group`;
+  const rootCls = useCSSVarCls(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$s(prefixCls, rootCls);
+  const cls = classNames(groupPrefixCls, {
+    [`${groupPrefixCls}-rtl`]: direction === "rtl"
+  }, cssVarCls, rootCls, className, rootClassName, hashId);
+  const childrenWithProps = toArray$5(children).map((child, index2) => cloneElement(child, {
+    // eslint-disable-next-line react/no-array-index-key
+    key: `avatar-key-${index2}`
+  }));
+  const mergeCount = (max === null || max === void 0 ? void 0 : max.count) || maxCount;
+  const numOfChildren = childrenWithProps.length;
+  if (mergeCount && mergeCount < numOfChildren) {
+    const childrenShow = childrenWithProps.slice(0, mergeCount);
+    const childrenHidden = childrenWithProps.slice(mergeCount, numOfChildren);
+    const mergeStyle = (max === null || max === void 0 ? void 0 : max.style) || maxStyle;
+    const mergePopoverTrigger = ((_a = max === null || max === void 0 ? void 0 : max.popover) === null || _a === void 0 ? void 0 : _a.trigger) || maxPopoverTrigger || "hover";
+    const mergePopoverPlacement = ((_b = max === null || max === void 0 ? void 0 : max.popover) === null || _b === void 0 ? void 0 : _b.placement) || maxPopoverPlacement || "top";
+    const mergeProps2 = Object.assign(Object.assign({
+      content: childrenHidden
+    }, max === null || max === void 0 ? void 0 : max.popover), {
+      classNames: {
+        root: classNames(`${groupPrefixCls}-popover`, (_d = (_c = max === null || max === void 0 ? void 0 : max.popover) === null || _c === void 0 ? void 0 : _c.classNames) === null || _d === void 0 ? void 0 : _d.root)
+      },
+      placement: mergePopoverPlacement,
+      trigger: mergePopoverTrigger
+    });
+    childrenShow.push(/* @__PURE__ */ reactExports.createElement(Popover, Object.assign({
+      key: "avatar-popover-key",
+      destroyOnHidden: true
+    }, mergeProps2), /* @__PURE__ */ reactExports.createElement(Avatar$1, {
+      style: mergeStyle
+    }, `+${numOfChildren - mergeCount}`)));
+    return wrapCSSVar(/* @__PURE__ */ reactExports.createElement(AvatarContextProvider, {
+      shape,
+      size
+    }, /* @__PURE__ */ reactExports.createElement("div", {
+      className: cls,
+      style: style2
+    }, childrenShow)));
+  }
+  return wrapCSSVar(/* @__PURE__ */ reactExports.createElement(AvatarContextProvider, {
+    shape,
+    size
+  }, /* @__PURE__ */ reactExports.createElement("div", {
+    className: cls,
+    style: style2
+  }, childrenWithProps)));
+};
+const Avatar = Avatar$1;
+Avatar.Group = AvatarGroup;
+const antStatusProcessing = new Keyframe("antStatusProcessing", {
+  "0%": {
+    transform: "scale(0.8)",
+    opacity: 0.5
+  },
+  "100%": {
+    transform: "scale(2.4)",
+    opacity: 0
+  }
+});
+const antZoomBadgeIn = new Keyframe("antZoomBadgeIn", {
+  "0%": {
+    transform: "scale(0) translate(50%, -50%)",
+    opacity: 0
+  },
+  "100%": {
+    transform: "scale(1) translate(50%, -50%)"
+  }
+});
+const antZoomBadgeOut = new Keyframe("antZoomBadgeOut", {
+  "0%": {
+    transform: "scale(1) translate(50%, -50%)"
+  },
+  "100%": {
+    transform: "scale(0) translate(50%, -50%)",
+    opacity: 0
+  }
+});
+const antNoWrapperZoomBadgeIn = new Keyframe("antNoWrapperZoomBadgeIn", {
+  "0%": {
+    transform: "scale(0)",
+    opacity: 0
+  },
+  "100%": {
+    transform: "scale(1)"
+  }
+});
+const antNoWrapperZoomBadgeOut = new Keyframe("antNoWrapperZoomBadgeOut", {
+  "0%": {
+    transform: "scale(1)"
+  },
+  "100%": {
+    transform: "scale(0)",
+    opacity: 0
+  }
+});
+const antBadgeLoadingCircle = new Keyframe("antBadgeLoadingCircle", {
+  "0%": {
+    transformOrigin: "50%"
+  },
+  "100%": {
+    transform: "translate(50%, -50%) rotate(360deg)",
+    transformOrigin: "50%"
+  }
+});
+const genSharedBadgeStyle = (token2) => {
+  const {
+    componentCls,
+    iconCls,
+    antCls,
+    badgeShadowSize,
+    textFontSize,
+    textFontSizeSM,
+    statusSize,
+    dotSize,
+    textFontWeight,
+    indicatorHeight,
+    indicatorHeightSM,
+    marginXS,
+    calc
+  } = token2;
+  const numberPrefixCls = `${antCls}-scroll-number`;
+  const colorPreset = genPresetColor(token2, (colorKey, {
+    darkColor
+  }) => ({
+    [`&${componentCls} ${componentCls}-color-${colorKey}`]: {
+      background: darkColor,
+      [`&:not(${componentCls}-count)`]: {
+        color: darkColor
+      },
+      "a:hover &": {
+        background: darkColor
+      }
+    }
+  }));
+  return {
+    [componentCls]: Object.assign(Object.assign(Object.assign(Object.assign({}, resetComponent(token2)), {
+      position: "relative",
+      display: "inline-block",
+      width: "fit-content",
+      lineHeight: 1,
+      [`${componentCls}-count`]: {
+        display: "inline-flex",
+        justifyContent: "center",
+        zIndex: token2.indicatorZIndex,
+        minWidth: indicatorHeight,
+        height: indicatorHeight,
+        color: token2.badgeTextColor,
+        fontWeight: textFontWeight,
+        fontSize: textFontSize,
+        lineHeight: unit$1(indicatorHeight),
+        whiteSpace: "nowrap",
+        textAlign: "center",
+        background: token2.badgeColor,
+        borderRadius: calc(indicatorHeight).div(2).equal(),
+        boxShadow: `0 0 0 ${unit$1(badgeShadowSize)} ${token2.badgeShadowColor}`,
+        transition: `background ${token2.motionDurationMid}`,
+        a: {
+          color: token2.badgeTextColor
+        },
+        "a:hover": {
+          color: token2.badgeTextColor
+        },
+        "a:hover &": {
+          background: token2.badgeColorHover
+        }
+      },
+      [`${componentCls}-count-sm`]: {
+        minWidth: indicatorHeightSM,
+        height: indicatorHeightSM,
+        fontSize: textFontSizeSM,
+        lineHeight: unit$1(indicatorHeightSM),
+        borderRadius: calc(indicatorHeightSM).div(2).equal()
+      },
+      [`${componentCls}-multiple-words`]: {
+        padding: `0 ${unit$1(token2.paddingXS)}`,
+        bdi: {
+          unicodeBidi: "plaintext"
+        }
+      },
+      [`${componentCls}-dot`]: {
+        zIndex: token2.indicatorZIndex,
+        width: dotSize,
+        minWidth: dotSize,
+        height: dotSize,
+        background: token2.badgeColor,
+        borderRadius: "100%",
+        boxShadow: `0 0 0 ${unit$1(badgeShadowSize)} ${token2.badgeShadowColor}`
+      },
+      [`${componentCls}-count, ${componentCls}-dot, ${numberPrefixCls}-custom-component`]: {
+        position: "absolute",
+        top: 0,
+        insetInlineEnd: 0,
+        transform: "translate(50%, -50%)",
+        transformOrigin: "100% 0%",
+        [`&${iconCls}-spin`]: {
+          animationName: antBadgeLoadingCircle,
+          animationDuration: "1s",
+          animationIterationCount: "infinite",
+          animationTimingFunction: "linear"
+        }
+      },
+      [`&${componentCls}-status`]: {
+        lineHeight: "inherit",
+        verticalAlign: "baseline",
+        [`${componentCls}-status-dot`]: {
+          position: "relative",
+          top: -1,
+          // Magic number, but seems better experience
+          display: "inline-block",
+          width: statusSize,
+          height: statusSize,
+          verticalAlign: "middle",
+          borderRadius: "50%"
+        },
+        [`${componentCls}-status-success`]: {
+          backgroundColor: token2.colorSuccess
+        },
+        [`${componentCls}-status-processing`]: {
+          overflow: "visible",
+          color: token2.colorInfo,
+          backgroundColor: token2.colorInfo,
+          borderColor: "currentcolor",
+          "&::after": {
+            position: "absolute",
+            top: 0,
+            insetInlineStart: 0,
+            width: "100%",
+            height: "100%",
+            borderWidth: badgeShadowSize,
+            borderStyle: "solid",
+            borderColor: "inherit",
+            borderRadius: "50%",
+            animationName: antStatusProcessing,
+            animationDuration: token2.badgeProcessingDuration,
+            animationIterationCount: "infinite",
+            animationTimingFunction: "ease-in-out",
+            content: '""'
+          }
+        },
+        [`${componentCls}-status-default`]: {
+          backgroundColor: token2.colorTextPlaceholder
+        },
+        [`${componentCls}-status-error`]: {
+          backgroundColor: token2.colorError
+        },
+        [`${componentCls}-status-warning`]: {
+          backgroundColor: token2.colorWarning
+        },
+        [`${componentCls}-status-text`]: {
+          marginInlineStart: marginXS,
+          color: token2.colorText,
+          fontSize: token2.fontSize
+        }
+      }
+    }), colorPreset), {
+      [`${componentCls}-zoom-appear, ${componentCls}-zoom-enter`]: {
+        animationName: antZoomBadgeIn,
+        animationDuration: token2.motionDurationSlow,
+        animationTimingFunction: token2.motionEaseOutBack,
+        animationFillMode: "both"
+      },
+      [`${componentCls}-zoom-leave`]: {
+        animationName: antZoomBadgeOut,
+        animationDuration: token2.motionDurationSlow,
+        animationTimingFunction: token2.motionEaseOutBack,
+        animationFillMode: "both"
+      },
+      [`&${componentCls}-not-a-wrapper`]: {
+        [`${componentCls}-zoom-appear, ${componentCls}-zoom-enter`]: {
+          animationName: antNoWrapperZoomBadgeIn,
+          animationDuration: token2.motionDurationSlow,
+          animationTimingFunction: token2.motionEaseOutBack
+        },
+        [`${componentCls}-zoom-leave`]: {
+          animationName: antNoWrapperZoomBadgeOut,
+          animationDuration: token2.motionDurationSlow,
+          animationTimingFunction: token2.motionEaseOutBack
+        },
+        [`&:not(${componentCls}-status)`]: {
+          verticalAlign: "middle"
+        },
+        [`${numberPrefixCls}-custom-component, ${componentCls}-count`]: {
+          transform: "none"
+        },
+        [`${numberPrefixCls}-custom-component, ${numberPrefixCls}`]: {
+          position: "relative",
+          top: "auto",
+          display: "block",
+          transformOrigin: "50% 50%"
+        }
+      },
+      [numberPrefixCls]: {
+        overflow: "hidden",
+        transition: `all ${token2.motionDurationMid} ${token2.motionEaseOutBack}`,
+        [`${numberPrefixCls}-only`]: {
+          position: "relative",
+          display: "inline-block",
+          height: indicatorHeight,
+          transition: `all ${token2.motionDurationSlow} ${token2.motionEaseOutBack}`,
+          WebkitTransformStyle: "preserve-3d",
+          WebkitBackfaceVisibility: "hidden",
+          [`> p${numberPrefixCls}-only-unit`]: {
+            height: indicatorHeight,
+            margin: 0,
+            WebkitTransformStyle: "preserve-3d",
+            WebkitBackfaceVisibility: "hidden"
+          }
+        },
+        [`${numberPrefixCls}-symbol`]: {
+          verticalAlign: "top"
+        }
+      },
+      // ====================== RTL =======================
+      "&-rtl": {
+        direction: "rtl",
+        [`${componentCls}-count, ${componentCls}-dot, ${numberPrefixCls}-custom-component`]: {
+          transform: "translate(-50%, -50%)"
+        }
+      }
+    })
+  };
+};
+const prepareToken$3 = (token2) => {
+  const {
+    fontHeight,
+    lineWidth,
+    marginXS,
+    colorBorderBg
+  } = token2;
+  const badgeFontHeight = fontHeight;
+  const badgeShadowSize = lineWidth;
+  const badgeTextColor = token2.colorTextLightSolid;
+  const badgeColor = token2.colorError;
+  const badgeColorHover = token2.colorErrorHover;
+  const badgeToken = merge(token2, {
+    badgeFontHeight,
+    badgeShadowSize,
+    badgeTextColor,
+    badgeColor,
+    badgeColorHover,
+    badgeShadowColor: colorBorderBg,
+    badgeProcessingDuration: "1.2s",
+    badgeRibbonOffset: marginXS,
+    // Follow token just by Design. Not related with token
+    badgeRibbonCornerTransform: "scaleY(0.75)",
+    badgeRibbonCornerFilter: `brightness(75%)`
+  });
+  return badgeToken;
+};
+const prepareComponentToken$h = (token2) => {
+  const {
+    fontSize,
+    lineHeight,
+    fontSizeSM,
+    lineWidth
+  } = token2;
+  return {
+    indicatorZIndex: "auto",
+    indicatorHeight: Math.round(fontSize * lineHeight) - 2 * lineWidth,
+    indicatorHeightSM: fontSize,
+    dotSize: fontSizeSM / 2,
+    textFontSize: fontSizeSM,
+    textFontSizeSM: fontSizeSM,
+    textFontWeight: "normal",
+    statusSize: fontSizeSM / 2
+  };
+};
+const useStyle$p = genStyleHooks("Badge", (token2) => {
+  const badgeToken = prepareToken$3(token2);
+  return genSharedBadgeStyle(badgeToken);
+}, prepareComponentToken$h);
+const genRibbonStyle = (token2) => {
+  const {
+    antCls,
+    badgeFontHeight,
+    marginXS,
+    badgeRibbonOffset,
+    calc
+  } = token2;
+  const ribbonPrefixCls = `${antCls}-ribbon`;
+  const ribbonWrapperPrefixCls = `${antCls}-ribbon-wrapper`;
+  const statusRibbonPreset = genPresetColor(token2, (colorKey, {
+    darkColor
+  }) => ({
+    [`&${ribbonPrefixCls}-color-${colorKey}`]: {
+      background: darkColor,
+      color: darkColor
+    }
+  }));
+  return {
+    [ribbonWrapperPrefixCls]: {
+      position: "relative"
+    },
+    [ribbonPrefixCls]: Object.assign(Object.assign(Object.assign(Object.assign({}, resetComponent(token2)), {
+      position: "absolute",
+      top: marginXS,
+      padding: `0 ${unit$1(token2.paddingXS)}`,
+      color: token2.colorPrimary,
+      lineHeight: unit$1(badgeFontHeight),
+      whiteSpace: "nowrap",
+      backgroundColor: token2.colorPrimary,
+      borderRadius: token2.borderRadiusSM,
+      [`${ribbonPrefixCls}-text`]: {
+        color: token2.badgeTextColor
+      },
+      [`${ribbonPrefixCls}-corner`]: {
+        position: "absolute",
+        top: "100%",
+        width: badgeRibbonOffset,
+        height: badgeRibbonOffset,
+        color: "currentcolor",
+        border: `${unit$1(calc(badgeRibbonOffset).div(2).equal())} solid`,
+        transform: token2.badgeRibbonCornerTransform,
+        transformOrigin: "top",
+        filter: token2.badgeRibbonCornerFilter
+      }
+    }), statusRibbonPreset), {
+      [`&${ribbonPrefixCls}-placement-end`]: {
+        insetInlineEnd: calc(badgeRibbonOffset).mul(-1).equal(),
+        borderEndEndRadius: 0,
+        [`${ribbonPrefixCls}-corner`]: {
+          insetInlineEnd: 0,
+          borderInlineEndColor: "transparent",
+          borderBlockEndColor: "transparent"
+        }
+      },
+      [`&${ribbonPrefixCls}-placement-start`]: {
+        insetInlineStart: calc(badgeRibbonOffset).mul(-1).equal(),
+        borderEndStartRadius: 0,
+        [`${ribbonPrefixCls}-corner`]: {
+          insetInlineStart: 0,
+          borderBlockEndColor: "transparent",
+          borderInlineStartColor: "transparent"
+        }
+      },
+      // ====================== RTL =======================
+      "&-rtl": {
+        direction: "rtl"
+      }
+    })
+  };
+};
+const useStyle$o = genStyleHooks(["Badge", "Ribbon"], (token2) => {
+  const badgeToken = prepareToken$3(token2);
+  return genRibbonStyle(badgeToken);
+}, prepareComponentToken$h);
+const Ribbon = (props) => {
+  const {
+    className,
+    prefixCls: customizePrefixCls,
+    style: style2,
+    color,
+    children,
+    text,
+    placement = "end",
+    rootClassName
+  } = props;
+  const {
+    getPrefixCls,
+    direction
+  } = reactExports.useContext(ConfigContext);
+  const prefixCls = getPrefixCls("ribbon", customizePrefixCls);
+  const wrapperCls = `${prefixCls}-wrapper`;
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$o(prefixCls, wrapperCls);
+  const colorInPreset = isPresetColor(color, false);
+  const ribbonCls = classNames(prefixCls, `${prefixCls}-placement-${placement}`, {
+    [`${prefixCls}-rtl`]: direction === "rtl",
+    [`${prefixCls}-color-${color}`]: colorInPreset
+  }, className);
+  const colorStyle = {};
+  const cornerColorStyle = {};
+  if (color && !colorInPreset) {
+    colorStyle.background = color;
+    cornerColorStyle.color = color;
+  }
+  return wrapCSSVar(/* @__PURE__ */ reactExports.createElement("div", {
+    className: classNames(wrapperCls, rootClassName, hashId, cssVarCls)
+  }, children, /* @__PURE__ */ reactExports.createElement("div", {
+    className: classNames(ribbonCls, hashId),
+    style: Object.assign(Object.assign({}, colorStyle), style2)
+  }, /* @__PURE__ */ reactExports.createElement("span", {
+    className: `${prefixCls}-text`
+  }, text), /* @__PURE__ */ reactExports.createElement("div", {
+    className: `${prefixCls}-corner`,
+    style: cornerColorStyle
+  }))));
+};
+const UnitNumber = (props) => {
+  const {
+    prefixCls,
+    value,
+    current,
+    offset: offset2 = 0
+  } = props;
+  let style2;
+  if (offset2) {
+    style2 = {
+      position: "absolute",
+      top: `${offset2}00%`,
+      left: 0
+    };
+  }
+  return /* @__PURE__ */ reactExports.createElement("span", {
+    style: style2,
+    className: classNames(`${prefixCls}-only-unit`, {
+      current
+    })
+  }, value);
+};
+function getOffset$2(start, end, unit2) {
+  let index2 = start;
+  let offset2 = 0;
+  while ((index2 + 10) % 10 !== end) {
+    index2 += unit2;
+    offset2 += unit2;
+  }
+  return offset2;
+}
+const SingleNumber = (props) => {
+  const {
+    prefixCls,
+    count: originCount,
+    value: originValue
+  } = props;
+  const value = Number(originValue);
+  const count = Math.abs(originCount);
+  const [prevValue, setPrevValue] = reactExports.useState(value);
+  const [prevCount, setPrevCount] = reactExports.useState(count);
+  const onTransitionEnd = () => {
+    setPrevValue(value);
+    setPrevCount(count);
+  };
+  reactExports.useEffect(() => {
+    const timer = setTimeout(onTransitionEnd, 1e3);
+    return () => clearTimeout(timer);
+  }, [value]);
+  let unitNodes;
+  let offsetStyle;
+  if (prevValue === value || Number.isNaN(value) || Number.isNaN(prevValue)) {
+    unitNodes = [/* @__PURE__ */ reactExports.createElement(UnitNumber, Object.assign({}, props, {
+      key: value,
+      current: true
+    }))];
+    offsetStyle = {
+      transition: "none"
+    };
+  } else {
+    unitNodes = [];
+    const end = value + 10;
+    const unitNumberList = [];
+    for (let index2 = value; index2 <= end; index2 += 1) {
+      unitNumberList.push(index2);
+    }
+    const unit2 = prevCount < count ? 1 : -1;
+    const prevIndex = unitNumberList.findIndex((n2) => n2 % 10 === prevValue);
+    const cutUnitNumberList = unit2 < 0 ? unitNumberList.slice(0, prevIndex + 1) : unitNumberList.slice(prevIndex);
+    unitNodes = cutUnitNumberList.map((n2, index2) => {
+      const singleUnit = n2 % 10;
+      return /* @__PURE__ */ reactExports.createElement(UnitNumber, Object.assign({}, props, {
+        key: n2,
+        value: singleUnit,
+        offset: unit2 < 0 ? index2 - prevIndex : index2,
+        current: index2 === prevIndex
+      }));
+    });
+    offsetStyle = {
+      transform: `translateY(${-getOffset$2(prevValue, value, unit2)}00%)`
+    };
+  }
+  return /* @__PURE__ */ reactExports.createElement("span", {
+    className: `${prefixCls}-only`,
+    style: offsetStyle,
+    onTransitionEnd
+  }, unitNodes);
+};
+var __rest$S = function(s, e2) {
+  var t2 = {};
+  for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
+    if (e2.indexOf(p2[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p2[i])) t2[p2[i]] = s[p2[i]];
+  }
+  return t2;
+};
+const ScrollNumber = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
+  const {
+    prefixCls: customizePrefixCls,
+    count,
+    className,
+    motionClassName,
+    style: style2,
+    title,
+    show,
+    component: Component = "sup",
+    children
+  } = props, restProps = __rest$S(props, ["prefixCls", "count", "className", "motionClassName", "style", "title", "show", "component", "children"]);
+  const {
+    getPrefixCls
+  } = reactExports.useContext(ConfigContext);
+  const prefixCls = getPrefixCls("scroll-number", customizePrefixCls);
+  const newProps = Object.assign(Object.assign({}, restProps), {
+    "data-show": show,
+    style: style2,
+    className: classNames(prefixCls, className, motionClassName),
+    title
+  });
+  let numberNodes = count;
+  if (count && Number(count) % 1 === 0) {
+    const numberList = String(count).split("");
+    numberNodes = /* @__PURE__ */ reactExports.createElement("bdi", null, numberList.map((num, i) => /* @__PURE__ */ reactExports.createElement(SingleNumber, {
+      prefixCls,
+      count: Number(count),
+      value: num,
+      // eslint-disable-next-line react/no-array-index-key
+      key: numberList.length - i
+    })));
+  }
+  if (style2 === null || style2 === void 0 ? void 0 : style2.borderColor) {
+    newProps.style = Object.assign(Object.assign({}, style2), {
+      boxShadow: `0 0 0 1px ${style2.borderColor} inset`
+    });
+  }
+  if (children) {
+    return cloneElement(children, (oriProps) => ({
+      className: classNames(`${prefixCls}-custom-component`, oriProps === null || oriProps === void 0 ? void 0 : oriProps.className, motionClassName)
+    }));
+  }
+  return /* @__PURE__ */ reactExports.createElement(Component, Object.assign({}, newProps, {
+    ref
+  }), numberNodes);
+});
+var __rest$R = function(s, e2) {
+  var t2 = {};
+  for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
+    if (e2.indexOf(p2[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p2[i])) t2[p2[i]] = s[p2[i]];
+  }
+  return t2;
+};
+const InternalBadge = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
+  var _a, _b, _c, _d, _e;
+  const {
+    prefixCls: customizePrefixCls,
+    scrollNumberPrefixCls: customizeScrollNumberPrefixCls,
+    children,
+    status,
+    text,
+    color,
+    count = null,
+    overflowCount = 99,
+    dot = false,
+    size = "default",
+    title,
+    offset: offset2,
+    style: style2,
+    className,
+    rootClassName,
+    classNames: classNames$1,
+    styles,
+    showZero = false
+  } = props, restProps = __rest$R(props, ["prefixCls", "scrollNumberPrefixCls", "children", "status", "text", "color", "count", "overflowCount", "dot", "size", "title", "offset", "style", "className", "rootClassName", "classNames", "styles", "showZero"]);
+  const {
+    getPrefixCls,
+    direction,
+    badge
+  } = reactExports.useContext(ConfigContext);
+  const prefixCls = getPrefixCls("badge", customizePrefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$p(prefixCls);
+  const numberedDisplayCount = count > overflowCount ? `${overflowCount}+` : count;
+  const isZero = numberedDisplayCount === "0" || numberedDisplayCount === 0 || text === "0" || text === 0;
+  const ignoreCount = count === null || isZero && !showZero;
+  const hasStatus = (status !== null && status !== void 0 || color !== null && color !== void 0) && ignoreCount;
+  const hasStatusValue = status !== null && status !== void 0 || !isZero;
+  const showAsDot = dot && !isZero;
+  const mergedCount = showAsDot ? "" : numberedDisplayCount;
+  const isHidden = reactExports.useMemo(() => {
+    const isEmpty = (mergedCount === null || mergedCount === void 0 || mergedCount === "") && (text === void 0 || text === null || text === "");
+    return (isEmpty || isZero && !showZero) && !showAsDot;
+  }, [mergedCount, isZero, showZero, showAsDot, text]);
+  const countRef = reactExports.useRef(count);
+  if (!isHidden) {
+    countRef.current = count;
+  }
+  const livingCount = countRef.current;
+  const displayCountRef = reactExports.useRef(mergedCount);
+  if (!isHidden) {
+    displayCountRef.current = mergedCount;
+  }
+  const displayCount = displayCountRef.current;
+  const isDotRef = reactExports.useRef(showAsDot);
+  if (!isHidden) {
+    isDotRef.current = showAsDot;
+  }
+  const mergedStyle = reactExports.useMemo(() => {
+    if (!offset2) {
+      return Object.assign(Object.assign({}, badge === null || badge === void 0 ? void 0 : badge.style), style2);
+    }
+    const offsetStyle = {
+      marginTop: offset2[1]
+    };
+    if (direction === "rtl") {
+      offsetStyle.left = Number.parseInt(offset2[0], 10);
+    } else {
+      offsetStyle.right = -Number.parseInt(offset2[0], 10);
+    }
+    return Object.assign(Object.assign(Object.assign({}, offsetStyle), badge === null || badge === void 0 ? void 0 : badge.style), style2);
+  }, [direction, offset2, style2, badge === null || badge === void 0 ? void 0 : badge.style]);
+  const titleNode = title !== null && title !== void 0 ? title : typeof livingCount === "string" || typeof livingCount === "number" ? livingCount : void 0;
+  const showStatusTextNode = !isHidden && (text === 0 ? showZero : !!text && text !== true);
+  const statusTextNode = !showStatusTextNode ? null : /* @__PURE__ */ reactExports.createElement("span", {
+    className: `${prefixCls}-status-text`
+  }, text);
+  const displayNode = !livingCount || typeof livingCount !== "object" ? void 0 : cloneElement(livingCount, (oriProps) => ({
+    style: Object.assign(Object.assign({}, mergedStyle), oriProps.style)
+  }));
+  const isInternalColor = isPresetColor(color, false);
+  const statusCls = classNames(classNames$1 === null || classNames$1 === void 0 ? void 0 : classNames$1.indicator, (_a = badge === null || badge === void 0 ? void 0 : badge.classNames) === null || _a === void 0 ? void 0 : _a.indicator, {
+    [`${prefixCls}-status-dot`]: hasStatus,
+    [`${prefixCls}-status-${status}`]: !!status,
+    [`${prefixCls}-color-${color}`]: isInternalColor
+  });
+  const statusStyle = {};
+  if (color && !isInternalColor) {
+    statusStyle.color = color;
+    statusStyle.background = color;
+  }
+  const badgeClassName = classNames(prefixCls, {
+    [`${prefixCls}-status`]: hasStatus,
+    [`${prefixCls}-not-a-wrapper`]: !children,
+    [`${prefixCls}-rtl`]: direction === "rtl"
+  }, className, rootClassName, badge === null || badge === void 0 ? void 0 : badge.className, (_b = badge === null || badge === void 0 ? void 0 : badge.classNames) === null || _b === void 0 ? void 0 : _b.root, classNames$1 === null || classNames$1 === void 0 ? void 0 : classNames$1.root, hashId, cssVarCls);
+  if (!children && hasStatus && (text || hasStatusValue || !ignoreCount)) {
+    const statusTextColor = mergedStyle.color;
+    return wrapCSSVar(/* @__PURE__ */ reactExports.createElement("span", Object.assign({}, restProps, {
+      className: badgeClassName,
+      style: Object.assign(Object.assign(Object.assign({}, styles === null || styles === void 0 ? void 0 : styles.root), (_c = badge === null || badge === void 0 ? void 0 : badge.styles) === null || _c === void 0 ? void 0 : _c.root), mergedStyle)
+    }), /* @__PURE__ */ reactExports.createElement("span", {
+      className: statusCls,
+      style: Object.assign(Object.assign(Object.assign({}, styles === null || styles === void 0 ? void 0 : styles.indicator), (_d = badge === null || badge === void 0 ? void 0 : badge.styles) === null || _d === void 0 ? void 0 : _d.indicator), statusStyle)
+    }), showStatusTextNode && /* @__PURE__ */ reactExports.createElement("span", {
+      style: {
+        color: statusTextColor
+      },
+      className: `${prefixCls}-status-text`
+    }, text)));
+  }
+  return wrapCSSVar(/* @__PURE__ */ reactExports.createElement("span", Object.assign({
+    ref
+  }, restProps, {
+    className: badgeClassName,
+    style: Object.assign(Object.assign({}, (_e = badge === null || badge === void 0 ? void 0 : badge.styles) === null || _e === void 0 ? void 0 : _e.root), styles === null || styles === void 0 ? void 0 : styles.root)
+  }), children, /* @__PURE__ */ reactExports.createElement(CSSMotion, {
+    visible: !isHidden,
+    motionName: `${prefixCls}-zoom`,
+    motionAppear: false,
+    motionDeadline: 1e3
+  }, ({
+    className: motionClassName
+  }) => {
+    var _a2, _b2;
+    const scrollNumberPrefixCls = getPrefixCls("scroll-number", customizeScrollNumberPrefixCls);
+    const isDot = isDotRef.current;
+    const scrollNumberCls = classNames(classNames$1 === null || classNames$1 === void 0 ? void 0 : classNames$1.indicator, (_a2 = badge === null || badge === void 0 ? void 0 : badge.classNames) === null || _a2 === void 0 ? void 0 : _a2.indicator, {
+      [`${prefixCls}-dot`]: isDot,
+      [`${prefixCls}-count`]: !isDot,
+      [`${prefixCls}-count-sm`]: size === "small",
+      [`${prefixCls}-multiple-words`]: !isDot && displayCount && displayCount.toString().length > 1,
+      [`${prefixCls}-status-${status}`]: !!status,
+      [`${prefixCls}-color-${color}`]: isInternalColor
+    });
+    let scrollNumberStyle = Object.assign(Object.assign(Object.assign({}, styles === null || styles === void 0 ? void 0 : styles.indicator), (_b2 = badge === null || badge === void 0 ? void 0 : badge.styles) === null || _b2 === void 0 ? void 0 : _b2.indicator), mergedStyle);
+    if (color && !isInternalColor) {
+      scrollNumberStyle = scrollNumberStyle || {};
+      scrollNumberStyle.background = color;
+    }
+    return /* @__PURE__ */ reactExports.createElement(ScrollNumber, {
+      prefixCls: scrollNumberPrefixCls,
+      show: !isHidden,
+      motionClassName,
+      className: scrollNumberCls,
+      count: displayCount,
+      title: titleNode,
+      style: scrollNumberStyle,
+      key: "scrollNumber"
+    }, displayNode);
+  }), statusTextNode));
+});
+const Badge = InternalBadge;
+Badge.Ribbon = Ribbon;
 var LeftOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z" } }] }, "name": "left", "theme": "outlined" };
 var LeftOutlined = function LeftOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -32022,7 +33123,7 @@ var LeftOutlined = function LeftOutlined2(props, ref) {
     icon: LeftOutlined$1
   }));
 };
-var RefIcon$C = /* @__PURE__ */ reactExports.forwardRef(LeftOutlined);
+var RefIcon$I = /* @__PURE__ */ reactExports.forwardRef(LeftOutlined);
 var ESC$1 = KeyCode.ESC, TAB = KeyCode.TAB;
 function useAccessibility$1(_ref) {
   var visible = _ref.visible, triggerRef = _ref.triggerRef, onVisibleChange = _ref.onVisibleChange, autoFocus = _ref.autoFocus, overlayRef = _ref.overlayRef;
@@ -33597,7 +34698,7 @@ var BarsOutlined = function BarsOutlined2(props, ref) {
     icon: BarsOutlined$1
   }));
 };
-var RefIcon$B = /* @__PURE__ */ reactExports.forwardRef(BarsOutlined);
+var RefIcon$H = /* @__PURE__ */ reactExports.forwardRef(BarsOutlined);
 const LayoutContext = /* @__PURE__ */ reactExports.createContext({
   siderHook: {
     addSider: () => null,
@@ -33927,11 +35028,11 @@ const Sider$1 = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     onClick: toggle,
     className: classNames(`${prefixCls}-zero-width-trigger`, `${prefixCls}-zero-width-trigger-${reverseArrow ? "right" : "left"}`),
     style: zeroWidthTriggerStyle
-  }, trigger || /* @__PURE__ */ reactExports.createElement(RefIcon$B, null)) : null;
+  }, trigger || /* @__PURE__ */ reactExports.createElement(RefIcon$H, null)) : null;
   const reverseIcon = direction === "rtl" === !reverseArrow;
   const iconObj = {
-    expanded: reverseIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$G, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$C, null),
-    collapsed: reverseIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$C, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$G, null)
+    expanded: reverseIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$M, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$I, null),
+    collapsed: reverseIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$I, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$M, null)
   };
   const status = collapsed ? "collapsed" : "expanded";
   const defaultTrigger = iconObj[status];
@@ -33975,7 +35076,7 @@ var EllipsisOutlined = function EllipsisOutlined2(props, ref) {
     icon: EllipsisOutlined$1
   }));
 };
-var RefIcon$A = /* @__PURE__ */ reactExports.forwardRef(EllipsisOutlined);
+var RefIcon$G = /* @__PURE__ */ reactExports.forwardRef(EllipsisOutlined);
 const MenuContext = /* @__PURE__ */ reactExports.createContext({
   prefixCls: "",
   firstLevel: true,
@@ -35263,7 +36364,7 @@ const InternalMenu = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     value: contextValue
   }, /* @__PURE__ */ reactExports.createElement(ExportMenu, Object.assign({
     getPopupContainer,
-    overflowedIndicator: /* @__PURE__ */ reactExports.createElement(RefIcon$A, null),
+    overflowedIndicator: /* @__PURE__ */ reactExports.createElement(RefIcon$G, null),
     overflowedIndicatorPopupClassName: classNames(prefixCls, `${prefixCls}-${theme}`, overflowedIndicatorPopupClassName),
     mode: mergedMode,
     selectable: mergedSelectable,
@@ -35729,9 +36830,9 @@ const Dropdown$1 = (props) => {
       rootClassName: classNames(cssVarCls, rootCls),
       expandIcon: /* @__PURE__ */ reactExports.createElement("span", {
         className: `${prefixCls}-menu-submenu-arrow`
-      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$C, {
+      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$I, {
         className: `${prefixCls}-menu-submenu-arrow-icon`
-      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$G, {
+      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$M, {
         className: `${prefixCls}-menu-submenu-arrow-icon`
       })),
       mode: "vertical",
@@ -35772,8 +36873,8 @@ const Dropdown$1 = (props) => {
   }
   return wrapCSSVar(renderNode);
 };
-const PurePanel$4 = genPurePanel(Dropdown$1, "align", void 0, "dropdown", (prefixCls) => prefixCls);
-const WrapPurePanel = (props) => /* @__PURE__ */ reactExports.createElement(PurePanel$4, Object.assign({}, props), /* @__PURE__ */ reactExports.createElement("span", null));
+const PurePanel$3 = genPurePanel(Dropdown$1, "align", void 0, "dropdown", (prefixCls) => prefixCls);
+const WrapPurePanel = (props) => /* @__PURE__ */ reactExports.createElement(PurePanel$3, Object.assign({}, props), /* @__PURE__ */ reactExports.createElement("span", null));
 Dropdown$1._InternalPanelDoNotUseOrYouWillBeFired = WrapPurePanel;
 const BreadcrumbSeparator = ({
   children
@@ -35889,7 +36990,7 @@ const InternalBreadcrumbItem = (props) => {
         placement: "bottom"
       }, mergeDropDownProps), /* @__PURE__ */ reactExports.createElement("span", {
         className: `${prefixCls}-overlay-link`
-      }, breadcrumbItem, /* @__PURE__ */ reactExports.createElement(RefIcon$E, null)));
+      }, breadcrumbItem, /* @__PURE__ */ reactExports.createElement(RefIcon$K, null)));
     }
     return breadcrumbItem;
   };
@@ -38014,7 +39115,7 @@ var PlusOutlined = function PlusOutlined2(props, ref) {
     icon: PlusOutlined$1
   }));
 };
-var RefIcon$z = /* @__PURE__ */ reactExports.forwardRef(PlusOutlined);
+var RefIcon$F = /* @__PURE__ */ reactExports.forwardRef(PlusOutlined);
 const TabContext = /* @__PURE__ */ reactExports.createContext(null);
 var useIndicator = function useIndicator2(options) {
   var activeTabOffset = options.activeTabOffset, horizontal = options.horizontal, rtl = options.rtl, _options$indicator = options.indicator, indicator = _options$indicator === void 0 ? {} : _options$indicator;
@@ -39325,7 +40426,7 @@ function useLegacyItems(items, children) {
   });
   return filter(childrenItems);
 }
-const genMotionStyle$1 = (token2) => {
+const genMotionStyle = (token2) => {
   const {
     componentCls,
     motionDurationSlow
@@ -40219,7 +41320,7 @@ const useStyle$g = genStyleHooks("Tabs", (token2) => {
     tabsHorizontalItemMargin: `0 0 0 ${unit$1(token2.horizontalItemGutter)}`,
     tabsHorizontalItemMarginRTL: `0 0 0 ${unit$1(token2.horizontalItemGutter)}`
   });
-  return [genSizeStyle$1(tabsToken), genRtlStyle(tabsToken), genPositionStyle(tabsToken), genDropdownStyle(tabsToken), genCardStyle(tabsToken), genTabsStyle(tabsToken), genMotionStyle$1(tabsToken)];
+  return [genSizeStyle$1(tabsToken), genRtlStyle(tabsToken), genPositionStyle(tabsToken), genDropdownStyle(tabsToken), genCardStyle(tabsToken), genTabsStyle(tabsToken), genMotionStyle(tabsToken)];
 }, prepareComponentToken$b);
 const TabPane = () => null;
 var __rest$E = function(s, e2) {
@@ -40279,8 +41380,8 @@ const InternalTabs = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
       }) => {
         onEdit === null || onEdit === void 0 ? void 0 : onEdit(editType === "add" ? event : key, editType);
       },
-      removeIcon: (_a = removeIcon !== null && removeIcon !== void 0 ? removeIcon : tabs === null || tabs === void 0 ? void 0 : tabs.removeIcon) !== null && _a !== void 0 ? _a : /* @__PURE__ */ reactExports.createElement(RefIcon$K, null),
-      addIcon: (addIcon !== null && addIcon !== void 0 ? addIcon : tabs === null || tabs === void 0 ? void 0 : tabs.addIcon) || /* @__PURE__ */ reactExports.createElement(RefIcon$z, null),
+      removeIcon: (_a = removeIcon !== null && removeIcon !== void 0 ? removeIcon : tabs === null || tabs === void 0 ? void 0 : tabs.removeIcon) !== null && _a !== void 0 ? _a : /* @__PURE__ */ reactExports.createElement(RefIcon$Q, null),
+      addIcon: (addIcon !== null && addIcon !== void 0 ? addIcon : tabs === null || tabs === void 0 ? void 0 : tabs.addIcon) || /* @__PURE__ */ reactExports.createElement(RefIcon$F, null),
       showAdd: hideAdd !== true
     };
   }
@@ -40309,7 +41410,7 @@ const InternalTabs = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     style: mergedStyle,
     editable,
     more: Object.assign({
-      icon: (_l = (_k = (_j = (_h = tabs === null || tabs === void 0 ? void 0 : tabs.more) === null || _h === void 0 ? void 0 : _h.icon) !== null && _j !== void 0 ? _j : tabs === null || tabs === void 0 ? void 0 : tabs.moreIcon) !== null && _k !== void 0 ? _k : moreIcon) !== null && _l !== void 0 ? _l : /* @__PURE__ */ reactExports.createElement(RefIcon$A, null),
+      icon: (_l = (_k = (_j = (_h = tabs === null || tabs === void 0 ? void 0 : tabs.more) === null || _h === void 0 ? void 0 : _h.icon) !== null && _j !== void 0 ? _j : tabs === null || tabs === void 0 ? void 0 : tabs.moreIcon) !== null && _k !== void 0 ? _k : moreIcon) !== null && _l !== void 0 ? _l : /* @__PURE__ */ reactExports.createElement(RefIcon$G, null),
       transitionName: `${rootPrefixCls}-slide-up`
     }, more),
     prefixCls,
@@ -41773,7 +42874,7 @@ const getAllowClear = (allowClear) => {
     mergedAllowClear = allowClear;
   } else if (allowClear) {
     mergedAllowClear = {
-      clearIcon: /* @__PURE__ */ React.createElement(RefIcon$L, null)
+      clearIcon: /* @__PURE__ */ React.createElement(RefIcon$R, null)
     };
   }
   return mergedAllowClear;
@@ -42480,770 +43581,6 @@ const Descriptions = (props) => {
   }))))))));
 };
 Descriptions.Item = DescriptionsItem;
-var DrawerContext = /* @__PURE__ */ reactExports.createContext(null);
-var RefContext = /* @__PURE__ */ reactExports.createContext({});
-var _excluded$b = ["prefixCls", "className", "containerRef"];
-var DrawerPanel$1 = function DrawerPanel2(props) {
-  var prefixCls = props.prefixCls, className = props.className, containerRef = props.containerRef, restProps = _objectWithoutProperties(props, _excluded$b);
-  var _React$useContext = reactExports.useContext(RefContext), panelRef = _React$useContext.panel;
-  var mergedRef = useComposeRef(panelRef, containerRef);
-  return /* @__PURE__ */ reactExports.createElement("div", _extends({
-    className: classNames("".concat(prefixCls, "-content"), className),
-    role: "dialog",
-    ref: mergedRef
-  }, pickAttrs(props, {
-    aria: true
-  }), {
-    "aria-modal": "true"
-  }, restProps));
-};
-function parseWidthHeight(value) {
-  if (typeof value === "string" && String(Number(value)) === value) {
-    warningOnce(false, "Invalid value type of `width` or `height` which should be number type instead.");
-    return Number(value);
-  }
-  return value;
-}
-var sentinelStyle = {
-  width: 0,
-  height: 0,
-  overflow: "hidden",
-  outline: "none",
-  position: "absolute"
-};
-function DrawerPopup(props, ref) {
-  var _ref, _pushConfig$distance, _pushConfig;
-  var prefixCls = props.prefixCls, open2 = props.open, placement = props.placement, inline2 = props.inline, push = props.push, forceRender = props.forceRender, autoFocus = props.autoFocus, keyboard = props.keyboard, drawerClassNames = props.classNames, rootClassName = props.rootClassName, rootStyle = props.rootStyle, zIndex = props.zIndex, className = props.className, id2 = props.id, style2 = props.style, motion2 = props.motion, width = props.width, height = props.height, children = props.children, mask = props.mask, maskClosable = props.maskClosable, maskMotion = props.maskMotion, maskClassName = props.maskClassName, maskStyle = props.maskStyle, afterOpenChange = props.afterOpenChange, onClose = props.onClose, onMouseEnter = props.onMouseEnter, onMouseOver = props.onMouseOver, onMouseLeave = props.onMouseLeave, onClick = props.onClick, onKeyDown2 = props.onKeyDown, onKeyUp = props.onKeyUp, styles = props.styles, drawerRender = props.drawerRender;
-  var panelRef = reactExports.useRef();
-  var sentinelStartRef = reactExports.useRef();
-  var sentinelEndRef = reactExports.useRef();
-  reactExports.useImperativeHandle(ref, function() {
-    return panelRef.current;
-  });
-  var onPanelKeyDown = function onPanelKeyDown2(event) {
-    var keyCode = event.keyCode, shiftKey = event.shiftKey;
-    switch (keyCode) {
-      case KeyCode.TAB: {
-        if (keyCode === KeyCode.TAB) {
-          if (!shiftKey && document.activeElement === sentinelEndRef.current) {
-            var _sentinelStartRef$cur;
-            (_sentinelStartRef$cur = sentinelStartRef.current) === null || _sentinelStartRef$cur === void 0 || _sentinelStartRef$cur.focus({
-              preventScroll: true
-            });
-          } else if (shiftKey && document.activeElement === sentinelStartRef.current) {
-            var _sentinelEndRef$curre;
-            (_sentinelEndRef$curre = sentinelEndRef.current) === null || _sentinelEndRef$curre === void 0 || _sentinelEndRef$curre.focus({
-              preventScroll: true
-            });
-          }
-        }
-        break;
-      }
-      case KeyCode.ESC: {
-        if (onClose && keyboard) {
-          event.stopPropagation();
-          onClose(event);
-        }
-        break;
-      }
-    }
-  };
-  reactExports.useEffect(function() {
-    if (open2 && autoFocus) {
-      var _panelRef$current;
-      (_panelRef$current = panelRef.current) === null || _panelRef$current === void 0 || _panelRef$current.focus({
-        preventScroll: true
-      });
-    }
-  }, [open2]);
-  var _React$useState = reactExports.useState(false), _React$useState2 = _slicedToArray(_React$useState, 2), pushed = _React$useState2[0], setPushed = _React$useState2[1];
-  var parentContext = reactExports.useContext(DrawerContext);
-  var pushConfig;
-  if (typeof push === "boolean") {
-    pushConfig = push ? {} : {
-      distance: 0
-    };
-  } else {
-    pushConfig = push || {};
-  }
-  var pushDistance = (_ref = (_pushConfig$distance = (_pushConfig = pushConfig) === null || _pushConfig === void 0 ? void 0 : _pushConfig.distance) !== null && _pushConfig$distance !== void 0 ? _pushConfig$distance : parentContext === null || parentContext === void 0 ? void 0 : parentContext.pushDistance) !== null && _ref !== void 0 ? _ref : 180;
-  var mergedContext = reactExports.useMemo(function() {
-    return {
-      pushDistance,
-      push: function push2() {
-        setPushed(true);
-      },
-      pull: function pull() {
-        setPushed(false);
-      }
-    };
-  }, [pushDistance]);
-  reactExports.useEffect(function() {
-    if (open2) {
-      var _parentContext$push;
-      parentContext === null || parentContext === void 0 || (_parentContext$push = parentContext.push) === null || _parentContext$push === void 0 || _parentContext$push.call(parentContext);
-    } else {
-      var _parentContext$pull;
-      parentContext === null || parentContext === void 0 || (_parentContext$pull = parentContext.pull) === null || _parentContext$pull === void 0 || _parentContext$pull.call(parentContext);
-    }
-  }, [open2]);
-  reactExports.useEffect(function() {
-    return function() {
-      var _parentContext$pull2;
-      parentContext === null || parentContext === void 0 || (_parentContext$pull2 = parentContext.pull) === null || _parentContext$pull2 === void 0 || _parentContext$pull2.call(parentContext);
-    };
-  }, []);
-  var maskNode = /* @__PURE__ */ reactExports.createElement(CSSMotion, _extends({
-    key: "mask"
-  }, maskMotion, {
-    visible: mask && open2
-  }), function(_ref2, maskRef) {
-    var motionMaskClassName = _ref2.className, motionMaskStyle = _ref2.style;
-    return /* @__PURE__ */ reactExports.createElement("div", {
-      className: classNames("".concat(prefixCls, "-mask"), motionMaskClassName, drawerClassNames === null || drawerClassNames === void 0 ? void 0 : drawerClassNames.mask, maskClassName),
-      style: _objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, motionMaskStyle), maskStyle), styles === null || styles === void 0 ? void 0 : styles.mask),
-      onClick: maskClosable && open2 ? onClose : void 0,
-      ref: maskRef
-    });
-  });
-  var motionProps = typeof motion2 === "function" ? motion2(placement) : motion2;
-  var wrapperStyle = {};
-  if (pushed && pushDistance) {
-    switch (placement) {
-      case "top":
-        wrapperStyle.transform = "translateY(".concat(pushDistance, "px)");
-        break;
-      case "bottom":
-        wrapperStyle.transform = "translateY(".concat(-pushDistance, "px)");
-        break;
-      case "left":
-        wrapperStyle.transform = "translateX(".concat(pushDistance, "px)");
-        break;
-      default:
-        wrapperStyle.transform = "translateX(".concat(-pushDistance, "px)");
-        break;
-    }
-  }
-  if (placement === "left" || placement === "right") {
-    wrapperStyle.width = parseWidthHeight(width);
-  } else {
-    wrapperStyle.height = parseWidthHeight(height);
-  }
-  var eventHandlers = {
-    onMouseEnter,
-    onMouseOver,
-    onMouseLeave,
-    onClick,
-    onKeyDown: onKeyDown2,
-    onKeyUp
-  };
-  var panelNode = /* @__PURE__ */ reactExports.createElement(CSSMotion, _extends({
-    key: "panel"
-  }, motionProps, {
-    visible: open2,
-    forceRender,
-    onVisibleChanged: function onVisibleChanged(nextVisible) {
-      afterOpenChange === null || afterOpenChange === void 0 || afterOpenChange(nextVisible);
-    },
-    removeOnLeave: false,
-    leavedClassName: "".concat(prefixCls, "-content-wrapper-hidden")
-  }), function(_ref3, motionRef) {
-    var motionClassName = _ref3.className, motionStyle = _ref3.style;
-    var content = /* @__PURE__ */ reactExports.createElement(DrawerPanel$1, _extends({
-      id: id2,
-      containerRef: motionRef,
-      prefixCls,
-      className: classNames(className, drawerClassNames === null || drawerClassNames === void 0 ? void 0 : drawerClassNames.content),
-      style: _objectSpread2$1(_objectSpread2$1({}, style2), styles === null || styles === void 0 ? void 0 : styles.content)
-    }, pickAttrs(props, {
-      aria: true
-    }), eventHandlers), children);
-    return /* @__PURE__ */ reactExports.createElement("div", _extends({
-      className: classNames("".concat(prefixCls, "-content-wrapper"), drawerClassNames === null || drawerClassNames === void 0 ? void 0 : drawerClassNames.wrapper, motionClassName),
-      style: _objectSpread2$1(_objectSpread2$1(_objectSpread2$1({}, wrapperStyle), motionStyle), styles === null || styles === void 0 ? void 0 : styles.wrapper)
-    }, pickAttrs(props, {
-      data: true
-    })), drawerRender ? drawerRender(content) : content);
-  });
-  var containerStyle = _objectSpread2$1({}, rootStyle);
-  if (zIndex) {
-    containerStyle.zIndex = zIndex;
-  }
-  return /* @__PURE__ */ reactExports.createElement(DrawerContext.Provider, {
-    value: mergedContext
-  }, /* @__PURE__ */ reactExports.createElement("div", {
-    className: classNames(prefixCls, "".concat(prefixCls, "-").concat(placement), rootClassName, _defineProperty(_defineProperty({}, "".concat(prefixCls, "-open"), open2), "".concat(prefixCls, "-inline"), inline2)),
-    style: containerStyle,
-    tabIndex: -1,
-    ref: panelRef,
-    onKeyDown: onPanelKeyDown
-  }, maskNode, /* @__PURE__ */ reactExports.createElement("div", {
-    tabIndex: 0,
-    ref: sentinelStartRef,
-    style: sentinelStyle,
-    "aria-hidden": "true",
-    "data-sentinel": "start"
-  }), panelNode, /* @__PURE__ */ reactExports.createElement("div", {
-    tabIndex: 0,
-    ref: sentinelEndRef,
-    style: sentinelStyle,
-    "aria-hidden": "true",
-    "data-sentinel": "end"
-  })));
-}
-var RefDrawerPopup = /* @__PURE__ */ reactExports.forwardRef(DrawerPopup);
-var Drawer$1 = function Drawer2(props) {
-  var _props$open = props.open, open2 = _props$open === void 0 ? false : _props$open, _props$prefixCls = props.prefixCls, prefixCls = _props$prefixCls === void 0 ? "rc-drawer" : _props$prefixCls, _props$placement = props.placement, placement = _props$placement === void 0 ? "right" : _props$placement, _props$autoFocus = props.autoFocus, autoFocus = _props$autoFocus === void 0 ? true : _props$autoFocus, _props$keyboard = props.keyboard, keyboard = _props$keyboard === void 0 ? true : _props$keyboard, _props$width = props.width, width = _props$width === void 0 ? 378 : _props$width, _props$mask = props.mask, mask = _props$mask === void 0 ? true : _props$mask, _props$maskClosable = props.maskClosable, maskClosable = _props$maskClosable === void 0 ? true : _props$maskClosable, getContainer2 = props.getContainer, forceRender = props.forceRender, afterOpenChange = props.afterOpenChange, destroyOnClose = props.destroyOnClose, onMouseEnter = props.onMouseEnter, onMouseOver = props.onMouseOver, onMouseLeave = props.onMouseLeave, onClick = props.onClick, onKeyDown2 = props.onKeyDown, onKeyUp = props.onKeyUp, panelRef = props.panelRef;
-  var _React$useState = reactExports.useState(false), _React$useState2 = _slicedToArray(_React$useState, 2), animatedVisible = _React$useState2[0], setAnimatedVisible = _React$useState2[1];
-  var _React$useState3 = reactExports.useState(false), _React$useState4 = _slicedToArray(_React$useState3, 2), mounted = _React$useState4[0], setMounted = _React$useState4[1];
-  useLayoutEffect$1(function() {
-    setMounted(true);
-  }, []);
-  var mergedOpen = mounted ? open2 : false;
-  var popupRef = reactExports.useRef();
-  var lastActiveRef = reactExports.useRef();
-  useLayoutEffect$1(function() {
-    if (mergedOpen) {
-      lastActiveRef.current = document.activeElement;
-    }
-  }, [mergedOpen]);
-  var internalAfterOpenChange = function internalAfterOpenChange2(nextVisible) {
-    var _popupRef$current;
-    setAnimatedVisible(nextVisible);
-    afterOpenChange === null || afterOpenChange === void 0 || afterOpenChange(nextVisible);
-    if (!nextVisible && lastActiveRef.current && !((_popupRef$current = popupRef.current) !== null && _popupRef$current !== void 0 && _popupRef$current.contains(lastActiveRef.current))) {
-      var _lastActiveRef$curren;
-      (_lastActiveRef$curren = lastActiveRef.current) === null || _lastActiveRef$curren === void 0 || _lastActiveRef$curren.focus({
-        preventScroll: true
-      });
-    }
-  };
-  var refContext = reactExports.useMemo(function() {
-    return {
-      panel: panelRef
-    };
-  }, [panelRef]);
-  if (!forceRender && !animatedVisible && !mergedOpen && destroyOnClose) {
-    return null;
-  }
-  var eventHandlers = {
-    onMouseEnter,
-    onMouseOver,
-    onMouseLeave,
-    onClick,
-    onKeyDown: onKeyDown2,
-    onKeyUp
-  };
-  var drawerPopupProps = _objectSpread2$1(_objectSpread2$1({}, props), {}, {
-    open: mergedOpen,
-    prefixCls,
-    placement,
-    autoFocus,
-    keyboard,
-    width,
-    mask,
-    maskClosable,
-    inline: getContainer2 === false,
-    afterOpenChange: internalAfterOpenChange,
-    ref: popupRef
-  }, eventHandlers);
-  return /* @__PURE__ */ reactExports.createElement(RefContext.Provider, {
-    value: refContext
-  }, /* @__PURE__ */ reactExports.createElement(Portal, {
-    open: mergedOpen || forceRender || animatedVisible,
-    autoDestroy: false,
-    getContainer: getContainer2,
-    autoLock: mask && (mergedOpen || animatedVisible)
-  }, /* @__PURE__ */ reactExports.createElement(RefDrawerPopup, drawerPopupProps)));
-};
-const DrawerPanel = (props) => {
-  var _a, _b;
-  const {
-    prefixCls,
-    ariaId,
-    title,
-    footer,
-    extra,
-    closable,
-    loading,
-    onClose,
-    headerStyle,
-    bodyStyle,
-    footerStyle,
-    children,
-    classNames: drawerClassNames,
-    styles: drawerStyles
-  } = props;
-  const drawerContext = useComponentConfig("drawer");
-  let closablePlacement;
-  if (closable === false) {
-    closablePlacement = void 0;
-  } else if (closable === void 0 || closable === true) {
-    closablePlacement = "start";
-  } else {
-    closablePlacement = (closable === null || closable === void 0 ? void 0 : closable.placement) === "end" ? "end" : "start";
-  }
-  const customCloseIconRender = reactExports.useCallback((icon) => /* @__PURE__ */ reactExports.createElement("button", {
-    type: "button",
-    onClick: onClose,
-    className: classNames(`${prefixCls}-close`, {
-      [`${prefixCls}-close-${closablePlacement}`]: closablePlacement === "end"
-    })
-  }, icon), [onClose, prefixCls, closablePlacement]);
-  const [mergedClosable, mergedCloseIcon] = useClosable(pickClosable(props), pickClosable(drawerContext), {
-    closable: true,
-    closeIconRender: customCloseIconRender
-  });
-  const renderHeader = () => {
-    var _a2, _b2;
-    if (!title && !mergedClosable) {
-      return null;
-    }
-    return /* @__PURE__ */ reactExports.createElement("div", {
-      style: Object.assign(Object.assign(Object.assign({}, (_a2 = drawerContext.styles) === null || _a2 === void 0 ? void 0 : _a2.header), headerStyle), drawerStyles === null || drawerStyles === void 0 ? void 0 : drawerStyles.header),
-      className: classNames(`${prefixCls}-header`, {
-        [`${prefixCls}-header-close-only`]: mergedClosable && !title && !extra
-      }, (_b2 = drawerContext.classNames) === null || _b2 === void 0 ? void 0 : _b2.header, drawerClassNames === null || drawerClassNames === void 0 ? void 0 : drawerClassNames.header)
-    }, /* @__PURE__ */ reactExports.createElement("div", {
-      className: `${prefixCls}-header-title`
-    }, closablePlacement === "start" && mergedCloseIcon, title && /* @__PURE__ */ reactExports.createElement("div", {
-      className: `${prefixCls}-title`,
-      id: ariaId
-    }, title)), extra && /* @__PURE__ */ reactExports.createElement("div", {
-      className: `${prefixCls}-extra`
-    }, extra), closablePlacement === "end" && mergedCloseIcon);
-  };
-  const renderFooter = () => {
-    var _a2, _b2;
-    if (!footer) {
-      return null;
-    }
-    const footerClassName = `${prefixCls}-footer`;
-    return /* @__PURE__ */ reactExports.createElement("div", {
-      className: classNames(footerClassName, (_a2 = drawerContext.classNames) === null || _a2 === void 0 ? void 0 : _a2.footer, drawerClassNames === null || drawerClassNames === void 0 ? void 0 : drawerClassNames.footer),
-      style: Object.assign(Object.assign(Object.assign({}, (_b2 = drawerContext.styles) === null || _b2 === void 0 ? void 0 : _b2.footer), footerStyle), drawerStyles === null || drawerStyles === void 0 ? void 0 : drawerStyles.footer)
-    }, footer);
-  };
-  return /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, renderHeader(), /* @__PURE__ */ reactExports.createElement("div", {
-    className: classNames(`${prefixCls}-body`, drawerClassNames === null || drawerClassNames === void 0 ? void 0 : drawerClassNames.body, (_a = drawerContext.classNames) === null || _a === void 0 ? void 0 : _a.body),
-    style: Object.assign(Object.assign(Object.assign({}, (_b = drawerContext.styles) === null || _b === void 0 ? void 0 : _b.body), bodyStyle), drawerStyles === null || drawerStyles === void 0 ? void 0 : drawerStyles.body)
-  }, loading ? /* @__PURE__ */ reactExports.createElement(Skeleton, {
-    active: true,
-    title: false,
-    paragraph: {
-      rows: 5
-    },
-    className: `${prefixCls}-body-skeleton`
-  }) : children), renderFooter());
-};
-const getMoveTranslate = (direction) => {
-  const value = "100%";
-  return {
-    left: `translateX(-${value})`,
-    right: `translateX(${value})`,
-    top: `translateY(-${value})`,
-    bottom: `translateY(${value})`
-  }[direction];
-};
-const getEnterLeaveStyle = (startStyle, endStyle) => ({
-  "&-enter, &-appear": Object.assign(Object.assign({}, startStyle), {
-    "&-active": endStyle
-  }),
-  "&-leave": Object.assign(Object.assign({}, endStyle), {
-    "&-active": startStyle
-  })
-});
-const getFadeStyle = (from2, duration) => Object.assign({
-  "&-enter, &-appear, &-leave": {
-    "&-start": {
-      transition: "none"
-    },
-    "&-active": {
-      transition: `all ${duration}`
-    }
-  }
-}, getEnterLeaveStyle({
-  opacity: from2
-}, {
-  opacity: 1
-}));
-const getPanelMotionStyles = (direction, duration) => [getFadeStyle(0.7, duration), getEnterLeaveStyle({
-  transform: getMoveTranslate(direction)
-}, {
-  transform: "none"
-})];
-const genMotionStyle = (token2) => {
-  const {
-    componentCls,
-    motionDurationSlow
-  } = token2;
-  return {
-    [componentCls]: {
-      // ======================== Mask ========================
-      [`${componentCls}-mask-motion`]: getFadeStyle(0, motionDurationSlow),
-      // ======================= Panel ========================
-      [`${componentCls}-panel-motion`]: ["left", "right", "top", "bottom"].reduce((obj, direction) => Object.assign(Object.assign({}, obj), {
-        [`&-${direction}`]: getPanelMotionStyles(direction, motionDurationSlow)
-      }), {})
-    }
-  };
-};
-const genDrawerStyle = (token2) => {
-  const {
-    borderRadiusSM,
-    componentCls,
-    zIndexPopup,
-    colorBgMask,
-    colorBgElevated,
-    motionDurationSlow,
-    motionDurationMid,
-    paddingXS,
-    padding,
-    paddingLG,
-    fontSizeLG,
-    lineHeightLG,
-    lineWidth,
-    lineType,
-    colorSplit,
-    marginXS,
-    colorIcon,
-    colorIconHover,
-    colorBgTextHover,
-    colorBgTextActive,
-    colorText,
-    fontWeightStrong,
-    footerPaddingBlock,
-    footerPaddingInline,
-    calc
-  } = token2;
-  const wrapperCls = `${componentCls}-content-wrapper`;
-  return {
-    [componentCls]: {
-      position: "fixed",
-      inset: 0,
-      zIndex: zIndexPopup,
-      pointerEvents: "none",
-      color: colorText,
-      "&-pure": {
-        position: "relative",
-        background: colorBgElevated,
-        display: "flex",
-        flexDirection: "column",
-        [`&${componentCls}-left`]: {
-          boxShadow: token2.boxShadowDrawerLeft
-        },
-        [`&${componentCls}-right`]: {
-          boxShadow: token2.boxShadowDrawerRight
-        },
-        [`&${componentCls}-top`]: {
-          boxShadow: token2.boxShadowDrawerUp
-        },
-        [`&${componentCls}-bottom`]: {
-          boxShadow: token2.boxShadowDrawerDown
-        }
-      },
-      "&-inline": {
-        position: "absolute"
-      },
-      // ====================== Mask ======================
-      [`${componentCls}-mask`]: {
-        position: "absolute",
-        inset: 0,
-        zIndex: zIndexPopup,
-        background: colorBgMask,
-        pointerEvents: "auto"
-      },
-      // ==================== Content =====================
-      [wrapperCls]: {
-        position: "absolute",
-        zIndex: zIndexPopup,
-        maxWidth: "100vw",
-        transition: `all ${motionDurationSlow}`,
-        "&-hidden": {
-          display: "none"
-        }
-      },
-      // Placement
-      [`&-left > ${wrapperCls}`]: {
-        top: 0,
-        bottom: 0,
-        left: {
-          _skip_check_: true,
-          value: 0
-        },
-        boxShadow: token2.boxShadowDrawerLeft
-      },
-      [`&-right > ${wrapperCls}`]: {
-        top: 0,
-        right: {
-          _skip_check_: true,
-          value: 0
-        },
-        bottom: 0,
-        boxShadow: token2.boxShadowDrawerRight
-      },
-      [`&-top > ${wrapperCls}`]: {
-        top: 0,
-        insetInline: 0,
-        boxShadow: token2.boxShadowDrawerUp
-      },
-      [`&-bottom > ${wrapperCls}`]: {
-        bottom: 0,
-        insetInline: 0,
-        boxShadow: token2.boxShadowDrawerDown
-      },
-      [`${componentCls}-content`]: {
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        height: "100%",
-        overflow: "auto",
-        background: colorBgElevated,
-        pointerEvents: "auto"
-      },
-      // Header
-      [`${componentCls}-header`]: {
-        display: "flex",
-        flex: 0,
-        alignItems: "center",
-        padding: `${unit$1(padding)} ${unit$1(paddingLG)}`,
-        fontSize: fontSizeLG,
-        lineHeight: lineHeightLG,
-        borderBottom: `${unit$1(lineWidth)} ${lineType} ${colorSplit}`,
-        "&-title": {
-          display: "flex",
-          flex: 1,
-          alignItems: "center",
-          minWidth: 0,
-          minHeight: 0
-        }
-      },
-      [`${componentCls}-extra`]: {
-        flex: "none"
-      },
-      [`${componentCls}-close`]: Object.assign({
-        display: "inline-flex",
-        width: calc(fontSizeLG).add(paddingXS).equal(),
-        height: calc(fontSizeLG).add(paddingXS).equal(),
-        borderRadius: borderRadiusSM,
-        justifyContent: "center",
-        alignItems: "center",
-        color: colorIcon,
-        fontWeight: fontWeightStrong,
-        fontSize: fontSizeLG,
-        fontStyle: "normal",
-        lineHeight: 1,
-        textAlign: "center",
-        textTransform: "none",
-        textDecoration: "none",
-        background: "transparent",
-        border: 0,
-        cursor: "pointer",
-        transition: `all ${motionDurationMid}`,
-        textRendering: "auto",
-        [`&${componentCls}-close-end`]: {
-          marginInlineStart: marginXS
-        },
-        [`&:not(${componentCls}-close-end)`]: {
-          marginInlineEnd: marginXS
-        },
-        "&:hover": {
-          color: colorIconHover,
-          backgroundColor: colorBgTextHover,
-          textDecoration: "none"
-        },
-        "&:active": {
-          backgroundColor: colorBgTextActive
-        }
-      }, genFocusStyle(token2)),
-      [`${componentCls}-title`]: {
-        flex: 1,
-        margin: 0,
-        fontWeight: token2.fontWeightStrong,
-        fontSize: fontSizeLG,
-        lineHeight: lineHeightLG
-      },
-      // Body
-      [`${componentCls}-body`]: {
-        flex: 1,
-        minWidth: 0,
-        minHeight: 0,
-        padding: paddingLG,
-        overflow: "auto",
-        [`${componentCls}-body-skeleton`]: {
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          justifyContent: "center"
-        }
-      },
-      // Footer
-      [`${componentCls}-footer`]: {
-        flexShrink: 0,
-        padding: `${unit$1(footerPaddingBlock)} ${unit$1(footerPaddingInline)}`,
-        borderTop: `${unit$1(lineWidth)} ${lineType} ${colorSplit}`
-      },
-      // ====================== RTL =======================
-      "&-rtl": {
-        direction: "rtl"
-      }
-    }
-  };
-};
-const prepareComponentToken$9 = (token2) => ({
-  zIndexPopup: token2.zIndexPopupBase,
-  footerPaddingBlock: token2.paddingXS,
-  footerPaddingInline: token2.padding
-});
-const useStyle$d = genStyleHooks("Drawer", (token2) => {
-  const drawerToken = merge(token2, {});
-  return [genDrawerStyle(drawerToken), genMotionStyle(drawerToken)];
-}, prepareComponentToken$9);
-var __rest$v = function(s, e2) {
-  var t2 = {};
-  for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
-  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
-    if (e2.indexOf(p2[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p2[i])) t2[p2[i]] = s[p2[i]];
-  }
-  return t2;
-};
-const defaultPushState = {
-  distance: 180
-};
-const Drawer = (props) => {
-  const {
-    rootClassName,
-    width,
-    height,
-    size = "default",
-    mask = true,
-    push = defaultPushState,
-    open: open2,
-    afterOpenChange,
-    onClose,
-    prefixCls: customizePrefixCls,
-    getContainer: customizeGetContainer,
-    panelRef = null,
-    style: style2,
-    className,
-    "aria-labelledby": ariaLabelledby,
-    // Deprecated
-    visible,
-    afterVisibleChange,
-    maskStyle,
-    drawerStyle,
-    contentWrapperStyle,
-    destroyOnClose,
-    destroyOnHidden
-  } = props, rest = __rest$v(props, ["rootClassName", "width", "height", "size", "mask", "push", "open", "afterOpenChange", "onClose", "prefixCls", "getContainer", "panelRef", "style", "className", "aria-labelledby", "visible", "afterVisibleChange", "maskStyle", "drawerStyle", "contentWrapperStyle", "destroyOnClose", "destroyOnHidden"]);
-  const id2 = useId$1();
-  const ariaId = rest.title ? id2 : void 0;
-  const {
-    getPopupContainer,
-    getPrefixCls,
-    direction,
-    className: contextClassName,
-    style: contextStyle,
-    classNames: contextClassNames,
-    styles: contextStyles
-  } = useComponentConfig("drawer");
-  const prefixCls = getPrefixCls("drawer", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$d(prefixCls);
-  const getContainer2 = (
-    // 有可能为 false，所以不能直接判断
-    customizeGetContainer === void 0 && getPopupContainer ? () => getPopupContainer(document.body) : customizeGetContainer
-  );
-  const drawerClassName = classNames({
-    "no-mask": !mask,
-    [`${prefixCls}-rtl`]: direction === "rtl"
-  }, rootClassName, hashId, cssVarCls);
-  const mergedWidth = reactExports.useMemo(() => width !== null && width !== void 0 ? width : size === "large" ? 736 : 378, [width, size]);
-  const mergedHeight = reactExports.useMemo(() => height !== null && height !== void 0 ? height : size === "large" ? 736 : 378, [height, size]);
-  const maskMotion = {
-    motionName: getTransitionName(prefixCls, "mask-motion"),
-    motionAppear: true,
-    motionEnter: true,
-    motionLeave: true,
-    motionDeadline: 500
-  };
-  const panelMotion = (motionPlacement) => ({
-    motionName: getTransitionName(prefixCls, `panel-motion-${motionPlacement}`),
-    motionAppear: true,
-    motionEnter: true,
-    motionLeave: true,
-    motionDeadline: 500
-  });
-  const innerPanelRef = usePanelRef();
-  const mergedPanelRef = composeRef(panelRef, innerPanelRef);
-  const [zIndex, contextZIndex] = useZIndex("Drawer", rest.zIndex);
-  const {
-    classNames: propClassNames = {},
-    styles: propStyles = {}
-  } = rest;
-  return wrapCSSVar(/* @__PURE__ */ reactExports.createElement(ContextIsolator, {
-    form: true,
-    space: true
-  }, /* @__PURE__ */ reactExports.createElement(zIndexContext.Provider, {
-    value: contextZIndex
-  }, /* @__PURE__ */ reactExports.createElement(Drawer$1, Object.assign({
-    prefixCls,
-    onClose,
-    maskMotion,
-    motion: panelMotion
-  }, rest, {
-    classNames: {
-      mask: classNames(propClassNames.mask, contextClassNames.mask),
-      content: classNames(propClassNames.content, contextClassNames.content),
-      wrapper: classNames(propClassNames.wrapper, contextClassNames.wrapper)
-    },
-    styles: {
-      mask: Object.assign(Object.assign(Object.assign({}, propStyles.mask), maskStyle), contextStyles.mask),
-      content: Object.assign(Object.assign(Object.assign({}, propStyles.content), drawerStyle), contextStyles.content),
-      wrapper: Object.assign(Object.assign(Object.assign({}, propStyles.wrapper), contentWrapperStyle), contextStyles.wrapper)
-    },
-    open: open2 !== null && open2 !== void 0 ? open2 : visible,
-    mask,
-    push,
-    width: mergedWidth,
-    height: mergedHeight,
-    style: Object.assign(Object.assign({}, contextStyle), style2),
-    className: classNames(contextClassName, className),
-    rootClassName: drawerClassName,
-    getContainer: getContainer2,
-    afterOpenChange: afterOpenChange !== null && afterOpenChange !== void 0 ? afterOpenChange : afterVisibleChange,
-    panelRef: mergedPanelRef,
-    zIndex,
-    "aria-labelledby": ariaLabelledby !== null && ariaLabelledby !== void 0 ? ariaLabelledby : ariaId,
-    // TODO: In the future, destroyOnClose in rc-drawer needs to be upgrade to destroyOnHidden
-    destroyOnClose: destroyOnHidden !== null && destroyOnHidden !== void 0 ? destroyOnHidden : destroyOnClose
-  }), /* @__PURE__ */ reactExports.createElement(DrawerPanel, Object.assign({
-    prefixCls
-  }, rest, {
-    ariaId,
-    onClose
-  }))))));
-};
-const PurePanel$3 = (props) => {
-  const {
-    prefixCls: customizePrefixCls,
-    style: style2,
-    className,
-    placement = "right"
-  } = props, restProps = __rest$v(props, ["prefixCls", "style", "className", "placement"]);
-  const {
-    getPrefixCls
-  } = reactExports.useContext(ConfigContext);
-  const prefixCls = getPrefixCls("drawer", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$d(prefixCls);
-  const cls = classNames(prefixCls, `${prefixCls}-pure`, `${prefixCls}-${placement}`, hashId, cssVarCls, className);
-  return wrapCSSVar(/* @__PURE__ */ reactExports.createElement("div", {
-    className: cls,
-    style: style2
-  }, /* @__PURE__ */ reactExports.createElement(DrawerPanel, Object.assign({
-    prefixCls
-  }, restProps))));
-};
-Drawer._InternalPanelDoNotUseOrYouWillBeFired = PurePanel$3;
 function isPresetSize(size) {
   return ["small", "middle", "large"].includes(size);
 }
@@ -43307,8 +43644,8 @@ const genSpaceAddonStyle = (token2) => {
     })]
   };
 };
-const useStyle$c = genStyleHooks(["Space", "Addon"], (token2) => [genSpaceAddonStyle(token2)]);
-var __rest$u = function(s, e2) {
+const useStyle$d = genStyleHooks(["Space", "Addon"], (token2) => [genSpaceAddonStyle(token2)]);
+var __rest$v = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -43322,13 +43659,13 @@ const SpaceAddon = /* @__PURE__ */ React.forwardRef((props, ref) => {
     children,
     style: style2,
     prefixCls: customizePrefixCls
-  } = props, restProps = __rest$u(props, ["className", "children", "style", "prefixCls"]);
+  } = props, restProps = __rest$v(props, ["className", "children", "style", "prefixCls"]);
   const {
     getPrefixCls,
     direction: directionConfig
   } = React.useContext(ConfigContext);
   const prefixCls = getPrefixCls("space-addon", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$c(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$d(prefixCls);
   const {
     compactItemClassnames,
     compactSize
@@ -43432,7 +43769,7 @@ const genSpaceGapStyle = (token2) => {
     }
   };
 };
-const useStyle$b = genStyleHooks("Space", (token2) => {
+const useStyle$c = genStyleHooks("Space", (token2) => {
   const spaceToken = merge(token2, {
     spaceGapSmallSize: token2.paddingXS,
     spaceGapMiddleSize: token2.padding,
@@ -43444,7 +43781,7 @@ const useStyle$b = genStyleHooks("Space", (token2) => {
   // https://github.com/ant-design/ant-design/issues/40315
   resetStyle: false
 });
-var __rest$t = function(s, e2) {
+var __rest$u = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -43476,7 +43813,7 @@ const InternalSpace = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     wrap = false,
     classNames: customClassNames,
     styles
-  } = props, otherProps = __rest$t(props, ["size", "align", "className", "rootClassName", "children", "direction", "prefixCls", "split", "style", "wrap", "classNames", "styles"]);
+  } = props, otherProps = __rest$u(props, ["size", "align", "className", "rootClassName", "children", "direction", "prefixCls", "split", "style", "wrap", "classNames", "styles"]);
   const [horizontalSize, verticalSize] = Array.isArray(size) ? size : [size, size];
   const isPresetVerticalSize = isPresetSize(verticalSize);
   const isPresetHorizontalSize = isPresetSize(horizontalSize);
@@ -43487,7 +43824,7 @@ const InternalSpace = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
   });
   const mergedAlign = align === void 0 && direction === "horizontal" ? "center" : align;
   const prefixCls = getPrefixCls("space", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$b(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$c(prefixCls);
   const cls = classNames(prefixCls, contextClassName, hashId, `${prefixCls}-${direction}`, {
     [`${prefixCls}-rtl`]: directionConfig === "rtl",
     [`${prefixCls}-align-${mergedAlign}`]: mergedAlign,
@@ -43536,7 +43873,7 @@ const InternalSpace = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
 const Space = InternalSpace;
 Space.Compact = Compact$1;
 Space.Addon = SpaceAddon;
-var __rest$s = function(s, e2) {
+var __rest$t = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -43571,7 +43908,7 @@ const DropdownButton = (props) => {
     placement,
     getPopupContainer,
     href,
-    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$A, null),
+    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$G, null),
     title,
     buttonsRender = (buttons) => buttons,
     mouseEnterDelay,
@@ -43582,7 +43919,7 @@ const DropdownButton = (props) => {
     destroyPopupOnHide,
     dropdownRender,
     popupRender
-  } = props, restProps = __rest$s(props, ["prefixCls", "type", "danger", "disabled", "loading", "onClick", "htmlType", "children", "className", "menu", "arrow", "autoFocus", "overlay", "trigger", "align", "open", "onOpenChange", "placement", "getPopupContainer", "href", "icon", "title", "buttonsRender", "mouseEnterDelay", "mouseLeaveDelay", "overlayClassName", "overlayStyle", "destroyOnHidden", "destroyPopupOnHide", "dropdownRender", "popupRender"]);
+  } = props, restProps = __rest$t(props, ["prefixCls", "type", "danger", "disabled", "loading", "onClick", "htmlType", "children", "className", "menu", "arrow", "autoFocus", "overlay", "trigger", "align", "open", "onOpenChange", "placement", "getPopupContainer", "href", "icon", "title", "buttonsRender", "mouseEnterDelay", "mouseLeaveDelay", "overlayClassName", "overlayStyle", "destroyOnHidden", "destroyPopupOnHide", "dropdownRender", "popupRender"]);
   const prefixCls = getPrefixCls("dropdown", customizePrefixCls);
   const buttonPrefixCls = `${prefixCls}-button`;
   const mergedPopupRender = popupRender || dropdownRender;
@@ -43657,6 +43994,14 @@ function convertToTooltipProps(tooltip) {
     title: tooltip
   };
 }
+var FileTextOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M854.6 288.6L639.4 73.4c-6-6-14.1-9.4-22.6-9.4H192c-17.7 0-32 14.3-32 32v832c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V311.3c0-8.5-3.4-16.7-9.4-22.7zM790.2 326H602V137.8L790.2 326zm1.8 562H232V136h302v216a42 42 0 0042 42h216v494zM504 618H320c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h184c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM312 490v48c0 4.4 3.6 8 8 8h384c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H320c-4.4 0-8 3.6-8 8z" } }] }, "name": "file-text", "theme": "outlined" };
+var FileTextOutlined = function FileTextOutlined2(props, ref) {
+  return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
+    ref,
+    icon: FileTextOutlined$1
+  }));
+};
+var RefIcon$E = /* @__PURE__ */ reactExports.forwardRef(FileTextOutlined);
 function useDebounce(value) {
   const [cacheValue, setCacheValue] = reactExports.useState(value);
   reactExports.useEffect(() => {
@@ -44148,7 +44493,7 @@ const genVerticalStyle = (token2) => {
     }
   };
 };
-const prepareComponentToken$8 = (token2) => ({
+const prepareComponentToken$9 = (token2) => ({
   labelRequiredMarkColor: token2.colorError,
   labelColor: token2.colorTextHeading,
   labelFontSize: token2.fontSize,
@@ -44167,12 +44512,12 @@ const prepareToken$2 = (token2, rootPrefixCls) => {
   });
   return formToken;
 };
-const useStyle$a = genStyleHooks("Form", (token2, {
+const useStyle$b = genStyleHooks("Form", (token2, {
   rootPrefixCls
 }) => {
   const formToken = prepareToken$2(token2, rootPrefixCls);
   return [genFormStyle(formToken), genFormItemStyle(formToken), genFormValidateMotionStyle(formToken), genHorizontalStyle(formToken), genInlineStyle(formToken), genVerticalStyle(formToken), genCollapseMotion(formToken), zoomIn];
-}, prepareComponentToken$8, {
+}, prepareComponentToken$9, {
   // Let From style before the Grid
   // ref https://github.com/ant-design/ant-design/issues/44386
   order: -1e3
@@ -44199,7 +44544,7 @@ const ErrorList = ({
   } = reactExports.useContext(FormItemPrefixContext);
   const baseClassName = `${prefixCls}-item-explain`;
   const rootCls = useCSSVarCls(prefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$a(prefixCls, rootCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$b(prefixCls, rootCls);
   const collapseMotion = reactExports.useMemo(() => initCollapseMotion(prefixCls), [prefixCls]);
   const debounceErrors = useDebounce(errors);
   const debounceWarnings = useDebounce(warnings);
@@ -44260,7 +44605,7 @@ const ErrorList = ({
     }));
   }));
 };
-var __rest$r = function(s, e2) {
+var __rest$s = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -44300,7 +44645,7 @@ const InternalForm = (props, ref) => {
     style: style2,
     feedbackIcons,
     variant
-  } = props, restFormProps = __rest$r(props, ["prefixCls", "className", "rootClassName", "size", "disabled", "form", "colon", "labelAlign", "labelWrap", "labelCol", "wrapperCol", "hideRequiredMark", "layout", "scrollToFirstError", "requiredMark", "onFinishFailed", "name", "style", "feedbackIcons", "variant"]);
+  } = props, restFormProps = __rest$s(props, ["prefixCls", "className", "rootClassName", "size", "disabled", "form", "colon", "labelAlign", "labelWrap", "labelCol", "wrapperCol", "hideRequiredMark", "layout", "scrollToFirstError", "requiredMark", "onFinishFailed", "name", "style", "feedbackIcons", "variant"]);
   const mergedSize = useSize(size);
   const contextValidateMessages = reactExports.useContext(ValidateMessagesContext);
   const mergedRequiredMark = reactExports.useMemo(() => {
@@ -44318,7 +44663,7 @@ const InternalForm = (props, ref) => {
   const mergedColon = colon !== null && colon !== void 0 ? colon : contextColon;
   const prefixCls = getPrefixCls("form", customizePrefixCls);
   const rootCls = useCSSVarCls(prefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$a(prefixCls, rootCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$b(prefixCls, rootCls);
   const formClassName = classNames(prefixCls, `${prefixCls}-${layout}`, {
     [`${prefixCls}-hide-required-mark`]: mergedRequiredMark === false,
     // todo: remove in next major version
@@ -44489,7 +44834,7 @@ const FallbackCmp = genSubStyleComponent(["Form", "item-item"], (token2, {
   const formToken = prepareToken$2(token2, rootPrefixCls);
   return genFallbackStyle(formToken);
 });
-var __rest$q = function(s, e2) {
+var __rest$r = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -44539,7 +44884,7 @@ const FormItemInput = (props) => {
     const {
       labelCol: _labelCol,
       wrapperCol: _wrapperCol
-    } = formContext, rest = __rest$q(formContext, ["labelCol", "wrapperCol"]);
+    } = formContext, rest = __rest$r(formContext, ["labelCol", "wrapperCol"]);
     return rest;
   }, [formContext]);
   const extraRef = reactExports.useRef(null);
@@ -44605,8 +44950,8 @@ var QuestionCircleOutlined = function QuestionCircleOutlined2(props, ref) {
     icon: QuestionCircleOutlined$1
   }));
 };
-var RefIcon$y = /* @__PURE__ */ reactExports.forwardRef(QuestionCircleOutlined);
-var __rest$p = function(s, e2) {
+var RefIcon$D = /* @__PURE__ */ reactExports.forwardRef(QuestionCircleOutlined);
+var __rest$q = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -44652,8 +44997,8 @@ const FormItemLabel = ({
   const tooltipProps = convertToTooltipProps(tooltip);
   if (tooltipProps) {
     const {
-      icon = /* @__PURE__ */ reactExports.createElement(RefIcon$y, null)
-    } = tooltipProps, restTooltipProps = __rest$p(tooltipProps, ["icon"]);
+      icon = /* @__PURE__ */ reactExports.createElement(RefIcon$D, null)
+    } = tooltipProps, restTooltipProps = __rest$q(tooltipProps, ["icon"]);
     const tooltipNode = /* @__PURE__ */ reactExports.createElement(Tooltip2, Object.assign({}, restTooltipProps), /* @__PURE__ */ reactExports.cloneElement(icon, {
       className: `${prefixCls}-item-tooltip`,
       title: "",
@@ -44697,10 +45042,10 @@ const FormItemLabel = ({
   }, labelChildren));
 };
 const iconMap = {
-  success: RefIcon$M,
-  warning: RefIcon$J,
-  error: RefIcon$L,
-  validating: RefIcon$H
+  success: RefIcon$S,
+  warning: RefIcon$P,
+  error: RefIcon$R,
+  validating: RefIcon$N
 };
 function StatusProvider({
   children,
@@ -44762,7 +45107,7 @@ function StatusProvider({
     value: formItemStatusContext
   }, children);
 }
-var __rest$o = function(s, e2) {
+var __rest$p = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -44790,7 +45135,7 @@ function ItemHolder(props) {
     onSubItemMetaChange,
     layout: propsLayout,
     name
-  } = props, restProps = __rest$o(props, ["prefixCls", "className", "rootClassName", "style", "help", "errors", "warnings", "validateStatus", "meta", "hasFeedback", "hidden", "children", "fieldId", "required", "isRequired", "onSubItemMetaChange", "layout", "name"]);
+  } = props, restProps = __rest$p(props, ["prefixCls", "className", "rootClassName", "style", "help", "errors", "warnings", "validateStatus", "meta", "hasFeedback", "hidden", "children", "fieldId", "required", "isRequired", "onSubItemMetaChange", "layout", "name"]);
   const itemPrefixCls = `${prefixCls}-item`;
   const {
     requiredMark,
@@ -44963,7 +45308,7 @@ function InternalFormItem(props) {
   const hasName = !(name === void 0 || name === null);
   const prefixCls = getPrefixCls("form", customizePrefixCls);
   const rootCls = useCSSVarCls(prefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$a(prefixCls, rootCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$b(prefixCls, rootCls);
   devUseWarning();
   const listContext = reactExports.useContext(ListContext$1);
   const fieldKeyPathRef = reactExports.useRef(null);
@@ -45122,7 +45467,7 @@ function InternalFormItem(props) {
 }
 const FormItem = InternalFormItem;
 FormItem.useStatus = useFormItemStatus;
-var __rest$n = function(s, e2) {
+var __rest$o = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -45134,7 +45479,7 @@ const FormList = (_a) => {
   var {
     prefixCls: customizePrefixCls,
     children
-  } = _a, props = __rest$n(_a, ["prefixCls", "children"]);
+  } = _a, props = __rest$o(_a, ["prefixCls", "children"]);
   const {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
@@ -45175,7 +45520,7 @@ var EyeOutlined = function EyeOutlined2(props, ref) {
     icon: EyeOutlined$1
   }));
 };
-var RefIcon$x = /* @__PURE__ */ reactExports.forwardRef(EyeOutlined);
+var RefIcon$C = /* @__PURE__ */ reactExports.forwardRef(EyeOutlined);
 function addEventListenerWrap(target, eventType, cb2, option) {
   var callback = ReactDOM.unstable_batchedUpdates ? function run(e2) {
     ReactDOM.unstable_batchedUpdates(cb2, e2);
@@ -45198,7 +45543,7 @@ var SwapOutlined = function SwapOutlined2(props, ref) {
     icon: SwapOutlined$1
   }));
 };
-var RefIcon$w = /* @__PURE__ */ reactExports.forwardRef(SwapOutlined);
+var RefIcon$B = /* @__PURE__ */ reactExports.forwardRef(SwapOutlined);
 const Group = (props) => {
   const {
     getPrefixCls,
@@ -45282,11 +45627,11 @@ const genOTPStyle = (token2) => {
     }
   };
 };
-const useStyle$9 = genStyleHooks(["Input", "OTP"], (token2) => {
+const useStyle$a = genStyleHooks(["Input", "OTP"], (token2) => {
   const inputToken = merge(token2, initInputToken(token2));
   return genOTPStyle(inputToken);
 }, initComponentToken$1);
-var __rest$m = function(s, e2) {
+var __rest$n = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -45302,7 +45647,7 @@ const OTPInput = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     onActiveChange,
     index: index2,
     mask
-  } = props, restProps = __rest$m(props, ["className", "value", "onChange", "onActiveChange", "index", "mask"]);
+  } = props, restProps = __rest$n(props, ["className", "value", "onChange", "onActiveChange", "index", "mask"]);
   const {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
@@ -45361,7 +45706,7 @@ const OTPInput = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     })
   })));
 });
-var __rest$l = function(s, e2) {
+var __rest$m = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -45404,7 +45749,7 @@ const OTP = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     type: type4,
     onInput,
     inputMode
-  } = props, restProps = __rest$l(props, ["prefixCls", "length", "size", "defaultValue", "value", "onChange", "formatter", "separator", "variant", "disabled", "status", "autoFocus", "mask", "type", "onInput", "inputMode"]);
+  } = props, restProps = __rest$m(props, ["prefixCls", "length", "size", "defaultValue", "value", "onChange", "formatter", "separator", "variant", "disabled", "status", "autoFocus", "mask", "type", "onInput", "inputMode"]);
   const {
     getPrefixCls,
     direction
@@ -45415,7 +45760,7 @@ const OTP = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     data: true,
     attr: true
   });
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$9(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$a(prefixCls);
   const mergedSize = useSize((ctx) => customSize !== null && customSize !== void 0 ? customSize : ctx);
   const formContext = reactExports.useContext(FormItemInputContext);
   const mergedStatus = getMergedStatus(formContext.status, customStatus);
@@ -45547,8 +45892,8 @@ var EyeInvisibleOutlined = function EyeInvisibleOutlined2(props, ref) {
     icon: EyeInvisibleOutlined$1
   }));
 };
-var RefIcon$v = /* @__PURE__ */ reactExports.forwardRef(EyeInvisibleOutlined);
-var __rest$k = function(s, e2) {
+var RefIcon$A = /* @__PURE__ */ reactExports.forwardRef(EyeInvisibleOutlined);
+var __rest$l = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -45556,7 +45901,7 @@ var __rest$k = function(s, e2) {
   }
   return t2;
 };
-const defaultIconRender = (visible) => visible ? /* @__PURE__ */ reactExports.createElement(RefIcon$x, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$v, null);
+const defaultIconRender = (visible) => visible ? /* @__PURE__ */ reactExports.createElement(RefIcon$C, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$A, null);
 const actionMap = {
   click: "onClick",
   hover: "onMouseOver"
@@ -45615,7 +45960,7 @@ const Password = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     prefixCls: customizePrefixCls,
     inputPrefixCls: customizeInputPrefixCls,
     size
-  } = props, restProps = __rest$k(props, ["className", "prefixCls", "inputPrefixCls", "size"]);
+  } = props, restProps = __rest$l(props, ["className", "prefixCls", "inputPrefixCls", "size"]);
   const {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
@@ -45638,7 +45983,7 @@ const Password = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     ref: composeRef(ref, inputRef)
   }, omittedProps));
 });
-var __rest$j = function(s, e2) {
+var __rest$k = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -45663,7 +46008,7 @@ const Search = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     onCompositionEnd,
     variant,
     onPressEnter: customOnPressEnter
-  } = props, restProps = __rest$j(props, ["prefixCls", "inputPrefixCls", "className", "size", "suffix", "enterButton", "addonAfter", "loading", "disabled", "onSearch", "onChange", "onCompositionStart", "onCompositionEnd", "variant", "onPressEnter"]);
+  } = props, restProps = __rest$k(props, ["prefixCls", "inputPrefixCls", "className", "size", "suffix", "enterButton", "addonAfter", "loading", "disabled", "onSearch", "onChange", "onCompositionStart", "onCompositionEnd", "variant", "onPressEnter"]);
   const {
     getPrefixCls,
     direction
@@ -45708,7 +46053,7 @@ const Search = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     customOnPressEnter === null || customOnPressEnter === void 0 ? void 0 : customOnPressEnter(e2);
     onSearch(e2);
   };
-  const searchIcon = typeof enterButton === "boolean" ? /* @__PURE__ */ reactExports.createElement(RefIcon$D, null) : null;
+  const searchIcon = typeof enterButton === "boolean" ? /* @__PURE__ */ reactExports.createElement(RefIcon$J, null) : null;
   const btnClassName = `${prefixCls}-button`;
   let button;
   const enterButtonAsElement = enterButton || {};
@@ -45865,14 +46210,14 @@ function calculateAutoSizeStyle(uiTextNode) {
   }
   return style2;
 }
-var _excluded$a = ["prefixCls", "defaultValue", "value", "autoSize", "onResize", "className", "style", "disabled", "onChange", "onInternalAutoSize"];
+var _excluded$b = ["prefixCls", "defaultValue", "value", "autoSize", "onResize", "className", "style", "disabled", "onChange", "onInternalAutoSize"];
 var RESIZE_START = 0;
 var RESIZE_MEASURING = 1;
 var RESIZE_STABLE = 2;
 var ResizableTextArea = /* @__PURE__ */ reactExports.forwardRef(function(props, ref) {
   var _ref = props, prefixCls = _ref.prefixCls, defaultValue = _ref.defaultValue, value = _ref.value, autoSize = _ref.autoSize, onResize2 = _ref.onResize, className = _ref.className, style2 = _ref.style, disabled = _ref.disabled, onChange = _ref.onChange;
   _ref.onInternalAutoSize;
-  var restProps = _objectWithoutProperties(_ref, _excluded$a);
+  var restProps = _objectWithoutProperties(_ref, _excluded$b);
   var _useMergedState = useMergedState(defaultValue, {
     value,
     postState: function postState(val) {
@@ -45951,10 +46296,10 @@ var ResizableTextArea = /* @__PURE__ */ reactExports.forwardRef(function(props, 
     onChange: onInternalChange
   })));
 });
-var _excluded$9 = ["defaultValue", "value", "onFocus", "onBlur", "onChange", "allowClear", "maxLength", "onCompositionStart", "onCompositionEnd", "suffix", "prefixCls", "showCount", "count", "className", "style", "disabled", "hidden", "classNames", "styles", "onResize", "onClear", "onPressEnter", "readOnly", "autoSize", "onKeyDown"];
+var _excluded$a = ["defaultValue", "value", "onFocus", "onBlur", "onChange", "allowClear", "maxLength", "onCompositionStart", "onCompositionEnd", "suffix", "prefixCls", "showCount", "count", "className", "style", "disabled", "hidden", "classNames", "styles", "onResize", "onClear", "onPressEnter", "readOnly", "autoSize", "onKeyDown"];
 var TextArea$2 = /* @__PURE__ */ React.forwardRef(function(_ref, ref) {
   var _countConfig$max;
-  var defaultValue = _ref.defaultValue, customValue = _ref.value, onFocus = _ref.onFocus, onBlur = _ref.onBlur, onChange = _ref.onChange, allowClear = _ref.allowClear, maxLength = _ref.maxLength, onCompositionStart = _ref.onCompositionStart, onCompositionEnd = _ref.onCompositionEnd, suffix = _ref.suffix, _ref$prefixCls = _ref.prefixCls, prefixCls = _ref$prefixCls === void 0 ? "rc-textarea" : _ref$prefixCls, showCount = _ref.showCount, count = _ref.count, className = _ref.className, style2 = _ref.style, disabled = _ref.disabled, hidden = _ref.hidden, classNames$1 = _ref.classNames, styles = _ref.styles, onResize2 = _ref.onResize, onClear = _ref.onClear, onPressEnter = _ref.onPressEnter, readOnly = _ref.readOnly, autoSize = _ref.autoSize, onKeyDown2 = _ref.onKeyDown, rest = _objectWithoutProperties(_ref, _excluded$9);
+  var defaultValue = _ref.defaultValue, customValue = _ref.value, onFocus = _ref.onFocus, onBlur = _ref.onBlur, onChange = _ref.onChange, allowClear = _ref.allowClear, maxLength = _ref.maxLength, onCompositionStart = _ref.onCompositionStart, onCompositionEnd = _ref.onCompositionEnd, suffix = _ref.suffix, _ref$prefixCls = _ref.prefixCls, prefixCls = _ref$prefixCls === void 0 ? "rc-textarea" : _ref$prefixCls, showCount = _ref.showCount, count = _ref.count, className = _ref.className, style2 = _ref.style, disabled = _ref.disabled, hidden = _ref.hidden, classNames$1 = _ref.classNames, styles = _ref.styles, onResize2 = _ref.onResize, onClear = _ref.onClear, onPressEnter = _ref.onPressEnter, readOnly = _ref.readOnly, autoSize = _ref.autoSize, onKeyDown2 = _ref.onKeyDown, rest = _objectWithoutProperties(_ref, _excluded$a);
   var _useMergedState = useMergedState(defaultValue, {
     value: customValue,
     defaultValue
@@ -46211,13 +46556,13 @@ const genTextAreaStyle = (token2) => {
     }
   };
 };
-const useStyle$8 = genStyleHooks(["Input", "TextArea"], (token2) => {
+const useStyle$9 = genStyleHooks(["Input", "TextArea"], (token2) => {
   const inputToken = merge(token2, initInputToken(token2));
   return genTextAreaStyle(inputToken);
 }, initComponentToken$1, {
   resetFont: false
 });
-var __rest$i = function(s, e2) {
+var __rest$j = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -46243,7 +46588,7 @@ const TextArea$1 = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     showCount,
     onMouseDown,
     onResize: onResize2
-  } = props, rest = __rest$i(props, ["prefixCls", "bordered", "size", "disabled", "status", "allowClear", "classNames", "rootClassName", "className", "style", "styles", "variant", "showCount", "onMouseDown", "onResize"]);
+  } = props, rest = __rest$j(props, ["prefixCls", "bordered", "size", "disabled", "status", "allowClear", "classNames", "rootClassName", "className", "style", "styles", "variant", "showCount", "onMouseDown", "onResize"]);
   const {
     getPrefixCls,
     direction,
@@ -46280,7 +46625,7 @@ const TextArea$1 = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
   const prefixCls = getPrefixCls("input", customizePrefixCls);
   const rootCls = useCSSVarCls(prefixCls);
   const [wrapSharedCSSVar, hashId, cssVarCls] = useSharedStyle(prefixCls, rootClassName);
-  const [wrapCSSVar] = useStyle$8(prefixCls, rootCls);
+  const [wrapCSSVar] = useStyle$9(prefixCls, rootCls);
   const {
     compactSize,
     compactItemClassnames
@@ -46370,7 +46715,7 @@ function useHasSider(siders, children, hasSider) {
   const childNodes = toArray$5(children);
   return childNodes.some((node2) => node2.type === Sider$1);
 }
-var __rest$h = function(s, e2) {
+var __rest$i = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -46398,7 +46743,7 @@ const Basic = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     suffixCls,
     className,
     tagName: TagName
-  } = props, others = __rest$h(props, ["prefixCls", "suffixCls", "className", "tagName"]);
+  } = props, others = __rest$i(props, ["prefixCls", "suffixCls", "className", "tagName"]);
   const {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
@@ -46423,7 +46768,7 @@ const BasicLayout = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
     hasSider,
     tagName: Tag2,
     style: style2
-  } = props, others = __rest$h(props, ["prefixCls", "className", "rootClassName", "children", "hasSider", "tagName", "style"]);
+  } = props, others = __rest$i(props, ["prefixCls", "className", "rootClassName", "children", "hasSider", "tagName", "style"]);
   const passedProps = omit(others, ["suffixCls"]);
   const {
     getPrefixCls,
@@ -46487,7 +46832,7 @@ var DoubleLeftOutlined = function DoubleLeftOutlined2(props, ref) {
     icon: DoubleLeftOutlined$1
   }));
 };
-var RefIcon$u = /* @__PURE__ */ reactExports.forwardRef(DoubleLeftOutlined);
+var RefIcon$z = /* @__PURE__ */ reactExports.forwardRef(DoubleLeftOutlined);
 var DoubleRightOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M533.2 492.3L277.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H188c-6.7 0-10.4 7.7-6.3 12.9L447.1 512 181.7 851.1A7.98 7.98 0 00188 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5zm304 0L581.9 166.1c-3-3.9-7.7-6.1-12.6-6.1H492c-6.7 0-10.4 7.7-6.3 12.9L751.1 512 485.7 851.1A7.98 7.98 0 00492 864h77.3c4.9 0 9.6-2.3 12.6-6.1l255.3-326.1c9.1-11.7 9.1-27.9 0-39.5z" } }] }, "name": "double-right", "theme": "outlined" };
 var DoubleRightOutlined = function DoubleRightOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -46495,7 +46840,7 @@ var DoubleRightOutlined = function DoubleRightOutlined2(props, ref) {
     icon: DoubleRightOutlined$1
   }));
 };
-var RefIcon$t = /* @__PURE__ */ reactExports.forwardRef(DoubleRightOutlined);
+var RefIcon$y = /* @__PURE__ */ reactExports.forwardRef(DoubleRightOutlined);
 var locale$4 = {
   // Options
   items_per_page: "条/页",
@@ -47495,7 +47840,7 @@ const genPaginationFocusStyle = (token2) => {
     }
   };
 };
-const prepareComponentToken$7 = (token2) => Object.assign({
+const prepareComponentToken$8 = (token2) => Object.assign({
   itemBg: token2.colorBgContainer,
   itemSize: token2.controlHeight,
   itemSizeSM: token2.controlHeightSM,
@@ -47520,10 +47865,10 @@ const prepareToken$1 = (token2) => merge(token2, {
   paginationEllipsisTextIndent: "0.13em"
   // magic for ui experience
 }, initInputToken(token2));
-const useStyle$7 = genStyleHooks("Pagination", (token2) => {
+const useStyle$8 = genStyleHooks("Pagination", (token2) => {
   const paginationToken = prepareToken$1(token2);
   return [genPaginationStyle$1(paginationToken), genPaginationFocusStyle(paginationToken)];
-}, prepareComponentToken$7);
+}, prepareComponentToken$8);
 const genBorderedStyle$2 = (token2) => {
   const {
     componentCls
@@ -47608,7 +47953,7 @@ const genBorderedStyle$2 = (token2) => {
 const BorderedStyle = genSubStyleComponent(["Pagination", "bordered"], (token2) => {
   const paginationToken = prepareToken$1(token2);
   return genBorderedStyle$2(paginationToken);
-}, prepareComponentToken$7);
+}, prepareComponentToken$8);
 function useShowSizeChanger(showSizeChanger) {
   return reactExports.useMemo(() => {
     if (typeof showSizeChanger === "boolean") {
@@ -47620,7 +47965,7 @@ function useShowSizeChanger(showSizeChanger) {
     return [void 0, void 0];
   }, [showSizeChanger]);
 }
-var __rest$g = function(s, e2) {
+var __rest$h = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -47642,7 +47987,7 @@ const Pagination = (props) => {
     showSizeChanger,
     selectComponentClass,
     pageSizeOptions
-  } = props, restProps = __rest$g(props, ["align", "prefixCls", "selectPrefixCls", "className", "rootClassName", "style", "size", "locale", "responsive", "showSizeChanger", "selectComponentClass", "pageSizeOptions"]);
+  } = props, restProps = __rest$h(props, ["align", "prefixCls", "selectPrefixCls", "className", "rootClassName", "style", "size", "locale", "responsive", "showSizeChanger", "selectComponentClass", "pageSizeOptions"]);
   const {
     xs
   } = useBreakpoint(responsive);
@@ -47655,7 +48000,7 @@ const Pagination = (props) => {
     style: contextStyle
   } = useComponentConfig("pagination");
   const prefixCls = getPrefixCls("pagination", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$7(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$8(prefixCls);
   const mergedSize = useSize(customizeSize);
   const isSmall = mergedSize === "small" || !!(xs && !mergedSize && responsive);
   const [contextLocale] = useLocale("Pagination", locale$8);
@@ -47708,21 +48053,21 @@ const Pagination = (props) => {
       className: `${prefixCls}-item-link`,
       type: "button",
       tabIndex: -1
-    }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$G, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$C, null));
+    }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$M, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$I, null));
     const nextIcon = /* @__PURE__ */ reactExports.createElement("button", {
       className: `${prefixCls}-item-link`,
       type: "button",
       tabIndex: -1
-    }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$C, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$G, null));
+    }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$I, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$M, null));
     const jumpPrevIcon = (
       // biome-ignore lint/a11y/useValidAnchor: it is hard to refactor
       /* @__PURE__ */ reactExports.createElement("a", {
         className: `${prefixCls}-item-link`
       }, /* @__PURE__ */ reactExports.createElement("div", {
         className: `${prefixCls}-item-container`
-      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$t, {
+      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$y, {
         className: `${prefixCls}-item-link-icon`
-      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$u, {
+      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$z, {
         className: `${prefixCls}-item-link-icon`
       }), ellipsis))
     );
@@ -47732,9 +48077,9 @@ const Pagination = (props) => {
         className: `${prefixCls}-item-link`
       }, /* @__PURE__ */ reactExports.createElement("div", {
         className: `${prefixCls}-item-container`
-      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$u, {
+      }, direction === "rtl" ? /* @__PURE__ */ reactExports.createElement(RefIcon$z, {
         className: `${prefixCls}-item-link-icon`
-      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$t, {
+      }) : /* @__PURE__ */ reactExports.createElement(RefIcon$y, {
         className: `${prefixCls}-item-link-icon`
       }), ellipsis))
     );
@@ -48123,7 +48468,7 @@ const genSpinStyle = (token2) => {
     })
   };
 };
-const prepareComponentToken$6 = (token2) => {
+const prepareComponentToken$7 = (token2) => {
   const {
     controlHeightLG,
     controlHeight
@@ -48135,12 +48480,12 @@ const prepareComponentToken$6 = (token2) => {
     dotSizeLG: controlHeight
   };
 };
-const useStyle$6 = genStyleHooks("Spin", (token2) => {
+const useStyle$7 = genStyleHooks("Spin", (token2) => {
   const spinToken = merge(token2, {
     spinDotDefault: token2.colorTextDescription
   });
   return genSpinStyle(spinToken);
-}, prepareComponentToken$6);
+}, prepareComponentToken$7);
 const AUTO_INTERVAL = 200;
 const STEP_BUCKETS = [[30, 0.05], [70, 0.03], [96, 0.01]];
 function usePercent(spinning, percent) {
@@ -48172,7 +48517,7 @@ function usePercent(spinning, percent) {
   }, [isAuto, spinning]);
   return isAuto ? mockPercent : percent;
 }
-var __rest$f = function(s, e2) {
+var __rest$g = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -48200,7 +48545,7 @@ const Spin = (props) => {
     fullscreen = false,
     indicator,
     percent
-  } = props, restProps = __rest$f(props, ["prefixCls", "spinning", "delay", "className", "rootClassName", "size", "tip", "wrapperClassName", "style", "children", "fullscreen", "indicator", "percent"]);
+  } = props, restProps = __rest$g(props, ["prefixCls", "spinning", "delay", "className", "rootClassName", "size", "tip", "wrapperClassName", "style", "children", "fullscreen", "indicator", "percent"]);
   const {
     getPrefixCls,
     direction,
@@ -48209,7 +48554,7 @@ const Spin = (props) => {
     indicator: contextIndicator
   } = useComponentConfig("spin");
   const prefixCls = getPrefixCls("spin", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$6(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$7(prefixCls);
   const [spinning, setSpinning] = reactExports.useState(() => customSpinning && !shouldDelay(customSpinning, delay));
   const mergedPercent = usePercent(spinning, percent);
   reactExports.useEffect(() => {
@@ -48274,7 +48619,7 @@ Spin.setDefaultIndicator = (indicator) => {
 };
 const ListContext = /* @__PURE__ */ React.createContext({});
 ListContext.Consumer;
-var __rest$e = function(s, e2) {
+var __rest$f = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -48289,7 +48634,7 @@ const Meta = (_a) => {
     avatar,
     title,
     description
-  } = _a, others = __rest$e(_a, ["prefixCls", "className", "avatar", "title", "description"]);
+  } = _a, others = __rest$f(_a, ["prefixCls", "className", "avatar", "title", "description"]);
   const {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
@@ -48318,7 +48663,7 @@ const InternalItem = /* @__PURE__ */ React.forwardRef((props, ref) => {
     className,
     classNames: customizeClassNames,
     colStyle
-  } = props, others = __rest$e(props, ["prefixCls", "children", "actions", "extra", "styles", "className", "classNames", "colStyle"]);
+  } = props, others = __rest$f(props, ["prefixCls", "children", "actions", "extra", "styles", "className", "classNames", "colStyle"]);
   const {
     grid,
     itemLayout
@@ -48693,7 +49038,7 @@ const genBaseStyle$3 = (token2) => {
     }
   };
 };
-const prepareComponentToken$5 = (token2) => ({
+const prepareComponentToken$6 = (token2) => ({
   contentWidth: 220,
   itemPadding: `${unit$1(token2.paddingContentVertical)} 0`,
   itemPaddingSM: `${unit$1(token2.paddingContentVerticalSM)} ${unit$1(token2.paddingContentHorizontal)}`,
@@ -48706,14 +49051,14 @@ const prepareComponentToken$5 = (token2) => ({
   titleMarginBottom: token2.paddingSM,
   descriptionFontSize: token2.fontSize
 });
-const useStyle$5 = genStyleHooks("List", (token2) => {
+const useStyle$6 = genStyleHooks("List", (token2) => {
   const listToken = merge(token2, {
     listBorderedCls: `${token2.componentCls}-bordered`,
     minHeight: token2.controlHeightLG
   });
   return [genBaseStyle$3(listToken), genBorderedStyle$1(listToken), genResponsiveStyle(listToken)];
-}, prepareComponentToken$5);
-var __rest$d = function(s, e2) {
+}, prepareComponentToken$6);
+var __rest$e = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -48742,7 +49087,7 @@ function InternalList(props, ref) {
     rowKey,
     renderItem: renderItem2,
     locale: locale2
-  } = props, rest = __rest$d(props, ["pagination", "prefixCls", "bordered", "split", "className", "rootClassName", "style", "children", "itemLayout", "loadMore", "grid", "dataSource", "size", "header", "footer", "loading", "rowKey", "renderItem", "locale"]);
+  } = props, rest = __rest$e(props, ["pagination", "prefixCls", "bordered", "split", "className", "rootClassName", "style", "children", "itemLayout", "loadMore", "grid", "dataSource", "size", "header", "footer", "loading", "rowKey", "renderItem", "locale"]);
   const paginationObj = pagination && typeof pagination === "object" ? pagination : {};
   const [paginationCurrent, setPaginationCurrent] = reactExports.useState(paginationObj.defaultCurrent || 1);
   const [paginationSize, setPaginationSize] = reactExports.useState(paginationObj.defaultPageSize || 10);
@@ -48791,7 +49136,7 @@ function InternalList(props, ref) {
   };
   const isSomethingAfterLastItem = !!(loadMore || pagination || footer);
   const prefixCls = getPrefixCls("list", customizePrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$5(prefixCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$6(prefixCls);
   let loadingProp = loading;
   if (typeof loadingProp === "boolean") {
     loadingProp = {
@@ -48911,7 +49256,7 @@ const toList$1 = (candidate, skipEmpty = false) => {
   }
   return Array.isArray(candidate) ? candidate : [candidate];
 };
-var __rest$c = function(s, e2) {
+var __rest$d = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -48929,14 +49274,14 @@ const PurePanel$1 = (props) => {
     title,
     children,
     footer
-  } = props, restProps = __rest$c(props, ["prefixCls", "className", "closeIcon", "closable", "type", "title", "children", "footer"]);
+  } = props, restProps = __rest$d(props, ["prefixCls", "className", "closeIcon", "closable", "type", "title", "children", "footer"]);
   const {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const rootPrefixCls = getPrefixCls();
   const prefixCls = customizePrefixCls || getPrefixCls("modal");
   const rootCls = useCSSVarCls(rootPrefixCls);
-  const [wrapCSSVar, hashId, cssVarCls] = useStyle$s(prefixCls, rootCls);
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$v(prefixCls, rootCls);
   const confirmPrefixCls = `${prefixCls}-confirm`;
   let additionalProps = {};
   if (type4) {
@@ -49147,7 +49492,7 @@ const baseStaticMethods = {
   destroy,
   config: setNotificationGlobalConfig,
   useNotification,
-  _InternalPanelDoNotUseOrYouWillBeFired: PurePanel$8
+  _InternalPanelDoNotUseOrYouWillBeFired: PurePanel$7
 };
 const staticMethods = baseStaticMethods;
 methods.forEach((type4) => {
@@ -49208,7 +49553,7 @@ const genBaseStyle$2 = (token2) => {
     }
   };
 };
-const prepareComponentToken$4 = (token2) => {
+const prepareComponentToken$5 = (token2) => {
   const {
     zIndexPopupBase
   } = token2;
@@ -49216,10 +49561,10 @@ const prepareComponentToken$4 = (token2) => {
     zIndexPopup: zIndexPopupBase + 60
   };
 };
-const useStyle$4 = genStyleHooks("Popconfirm", (token2) => genBaseStyle$2(token2), prepareComponentToken$4, {
+const useStyle$5 = genStyleHooks("Popconfirm", (token2) => genBaseStyle$2(token2), prepareComponentToken$5, {
   resetStyle: false
 });
-var __rest$b = function(s, e2) {
+var __rest$c = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -49237,7 +49582,7 @@ const Overlay = (props) => {
     cancelText,
     okText,
     okType = "primary",
-    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$J, null),
+    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$P, null),
     showCancel = true,
     close,
     onConfirm,
@@ -49285,13 +49630,13 @@ const PurePanel = (props) => {
     placement,
     className,
     style: style2
-  } = props, restProps = __rest$b(props, ["prefixCls", "placement", "className", "style"]);
+  } = props, restProps = __rest$c(props, ["prefixCls", "placement", "className", "style"]);
   const {
     getPrefixCls
   } = reactExports.useContext(ConfigContext);
   const prefixCls = getPrefixCls("popconfirm", customizePrefixCls);
-  const [wrapCSSVar] = useStyle$4(prefixCls);
-  return wrapCSSVar(/* @__PURE__ */ reactExports.createElement(PurePanel$5, {
+  const [wrapCSSVar] = useStyle$5(prefixCls);
+  return wrapCSSVar(/* @__PURE__ */ reactExports.createElement(PurePanel$4, {
     placement,
     className: classNames(prefixCls, className),
     style: style2,
@@ -49300,7 +49645,7 @@ const PurePanel = (props) => {
     }, restProps))
   }));
 };
-var __rest$a = function(s, e2) {
+var __rest$b = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
   if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
@@ -49315,7 +49660,7 @@ const InternalPopconfirm = /* @__PURE__ */ reactExports.forwardRef((props, ref) 
     placement = "top",
     trigger = "click",
     okType = "primary",
-    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$J, null),
+    icon = /* @__PURE__ */ reactExports.createElement(RefIcon$P, null),
     children,
     overlayClassName,
     onOpenChange,
@@ -49323,7 +49668,7 @@ const InternalPopconfirm = /* @__PURE__ */ reactExports.forwardRef((props, ref) 
     overlayStyle,
     styles,
     classNames: popconfirmClassNames
-  } = props, restProps = __rest$a(props, ["prefixCls", "placement", "trigger", "okType", "icon", "children", "overlayClassName", "onOpenChange", "onVisibleChange", "overlayStyle", "styles", "classNames"]);
+  } = props, restProps = __rest$b(props, ["prefixCls", "placement", "trigger", "okType", "icon", "children", "overlayClassName", "onOpenChange", "onVisibleChange", "overlayStyle", "styles", "classNames"]);
   const {
     getPrefixCls,
     className: contextClassName,
@@ -49364,7 +49709,7 @@ const InternalPopconfirm = /* @__PURE__ */ reactExports.forwardRef((props, ref) 
   const prefixCls = getPrefixCls("popconfirm", customizePrefixCls);
   const rootClassNames = classNames(prefixCls, contextClassName, overlayClassName, contextClassNames.root, popconfirmClassNames === null || popconfirmClassNames === void 0 ? void 0 : popconfirmClassNames.root);
   const bodyClassNames = classNames(contextClassNames.body, popconfirmClassNames === null || popconfirmClassNames === void 0 ? void 0 : popconfirmClassNames.body);
-  const [wrapCSSVar] = useStyle$4(prefixCls);
+  const [wrapCSSVar] = useStyle$5(prefixCls);
   return wrapCSSVar(/* @__PURE__ */ reactExports.createElement(Popover, Object.assign({}, omit(restProps, ["title"]), {
     trigger,
     placement,
@@ -49393,14 +49738,443 @@ const InternalPopconfirm = /* @__PURE__ */ reactExports.forwardRef((props, ref) 
 });
 const Popconfirm = InternalPopconfirm;
 Popconfirm._InternalPanelDoNotUseOrYouWillBeFired = PurePanel;
-var StarFilled$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" } }] }, "name": "star", "theme": "filled" };
-var StarFilled = function StarFilled2(props, ref) {
+var ReloadOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M909.1 209.3l-56.4 44.1C775.8 155.1 656.2 92 521.9 92 290 92 102.3 279.5 102 511.5 101.7 743.7 289.8 932 521.9 932c181.3 0 335.8-115 394.6-276.1 1.5-4.2-.7-8.9-4.9-10.3l-56.7-19.5a8 8 0 00-10.1 4.8c-1.8 5-3.8 10-5.9 14.9-17.3 41-42.1 77.8-73.7 109.4A344.77 344.77 0 01655.9 829c-42.3 17.9-87.4 27-133.8 27-46.5 0-91.5-9.1-133.8-27A341.5 341.5 0 01279 755.2a342.16 342.16 0 01-73.7-109.4c-17.9-42.4-27-87.4-27-133.9s9.1-91.5 27-133.9c17.3-41 42.1-77.8 73.7-109.4 31.6-31.6 68.4-56.4 109.3-73.8 42.3-17.9 87.4-27 133.8-27 46.5 0 91.5 9.1 133.8 27a341.5 341.5 0 01109.3 73.8c9.9 9.9 19.2 20.4 27.8 31.4l-60.2 47a8 8 0 003 14.1l175.6 43c5 1.2 9.9-2.6 9.9-7.7l.8-180.9c-.1-6.6-7.8-10.3-13-6.2z" } }] }, "name": "reload", "theme": "outlined" };
+var ReloadOutlined = function ReloadOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
     ref,
-    icon: StarFilled$1
+    icon: ReloadOutlined$1
   }));
 };
-var RefIcon$s = /* @__PURE__ */ reactExports.forwardRef(StarFilled);
+var RefIcon$x = /* @__PURE__ */ reactExports.forwardRef(ReloadOutlined);
+var _excluded$9 = ["prefixCls", "className", "checked", "defaultChecked", "disabled", "loadingIcon", "checkedChildren", "unCheckedChildren", "onClick", "onChange", "onKeyDown"];
+var Switch$1 = /* @__PURE__ */ reactExports.forwardRef(function(_ref, ref) {
+  var _classNames;
+  var _ref$prefixCls = _ref.prefixCls, prefixCls = _ref$prefixCls === void 0 ? "rc-switch" : _ref$prefixCls, className = _ref.className, checked = _ref.checked, defaultChecked = _ref.defaultChecked, disabled = _ref.disabled, loadingIcon = _ref.loadingIcon, checkedChildren = _ref.checkedChildren, unCheckedChildren = _ref.unCheckedChildren, onClick = _ref.onClick, onChange = _ref.onChange, onKeyDown2 = _ref.onKeyDown, restProps = _objectWithoutProperties(_ref, _excluded$9);
+  var _useMergedState = useMergedState(false, {
+    value: checked,
+    defaultValue: defaultChecked
+  }), _useMergedState2 = _slicedToArray(_useMergedState, 2), innerChecked = _useMergedState2[0], setInnerChecked = _useMergedState2[1];
+  function triggerChange(newChecked, event) {
+    var mergedChecked = innerChecked;
+    if (!disabled) {
+      mergedChecked = newChecked;
+      setInnerChecked(mergedChecked);
+      onChange === null || onChange === void 0 ? void 0 : onChange(mergedChecked, event);
+    }
+    return mergedChecked;
+  }
+  function onInternalKeyDown(e2) {
+    if (e2.which === KeyCode.LEFT) {
+      triggerChange(false, e2);
+    } else if (e2.which === KeyCode.RIGHT) {
+      triggerChange(true, e2);
+    }
+    onKeyDown2 === null || onKeyDown2 === void 0 ? void 0 : onKeyDown2(e2);
+  }
+  function onInternalClick(e2) {
+    var ret = triggerChange(!innerChecked, e2);
+    onClick === null || onClick === void 0 ? void 0 : onClick(ret, e2);
+  }
+  var switchClassName = classNames(prefixCls, className, (_classNames = {}, _defineProperty(_classNames, "".concat(prefixCls, "-checked"), innerChecked), _defineProperty(_classNames, "".concat(prefixCls, "-disabled"), disabled), _classNames));
+  return /* @__PURE__ */ reactExports.createElement("button", _extends({}, restProps, {
+    type: "button",
+    role: "switch",
+    "aria-checked": innerChecked,
+    disabled,
+    className: switchClassName,
+    ref,
+    onKeyDown: onInternalKeyDown,
+    onClick: onInternalClick
+  }), loadingIcon, /* @__PURE__ */ reactExports.createElement("span", {
+    className: "".concat(prefixCls, "-inner")
+  }, /* @__PURE__ */ reactExports.createElement("span", {
+    className: "".concat(prefixCls, "-inner-checked")
+  }, checkedChildren), /* @__PURE__ */ reactExports.createElement("span", {
+    className: "".concat(prefixCls, "-inner-unchecked")
+  }, unCheckedChildren)));
+});
+Switch$1.displayName = "Switch";
+const genSwitchSmallStyle = (token2) => {
+  const {
+    componentCls,
+    trackHeightSM,
+    trackPadding,
+    trackMinWidthSM,
+    innerMinMarginSM,
+    innerMaxMarginSM,
+    handleSizeSM,
+    calc
+  } = token2;
+  const switchInnerCls = `${componentCls}-inner`;
+  const trackPaddingCalc = unit$1(calc(handleSizeSM).add(calc(trackPadding).mul(2)).equal());
+  const innerMaxMarginCalc = unit$1(calc(innerMaxMarginSM).mul(2).equal());
+  return {
+    [componentCls]: {
+      [`&${componentCls}-small`]: {
+        minWidth: trackMinWidthSM,
+        height: trackHeightSM,
+        lineHeight: unit$1(trackHeightSM),
+        [`${componentCls}-inner`]: {
+          paddingInlineStart: innerMaxMarginSM,
+          paddingInlineEnd: innerMinMarginSM,
+          [`${switchInnerCls}-checked, ${switchInnerCls}-unchecked`]: {
+            minHeight: trackHeightSM
+          },
+          [`${switchInnerCls}-checked`]: {
+            marginInlineStart: `calc(-100% + ${trackPaddingCalc} - ${innerMaxMarginCalc})`,
+            marginInlineEnd: `calc(100% - ${trackPaddingCalc} + ${innerMaxMarginCalc})`
+          },
+          [`${switchInnerCls}-unchecked`]: {
+            marginTop: calc(trackHeightSM).mul(-1).equal(),
+            marginInlineStart: 0,
+            marginInlineEnd: 0
+          }
+        },
+        [`${componentCls}-handle`]: {
+          width: handleSizeSM,
+          height: handleSizeSM
+        },
+        [`${componentCls}-loading-icon`]: {
+          top: calc(calc(handleSizeSM).sub(token2.switchLoadingIconSize)).div(2).equal(),
+          fontSize: token2.switchLoadingIconSize
+        },
+        [`&${componentCls}-checked`]: {
+          [`${componentCls}-inner`]: {
+            paddingInlineStart: innerMinMarginSM,
+            paddingInlineEnd: innerMaxMarginSM,
+            [`${switchInnerCls}-checked`]: {
+              marginInlineStart: 0,
+              marginInlineEnd: 0
+            },
+            [`${switchInnerCls}-unchecked`]: {
+              marginInlineStart: `calc(100% - ${trackPaddingCalc} + ${innerMaxMarginCalc})`,
+              marginInlineEnd: `calc(-100% + ${trackPaddingCalc} - ${innerMaxMarginCalc})`
+            }
+          },
+          [`${componentCls}-handle`]: {
+            insetInlineStart: `calc(100% - ${unit$1(calc(handleSizeSM).add(trackPadding).equal())})`
+          }
+        },
+        [`&:not(${componentCls}-disabled):active`]: {
+          [`&:not(${componentCls}-checked) ${switchInnerCls}`]: {
+            [`${switchInnerCls}-unchecked`]: {
+              marginInlineStart: calc(token2.marginXXS).div(2).equal(),
+              marginInlineEnd: calc(token2.marginXXS).mul(-1).div(2).equal()
+            }
+          },
+          [`&${componentCls}-checked ${switchInnerCls}`]: {
+            [`${switchInnerCls}-checked`]: {
+              marginInlineStart: calc(token2.marginXXS).mul(-1).div(2).equal(),
+              marginInlineEnd: calc(token2.marginXXS).div(2).equal()
+            }
+          }
+        }
+      }
+    }
+  };
+};
+const genSwitchLoadingStyle = (token2) => {
+  const {
+    componentCls,
+    handleSize,
+    calc
+  } = token2;
+  return {
+    [componentCls]: {
+      [`${componentCls}-loading-icon${token2.iconCls}`]: {
+        position: "relative",
+        top: calc(calc(handleSize).sub(token2.fontSize)).div(2).equal(),
+        color: token2.switchLoadingIconColor,
+        verticalAlign: "top"
+      },
+      [`&${componentCls}-checked ${componentCls}-loading-icon`]: {
+        color: token2.switchColor
+      }
+    }
+  };
+};
+const genSwitchHandleStyle = (token2) => {
+  const {
+    componentCls,
+    trackPadding,
+    handleBg,
+    handleShadow,
+    handleSize,
+    calc
+  } = token2;
+  const switchHandleCls = `${componentCls}-handle`;
+  return {
+    [componentCls]: {
+      [switchHandleCls]: {
+        position: "absolute",
+        top: trackPadding,
+        insetInlineStart: trackPadding,
+        width: handleSize,
+        height: handleSize,
+        transition: `all ${token2.switchDuration} ease-in-out`,
+        "&::before": {
+          position: "absolute",
+          top: 0,
+          insetInlineEnd: 0,
+          bottom: 0,
+          insetInlineStart: 0,
+          backgroundColor: handleBg,
+          borderRadius: calc(handleSize).div(2).equal(),
+          boxShadow: handleShadow,
+          transition: `all ${token2.switchDuration} ease-in-out`,
+          content: '""'
+        }
+      },
+      [`&${componentCls}-checked ${switchHandleCls}`]: {
+        insetInlineStart: `calc(100% - ${unit$1(calc(handleSize).add(trackPadding).equal())})`
+      },
+      [`&:not(${componentCls}-disabled):active`]: {
+        [`${switchHandleCls}::before`]: {
+          insetInlineEnd: token2.switchHandleActiveInset,
+          insetInlineStart: 0
+        },
+        [`&${componentCls}-checked ${switchHandleCls}::before`]: {
+          insetInlineEnd: 0,
+          insetInlineStart: token2.switchHandleActiveInset
+        }
+      }
+    }
+  };
+};
+const genSwitchInnerStyle = (token2) => {
+  const {
+    componentCls,
+    trackHeight,
+    trackPadding,
+    innerMinMargin,
+    innerMaxMargin,
+    handleSize,
+    calc
+  } = token2;
+  const switchInnerCls = `${componentCls}-inner`;
+  const trackPaddingCalc = unit$1(calc(handleSize).add(calc(trackPadding).mul(2)).equal());
+  const innerMaxMarginCalc = unit$1(calc(innerMaxMargin).mul(2).equal());
+  return {
+    [componentCls]: {
+      [switchInnerCls]: {
+        display: "block",
+        overflow: "hidden",
+        borderRadius: 100,
+        height: "100%",
+        paddingInlineStart: innerMaxMargin,
+        paddingInlineEnd: innerMinMargin,
+        transition: `padding-inline-start ${token2.switchDuration} ease-in-out, padding-inline-end ${token2.switchDuration} ease-in-out`,
+        [`${switchInnerCls}-checked, ${switchInnerCls}-unchecked`]: {
+          display: "block",
+          color: token2.colorTextLightSolid,
+          fontSize: token2.fontSizeSM,
+          transition: `margin-inline-start ${token2.switchDuration} ease-in-out, margin-inline-end ${token2.switchDuration} ease-in-out`,
+          pointerEvents: "none",
+          minHeight: trackHeight
+        },
+        [`${switchInnerCls}-checked`]: {
+          marginInlineStart: `calc(-100% + ${trackPaddingCalc} - ${innerMaxMarginCalc})`,
+          marginInlineEnd: `calc(100% - ${trackPaddingCalc} + ${innerMaxMarginCalc})`
+        },
+        [`${switchInnerCls}-unchecked`]: {
+          marginTop: calc(trackHeight).mul(-1).equal(),
+          marginInlineStart: 0,
+          marginInlineEnd: 0
+        }
+      },
+      [`&${componentCls}-checked ${switchInnerCls}`]: {
+        paddingInlineStart: innerMinMargin,
+        paddingInlineEnd: innerMaxMargin,
+        [`${switchInnerCls}-checked`]: {
+          marginInlineStart: 0,
+          marginInlineEnd: 0
+        },
+        [`${switchInnerCls}-unchecked`]: {
+          marginInlineStart: `calc(100% - ${trackPaddingCalc} + ${innerMaxMarginCalc})`,
+          marginInlineEnd: `calc(-100% + ${trackPaddingCalc} - ${innerMaxMarginCalc})`
+        }
+      },
+      [`&:not(${componentCls}-disabled):active`]: {
+        [`&:not(${componentCls}-checked) ${switchInnerCls}`]: {
+          [`${switchInnerCls}-unchecked`]: {
+            marginInlineStart: calc(trackPadding).mul(2).equal(),
+            marginInlineEnd: calc(trackPadding).mul(-1).mul(2).equal()
+          }
+        },
+        [`&${componentCls}-checked ${switchInnerCls}`]: {
+          [`${switchInnerCls}-checked`]: {
+            marginInlineStart: calc(trackPadding).mul(-1).mul(2).equal(),
+            marginInlineEnd: calc(trackPadding).mul(2).equal()
+          }
+        }
+      }
+    }
+  };
+};
+const genSwitchStyle = (token2) => {
+  const {
+    componentCls,
+    trackHeight,
+    trackMinWidth
+  } = token2;
+  return {
+    [componentCls]: Object.assign(Object.assign(Object.assign(Object.assign({}, resetComponent(token2)), {
+      position: "relative",
+      display: "inline-block",
+      boxSizing: "border-box",
+      minWidth: trackMinWidth,
+      height: trackHeight,
+      lineHeight: unit$1(trackHeight),
+      verticalAlign: "middle",
+      background: token2.colorTextQuaternary,
+      border: "0",
+      borderRadius: 100,
+      cursor: "pointer",
+      transition: `all ${token2.motionDurationMid}`,
+      userSelect: "none",
+      [`&:hover:not(${componentCls}-disabled)`]: {
+        background: token2.colorTextTertiary
+      }
+    }), genFocusStyle(token2)), {
+      [`&${componentCls}-checked`]: {
+        background: token2.switchColor,
+        [`&:hover:not(${componentCls}-disabled)`]: {
+          background: token2.colorPrimaryHover
+        }
+      },
+      [`&${componentCls}-loading, &${componentCls}-disabled`]: {
+        cursor: "not-allowed",
+        opacity: token2.switchDisabledOpacity,
+        "*": {
+          boxShadow: "none",
+          cursor: "not-allowed"
+        }
+      },
+      // rtl style
+      [`&${componentCls}-rtl`]: {
+        direction: "rtl"
+      }
+    })
+  };
+};
+const prepareComponentToken$4 = (token2) => {
+  const {
+    fontSize,
+    lineHeight,
+    controlHeight,
+    colorWhite
+  } = token2;
+  const height = fontSize * lineHeight;
+  const heightSM = controlHeight / 2;
+  const padding = 2;
+  const handleSize = height - padding * 2;
+  const handleSizeSM = heightSM - padding * 2;
+  return {
+    trackHeight: height,
+    trackHeightSM: heightSM,
+    trackMinWidth: handleSize * 2 + padding * 4,
+    trackMinWidthSM: handleSizeSM * 2 + padding * 2,
+    trackPadding: padding,
+    // Fixed value
+    handleBg: colorWhite,
+    handleSize,
+    handleSizeSM,
+    handleShadow: `0 2px 4px 0 ${new FastColor("#00230b").setA(0.2).toRgbString()}`,
+    innerMinMargin: handleSize / 2,
+    innerMaxMargin: handleSize + padding + padding * 2,
+    innerMinMarginSM: handleSizeSM / 2,
+    innerMaxMarginSM: handleSizeSM + padding + padding * 2
+  };
+};
+const useStyle$4 = genStyleHooks("Switch", (token2) => {
+  const switchToken = merge(token2, {
+    switchDuration: token2.motionDurationMid,
+    switchColor: token2.colorPrimary,
+    switchDisabledOpacity: token2.opacityLoading,
+    switchLoadingIconSize: token2.calc(token2.fontSizeIcon).mul(0.75).equal(),
+    switchLoadingIconColor: `rgba(0, 0, 0, ${token2.opacityLoading})`,
+    switchHandleActiveInset: "-30%"
+  });
+  return [
+    genSwitchStyle(switchToken),
+    // inner style
+    genSwitchInnerStyle(switchToken),
+    // handle style
+    genSwitchHandleStyle(switchToken),
+    // loading style
+    genSwitchLoadingStyle(switchToken),
+    // small style
+    genSwitchSmallStyle(switchToken)
+  ];
+}, prepareComponentToken$4);
+var __rest$a = function(s, e2) {
+  var t2 = {};
+  for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
+    if (e2.indexOf(p2[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p2[i])) t2[p2[i]] = s[p2[i]];
+  }
+  return t2;
+};
+const InternalSwitch = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
+  const {
+    prefixCls: customizePrefixCls,
+    size: customizeSize,
+    disabled: customDisabled,
+    loading,
+    className,
+    rootClassName,
+    style: style2,
+    checked: checkedProp,
+    value,
+    defaultChecked: defaultCheckedProp,
+    defaultValue,
+    onChange
+  } = props, restProps = __rest$a(props, ["prefixCls", "size", "disabled", "loading", "className", "rootClassName", "style", "checked", "value", "defaultChecked", "defaultValue", "onChange"]);
+  const [checked, setChecked] = useMergedState(false, {
+    value: checkedProp !== null && checkedProp !== void 0 ? checkedProp : value,
+    defaultValue: defaultCheckedProp !== null && defaultCheckedProp !== void 0 ? defaultCheckedProp : defaultValue
+  });
+  const {
+    getPrefixCls,
+    direction,
+    switch: SWITCH
+  } = reactExports.useContext(ConfigContext);
+  const disabled = reactExports.useContext(DisabledContext);
+  const mergedDisabled = (customDisabled !== null && customDisabled !== void 0 ? customDisabled : disabled) || loading;
+  const prefixCls = getPrefixCls("switch", customizePrefixCls);
+  const loadingIcon = /* @__PURE__ */ reactExports.createElement("div", {
+    className: `${prefixCls}-handle`
+  }, loading && /* @__PURE__ */ reactExports.createElement(RefIcon$N, {
+    className: `${prefixCls}-loading-icon`
+  }));
+  const [wrapCSSVar, hashId, cssVarCls] = useStyle$4(prefixCls);
+  const mergedSize = useSize(customizeSize);
+  const classes = classNames(SWITCH === null || SWITCH === void 0 ? void 0 : SWITCH.className, {
+    [`${prefixCls}-small`]: mergedSize === "small",
+    [`${prefixCls}-loading`]: loading,
+    [`${prefixCls}-rtl`]: direction === "rtl"
+  }, className, rootClassName, hashId, cssVarCls);
+  const mergedStyle = Object.assign(Object.assign({}, SWITCH === null || SWITCH === void 0 ? void 0 : SWITCH.style), style2);
+  const changeHandler = (...args) => {
+    setChecked(args[0]);
+    onChange === null || onChange === void 0 ? void 0 : onChange.apply(void 0, args);
+  };
+  return wrapCSSVar(/* @__PURE__ */ reactExports.createElement(Wave, {
+    component: "Switch",
+    disabled: mergedDisabled
+  }, /* @__PURE__ */ reactExports.createElement(Switch$1, Object.assign({}, restProps, {
+    checked,
+    onChange: changeHandler,
+    prefixCls,
+    className: classes,
+    style: mergedStyle,
+    disabled: mergedDisabled,
+    ref,
+    loadingIcon
+  }))));
+});
+const Switch = InternalSwitch;
+Switch.__ANT_SWITCH = true;
 var EXPAND_COLUMN = {};
 var INTERNAL_HOOKS = "rc-table-internal-hook";
 function createContext(defaultValue) {
@@ -52626,7 +53400,7 @@ const useSelection = (config, rowSelection) => {
         }, /* @__PURE__ */ reactExports.createElement(Dropdown, {
           menu,
           getPopupContainer
-        }, /* @__PURE__ */ reactExports.createElement("span", null, /* @__PURE__ */ reactExports.createElement(RefIcon$E, null))));
+        }, /* @__PURE__ */ reactExports.createElement("span", null, /* @__PURE__ */ reactExports.createElement(RefIcon$K, null))));
       }
       const allDisabledData = flattedData.map((record, index2) => {
         const key = getRowKey(record, index2);
@@ -52898,7 +53672,7 @@ var FilterFilled = function FilterFilled2(props, ref) {
     icon: FilterFilled$1
   }));
 };
-var RefIcon$r = /* @__PURE__ */ reactExports.forwardRef(FilterFilled);
+var RefIcon$w = /* @__PURE__ */ reactExports.forwardRef(FilterFilled);
 var DropIndicator = function DropIndicator2(props) {
   var dropPosition = props.dropPosition, dropLevelOffset = props.dropLevelOffset, indent = props.indent;
   var style2 = {
@@ -54194,7 +54968,7 @@ var FileOutlined = function FileOutlined2(props, ref) {
     icon: FileOutlined$1
   }));
 };
-var RefIcon$q = /* @__PURE__ */ reactExports.forwardRef(FileOutlined);
+var RefIcon$v = /* @__PURE__ */ reactExports.forwardRef(FileOutlined);
 var FolderOpenOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M928 444H820V330.4c0-17.7-14.3-32-32-32H473L355.7 186.2a8.15 8.15 0 00-5.5-2.2H96c-17.7 0-32 14.3-32 32v592c0 17.7 14.3 32 32 32h698c13 0 24.8-7.9 29.7-20l134-332c1.5-3.8 2.3-7.9 2.3-12 0-17.7-14.3-32-32-32zM136 256h188.5l119.6 114.4H748V444H238c-13 0-24.8 7.9-29.7 20L136 643.2V256zm635.3 512H159l103.3-256h612.4L771.3 768z" } }] }, "name": "folder-open", "theme": "outlined" };
 var FolderOpenOutlined = function FolderOpenOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -54202,7 +54976,7 @@ var FolderOpenOutlined = function FolderOpenOutlined2(props, ref) {
     icon: FolderOpenOutlined$1
   }));
 };
-var RefIcon$p = /* @__PURE__ */ reactExports.forwardRef(FolderOpenOutlined);
+var RefIcon$u = /* @__PURE__ */ reactExports.forwardRef(FolderOpenOutlined);
 var FolderOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M880 298.4H521L403.7 186.2a8.15 8.15 0 00-5.5-2.2H144c-17.7 0-32 14.3-32 32v592c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V330.4c0-17.7-14.3-32-32-32zM840 768H184V256h188.5l119.6 114.4H840V768z" } }] }, "name": "folder", "theme": "outlined" };
 var FolderOutlined = function FolderOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -54210,7 +54984,7 @@ var FolderOutlined = function FolderOutlined2(props, ref) {
     icon: FolderOutlined$1
   }));
 };
-var RefIcon$o = /* @__PURE__ */ reactExports.forwardRef(FolderOutlined);
+var RefIcon$t = /* @__PURE__ */ reactExports.forwardRef(FolderOutlined);
 var HolderOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M300 276.5a56 56 0 1056-97 56 56 0 00-56 97zm0 284a56 56 0 1056-97 56 56 0 00-56 97zM640 228a56 56 0 10112 0 56 56 0 00-112 0zm0 284a56 56 0 10112 0 56 56 0 00-112 0zM300 844.5a56 56 0 1056-97 56 56 0 00-56 97zM640 796a56 56 0 10112 0 56 56 0 00-112 0z" } }] }, "name": "holder", "theme": "outlined" };
 var HolderOutlined = function HolderOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -54218,7 +54992,7 @@ var HolderOutlined = function HolderOutlined2(props, ref) {
     icon: HolderOutlined$1
   }));
 };
-var RefIcon$n = /* @__PURE__ */ reactExports.forwardRef(HolderOutlined);
+var RefIcon$s = /* @__PURE__ */ reactExports.forwardRef(HolderOutlined);
 const genDirectoryStyle = ({
   treeCls,
   treeNodeCls,
@@ -54672,7 +55446,7 @@ var CaretDownFilled = function CaretDownFilled2(props, ref) {
     icon: CaretDownFilled$1
   }));
 };
-var RefIcon$m = /* @__PURE__ */ reactExports.forwardRef(CaretDownFilled);
+var RefIcon$r = /* @__PURE__ */ reactExports.forwardRef(CaretDownFilled);
 var MinusSquareOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "minus-square", "theme": "outlined" };
 var MinusSquareOutlined = function MinusSquareOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -54680,7 +55454,7 @@ var MinusSquareOutlined = function MinusSquareOutlined2(props, ref) {
     icon: MinusSquareOutlined$1
   }));
 };
-var RefIcon$l = /* @__PURE__ */ reactExports.forwardRef(MinusSquareOutlined);
+var RefIcon$q = /* @__PURE__ */ reactExports.forwardRef(MinusSquareOutlined);
 var PlusSquareOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M328 544h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "plus-square", "theme": "outlined" };
 var PlusSquareOutlined = function PlusSquareOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -54688,7 +55462,7 @@ var PlusSquareOutlined = function PlusSquareOutlined2(props, ref) {
     icon: PlusSquareOutlined$1
   }));
 };
-var RefIcon$k = /* @__PURE__ */ reactExports.forwardRef(PlusSquareOutlined);
+var RefIcon$p = /* @__PURE__ */ reactExports.forwardRef(PlusSquareOutlined);
 const SwitcherIconCom = (props) => {
   var _a, _b;
   const {
@@ -54707,7 +55481,7 @@ const SwitcherIconCom = (props) => {
     if (/* @__PURE__ */ reactExports.isValidElement(switcherLoadingIcon)) {
       return switcherLoadingIcon;
     }
-    return /* @__PURE__ */ reactExports.createElement(RefIcon$H, {
+    return /* @__PURE__ */ reactExports.createElement(RefIcon$N, {
       className: `${prefixCls}-switcher-loading-icon`
     });
   }
@@ -54729,7 +55503,7 @@ const SwitcherIconCom = (props) => {
       }
       return leafIcon;
     }
-    return showLeafIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$q, {
+    return showLeafIcon ? /* @__PURE__ */ reactExports.createElement(RefIcon$v, {
       className: `${prefixCls}-switcher-line-icon`
     }) : /* @__PURE__ */ reactExports.createElement("span", {
       className: `${prefixCls}-switcher-leaf-line`
@@ -54746,13 +55520,13 @@ const SwitcherIconCom = (props) => {
     return switcher;
   }
   if (showLine) {
-    return expanded ? /* @__PURE__ */ reactExports.createElement(RefIcon$l, {
+    return expanded ? /* @__PURE__ */ reactExports.createElement(RefIcon$q, {
       className: `${prefixCls}-switcher-line-icon`
-    }) : /* @__PURE__ */ reactExports.createElement(RefIcon$k, {
+    }) : /* @__PURE__ */ reactExports.createElement(RefIcon$p, {
       className: `${prefixCls}-switcher-line-icon`
     });
   }
-  return /* @__PURE__ */ reactExports.createElement(RefIcon$m, {
+  return /* @__PURE__ */ reactExports.createElement(RefIcon$r, {
     className: switcherCls
   });
 };
@@ -54814,7 +55588,7 @@ const Tree$1 = /* @__PURE__ */ React.forwardRef((props, ref) => {
         break;
     }
     if (mergedDraggable.icon !== false) {
-      mergedDraggable.icon = mergedDraggable.icon || /* @__PURE__ */ React.createElement(RefIcon$n, null);
+      mergedDraggable.icon = mergedDraggable.icon || /* @__PURE__ */ React.createElement(RefIcon$s, null);
     }
     return mergedDraggable;
   }, [draggable]);
@@ -54933,9 +55707,9 @@ function getIcon(props) {
     expanded
   } = props;
   if (isLeaf) {
-    return /* @__PURE__ */ reactExports.createElement(RefIcon$q, null);
+    return /* @__PURE__ */ reactExports.createElement(RefIcon$v, null);
   }
-  return expanded ? /* @__PURE__ */ reactExports.createElement(RefIcon$p, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$o, null);
+  return expanded ? /* @__PURE__ */ reactExports.createElement(RefIcon$u, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$t, null);
 }
 function getTreeData({
   treeData,
@@ -55078,7 +55852,7 @@ const FilterSearch = (props) => {
   return /* @__PURE__ */ reactExports.createElement("div", {
     className: `${tablePrefixCls}-filter-dropdown-search`
   }, /* @__PURE__ */ reactExports.createElement(Input$1, {
-    prefix: /* @__PURE__ */ reactExports.createElement(RefIcon$D, null),
+    prefix: /* @__PURE__ */ reactExports.createElement(RefIcon$J, null),
     placeholder: locale2.filterSearchPlaceholder,
     onChange,
     value,
@@ -55489,7 +56263,7 @@ const FilterDropdown = (props) => {
     } else if (column2.filterIcon) {
       filterIcon = column2.filterIcon;
     } else {
-      filterIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$r, null);
+      filterIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$w, null);
     }
     return /* @__PURE__ */ reactExports.createElement("span", {
       role: "button",
@@ -55709,17 +56483,18 @@ const useLazyKVMap = (data, childrenColumnName, getRowKey) => {
   function getRecordByKey(key) {
     var _a;
     if (!mapCacheRef.current || mapCacheRef.current.data !== data || mapCacheRef.current.childrenColumnName !== childrenColumnName || mapCacheRef.current.getRowKey !== getRowKey) {
-      let dig = function(records) {
+      let dig2 = function(records) {
         records.forEach((record, index2) => {
           const rowKey = getRowKey(record, index2);
           kvMap.set(rowKey, record);
           if (record && typeof record === "object" && childrenColumnName in record) {
-            dig(record[childrenColumnName] || []);
+            dig2(record[childrenColumnName] || []);
           }
         });
       };
+      var dig = dig2;
       const kvMap = /* @__PURE__ */ new Map();
-      dig(data);
+      dig2(data);
       mapCacheRef.current = {
         data,
         childrenColumnName,
@@ -55798,7 +56573,7 @@ var CaretDownOutlined = function CaretDownOutlined2(props, ref) {
     icon: CaretDownOutlined$1
   }));
 };
-var RefIcon$j = /* @__PURE__ */ reactExports.forwardRef(CaretDownOutlined);
+var RefIcon$o = /* @__PURE__ */ reactExports.forwardRef(CaretDownOutlined);
 var CaretUpOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z" } }] }, "name": "caret-up", "theme": "outlined" };
 var CaretUpOutlined = function CaretUpOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -55806,7 +56581,7 @@ var CaretUpOutlined = function CaretUpOutlined2(props, ref) {
     icon: CaretUpOutlined$1
   }));
 };
-var RefIcon$i = /* @__PURE__ */ reactExports.forwardRef(CaretUpOutlined);
+var RefIcon$n = /* @__PURE__ */ reactExports.forwardRef(CaretUpOutlined);
 const ASCEND = "ascend";
 const DESCEND = "descend";
 const getMultiplePriority = (column2) => {
@@ -55881,12 +56656,12 @@ const injectSorter = (prefixCls, columns, sorterStates, triggerSorter, defaultSo
           sortOrder
         });
       } else {
-        const upNode = sortDirections.includes(ASCEND) && /* @__PURE__ */ reactExports.createElement(RefIcon$i, {
+        const upNode = sortDirections.includes(ASCEND) && /* @__PURE__ */ reactExports.createElement(RefIcon$n, {
           className: classNames(`${prefixCls}-column-sorter-up`, {
             active: sortOrder === ASCEND
           })
         });
-        const downNode = sortDirections.includes(DESCEND) && /* @__PURE__ */ reactExports.createElement(RefIcon$j, {
+        const downNode = sortDirections.includes(DESCEND) && /* @__PURE__ */ reactExports.createElement(RefIcon$o, {
           className: classNames(`${prefixCls}-column-sorter-down`, {
             active: sortOrder === DESCEND
           })
@@ -58220,7 +58995,7 @@ var DeleteOutlined = function DeleteOutlined2(props, ref) {
     icon: DeleteOutlined$1
   }));
 };
-var RefIcon$h = /* @__PURE__ */ reactExports.forwardRef(DeleteOutlined);
+var RefIcon$m = /* @__PURE__ */ reactExports.forwardRef(DeleteOutlined);
 var EditOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 000-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 009.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z" } }] }, "name": "edit", "theme": "outlined" };
 var EditOutlined = function EditOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -58228,7 +59003,7 @@ var EditOutlined = function EditOutlined2(props, ref) {
     icon: EditOutlined$1
   }));
 };
-var RefIcon$g = /* @__PURE__ */ reactExports.forwardRef(EditOutlined);
+var RefIcon$l = /* @__PURE__ */ reactExports.forwardRef(EditOutlined);
 var EnterOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M864 170h-60c-4.4 0-8 3.6-8 8v518H310v-73c0-6.7-7.8-10.5-13-6.3l-141.9 112a8 8 0 000 12.6l141.9 112c5.3 4.2 13 .4 13-6.3v-75h498c35.3 0 64-28.7 64-64V178c0-4.4-3.6-8-8-8z" } }] }, "name": "enter", "theme": "outlined" };
 var EnterOutlined = function EnterOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -58236,7 +59011,7 @@ var EnterOutlined = function EnterOutlined2(props, ref) {
     icon: EnterOutlined$1
   }));
 };
-var RefIcon$f = /* @__PURE__ */ reactExports.forwardRef(EnterOutlined);
+var RefIcon$k = /* @__PURE__ */ reactExports.forwardRef(EnterOutlined);
 const getTitleStyle = (fontSize, lineHeight, color, token2) => {
   const {
     titleMarginBottom,
@@ -58557,7 +59332,7 @@ const Editable = (props) => {
     onCancel,
     onEnd,
     component,
-    enterIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$f, null)
+    enterIcon = /* @__PURE__ */ reactExports.createElement(RefIcon$k, null)
   } = props;
   const ref = reactExports.useRef(null);
   const inComposition = reactExports.useRef(false);
@@ -58920,7 +59695,7 @@ var CopyOutlined = function CopyOutlined2(props, ref) {
     icon: CopyOutlined$1
   }));
 };
-var RefIcon$e = /* @__PURE__ */ reactExports.forwardRef(CopyOutlined);
+var RefIcon$j = /* @__PURE__ */ reactExports.forwardRef(CopyOutlined);
 function toList(val) {
   if (val === false) {
     return [false, false];
@@ -58977,7 +59752,7 @@ const CopyBtn = ({
     onClick: onCopy,
     "aria-label": ariaLabel,
     tabIndex
-  }, copied ? getNode(iconNodes[1], /* @__PURE__ */ reactExports.createElement(RefIcon$F, null), true) : getNode(iconNodes[0], btnLoading ? /* @__PURE__ */ reactExports.createElement(RefIcon$H, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$e, null), true)));
+  }, copied ? getNode(iconNodes[1], /* @__PURE__ */ reactExports.createElement(RefIcon$L, null), true) : getNode(iconNodes[0], btnLoading ? /* @__PURE__ */ reactExports.createElement(RefIcon$N, null) : /* @__PURE__ */ reactExports.createElement(RefIcon$j, null), true)));
 };
 const MeasureText = /* @__PURE__ */ reactExports.forwardRef(({
   style: style2,
@@ -59413,7 +60188,7 @@ const Base = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
       onClick: onEditClick,
       "aria-label": ariaLabel,
       tabIndex
-    }, icon || /* @__PURE__ */ reactExports.createElement(RefIcon$g, {
+    }, icon || /* @__PURE__ */ reactExports.createElement(RefIcon$l, {
       role: "button"
     }))) : null;
   };
@@ -59526,7 +60301,7 @@ var __rest$1 = function(s, e2) {
   }
   return t2;
 };
-const Text$9 = (props, ref) => {
+const Text$b = (props, ref) => {
   const {
     ellipsis,
     children
@@ -59544,7 +60319,7 @@ const Text$9 = (props, ref) => {
     component: "span"
   }), children);
 };
-const Text$a = /* @__PURE__ */ reactExports.forwardRef(Text$9);
+const Text$c = /* @__PURE__ */ reactExports.forwardRef(Text$b);
 var __rest = function(s, e2) {
   var t2 = {};
   for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e2.indexOf(p2) < 0) t2[p2] = s[p2];
@@ -59567,7 +60342,7 @@ const Title = /* @__PURE__ */ reactExports.forwardRef((props, ref) => {
   }), children);
 });
 const Typography = Typography$1;
-Typography.Text = Text$a;
+Typography.Text = Text$c;
 Typography.Link = Link;
 Typography.Title = Title;
 Typography.Paragraph = Paragraph$1;
@@ -59578,7 +60353,7 @@ var DownloadOutlined = function DownloadOutlined2(props, ref) {
     icon: DownloadOutlined$1
   }));
 };
-var RefIcon$d = /* @__PURE__ */ reactExports.forwardRef(DownloadOutlined);
+var RefIcon$i = /* @__PURE__ */ reactExports.forwardRef(DownloadOutlined);
 var zh_CN$6 = {};
 var interopRequireDefault = { exports: {} };
 (function(module) {
@@ -59987,13 +60762,7 @@ function createRepoSlice(set2, get2) {
       set2({ isReposLoading: true, reposError: null });
       const res = await window.electronAPI.repoList();
       if (res.success) {
-        const repos = res.data;
-        repos.sort((a, b2) => {
-          if (a.isFavorite && !b2.isFavorite) return -1;
-          if (!a.isFavorite && b2.isFavorite) return 1;
-          return 0;
-        });
-        set2({ repos, isReposLoading: false });
+        set2({ repos: res.data, isReposLoading: false });
       } else {
         set2({ reposError: res.error, isReposLoading: false });
       }
@@ -60014,17 +60783,15 @@ function createRepoSlice(set2, get2) {
         set2({ repos, selectedRepoId });
       }
     },
-    toggleFavorite: async (id2) => {
-      const res = await window.electronAPI.repoToggleFav(id2);
+    updateRepoInfo: async (id2, updates) => {
+      const repo = get2().repos.find((r2) => r2.id === id2);
+      if (!repo) return;
+      const merged = { ...repo, ...updates };
+      const res = await window.electronAPI.repoUpdate(id2, merged);
       if (res.success) {
         const repos = get2().repos.map(
           (r2) => r2.id === id2 ? res.data : r2
         );
-        repos.sort((a, b2) => {
-          if (a.isFavorite && !b2.isFavorite) return -1;
-          if (!a.isFavorite && b2.isFavorite) return 1;
-          return 0;
-        });
         set2({ repos });
       }
     },
@@ -60157,11 +60924,14 @@ function createGitSlice(set2, get2) {
         set2({ operationError: res.error, activeOperation: null });
       }
     },
-    createBranch: async (repoPath, name) => {
+    createBranch: async (repoPath, name, baseBranch, switchTo) => {
       set2({ activeOperation: "create-branch", operationError: null });
-      const res = await window.electronAPI.gitCreateBranch(repoPath, name);
+      const res = await window.electronAPI.gitCreateBranch(repoPath, name, baseBranch, switchTo);
       if (res.success) {
         await get2().loadBranches(repoPath);
+        if (switchTo !== false) {
+          await get2().loadCurrentBranch(repoPath);
+        }
         set2({ activeOperation: null });
       } else {
         set2({ operationError: res.error, activeOperation: null });
@@ -60180,15 +60950,18 @@ function createGitSlice(set2, get2) {
         set2({ operationError: res.error, activeOperation: null });
       }
     },
-    merge: async (repoPath, branch) => {
+    merge: async (repoPath, sourceBranch, targetBranch) => {
       set2({ activeOperation: "merge", operationError: null });
-      const res = await window.electronAPI.gitMerge(repoPath, branch);
+      const res = await window.electronAPI.gitMerge(repoPath, sourceBranch, targetBranch);
       if (res.success) {
         await get2().loadCommits(repoPath);
         await get2().loadBranches(repoPath);
+        await get2().loadCurrentBranch(repoPath);
         set2({ activeOperation: null });
+        return res.data;
       } else {
         set2({ operationError: res.error, activeOperation: null });
+        return null;
       }
     },
     deleteBranch: async (repoPath, branch) => {
@@ -60240,6 +61013,7 @@ function createGitSlice(set2, get2) {
     }
   };
 }
+const DEFAULT_THEME = "light";
 function createUiSlice(set2, get2) {
   return {
     sidebarCollapsed: false,
@@ -60249,12 +61023,18 @@ function createUiSlice(set2, get2) {
     createBranchModalOpen: false,
     mergeModalOpen: false,
     cloneModalOpen: false,
+    githubLoginModalOpen: false,
+    cloneUrlPreset: "",
     selectedCommitHash: null,
     commitDetailOpen: false,
     repoSearchQuery: "",
     commitSearchQuery: "",
     diffOutputFormat: "side-by-side",
-    themeMode: "dark",
+    themeMode: DEFAULT_THEME,
+    githubLoggedIn: false,
+    githubUsername: "",
+    githubAvatarUrl: "",
+    githubRepos: [],
     toggleSidebar: () => {
       set2({ sidebarCollapsed: !get2().sidebarCollapsed });
     },
@@ -60281,6 +61061,15 @@ function createUiSlice(set2, get2) {
     },
     setThemeMode: (mode) => {
       set2({ themeMode: mode });
+    },
+    setGithubLogin: (loggedIn, username, avatarUrl) => {
+      set2({ githubLoggedIn: loggedIn, githubUsername: username || "", githubAvatarUrl: avatarUrl || "" });
+    },
+    setGithubRepos: (repos) => {
+      set2({ githubRepos: repos });
+    },
+    setCloneUrlPreset: (url2) => {
+      set2({ cloneUrlPreset: url2 });
     }
   };
 }
@@ -60419,7 +61208,7 @@ var BorderOutlined = function BorderOutlined2(props, ref) {
     icon: BorderOutlined$1
   }));
 };
-var RefIcon$c = /* @__PURE__ */ reactExports.forwardRef(BorderOutlined);
+var RefIcon$h = /* @__PURE__ */ reactExports.forwardRef(BorderOutlined);
 var BranchesOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M740 161c-61.8 0-112 50.2-112 112 0 50.1 33.1 92.6 78.5 106.9v95.9L320 602.4V318.1c44.2-15 76-56.9 76-106.1 0-61.8-50.2-112-112-112s-112 50.2-112 112c0 49.2 31.8 91 76 106.1V706c-44.2 15-76 56.9-76 106.1 0 61.8 50.2 112 112 112s112-50.2 112-112c0-49.2-31.8-91-76-106.1v-27.8l423.5-138.7a50.52 50.52 0 0034.9-48.2V378.2c42.9-15.8 73.6-57 73.6-105.2 0-61.8-50.2-112-112-112zm-504 51a48.01 48.01 0 0196 0 48.01 48.01 0 01-96 0zm96 600a48.01 48.01 0 01-96 0 48.01 48.01 0 0196 0zm408-491a48.01 48.01 0 010-96 48.01 48.01 0 010 96z" } }] }, "name": "branches", "theme": "outlined" };
 var BranchesOutlined = function BranchesOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -60427,7 +61216,15 @@ var BranchesOutlined = function BranchesOutlined2(props, ref) {
     icon: BranchesOutlined$1
   }));
 };
-var RefIcon$b = /* @__PURE__ */ reactExports.forwardRef(BranchesOutlined);
+var RefIcon$g = /* @__PURE__ */ reactExports.forwardRef(BranchesOutlined);
+var CaretRightOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M715.8 493.5L335 165.1c-14.2-12.2-35-1.2-35 18.5v656.8c0 19.7 20.8 30.7 35 18.5l380.8-328.4c10.9-9.4 10.9-27.6 0-37z" } }] }, "name": "caret-right", "theme": "outlined" };
+var CaretRightOutlined = function CaretRightOutlined2(props, ref) {
+  return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
+    ref,
+    icon: CaretRightOutlined$1
+  }));
+};
+var RefIcon$f = /* @__PURE__ */ reactExports.forwardRef(CaretRightOutlined);
 var CheckSquareOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M433.1 657.7a31.8 31.8 0 0051.7 0l210.6-292c3.8-5.3 0-12.7-6.5-12.7H642c-10.2 0-19.9 4.9-25.9 13.3L459 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H315c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8z" } }, { "tag": "path", "attrs": { "d": "M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656z" } }] }, "name": "check-square", "theme": "outlined" };
 var CheckSquareOutlined = function CheckSquareOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -60435,7 +61232,7 @@ var CheckSquareOutlined = function CheckSquareOutlined2(props, ref) {
     icon: CheckSquareOutlined$1
   }));
 };
-var RefIcon$a = /* @__PURE__ */ reactExports.forwardRef(CheckSquareOutlined);
+var RefIcon$e = /* @__PURE__ */ reactExports.forwardRef(CheckSquareOutlined);
 var CloudDownloadOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M624 706.3h-74.1V464c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v242.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.7a8 8 0 0012.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9z" } }, { "tag": "path", "attrs": { "d": "M811.4 366.7C765.6 245.9 648.9 160 512.2 160S258.8 245.8 213 366.6C127.3 389.1 64 467.2 64 560c0 110.5 89.5 200 199.9 200H304c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8h-40.1c-33.7 0-65.4-13.4-89-37.7-23.5-24.2-36-56.8-34.9-90.6.9-26.4 9.9-51.2 26.2-72.1 16.7-21.3 40.1-36.8 66.1-43.7l37.9-9.9 13.9-36.6c8.6-22.8 20.6-44.1 35.7-63.4a245.6 245.6 0 0152.4-49.9c41.1-28.9 89.5-44.2 140-44.2s98.9 15.3 140 44.2c19.9 14 37.5 30.8 52.4 49.9 15.1 19.3 27.1 40.7 35.7 63.4l13.8 36.5 37.8 10C846.1 454.5 884 503.8 884 560c0 33.1-12.9 64.3-36.3 87.7a123.07 123.07 0 01-87.6 36.3H720c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h40.1C870.5 760 960 670.5 960 560c0-92.7-63.1-170.7-148.6-193.3z" } }] }, "name": "cloud-download", "theme": "outlined" };
 var CloudDownloadOutlined = function CloudDownloadOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -60443,7 +61240,15 @@ var CloudDownloadOutlined = function CloudDownloadOutlined2(props, ref) {
     icon: CloudDownloadOutlined$1
   }));
 };
-var RefIcon$9 = /* @__PURE__ */ reactExports.forwardRef(CloudDownloadOutlined);
+var RefIcon$d = /* @__PURE__ */ reactExports.forwardRef(CloudDownloadOutlined);
+var ExpandOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "defs", "attrs": {}, "children": [{ "tag": "style", "attrs": {} }] }, { "tag": "path", "attrs": { "d": "M342 88H120c-17.7 0-32 14.3-32 32v224c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16V168h174c8.8 0 16-7.2 16-16v-48c0-8.8-7.2-16-16-16zm578 576h-48c-8.8 0-16 7.2-16 16v176H682c-8.8 0-16 7.2-16 16v48c0 8.8 7.2 16 16 16h222c17.7 0 32-14.3 32-32V680c0-8.8-7.2-16-16-16zM342 856H168V680c0-8.8-7.2-16-16-16h-48c-8.8 0-16 7.2-16 16v224c0 17.7 14.3 32 32 32h222c8.8 0 16-7.2 16-16v-48c0-8.8-7.2-16-16-16zM904 88H682c-8.8 0-16 7.2-16 16v48c0 8.8 7.2 16 16 16h174v176c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16V120c0-17.7-14.3-32-32-32z" } }] }, "name": "expand", "theme": "outlined" };
+var ExpandOutlined = function ExpandOutlined2(props, ref) {
+  return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
+    ref,
+    icon: ExpandOutlined$1
+  }));
+};
+var RefIcon$c = /* @__PURE__ */ reactExports.forwardRef(ExpandOutlined);
 var GithubOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0138.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z" } }] }, "name": "github", "theme": "outlined" };
 var GithubOutlined = function GithubOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -60451,7 +61256,15 @@ var GithubOutlined = function GithubOutlined2(props, ref) {
     icon: GithubOutlined$1
   }));
 };
-var RefIcon$8 = /* @__PURE__ */ reactExports.forwardRef(GithubOutlined);
+var RefIcon$b = /* @__PURE__ */ reactExports.forwardRef(GithubOutlined);
+var LoginOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "defs", "attrs": {}, "children": [{ "tag": "style", "attrs": {} }] }, { "tag": "path", "attrs": { "d": "M521.7 82c-152.5-.4-286.7 78.5-363.4 197.7-3.4 5.3.4 12.3 6.7 12.3h70.3c4.8 0 9.3-2.1 12.3-5.8 7-8.5 14.5-16.7 22.4-24.5 32.6-32.5 70.5-58.1 112.7-75.9 43.6-18.4 90-27.8 137.9-27.8 47.9 0 94.3 9.3 137.9 27.8 42.2 17.8 80.1 43.4 112.7 75.9 32.6 32.5 58.1 70.4 76 112.5C865.7 417.8 875 464.1 875 512c0 47.9-9.4 94.2-27.8 137.8-17.8 42.1-43.4 80-76 112.5s-70.5 58.1-112.7 75.9A352.8 352.8 0 01520.6 866c-47.9 0-94.3-9.4-137.9-27.8A353.84 353.84 0 01270 762.3c-7.9-7.9-15.3-16.1-22.4-24.5-3-3.7-7.6-5.8-12.3-5.8H165c-6.3 0-10.2 7-6.7 12.3C234.9 863.2 368.5 942 520.6 942c236.2 0 428-190.1 430.4-425.6C953.4 277.1 761.3 82.6 521.7 82zM395.02 624v-76h-314c-4.4 0-8-3.6-8-8v-56c0-4.4 3.6-8 8-8h314v-76c0-6.7 7.8-10.5 13-6.3l141.9 112a8 8 0 010 12.6l-141.9 112c-5.2 4.1-13 .4-13-6.3z" } }] }, "name": "login", "theme": "outlined" };
+var LoginOutlined = function LoginOutlined2(props, ref) {
+  return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
+    ref,
+    icon: LoginOutlined$1
+  }));
+};
+var RefIcon$a = /* @__PURE__ */ reactExports.forwardRef(LoginOutlined);
 var MenuFoldOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 000 13.8z" } }] }, "name": "menu-fold", "theme": "outlined" };
 var MenuFoldOutlined = function MenuFoldOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -60459,7 +61272,7 @@ var MenuFoldOutlined = function MenuFoldOutlined2(props, ref) {
     icon: MenuFoldOutlined$1
   }));
 };
-var RefIcon$7 = /* @__PURE__ */ reactExports.forwardRef(MenuFoldOutlined);
+var RefIcon$9 = /* @__PURE__ */ reactExports.forwardRef(MenuFoldOutlined);
 var MenuUnfoldOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM142.4 642.1L298.7 519a8.84 8.84 0 000-13.9L142.4 381.9c-5.8-4.6-14.4-.5-14.4 6.9v246.3a8.9 8.9 0 0014.4 7z" } }] }, "name": "menu-unfold", "theme": "outlined" };
 var MenuUnfoldOutlined = function MenuUnfoldOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -60467,7 +61280,7 @@ var MenuUnfoldOutlined = function MenuUnfoldOutlined2(props, ref) {
     icon: MenuUnfoldOutlined$1
   }));
 };
-var RefIcon$6 = /* @__PURE__ */ reactExports.forwardRef(MenuUnfoldOutlined);
+var RefIcon$8 = /* @__PURE__ */ reactExports.forwardRef(MenuUnfoldOutlined);
 var MergeCellsOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "defs", "attrs": {}, "children": [{ "tag": "style", "attrs": {} }] }, { "tag": "path", "attrs": { "d": "M482.2 508.4L331.3 389c-3-2.4-7.3-.2-7.3 3.6V478H184V184h204v128c0 2.2 1.8 4 4 4h60c2.2 0 4-1.8 4-4V144c0-15.5-12.5-28-28-28H144c-15.5 0-28 12.5-28 28v736c0 15.5 12.5 28 28 28h284c15.5 0 28-12.5 28-28V712c0-2.2-1.8-4-4-4h-60c-2.2 0-4 1.8-4 4v128H184V546h140v85.4c0 3.8 4.4 6 7.3 3.6l150.9-119.4a4.5 4.5 0 000-7.2zM880 116H596c-15.5 0-28 12.5-28 28v168c0 2.2 1.8 4 4 4h60c2.2 0 4-1.8 4-4V184h204v294H700v-85.4c0-3.8-4.3-6-7.3-3.6l-151 119.4a4.52 4.52 0 000 7.1l151 119.5c2.9 2.3 7.3.2 7.3-3.6V546h140v294H636V712c0-2.2-1.8-4-4-4h-60c-2.2 0-4 1.8-4 4v168c0 15.5 12.5 28 28 28h284c15.5 0 28-12.5 28-28V144c0-15.5-12.5-28-28-28z" } }] }, "name": "merge-cells", "theme": "outlined" };
 var MergeCellsOutlined = function MergeCellsOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -60475,7 +61288,15 @@ var MergeCellsOutlined = function MergeCellsOutlined2(props, ref) {
     icon: MergeCellsOutlined$1
   }));
 };
-var RefIcon$5 = /* @__PURE__ */ reactExports.forwardRef(MergeCellsOutlined);
+var RefIcon$7 = /* @__PURE__ */ reactExports.forwardRef(MergeCellsOutlined);
+var MinusOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M872 474H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h720c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z" } }] }, "name": "minus", "theme": "outlined" };
+var MinusOutlined = function MinusOutlined2(props, ref) {
+  return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
+    ref,
+    icon: MinusOutlined$1
+  }));
+};
+var RefIcon$6 = /* @__PURE__ */ reactExports.forwardRef(MinusOutlined);
 var MoonOutlined$1 = { "icon": { "tag": "svg", "attrs": { "fill-rule": "evenodd", "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M489.5 111.66c30.65-1.8 45.98 36.44 22.58 56.33A243.35 243.35 0 00426 354c0 134.76 109.24 244 244 244 72.58 0 139.9-31.83 186.01-86.08 19.87-23.38 58.07-8.1 56.34 22.53C900.4 745.82 725.15 912 512.5 912 291.31 912 112 732.69 112 511.5c0-211.39 164.29-386.02 374.2-399.65l.2-.01zm-81.15 79.75l-4.11 1.36C271.1 237.94 176 364.09 176 511.5 176 697.34 326.66 848 512.5 848c148.28 0 274.94-96.2 319.45-230.41l.63-1.93-.11.07a307.06 307.06 0 01-159.73 46.26L670 662c-170.1 0-308-137.9-308-308 0-58.6 16.48-114.54 46.27-162.47z" } }] }, "name": "moon", "theme": "outlined" };
 var MoonOutlined = function MoonOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -60483,7 +61304,15 @@ var MoonOutlined = function MoonOutlined2(props, ref) {
     icon: MoonOutlined$1
   }));
 };
-var RefIcon$4 = /* @__PURE__ */ reactExports.forwardRef(MoonOutlined);
+var RefIcon$5 = /* @__PURE__ */ reactExports.forwardRef(MoonOutlined);
+var PlusCircleOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M696 480H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z" } }, { "tag": "path", "attrs": { "d": "M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z" } }] }, "name": "plus-circle", "theme": "outlined" };
+var PlusCircleOutlined = function PlusCircleOutlined2(props, ref) {
+  return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
+    ref,
+    icon: PlusCircleOutlined$1
+  }));
+};
+var RefIcon$4 = /* @__PURE__ */ reactExports.forwardRef(PlusCircleOutlined);
 var RollbackOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M793 242H366v-74c0-6.7-7.7-10.4-12.9-6.3l-142 112a8 8 0 000 12.6l142 112c5.2 4.1 12.9.4 12.9-6.3v-74h415v470H175c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h618c35.3 0 64-28.7 64-64V306c0-35.3-28.7-64-64-64z" } }] }, "name": "rollback", "theme": "outlined" };
 var RollbackOutlined = function RollbackOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -60492,14 +61321,14 @@ var RollbackOutlined = function RollbackOutlined2(props, ref) {
   }));
 };
 var RefIcon$3 = /* @__PURE__ */ reactExports.forwardRef(RollbackOutlined);
-var StarOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3zM664.8 561.6l36.1 210.3L512 672.7 323.1 772l36.1-210.3-152.8-149L417.6 382 512 190.7 606.4 382l211.2 30.7-152.8 148.9z" } }] }, "name": "star", "theme": "outlined" };
-var StarOutlined = function StarOutlined2(props, ref) {
+var SaveOutlined$1 = { "icon": { "tag": "svg", "attrs": { "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M893.3 293.3L730.7 130.7c-7.5-7.5-16.7-13-26.7-16V112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V338.5c0-17-6.7-33.2-18.7-45.2zM384 184h256v104H384V184zm456 656H184V184h136v136c0 17.7 14.3 32 32 32h320c17.7 0 32-14.3 32-32V205.8l136 136V840zM512 442c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm0 224c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z" } }] }, "name": "save", "theme": "outlined" };
+var SaveOutlined = function SaveOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
     ref,
-    icon: StarOutlined$1
+    icon: SaveOutlined$1
   }));
 };
-var RefIcon$2 = /* @__PURE__ */ reactExports.forwardRef(StarOutlined);
+var RefIcon$2 = /* @__PURE__ */ reactExports.forwardRef(SaveOutlined);
 var SunOutlined$1 = { "icon": { "tag": "svg", "attrs": { "fill-rule": "evenodd", "viewBox": "64 64 896 896", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M548 818v126a16 16 0 01-16 16h-40a16 16 0 01-16-16V818c15.85 1.64 27.84 2.46 36 2.46 8.15 0 20.16-.82 36-2.46m205.25-115.66l89.1 89.1a16 16 0 010 22.62l-28.29 28.29a16 16 0 01-22.62 0l-89.1-89.1c12.37-10.04 21.43-17.95 27.2-23.71 5.76-5.77 13.67-14.84 23.71-27.2m-482.5 0c10.04 12.36 17.95 21.43 23.71 27.2 5.77 5.76 14.84 13.67 27.2 23.71l-89.1 89.1a16 16 0 01-22.62 0l-28.29-28.29a16 16 0 010-22.63zM512 278c129.24 0 234 104.77 234 234S641.24 746 512 746 278 641.24 278 512s104.77-234 234-234m0 72c-89.47 0-162 72.53-162 162s72.53 162 162 162 162-72.53 162-162-72.53-162-162-162M206 476c-1.64 15.85-2.46 27.84-2.46 36 0 8.15.82 20.16 2.46 36H80a16 16 0 01-16-16v-40a16 16 0 0116-16zm738 0a16 16 0 0116 16v40a16 16 0 01-16 16H818c1.64-15.85 2.46-27.84 2.46-36 0-8.15-.82-20.16-2.46-36zM814.06 180.65l28.29 28.29a16 16 0 010 22.63l-89.1 89.09c-10.04-12.37-17.95-21.43-23.71-27.2-5.77-5.76-14.84-13.67-27.2-23.71l89.1-89.1a16 16 0 0122.62 0m-581.5 0l89.1 89.1c-12.37 10.04-21.43 17.95-27.2 23.71-5.76 5.77-13.67 14.84-23.71 27.2l-89.1-89.1a16 16 0 010-22.62l28.29-28.29a16 16 0 0122.62 0M532 64a16 16 0 0116 16v126c-15.85-1.64-27.84-2.46-36-2.46-8.15 0-20.16.82-36 2.46V80a16 16 0 0116-16z" } }] }, "name": "sun", "theme": "outlined" };
 var SunOutlined = function SunOutlined2(props, ref) {
   return /* @__PURE__ */ reactExports.createElement(Icon$1, _extends({}, props, {
@@ -60517,7 +61346,7 @@ var UploadOutlined = function UploadOutlined2(props, ref) {
 };
 var RefIcon = /* @__PURE__ */ reactExports.forwardRef(UploadOutlined);
 const { Sider } = Layout;
-const { Text: Text$8 } = Typography;
+const { Text: Text$a } = Typography;
 function AppSider() {
   const repos = useStore((s) => s.repos);
   const selectedRepoId = useStore((s) => s.selectedRepoId);
@@ -60525,18 +61354,25 @@ function AppSider() {
   const sidebarCollapsed = useStore((s) => s.sidebarCollapsed);
   const repoSearchQuery = useStore((s) => s.repoSearchQuery);
   const themeMode = useStore((s) => s.themeMode);
+  const githubLoggedIn = useStore((s) => s.githubLoggedIn);
+  const githubUsername = useStore((s) => s.githubUsername);
+  const githubAvatarUrl = useStore((s) => s.githubAvatarUrl);
+  const githubRepos = useStore((s) => s.githubRepos);
+  const setGithubRepos = useStore((s) => s.setGithubRepos);
   const setThemeMode = useStore((s) => s.setThemeMode);
   const selectRepo = useStore((s) => s.selectRepo);
-  const toggleFavorite = useStore((s) => s.toggleFavorite);
   const removeRepo = useStore((s) => s.removeRepo);
   const setModalOpen = useStore((s) => s.setModalOpen);
   const toggleSidebar = useStore((s) => s.toggleSidebar);
   const setRepoSearch = useStore((s) => s.setRepoSearch);
   const resetGitState = useStore((s) => s.resetGitState);
+  const setGithubLogin = useStore((s) => s.setGithubLogin);
+  const setCloneUrlPreset = useStore((s) => s.setCloneUrlPreset);
   const loadStatus = useStore((s) => s.loadStatus);
   const loadCommits = useStore((s) => s.loadCommits);
   const loadBranches = useStore((s) => s.loadBranches);
   const loadCurrentBranch = useStore((s) => s.loadCurrentBranch);
+  const [collapsedSections, setCollapsedSections] = reactExports.useState(/* @__PURE__ */ new Set());
   const filteredRepos = reactExports.useMemo(() => {
     if (!repoSearchQuery) return repos;
     const q2 = repoSearchQuery.toLowerCase();
@@ -60544,6 +61380,36 @@ function AppSider() {
       (r2) => r2.name.toLowerCase().includes(q2) || r2.path.toLowerCase().includes(q2)
     );
   }, [repos, repoSearchQuery]);
+  const normalizeGitUrl = (url2) => {
+    let normalized = url2.trim().toLowerCase();
+    if (normalized.endsWith(".git")) {
+      normalized = normalized.slice(0, -4);
+    }
+    const sshMatch = normalized.match(/^git@([\w.-]+):(.+)$/);
+    if (sshMatch) {
+      normalized = `https://${sshMatch[1]}/${sshMatch[2]}`;
+    }
+    return normalized.replace(/\/+$/, "");
+  };
+  const localRemoteUrls = reactExports.useMemo(
+    () => new Set(repos.map((r2) => r2.remoteUrl).filter(Boolean).map(normalizeGitUrl)),
+    [repos]
+  );
+  const { myRepos, otherRepos } = reactExports.useMemo(() => {
+    if (!githubLoggedIn) return { myRepos: [], otherRepos: filteredRepos };
+    const ghMatched = githubRepos.filter((gr) => localRemoteUrls.has(normalizeGitUrl(gr.cloneUrl)));
+    const ghNotCloned = githubRepos.filter((gr) => !localRemoteUrls.has(normalizeGitUrl(gr.cloneUrl)));
+    const localMatched = filteredRepos.filter((r2) => {
+      if (!r2.remoteUrl) return false;
+      const normalized = normalizeGitUrl(r2.remoteUrl);
+      return !githubRepos.some((gr) => normalizeGitUrl(gr.cloneUrl) === normalized);
+    });
+    const localOther = filteredRepos.filter((r2) => !r2.remoteUrl);
+    return {
+      myRepos: { ghMatched, ghNotCloned, localMatched },
+      otherRepos: localOther
+    };
+  }, [filteredRepos, githubLoggedIn, githubRepos, localRemoteUrls]);
   const handleSelectRepo = (repo) => {
     selectRepo(repo.id);
     resetGitState();
@@ -60551,6 +61417,152 @@ function AppSider() {
     loadCommits(repo.path);
     loadBranches(repo.path);
     loadCurrentBranch(repo.path);
+  };
+  const handleLogout = () => {
+    setGithubLogin(false, "");
+  };
+  const [refreshingGithub, setRefreshingGithub] = reactExports.useState(false);
+  const toggleSection = (key) => {
+    setCollapsedSections((prev2) => {
+      const next2 = new Set(prev2);
+      if (next2.has(key)) {
+        next2.delete(key);
+      } else {
+        next2.add(key);
+      }
+      return next2;
+    });
+  };
+  const handleRefreshGithubRepos = async () => {
+    setRefreshingGithub(true);
+    try {
+      const tokenRes = await window.electronAPI.githubGetToken();
+      if (tokenRes.success && tokenRes.data) {
+        const reposRes = await window.electronAPI.githubListRepos(tokenRes.data);
+        if (reposRes.success) {
+          setGithubRepos(reposRes.data);
+        }
+      }
+    } finally {
+      setRefreshingGithub(false);
+    }
+  };
+  const renderLocalRepoItem = (repo) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "div",
+    {
+      onClick: () => handleSelectRepo(repo),
+      style: {
+        padding: "6px 12px",
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        gap: 6,
+        background: selectedRepoId === repo.id ? "var(--bg-selected)" : "transparent",
+        borderLeft: selectedRepoId === repo.id ? "3px solid var(--accent)" : "3px solid transparent",
+        transition: "all 0.15s"
+      },
+      onMouseEnter: (e2) => {
+        if (selectedRepoId !== repo.id) {
+          e2.currentTarget.style.background = "var(--bg-hover)";
+        }
+      },
+      onMouseLeave: (e2) => {
+        if (selectedRepoId !== repo.id) {
+          e2.currentTarget.style.background = "transparent";
+        }
+      },
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$t, { style: { color: "var(--text-tertiary)", fontSize: 14 } }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { flex: 1, minWidth: 0 }, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
+            fontWeight: selectedRepoId === repo.id ? 600 : 400,
+            fontSize: 13,
+            color: "var(--text-primary)",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap"
+          }, children: repo.name }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Text$a, { type: "secondary", style: { fontSize: 11, display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }, children: repo.path })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "从列表移除", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button$1,
+          {
+            type: "text",
+            size: "small",
+            danger: true,
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$m, {}),
+            onClick: (e2) => {
+              e2.stopPropagation();
+              removeRepo(repo.id);
+            }
+          }
+        ) })
+      ]
+    },
+    repo.id
+  );
+  const renderGitHubRepoItem = (gr, isCloned) => {
+    const matchedLocal = isCloned ? repos.find((r2) => r2.remoteUrl && normalizeGitUrl(r2.remoteUrl) === normalizeGitUrl(gr.cloneUrl)) : null;
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
+      {
+        onClick: () => {
+          if (matchedLocal) handleSelectRepo(matchedLocal);
+        },
+        style: {
+          padding: "6px 12px",
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+          opacity: isCloned ? 1 : 0.6,
+          background: matchedLocal && selectedRepoId === matchedLocal.id ? "var(--bg-selected)" : "transparent",
+          borderLeft: matchedLocal && selectedRepoId === matchedLocal.id ? "3px solid var(--accent)" : "3px solid transparent",
+          cursor: isCloned ? "pointer" : "default",
+          transition: "all 0.15s"
+        },
+        onMouseEnter: (e2) => {
+          if (matchedLocal && selectedRepoId !== matchedLocal.id) {
+            e2.currentTarget.style.background = "var(--bg-hover)";
+          }
+        },
+        onMouseLeave: (e2) => {
+          if (matchedLocal && selectedRepoId !== matchedLocal.id) {
+            e2.currentTarget.style.background = "transparent";
+          }
+        },
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { color: isCloned ? "var(--accent)" : "var(--text-tertiary)", fontSize: 14 } }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { flex: 1, minWidth: 0 }, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
+              fontSize: 13,
+              color: isCloned ? "var(--text-primary)" : "var(--text-secondary)",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              fontWeight: matchedLocal && selectedRepoId === matchedLocal.id ? 600 : isCloned ? 500 : 400
+            }, children: gr.name }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$a, { type: "secondary", style: { fontSize: 10, display: "block", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }, children: [
+              gr.fullName,
+              gr.private ? " · 私有" : ""
+            ] })
+          ] }),
+          !isCloned && /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "克隆到本地", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Button$1,
+            {
+              type: "text",
+              size: "small",
+              icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$i, {}),
+              onClick: (e2) => {
+                e2.stopPropagation();
+                setCloneUrlPreset(gr.cloneUrl);
+                setModalOpen("cloneModalOpen", true);
+              }
+            }
+          ) })
+        ]
+      },
+      gr.id
+    );
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     Sider,
@@ -60560,261 +61572,300 @@ function AppSider() {
       collapsible: true,
       collapsed: sidebarCollapsed,
       trigger: null,
-      theme: "dark",
+      theme: themeMode === "dark" ? "dark" : "light",
       style: {
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
         borderRight: "1px solid var(--border-primary)"
       },
-      children: sidebarCollapsed ? (
-        /* 收起状态：只显示展开按钮和主题切换 */
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "div",
+      children: sidebarCollapsed ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 12, gap: 12 }, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "展开侧栏", placement: "right", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button$1,
           {
-            style: {
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              paddingTop: 12,
-              gap: 12
-            },
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "展开侧栏", placement: "right", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button$1,
-                {
-                  type: "text",
-                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$6, { style: { fontSize: 20 } }),
-                  onClick: toggleSidebar,
-                  style: { color: "var(--text-tertiary)" }
-                }
-              ) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "添加仓库", placement: "right", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button$1,
-                {
-                  type: "text",
-                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$z, {}),
-                  onClick: () => setModalOpen("addRepoModalOpen", true)
-                }
-              ) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "克隆仓库", placement: "right", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button$1,
-                {
-                  type: "text",
-                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$9, {}),
-                  onClick: () => setModalOpen("cloneModalOpen", true)
-                }
-              ) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: themeMode === "dark" ? "切换到亮色主题" : "切换到暗色主题", placement: "right", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button$1,
-                {
-                  type: "text",
-                  icon: themeMode === "dark" ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$1, { style: { color: "#f5c26b" } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$4, { style: { color: "#c4a7f5" } }),
-                  onClick: () => setThemeMode(themeMode === "dark" ? "light" : "dark")
-                }
-              ) })
-            ]
+            type: "text",
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$8, { style: { fontSize: 20 } }),
+            onClick: toggleSidebar,
+            style: { color: "var(--text-tertiary)" }
           }
-        )
-      ) : (
-        /* 展开状态：完整侧栏 */
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            "div",
+        ) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "添加仓库", placement: "right", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button$1,
+          {
+            type: "text",
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$F, {}),
+            onClick: () => setModalOpen("addRepoModalOpen", true)
+          }
+        ) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "克隆仓库", placement: "right", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button$1,
+          {
+            type: "text",
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, {}),
+            onClick: () => {
+              setCloneUrlPreset("");
+              setModalOpen("cloneModalOpen", true);
+            }
+          }
+        ) }),
+        githubLoggedIn ? /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: `已登录: ${githubUsername}`, placement: "right", children: githubAvatarUrl ? /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar, { src: githubAvatarUrl, size: 24, style: { cursor: "pointer" }, onClick: handleLogout }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "text", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { color: "var(--accent)" } }), onClick: handleLogout }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "登录 GitHub", placement: "right", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button$1,
+          {
+            type: "text",
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$a, {}),
+            onClick: () => setModalOpen("githubLoginModalOpen", true)
+          }
+        ) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: themeMode === "dark" ? "切换到亮色主题" : "切换到暗色主题", placement: "right", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button$1,
+          {
+            type: "text",
+            icon: themeMode === "dark" ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$1, { style: { color: "#f5c26b" } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$5, { style: { color: "#c4a7f5" } }),
+            onClick: () => setThemeMode(themeMode === "dark" ? "light" : "dark")
+          }
+        ) })
+      ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { height: "100%", display: "flex", flexDirection: "column", overflow: "hidden" }, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: {
+          padding: "12px 16px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          borderBottom: "1px solid var(--border-primary)"
+        }, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: 8 }, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "收起侧栏", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button$1,
+              {
+                type: "text",
+                size: "small",
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$9, {}),
+                onClick: toggleSidebar,
+                style: { color: "var(--text-tertiary)" }
+              }
+            ) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { fontSize: 20, color: "var(--accent)" } }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Text$a, { strong: true, style: { fontSize: 16, color: "var(--text-primary)" }, children: "GitManager" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: 4 }, children: [
+            githubLoggedIn ? /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: `${githubUsername} (点击退出)`, children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { onClick: handleLogout, style: { cursor: "pointer" }, children: githubAvatarUrl ? /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar, { src: githubAvatarUrl, size: 26 }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { color: "var(--accent)", fontSize: 18 } }) }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "登录 GitHub", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button$1,
+              {
+                type: "text",
+                size: "small",
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$a, {}),
+                onClick: () => setModalOpen("githubLoginModalOpen", true)
+              }
+            ) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: themeMode === "dark" ? "切换到亮色主题" : "切换到暗色主题", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button$1,
+              {
+                type: "text",
+                size: "small",
+                icon: themeMode === "dark" ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$1, { style: { color: "#f5c26b" } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$5, { style: { color: "#c4a7f5" } }),
+                onClick: () => setThemeMode(themeMode === "dark" ? "light" : "dark")
+              }
+            ) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { padding: "8px 12px", display: "flex", gap: 8 }, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Input.Search,
             {
-              style: {
-                padding: "12px 16px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                borderBottom: "1px solid var(--border-primary)"
-              },
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: 8 }, children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$8, { style: { fontSize: 20, color: "var(--accent)" } }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Text$8, { strong: true, style: { fontSize: 16, color: "var(--text-primary)" }, children: "GitManager" })
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: 4 }, children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: themeMode === "dark" ? "切换到亮色主题" : "切换到暗色主题", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    Button$1,
-                    {
-                      type: "text",
-                      size: "small",
-                      icon: themeMode === "dark" ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$1, { style: { color: "#f5c26b" } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$4, { style: { color: "#c4a7f5" } }),
-                      onClick: () => setThemeMode(themeMode === "dark" ? "light" : "dark")
-                    }
-                  ) }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "收起侧栏", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    Button$1,
-                    {
-                      type: "text",
-                      size: "small",
-                      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$7, {}),
-                      onClick: toggleSidebar,
-                      style: { color: "var(--text-tertiary)" }
-                    }
-                  ) })
-                ] })
-              ]
+              placeholder: "搜索仓库...",
+              allowClear: true,
+              size: "small",
+              value: repoSearchQuery,
+              onChange: (e2) => setRepoSearch(e2.target.value),
+              style: { flex: 1 }
             }
           ),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { padding: "8px 12px", display: "flex", gap: 8 }, children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Input.Search,
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", gap: 4 }, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "添加仓库", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button$1,
               {
-                placeholder: "搜索仓库...",
-                allowClear: true,
+                type: "primary",
                 size: "small",
-                value: repoSearchQuery,
-                onChange: (e2) => setRepoSearch(e2.target.value),
-                style: { flex: 1 }
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$F, {}),
+                onClick: () => setModalOpen("addRepoModalOpen", true)
+              }
+            ) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "克隆远程仓库", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button$1,
+              {
+                size: "small",
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, {}),
+                onClick: () => {
+                  setCloneUrlPreset("");
+                  setModalOpen("cloneModalOpen", true);
+                }
+              }
+            ) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { flex: 1, overflow: "auto", padding: "4px 0", display: "flex", flexDirection: "column" }, children: isReposLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { textAlign: "center", padding: 24 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { tip: "加载中..." }) }) : githubLoggedIn ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "div",
+              {
+                onClick: () => toggleSection("myRepos"),
+                style: {
+                  padding: "8px 12px 4px",
+                  fontSize: 11,
+                  color: "var(--text-tertiary)",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.5px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4,
+                  cursor: "pointer",
+                  userSelect: "none"
+                },
+                children: [
+                  collapsedSections.has("myRepos") ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$f, { style: { fontSize: 10 } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$o, { style: { fontSize: 10 } }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { color: "var(--accent)" } }),
+                  "我的仓库 (",
+                  githubRepos.length,
+                  ")",
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "刷新列表", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    Button$1,
+                    {
+                      type: "text",
+                      size: "small",
+                      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$x, {}),
+                      loading: refreshingGithub,
+                      onClick: (e2) => {
+                        e2.stopPropagation();
+                        handleRefreshGithubRepos();
+                      },
+                      style: { marginLeft: "auto", color: "var(--text-tertiary)", fontSize: 11 }
+                    }
+                  ) })
+                ]
               }
             ),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", gap: 4 }, children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "添加仓库", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button$1,
-                {
-                  type: "primary",
-                  size: "small",
-                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$z, {}),
-                  onClick: () => setModalOpen("addRepoModalOpen", true)
-                }
-              ) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "克隆远程仓库", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button$1,
-                {
-                  size: "small",
-                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$9, {}),
-                  onClick: () => setModalOpen("cloneModalOpen", true)
-                }
-              ) })
+            !collapsedSections.has("myRepos") && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+              myRepos.ghMatched.length === 0 && myRepos.localMatched.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "暂无已克隆的仓库", image: Empty.PRESENTED_IMAGE_SIMPLE, style: { margin: "8px 0" } }),
+              myRepos.localMatched.map((r2) => renderLocalRepoItem(r2)),
+              myRepos.ghMatched.map((gr) => renderGitHubRepoItem(gr, true)),
+              myRepos.ghNotCloned.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                  "div",
+                  {
+                    onClick: () => toggleSection("uncloned"),
+                    style: {
+                      padding: "8px 12px 4px",
+                      fontSize: 10,
+                      color: "var(--text-tertiary)",
+                      fontWeight: 500,
+                      cursor: "pointer",
+                      userSelect: "none",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 4
+                    },
+                    children: [
+                      collapsedSections.has("uncloned") ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$f, { style: { fontSize: 9 } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$o, { style: { fontSize: 9 } }),
+                      "未克隆 (",
+                      myRepos.ghNotCloned.length,
+                      ")"
+                    ]
+                  }
+                ),
+                !collapsedSections.has("uncloned") && myRepos.ghNotCloned.map((gr) => renderGitHubRepoItem(gr, false))
+              ] })
             ] })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { flex: 1, overflow: "auto", padding: "4px 0" }, children: isReposLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { textAlign: "center", padding: 24 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { tip: "加载中..." }) }) : filteredRepos.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Empty,
-            {
-              description: "暂无仓库",
-              image: Empty.PRESENTED_IMAGE_SIMPLE,
-              style: { marginTop: 40 },
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button$1,
-                {
-                  type: "primary",
-                  size: "small",
-                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$z, {}),
-                  onClick: () => setModalOpen("addRepoModalOpen", true),
-                  children: "添加仓库"
-                }
-              )
-            }
-          ) : /* @__PURE__ */ jsxRuntimeExports.jsx(
-            List,
-            {
-              dataSource: filteredRepos,
-              renderItem: (repo) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                "div",
-                {
-                  onClick: () => handleSelectRepo(repo),
-                  style: {
-                    padding: "6px 12px",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    background: selectedRepoId === repo.id ? "var(--bg-selected)" : "transparent",
-                    borderLeft: selectedRepoId === repo.id ? "3px solid var(--accent)" : "3px solid transparent",
-                    transition: "all 0.15s"
-                  },
-                  onMouseEnter: (e2) => {
-                    if (selectedRepoId !== repo.id) {
-                      e2.currentTarget.style.background = "var(--bg-hover)";
-                    }
-                  },
-                  onMouseLeave: (e2) => {
-                    if (selectedRepoId !== repo.id) {
-                      e2.currentTarget.style.background = "transparent";
-                    }
-                  },
-                  children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(
-                      Button$1,
-                      {
-                        type: "text",
-                        size: "small",
-                        icon: repo.isFavorite ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$s, { style: { color: "var(--star-color)" } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$2, { style: { color: "var(--text-tertiary)" } }),
-                        onClick: (e2) => {
-                          e2.stopPropagation();
-                          toggleFavorite(repo.id);
-                        }
-                      }
-                    ),
-                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { flex: 1, minWidth: 0 }, children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        "div",
-                        {
-                          style: {
-                            fontWeight: selectedRepoId === repo.id ? 600 : 400,
-                            fontSize: 13,
-                            color: "var(--text-primary)",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap"
-                          },
-                          children: repo.name
-                        }
-                      ),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Text$8,
-                        {
-                          type: "secondary",
-                          style: {
-                            fontSize: 11,
-                            display: "block",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap"
-                          },
-                          children: repo.path
-                        }
-                      )
-                    ] }),
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: "从列表移除", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                      Button$1,
-                      {
-                        type: "text",
-                        size: "small",
-                        danger: true,
-                        icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$h, {}),
-                        onClick: (e2) => {
-                          e2.stopPropagation();
-                          removeRepo(repo.id);
-                        }
-                      }
-                    ) })
-                  ]
+          otherRepos.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { margin: "4px 12px", borderTop: "1px solid var(--border-primary)" } }),
+          otherRepos.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { flex: 1 }, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "div",
+              {
+                onClick: () => toggleSection("otherRepos"),
+                style: {
+                  padding: "4px 12px 4px",
+                  fontSize: 11,
+                  color: "var(--text-tertiary)",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.5px",
+                  cursor: "pointer",
+                  userSelect: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4
                 },
-                repo.id
-              )
-            }
-          ) })
-        ] })
-      )
+                children: [
+                  collapsedSections.has("otherRepos") ? /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$f, { style: { fontSize: 10 } }) : /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$o, { style: { fontSize: 10 } }),
+                  "其他仓库 (",
+                  otherRepos.length,
+                  ")"
+                ]
+              }
+            ),
+            !collapsedSections.has("otherRepos") && otherRepos.map((r2) => renderLocalRepoItem(r2))
+          ] })
+        ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: filteredRepos.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "暂无仓库", image: Empty.PRESENTED_IMAGE_SIMPLE, style: { marginTop: 40 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button$1,
+          {
+            type: "primary",
+            size: "small",
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$F, {}),
+            onClick: () => setModalOpen("addRepoModalOpen", true),
+            children: "添加仓库"
+          }
+        ) }) : filteredRepos.map((r2) => renderLocalRepoItem(r2)) }) })
+      ] })
     }
   );
 }
-const { Text: Text$7 } = Typography;
+const { Text: Text$9 } = Typography;
 function AddRepoModal() {
   const open2 = useStore((s) => s.addRepoModalOpen);
   const addRepo = useStore((s) => s.addRepo);
   const setModalOpen = useStore((s) => s.setModalOpen);
+  useStore((s) => s.loadRepos);
   const [path2, setPath] = reactExports.useState("");
   const [loading, setLoading] = reactExports.useState(false);
+  const [initLoading, setInitLoading] = reactExports.useState(false);
   const [error, setError] = reactExports.useState(null);
+  const [isNotRepo, setIsNotRepo] = reactExports.useState(false);
   const handleBrowse = async () => {
     const res = await window.electronAPI.repoOpenFolder();
     if (res.success && res.data) {
       setPath(res.data);
       setError(null);
+      setIsNotRepo(false);
+      const validateRes = await window.electronAPI.repoValidate(res.data);
+      if (validateRes.success && !validateRes.data) {
+        setIsNotRepo(true);
+      }
+    }
+  };
+  const handlePathChange = async (e2) => {
+    const val = e2.target.value;
+    setPath(val);
+    setError(null);
+    setIsNotRepo(false);
+  };
+  const handleInit = async () => {
+    if (!path2.trim()) return;
+    setInitLoading(true);
+    try {
+      const res = await window.electronAPI.gitInit(path2.trim());
+      if (res.success) {
+        staticMethods.success({ message: `已在 "${path2.trim()}" 初始化 Git 仓库` });
+        setIsNotRepo(false);
+        await addRepo(path2.trim());
+        setPath("");
+        setModalOpen("addRepoModalOpen", false);
+      } else {
+        setError(res.error || "初始化失败");
+      }
+    } catch {
+      setError("初始化过程中发生错误");
+    } finally {
+      setInitLoading(false);
     }
   };
   const handleAdd = async () => {
@@ -60822,6 +61873,11 @@ function AddRepoModal() {
     setLoading(true);
     setError(null);
     try {
+      const validateRes = await window.electronAPI.repoValidate(path2.trim());
+      if (!validateRes.success || !validateRes.data) {
+        setIsNotRepo(true);
+        return;
+      }
       await addRepo(path2.trim());
       setPath("");
       setModalOpen("addRepoModalOpen", false);
@@ -60830,33 +61886,41 @@ function AddRepoModal() {
       setLoading(false);
     }
   };
+  const close = () => {
+    setModalOpen("addRepoModalOpen", false);
+    setError(null);
+    setPath("");
+    setIsNotRepo(false);
+  };
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     Modal,
     {
       title: "添加仓库",
       open: open2,
-      onCancel: () => {
-        setModalOpen("addRepoModalOpen", false);
-        setError(null);
-        setPath("");
-      },
+      onCancel: close,
       footer: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { onClick: () => setModalOpen("addRepoModalOpen", false), children: "取消" }, "cancel"),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "primary", loading, onClick: handleAdd, disabled: !path2.trim(), children: "添加" }, "add")
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { onClick: close, children: "取消" }, "cancel"),
+        isNotRepo ? /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "primary", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$4, {}), loading: initLoading, onClick: handleInit, children: "初始化仓库" }, "init") : /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "primary", loading, onClick: handleAdd, disabled: !path2.trim(), children: "添加" }, "add")
       ],
       children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Space, { direction: "vertical", style: { width: "100%" }, children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Text$7, { type: "secondary", children: "选择一个本地 Git 仓库文件夹" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Text$9, { type: "secondary", children: "选择一个本地 Git 仓库文件夹" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           Input,
           {
             placeholder: "仓库路径...",
             value: path2,
-            onChange: (e2) => {
-              setPath(e2.target.value);
-              setError(null);
-            },
-            addonAfter: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "text", size: "small", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$p, {}), onClick: handleBrowse }),
+            onChange: handlePathChange,
+            addonAfter: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "text", size: "small", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$u, {}), onClick: handleBrowse }),
             onPressEnter: handleAdd
+          }
+        ),
+        isNotRepo && /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Alert,
+          {
+            type: "warning",
+            message: "该文件夹不是 Git 仓库",
+            description: "点击「初始化仓库」按钮将在此文件夹中执行 git init，然后添加到仓库列表。",
+            showIcon: true
           }
         ),
         error && /* @__PURE__ */ jsxRuntimeExports.jsx(Alert, { message: error, type: "error", showIcon: true })
@@ -60864,16 +61928,23 @@ function AddRepoModal() {
     }
   );
 }
-const { Text: Text$6 } = Typography;
+const { Text: Text$8 } = Typography;
 function CloneModal() {
   const open2 = useStore((s) => s.cloneModalOpen);
   const activeOperation = useStore((s) => s.activeOperation);
+  const cloneUrlPreset = useStore((s) => s.cloneUrlPreset);
   const cloneRepo = useStore((s) => s.cloneRepo);
   const addRepo = useStore((s) => s.addRepo);
   const setModalOpen = useStore((s) => s.setModalOpen);
+  const setCloneUrlPreset = useStore((s) => s.setCloneUrlPreset);
   const [url2, setUrl] = reactExports.useState("");
   const [targetDir, setTargetDir] = reactExports.useState("");
   const [loading, setLoading] = reactExports.useState(false);
+  reactExports.useEffect(() => {
+    if (open2 && cloneUrlPreset) {
+      setUrl(cloneUrlPreset);
+    }
+  }, [open2, cloneUrlPreset]);
   const handleBrowseDir = async () => {
     const res = await window.electronAPI.repoOpenFolder();
     if (res.success && res.data) {
@@ -60891,6 +61962,7 @@ function CloneModal() {
           message: "克隆完成",
           description: `仓库已克隆到 ${result.repoPath}`
         });
+        setCloneUrlPreset("");
         setUrl("");
         setTargetDir("");
         setModalOpen("cloneModalOpen", false);
@@ -60903,12 +61975,13 @@ function CloneModal() {
     Modal,
     {
       title: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$9, { style: { marginRight: 8, color: "var(--accent)" } }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, { style: { marginRight: 8, color: "var(--accent)" } }),
         "克隆远程仓库"
       ] }),
       open: open2,
       onCancel: () => {
         setModalOpen("cloneModalOpen", false);
+        setCloneUrlPreset("");
         setUrl("");
         setTargetDir("");
       },
@@ -60918,6 +61991,7 @@ function CloneModal() {
           {
             onClick: () => {
               setModalOpen("cloneModalOpen", false);
+              setCloneUrlPreset("");
               setUrl("");
               setTargetDir("");
             },
@@ -60929,7 +62003,7 @@ function CloneModal() {
           Button$1,
           {
             type: "primary",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$9, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, {}),
             loading: loading || activeOperation === "clone",
             onClick: handleClone,
             disabled: !url2.trim() || !targetDir.trim(),
@@ -60940,7 +62014,7 @@ function CloneModal() {
       ],
       children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Space, { direction: "vertical", style: { width: "100%" }, size: "middle", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Text$6, { strong: true, style: { display: "block", marginBottom: 4 }, children: "远程仓库地址" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Text$8, { strong: true, style: { display: "block", marginBottom: 4 }, children: "远程仓库地址" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             Input,
             {
@@ -60948,12 +62022,12 @@ function CloneModal() {
               value: url2,
               onChange: (e2) => setUrl(e2.target.value),
               onPressEnter: handleClone,
-              prefix: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$9, { style: { color: "var(--text-tertiary)" } })
+              prefix: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, { style: { color: "var(--text-tertiary)" } })
             }
           )
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Text$6, { strong: true, style: { display: "block", marginBottom: 4 }, children: "保存到" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Text$8, { strong: true, style: { display: "block", marginBottom: 4 }, children: "保存到" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             Input,
             {
@@ -60961,7 +62035,7 @@ function CloneModal() {
               value: targetDir,
               onChange: (e2) => setTargetDir(e2.target.value),
               readOnly: true,
-              addonAfter: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "text", size: "small", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$p, {}), onClick: handleBrowseDir })
+              addonAfter: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "text", size: "small", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$u, {}), onClick: handleBrowseDir })
             }
           )
         ] })
@@ -60979,14 +62053,143 @@ function formatDate(dateStr) {
     return dateStr;
   }
 }
-const { Text: Text$5 } = Typography;
+function pairLines(lines) {
+  const pairs = [];
+  let i = 0;
+  while (i < lines.length) {
+    const line2 = lines[i];
+    if (line2.type === "ctx") {
+      pairs.push({ left: line2, right: line2 });
+      i++;
+    } else if (line2.type === "del" && i + 1 < lines.length && lines[i + 1].type === "add") {
+      pairs.push({ left: line2, right: lines[i + 1] });
+      i += 2;
+    } else if (line2.type === "del") {
+      pairs.push({ left: line2, right: null });
+      i++;
+    } else if (line2.type === "add") {
+      pairs.push({ left: null, right: line2 });
+      i++;
+    } else {
+      i++;
+    }
+  }
+  return pairs;
+}
+function parseHunkHeader(header) {
+  const m2 = header.match(/@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@/);
+  if (!m2) return null;
+  return {
+    oldStart: parseInt(m2[1], 10),
+    oldCount: m2[2] !== void 0 ? parseInt(m2[2], 10) : 1,
+    newStart: parseInt(m2[3], 10),
+    newCount: m2[4] !== void 0 ? parseInt(m2[4], 10) : 1
+  };
+}
+function parseDiff(raw) {
+  if (!raw) return [];
+  const files = [];
+  const parts = raw.split(/^diff --git /m);
+  for (const part of parts) {
+    if (!part.trim()) continue;
+    const chunk = "diff --git " + part.trimEnd();
+    const headerMatch = chunk.match(/^diff --git a\/(.*?) b\/(.*?)$/m);
+    if (!headerMatch) continue;
+    const filePath = headerMatch[2] || headerMatch[1];
+    const hunkPattern = /^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@.*$/gm;
+    const hunkMatches = [...chunk.matchAll(hunkPattern)];
+    if (hunkMatches.length === 0) {
+      files.push({ path: filePath, additions: 0, deletions: 0, hunks: [] });
+      continue;
+    }
+    const hunks = [];
+    const lines = chunk.split("\n");
+    for (const hm of hunkMatches) {
+      const hunkHeader = hm[0];
+      const info = parseHunkHeader(hunkHeader);
+      if (!info) continue;
+      const hunkLines = [];
+      let oldLine = info.oldStart;
+      let newLine = info.newStart;
+      const hunkStartIdx = lines.indexOf(hunkHeader);
+      if (hunkStartIdx < 0) continue;
+      for (let i = hunkStartIdx + 1; i < lines.length; i++) {
+        const line2 = lines[i];
+        if (line2.startsWith("@@")) break;
+        if (line2.startsWith("diff --git ")) break;
+        if (line2.startsWith("+")) {
+          hunkLines.push({ type: "add", newNum: newLine, content: line2.slice(1) });
+          newLine++;
+        } else if (line2.startsWith("-")) {
+          hunkLines.push({ type: "del", oldNum: oldLine, content: line2.slice(1) });
+          oldLine++;
+        } else if (line2.startsWith(" ")) {
+          hunkLines.push({ type: "ctx", oldNum: oldLine, newNum: newLine, content: line2.slice(1) });
+          oldLine++;
+          newLine++;
+        }
+      }
+      hunks.push({ header: hunkHeader, ...info, lines: hunkLines, pairs: pairLines(hunkLines) });
+    }
+    const additions = hunks.reduce((s, h2) => s + h2.lines.filter((l2) => l2.type === "add").length, 0);
+    const deletions = hunks.reduce((s, h2) => s + h2.lines.filter((l2) => l2.type === "del").length, 0);
+    files.push({ path: filePath, additions, deletions, hunks });
+  }
+  return files;
+}
+function getFileLang(file) {
+  const ext = file.split(".").pop() || "";
+  return ext.toUpperCase();
+}
+function extractFileDiff(raw, filePath) {
+  if (!raw) return "";
+  const parts = raw.split(/^diff --git /m);
+  for (const part of parts) {
+    if (!part.trim()) continue;
+    const chunk = "diff --git " + part.trimEnd();
+    const headerMatch = chunk.match(/^diff --git a\/(.*?) b\/(.*?)$/m);
+    if (!headerMatch) continue;
+    const matchPath = headerMatch[2] || headerMatch[1];
+    if (matchPath === filePath) {
+      return chunk;
+    }
+  }
+  return "";
+}
+const { Text: Text$7, Paragraph } = Typography;
+const MIN_TOP_RATIO = 0.4;
+const MAX_TOP_RATIO = 0.82;
+const DEFAULT_TOP_RATIO = MIN_TOP_RATIO;
 function CommitHistory() {
   const commits = useStore((s) => s.commits);
   const commitsLoading = useStore((s) => s.commitsLoading);
   const commitsError = useStore((s) => s.commitsError);
+  const selectedCommitHash = useStore((s) => s.selectedCommitHash);
+  const currentDiff = useStore((s) => s.currentDiff);
+  const diffLoading = useStore((s) => s.diffLoading);
+  const repos = useStore((s) => s.repos);
+  const selectedRepoId = useStore((s) => s.selectedRepoId);
   const selectCommit = useStore((s) => s.selectCommit);
+  const loadDiff = useStore((s) => s.loadDiff);
   const commitSearchQuery = useStore((s) => s.commitSearchQuery);
   const setCommitSearch = useStore((s) => s.setCommitSearch);
+  const themeMode = useStore((s) => s.themeMode);
+  const selectedRepo = repos.find((r2) => r2.id === selectedRepoId);
+  const [topRatio, setTopRatio] = reactExports.useState(DEFAULT_TOP_RATIO);
+  const [dragging, setDragging] = reactExports.useState(false);
+  const containerRef = reactExports.useRef(null);
+  const draggingRef = reactExports.useRef(false);
+  const dragStartYRef = reactExports.useRef(0);
+  const dragStartRatioRef = reactExports.useRef(0);
+  const dragCurrentRatioRef = reactExports.useRef(0);
+  const selectedCommit = reactExports.useMemo(
+    () => commits.find((c2) => c2.hash === selectedCommitHash) || null,
+    [commits, selectedCommitHash]
+  );
+  const fileList = reactExports.useMemo(() => {
+    if (!currentDiff) return [];
+    return parseDiff(currentDiff);
+  }, [currentDiff]);
   const filtered = reactExports.useMemo(() => {
     if (!commitSearchQuery) return commits;
     const q2 = commitSearchQuery.toLowerCase();
@@ -60994,13 +62197,80 @@ function CommitHistory() {
       (c2) => c2.message.toLowerCase().includes(q2) || c2.hash.toLowerCase().includes(q2) || c2.author.toLowerCase().includes(q2)
     );
   }, [commits, commitSearchQuery]);
+  const handleRowClick = reactExports.useCallback((record) => {
+    selectCommit(record.hash);
+    if (selectedRepo) {
+      loadDiff(selectedRepo.path, record.hash);
+    }
+  }, [selectCommit, loadDiff, selectedRepo]);
+  const handleFileClick = reactExports.useCallback((filePath) => {
+    if (!currentDiff) return;
+    const fileDiff = extractFileDiff(currentDiff, filePath);
+    if (fileDiff) {
+      window.electronAPI.windowOpenDiff({ diff: fileDiff, editable: false, theme: themeMode });
+    }
+  }, [currentDiff, themeMode]);
+  const topPanelRef = reactExports.useRef(null);
+  const bottomPanelRef = reactExports.useRef(null);
+  reactExports.useEffect(() => {
+    const handleMove = (e2) => {
+      if (!draggingRef.current) return;
+      e2.preventDefault();
+      const containerHeight = containerRef.current?.clientHeight || 600;
+      const deltaY = e2.clientY - dragStartYRef.current;
+      const deltaRatio = deltaY / containerHeight;
+      const newRatio = Math.min(MAX_TOP_RATIO, Math.max(MIN_TOP_RATIO, dragStartRatioRef.current + deltaRatio));
+      if (topPanelRef.current) topPanelRef.current.style.flex = String(newRatio);
+      if (bottomPanelRef.current) bottomPanelRef.current.style.flex = String(1 - newRatio);
+      dragCurrentRatioRef.current = newRatio;
+    };
+    const handleUp = () => {
+      if (!draggingRef.current) return;
+      draggingRef.current = false;
+      setDragging(false);
+      document.body.style.userSelect = "";
+      document.body.style.cursor = "";
+      if (lockedElRef.current) {
+        lockedElRef.current.style.overflowY = "auto";
+        lockedElRef.current = null;
+      }
+      setTopRatio(dragCurrentRatioRef.current);
+    };
+    document.addEventListener("mousemove", handleMove);
+    document.addEventListener("mouseup", handleUp);
+    return () => {
+      document.removeEventListener("mousemove", handleMove);
+      document.removeEventListener("mouseup", handleUp);
+    };
+  }, []);
+  const lockedElRef = reactExports.useRef(null);
+  const handleDragStart = reactExports.useCallback((e2) => {
+    e2.preventDefault();
+    e2.stopPropagation();
+    setDragging(true);
+    draggingRef.current = true;
+    dragStartYRef.current = e2.clientY;
+    dragStartRatioRef.current = topRatio;
+    document.body.style.userSelect = "none";
+    document.body.style.cursor = "ns-resize";
+    let el2 = e2.currentTarget;
+    while (el2) {
+      const style2 = window.getComputedStyle(el2);
+      if (style2.overflowY === "auto" || style2.overflowY === "scroll") {
+        el2.style.overflowY = "hidden";
+        lockedElRef.current = el2;
+        break;
+      }
+      el2 = el2.parentElement;
+    }
+  }, [topRatio]);
   const columns = [
     {
       title: "提交",
       dataIndex: "hash",
       key: "hash",
       width: 100,
-      render: (hash) => /* @__PURE__ */ jsxRuntimeExports.jsx(Text$5, { code: true, copyable: { text: hash }, style: { fontSize: 12 }, children: hash.slice(0, 7) })
+      render: (hash) => /* @__PURE__ */ jsxRuntimeExports.jsx(Text$7, { code: true, copyable: { text: hash }, style: { fontSize: 12 }, children: hash.slice(0, 7) })
     },
     {
       title: "提交信息",
@@ -61008,9 +62278,9 @@ function CommitHistory() {
       key: "message",
       ellipsis: true,
       render: (msg, record) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Text$5, { children: msg.split("\n")[0] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Text$7, { children: msg.split("\n")[0] }),
         record.refs.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { marginLeft: 8 }, children: record.refs.map((ref) => /* @__PURE__ */ jsxRuntimeExports.jsxs(Tag, { color: "blue", style: { fontSize: 11, marginRight: 2 }, children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, {}),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$g, {}),
           " ",
           ref.replace("refs/heads/", "")
         ] }, ref)) })
@@ -61022,22 +62292,22 @@ function CommitHistory() {
       key: "author",
       width: 150,
       ellipsis: true,
-      render: (author) => /* @__PURE__ */ jsxRuntimeExports.jsx(Text$5, { type: "secondary", children: author })
+      render: (author) => /* @__PURE__ */ jsxRuntimeExports.jsx(Text$7, { type: "secondary", children: author })
     },
     {
       title: "日期",
       dataIndex: "date",
       key: "date",
       width: 180,
-      render: (date4) => /* @__PURE__ */ jsxRuntimeExports.jsx(Text$5, { type: "secondary", style: { fontSize: 12 }, children: formatDate(date4) })
+      render: (date4) => /* @__PURE__ */ jsxRuntimeExports.jsx(Text$7, { type: "secondary", style: { fontSize: 12 }, children: formatDate(date4) })
     }
   ];
   if (commitsError) {
     return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { textAlign: "center", padding: 40 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: `加载失败: ${commitsError}` }) });
   }
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginBottom: 12, display: "flex", justifyContent: "space-between", alignItems: "center" }, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$5, { type: "secondary", strong: true, children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { ref: containerRef, style: { display: "flex", flexDirection: "column", height: "100%", minHeight: 0, overflow: "hidden" }, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginBottom: 8, display: "flex", justifyContent: "space-between", alignItems: "center", flexShrink: 0 }, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$7, { type: "secondary", strong: true, children: [
         "共 ",
         commits.length,
         " 条提交"
@@ -61048,14 +62318,14 @@ function CommitHistory() {
           placeholder: "搜索提交记录...",
           allowClear: true,
           size: "small",
-          prefix: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$D, {}),
+          prefix: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$J, {}),
           value: commitSearchQuery,
           onChange: (e2) => setCommitSearch(e2.target.value),
           style: { width: 280 }
         }
       )
     ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref: topPanelRef, style: { flex: selectedCommit ? topRatio : 1, overflow: "auto", minHeight: 0 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
       ForwardTable,
       {
         dataSource: filtered,
@@ -61063,213 +62333,126 @@ function CommitHistory() {
         rowKey: "hash",
         loading: commitsLoading,
         size: "small",
-        pagination: { pageSize: 30, showSizeChanger: true, showTotal: (t2) => `共 ${t2} 条提交` },
+        pagination: { pageSize: 30, showSizeChanger: true, showTotal: (t2) => `共 ${t2} 条` },
         onRow: (record) => ({
-          onClick: () => selectCommit(record.hash),
-          style: { cursor: "pointer" }
+          onClick: () => handleRowClick(record),
+          style: {
+            cursor: "pointer",
+            background: record.hash === selectedCommitHash ? "var(--bg-selected)" : void 0
+          }
         }),
-        locale: {
-          emptyText: /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "暂无提交记录" })
-        }
+        locale: { emptyText: /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "暂无提交记录" }) }
+      }
+    ) }),
+    selectedCommit && /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        onMouseDown: handleDragStart,
+        style: {
+          flexShrink: 0,
+          height: 10,
+          cursor: "ns-resize",
+          background: "var(--border-secondary)",
+          borderTop: "1px solid var(--border-primary)",
+          transition: "background 0.2s",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          userSelect: "none"
+        },
+        onMouseEnter: (e2) => {
+          if (!dragging) e2.currentTarget.style.background = "var(--border-primary)";
+        },
+        onMouseLeave: (e2) => {
+          if (!dragging) e2.currentTarget.style.background = "var(--border-secondary)";
+        },
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
+          width: 40,
+          height: 3,
+          borderRadius: 2,
+          background: "var(--text-tertiary)",
+          opacity: 0.4
+        } })
+      }
+    ),
+    selectedCommit && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
+      {
+        ref: bottomPanelRef,
+        style: {
+          flex: 1 - topRatio,
+          minHeight: 0,
+          overflow: "auto",
+          background: "var(--bg-secondary)",
+          padding: 12
+        },
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(Descriptions, { column: 2, size: "small", bordered: true, style: { marginBottom: 12 }, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Descriptions.Item, { label: "哈希", span: 2, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Text$7, { code: true, copyable: true, style: { fontSize: 12 }, children: selectedCommit.hash }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(Descriptions.Item, { label: "作者", children: [
+              selectedCommit.author,
+              " <",
+              selectedCommit.email,
+              ">"
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Descriptions.Item, { label: "日期", children: formatDate(selectedCommit.date) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Descriptions.Item, { label: "提交信息", span: 2, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Paragraph, { style: { margin: 0, whiteSpace: "pre-wrap", fontSize: 13 }, children: selectedCommit.message }) }),
+            selectedCommit.refs.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(Descriptions.Item, { label: "引用", span: 2, children: selectedCommit.refs.map((ref) => /* @__PURE__ */ jsxRuntimeExports.jsxs(Tag, { color: "blue", style: { marginRight: 4 }, children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$g, {}),
+              " ",
+              ref
+            ] }, ref)) })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$7, { strong: true, style: { display: "block", marginBottom: 8, fontSize: 13 }, children: [
+            "变更文件 (",
+            fileList.length,
+            ")"
+          ] }),
+          diffLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { tip: "加载差异中..." }) : fileList.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(Text$7, { type: "secondary", children: "暂无可显示的文件变更" }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", flexDirection: "column", gap: 4 }, children: fileList.map((f2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              onClick: () => handleFileClick(f2.path),
+              style: {
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "6px 10px",
+                borderRadius: 6,
+                cursor: "pointer",
+                background: "var(--bg-tertiary)",
+                fontSize: 12,
+                fontFamily: "monospace",
+                transition: "background 0.15s"
+              },
+              onMouseEnter: (e2) => {
+                e2.currentTarget.style.background = "var(--bg-hover)";
+              },
+              onMouseLeave: (e2) => {
+                e2.currentTarget.style.background = "var(--bg-tertiary)";
+              },
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "var(--text-primary)" }, children: f2.path }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { style: { display: "flex", gap: 8, flexShrink: 0 }, children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$7, { type: "success", style: { fontSize: 11 }, children: [
+                    "+",
+                    f2.additions
+                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$7, { type: "danger", style: { fontSize: 11 }, children: [
+                    "-",
+                    f2.deletions
+                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$c, { style: { color: "var(--text-tertiary)", fontSize: 11 } })
+                ] })
+              ]
+            },
+            f2.path
+          )) })
+        ]
       }
     )
   ] });
 }
-const scriptRel = function detectScriptRel() {
-  const relList = typeof document !== "undefined" && document.createElement("link").relList;
-  return relList && relList.supports && relList.supports("modulepreload") ? "modulepreload" : "preload";
-}();
-const assetsURL = function(dep, importerUrl) {
-  return new URL(dep, importerUrl).href;
-};
-const seen = {};
-const __vitePreload = function preload(baseModule, deps, importerUrl) {
-  let promise = Promise.resolve();
-  if (deps && deps.length > 0) {
-    const links = document.getElementsByTagName("link");
-    const cspNonceMeta = document.querySelector(
-      "meta[property=csp-nonce]"
-    );
-    const cspNonce = cspNonceMeta?.nonce || cspNonceMeta?.getAttribute("nonce");
-    promise = Promise.allSettled(
-      deps.map((dep) => {
-        dep = assetsURL(dep, importerUrl);
-        if (dep in seen) return;
-        seen[dep] = true;
-        const isCss = dep.endsWith(".css");
-        const cssSelector = isCss ? '[rel="stylesheet"]' : "";
-        const isBaseRelative = !!importerUrl;
-        if (isBaseRelative) {
-          for (let i = links.length - 1; i >= 0; i--) {
-            const link2 = links[i];
-            if (link2.href === dep && (!isCss || link2.rel === "stylesheet")) {
-              return;
-            }
-          }
-        } else if (document.querySelector(`link[href="${dep}"]${cssSelector}`)) {
-          return;
-        }
-        const link = document.createElement("link");
-        link.rel = isCss ? "stylesheet" : scriptRel;
-        if (!isCss) {
-          link.as = "script";
-        }
-        link.crossOrigin = "";
-        link.href = dep;
-        if (cspNonce) {
-          link.setAttribute("nonce", cspNonce);
-        }
-        document.head.appendChild(link);
-        if (isCss) {
-          return new Promise((res, rej) => {
-            link.addEventListener("load", res);
-            link.addEventListener(
-              "error",
-              () => rej(new Error(`Unable to preload CSS for ${dep}`))
-            );
-          });
-        }
-      })
-    );
-  }
-  function handlePreloadError(err) {
-    const e2 = new Event("vite:preloadError", {
-      cancelable: true
-    });
-    e2.payload = err;
-    window.dispatchEvent(e2);
-    if (!e2.defaultPrevented) {
-      throw err;
-    }
-  }
-  return promise.then((res) => {
-    for (const item of res || []) {
-      if (item.status !== "rejected") continue;
-      handlePreloadError(item.reason);
-    }
-    return baseModule().catch(handlePreloadError);
-  });
-};
-function DiffViewer({ diff, containerId }) {
-  const containerRef = reactExports.useRef(null);
-  const mounted = reactExports.useRef(false);
-  reactExports.useEffect(() => {
-    if (mounted.current) return;
-    mounted.current = true;
-  }, []);
-  reactExports.useEffect(() => {
-    if (!diff || !containerRef.current) return;
-    const loadDiff2Html = async () => {
-      try {
-        const { html: diffHtml } = await __vitePreload(async () => {
-          const { html: diffHtml2 } = await import("./diff2html-CGDJ0S6X.js");
-          return { html: diffHtml2 };
-        }, true ? [] : void 0, import.meta.url);
-        const formattedDiff = diff.includes("diff --git") ? diff : `diff --git a/commit b/commit
-${diff}`;
-        const outputHtml = diffHtml(formattedDiff, {
-          drawFileList: true,
-          matching: "lines",
-          outputFormat: "side-by-side",
-          maxLineLengthHighlight: 1e4
-        });
-        if (containerRef.current) {
-          containerRef.current.innerHTML = outputHtml;
-          const fileListEl = containerRef.current.querySelector(".d2h-file-list");
-          if (fileListEl) {
-            fileListEl.addEventListener("click", (e2) => {
-              const target = e2.target;
-              if (target.classList.contains("d2h-file-switch")) {
-                const fileIndex = target.getAttribute("data-file-index");
-                if (fileIndex !== null && containerRef.current) {
-                  const diffEl = containerRef.current.querySelector(`[data-file-index="${fileIndex}"]`);
-                  if (diffEl) {
-                    diffEl.scrollIntoView({ behavior: "smooth" });
-                  }
-                }
-              }
-            });
-          }
-        }
-      } catch (err) {
-        if (containerRef.current) {
-          const escaped = diff.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-          containerRef.current.innerHTML = `<pre style="white-space:pre-wrap;word-break:break-all;color:#ccc;font-size:12px;line-height:1.6">${escaped}</pre>`;
-        }
-      }
-    };
-    loadDiff2Html();
-  }, [diff]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    "div",
-    {
-      ref: containerRef,
-      id: containerId,
-      className: "diff-container",
-      style: {
-        maxHeight: "calc(100vh - 400px)",
-        overflow: "auto",
-        fontSize: 13,
-        lineHeight: 1.5
-      }
-    }
-  );
-}
-const { Text: Text$4, Paragraph } = Typography;
-function CommitDetail() {
-  const selectedCommitHash = useStore((s) => s.selectedCommitHash);
-  const commitDetailOpen = useStore((s) => s.commitDetailOpen);
-  const currentDiff = useStore((s) => s.currentDiff);
-  const diffLoading = useStore((s) => s.diffLoading);
-  const commits = useStore((s) => s.commits);
-  const repos = useStore((s) => s.repos);
-  const selectedRepoId = useStore((s) => s.selectedRepoId);
-  const setCommitDetailOpen = useStore((s) => s.setCommitDetailOpen);
-  const selectCommit = useStore((s) => s.selectCommit);
-  const loadDiff = useStore((s) => s.loadDiff);
-  const selectedRepo = repos.find((r2) => r2.id === selectedRepoId);
-  const commit = commits.find((c2) => c2.hash === selectedCommitHash);
-  reactExports.useEffect(() => {
-    if (selectedCommitHash && selectedRepo && commitDetailOpen) {
-      loadDiff(selectedRepo.path, selectedCommitHash);
-    }
-  }, [selectedCommitHash, selectedRepo, commitDetailOpen, loadDiff]);
-  const diffDivId = `commit-diff-${selectedCommitHash?.slice(0, 7)}`;
-  if (!commit) return null;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    Drawer,
-    {
-      title: /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$4, { strong: true, style: { fontSize: 14 }, children: [
-        "提交 ",
-        commit.hash.slice(0, 7)
-      ] }),
-      placement: "right",
-      width: 800,
-      open: commitDetailOpen,
-      onClose: () => {
-        setCommitDetailOpen(false);
-        selectCommit(null);
-      },
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(Descriptions, { column: 1, size: "small", bordered: true, style: { marginBottom: 16 }, children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Descriptions.Item, { label: "哈希", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Text$4, { code: true, copyable: true, children: commit.hash }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(Descriptions.Item, { label: "作者", children: [
-            commit.author,
-            " <",
-            commit.email,
-            ">"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Descriptions.Item, { label: "日期", children: formatDate(commit.date) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Descriptions.Item, { label: "提交信息", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Paragraph, { style: { margin: 0, whiteSpace: "pre-wrap" }, children: commit.message }) }),
-          commit.refs.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(Descriptions.Item, { label: "引用", children: commit.refs.map((ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(Text$4, { code: true, style: { marginRight: 8 }, children: ref }, ref)) })
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Text$4, { strong: true, style: { display: "block", marginBottom: 8 }, children: "文件变更" }),
-        diffLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { textAlign: "center", padding: 40 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { tip: "加载差异中..." }) }) : currentDiff ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { id: diffDivId, children: /* @__PURE__ */ jsxRuntimeExports.jsx(DiffViewer, { diff: currentDiff, containerId: diffDivId }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "暂无差异数据" })
-      ]
-    }
-  );
-}
-const { Text: Text$3 } = Typography;
+const { Text: Text$6 } = Typography;
 function getStatusColor(status) {
   switch (status) {
     case "M":
@@ -61316,6 +62499,7 @@ function StageArea() {
   const stageAll = useStore((s) => s.stageAll);
   const discardFiles = useStore((s) => s.discardFiles);
   const setModalOpen = useStore((s) => s.setModalOpen);
+  const themeMode = useStore((s) => s.themeMode);
   const selectedRepo = repos.find((r2) => r2.id === selectedRepoId);
   const [selectedRowKeys, setSelectedRowKeys] = reactExports.useState([]);
   const allFiles = reactExports.useMemo(() => {
@@ -61367,13 +62551,40 @@ function StageArea() {
     staticMethods.success({ message: `已丢弃 ${selectedRowKeys.length} 个文件的修改` });
     setSelectedRowKeys([]);
   }, [selectedRepo, selectedRowKeys, discardFiles]);
+  const handleFileDoubleClick = reactExports.useCallback(async (record) => {
+    if (!selectedRepo) return;
+    try {
+      const res = await window.electronAPI.gitFileDiff(selectedRepo.path, record.path, record.staged);
+      if (res.success) {
+        window.electronAPI.windowOpenDiff({
+          diff: res.data,
+          repoPath: selectedRepo.path,
+          filePath: record.path,
+          staged: record.staged,
+          editable: true,
+          theme: themeMode
+        });
+      } else {
+        window.electronAPI.windowOpenDiff({
+          diff: "",
+          repoPath: selectedRepo.path,
+          filePath: record.path,
+          staged: record.staged,
+          editable: true,
+          theme: themeMode
+        });
+      }
+    } catch {
+      staticMethods.error({ message: `无法获取 "${record.path}" 的差异` });
+    }
+  }, [selectedRepo]);
   const columns = [
     {
       title: "文件",
       dataIndex: "path",
       key: "path",
       ellipsis: true,
-      render: (path2) => /* @__PURE__ */ jsxRuntimeExports.jsx(Text$3, { style: { color: "var(--text-primary)", fontFamily: "monospace", fontSize: 12 }, children: path2 })
+      render: (path2) => /* @__PURE__ */ jsxRuntimeExports.jsx(Text$6, { style: { color: "var(--text-primary)", fontFamily: "monospace", fontSize: 12 }, children: path2 })
     },
     {
       title: "状态",
@@ -61418,13 +62629,13 @@ function StageArea() {
   const isClean = !workingStatus || workingStatus.staged.length === 0 && workingStatus.unstaged.length === 0 && workingStatus.created.length === 0 && workingStatus.deleted.length === 0;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginBottom: 12, display: "flex", justifyContent: "space-between", alignItems: "center" }, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Text$3, { strong: true, style: { color: "var(--text-secondary)" }, children: isClean ? "工作区干净" : `${allFiles.length} 个文件有变更` }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Text$6, { strong: true, style: { color: "var(--text-secondary)" }, children: isClean ? "工作区干净" : `${allFiles.length} 个文件有变更` }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(Space, { size: "small", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           Button$1,
           {
             size: "small",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$a, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$e, {}),
             onClick: handleStageAll,
             loading: activeOperation === "stage-all",
             disabled: isClean,
@@ -61435,7 +62646,7 @@ function StageArea() {
           Button$1,
           {
             size: "small",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$c, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$h, {}),
             onClick: handleStage,
             disabled: selectedRowKeys.length === 0,
             loading: activeOperation === "stage",
@@ -61466,7 +62677,7 @@ function StageArea() {
               {
                 size: "small",
                 danger: true,
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$h, {}),
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$m, {}),
                 disabled: selectedRowKeys.length === 0,
                 loading: activeOperation === "discard",
                 children: "丢弃选中"
@@ -61500,6 +62711,9 @@ function StageArea() {
           selectedRowKeys,
           onChange: (keys2) => setSelectedRowKeys(keys2)
         },
+        onRow: (record) => ({
+          onDoubleClick: () => handleFileDoubleClick(record)
+        }),
         locale: {
           emptyText: isClean ? /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "没有文件变更，工作区干净" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "没有文件变更" })
         }
@@ -61589,7 +62803,7 @@ function CommitModal() {
     }
   );
 }
-const { Text: Text$2 } = Typography;
+const { Text: Text$5 } = Typography;
 function BranchList() {
   const branches = useStore((s) => s.branches);
   const branchesLoading = useStore((s) => s.branchesLoading);
@@ -61624,7 +62838,7 @@ function BranchList() {
       key: "name",
       render: (name, record) => /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
-          RefIcon$b,
+          RefIcon$g,
           {
             style: {
               marginRight: 8,
@@ -61633,7 +62847,7 @@ function BranchList() {
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Text$2,
+          Text$5,
           {
             strong: record.current,
             type: record.current ? void 0 : "secondary",
@@ -61649,7 +62863,7 @@ function BranchList() {
       dataIndex: "commit",
       key: "commit",
       width: 100,
-      render: (commit) => /* @__PURE__ */ jsxRuntimeExports.jsx(Text$2, { code: true, style: { fontSize: 11 }, children: commit.slice(0, 7) })
+      render: (commit) => /* @__PURE__ */ jsxRuntimeExports.jsx(Text$5, { code: true, style: { fontSize: 11 }, children: commit.slice(0, 7) })
     },
     {
       title: "操作",
@@ -61660,7 +62874,7 @@ function BranchList() {
           Button$1,
           {
             size: "small",
-            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$w, {}),
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$B, {}),
             onClick: () => handleSwitch(record.name),
             loading: activeOperation === "switch-branch",
             children: "切换"
@@ -61677,7 +62891,7 @@ function BranchList() {
               {
                 size: "small",
                 danger: true,
-                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$h, {}),
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$m, {}),
                 loading: activeOperation === "delete-branch"
               }
             )
@@ -61691,21 +62905,32 @@ function BranchList() {
   }
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginBottom: 12, display: "flex", justifyContent: "space-between", alignItems: "center" }, children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$2, { type: "secondary", strong: true, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$5, { type: "secondary", strong: true, children: [
         "共 ",
         branches.length,
         " 个分支"
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Button$1,
-        {
-          type: "primary",
-          size: "small",
-          icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, {}),
-          onClick: () => setModalOpen("createBranchModalOpen", true),
-          children: "新建分支"
-        }
-      )
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(Space, { size: "small", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button$1,
+          {
+            size: "small",
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$7, {}),
+            onClick: () => setModalOpen("mergeModalOpen", true),
+            children: "合并分支"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button$1,
+          {
+            type: "primary",
+            size: "small",
+            icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$g, {}),
+            onClick: () => setModalOpen("createBranchModalOpen", true),
+            children: "新建分支"
+          }
+        )
+      ] })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       ForwardTable,
@@ -61728,14 +62953,21 @@ function CreateBranchModal() {
   const activeOperation = useStore((s) => s.activeOperation);
   const repos = useStore((s) => s.repos);
   const selectedRepoId = useStore((s) => s.selectedRepoId);
+  const branches = useStore((s) => s.branches);
   const setModalOpen = useStore((s) => s.setModalOpen);
   const createBranch = useStore((s) => s.createBranch);
+  const loadBranches = useStore((s) => s.loadBranches);
   const selectedRepo = repos.find((r2) => r2.id === selectedRepoId);
   const [form] = Form2.useForm();
+  reactExports.useEffect(() => {
+    if (open2 && selectedRepo) {
+      loadBranches(selectedRepo.path);
+    }
+  }, [open2, selectedRepo, loadBranches]);
   const handleCreate = async () => {
     if (!selectedRepo) return;
     const values = await form.validateFields();
-    await createBranch(selectedRepo.path, values.name);
+    await createBranch(selectedRepo.path, values.name, values.baseBranch, values.switchTo);
     setModalOpen("createBranchModalOpen", false);
     form.resetFields();
   };
@@ -61771,19 +63003,48 @@ function CreateBranchModal() {
           "create"
         )
       ],
-      children: /* @__PURE__ */ jsxRuntimeExports.jsx(Form2, { form, layout: "vertical", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Form2.Item,
-        {
-          name: "name",
-          label: "分支名称",
-          rules: [{ required: true, message: "请输入分支名称" }],
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx(Input, { placeholder: "feature/新功能分支" })
-        }
-      ) })
+      children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Form2, { form, layout: "vertical", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Form2.Item,
+          {
+            name: "baseBranch",
+            label: "基础分支",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Select,
+              {
+                placeholder: "选择基础分支（默认为当前分支）",
+                options: branches.map((b2) => ({
+                  value: b2.name,
+                  label: `${b2.name}${b2.current ? " (当前)" : ""}`
+                }))
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Form2.Item,
+          {
+            name: "name",
+            label: "分支名称",
+            rules: [{ required: true, message: "请输入分支名称" }],
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(Input, { placeholder: "feature/新功能分支" })
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Form2.Item,
+          {
+            name: "switchTo",
+            label: "切换到新分支",
+            valuePropName: "checked",
+            initialValue: true,
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(Switch, {})
+          }
+        )
+      ] })
     }
   );
 }
-const { Text: Text$1 } = Typography;
+const { Text: Text$4 } = Typography;
 function MergeModal() {
   const open2 = useStore((s) => s.mergeModalOpen);
   const activeOperation = useStore((s) => s.activeOperation);
@@ -61792,22 +63053,24 @@ function MergeModal() {
   const repos = useStore((s) => s.repos);
   const selectedRepoId = useStore((s) => s.selectedRepoId);
   const setModalOpen = useStore((s) => s.setModalOpen);
-  useStore((s) => s.merge);
+  const merge2 = useStore((s) => s.merge);
   const selectedRepo = repos.find((r2) => r2.id === selectedRepoId);
   const [form] = Form2.useForm();
   const [conflicts, setConflicts] = reactExports.useState(null);
-  const otherBranches = branches.filter((b2) => b2.name !== currentBranch);
+  const [targetBranch, setTargetBranch] = reactExports.useState(currentBranch);
   const handleMerge = async () => {
     if (!selectedRepo) return;
     const values = await form.validateFields();
-    const res = await window.electronAPI.gitMerge(selectedRepo.path, values.sourceBranch);
-    if (res.success) {
-      if (res.data.merged) {
+    const result = await merge2(selectedRepo.path, values.sourceBranch, targetBranch);
+    if (result) {
+      if (result.merged) {
         setModalOpen("mergeModalOpen", false);
         form.resetFields();
         setConflicts(null);
-      } else if (res.data.conflicts) {
-        setConflicts(res.data.conflicts);
+        setTargetBranch(currentBranch);
+        staticMethods.success({ message: `已将 ${values.sourceBranch} 合并到 ${targetBranch}` });
+      } else if (result.conflicts) {
+        setConflicts(result.conflicts);
       }
     }
   };
@@ -61820,6 +63083,7 @@ function MergeModal() {
         setModalOpen("mergeModalOpen", false);
         form.resetFields();
         setConflicts(null);
+        setTargetBranch(currentBranch);
       },
       footer: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -61829,6 +63093,7 @@ function MergeModal() {
               setModalOpen("mergeModalOpen", false);
               form.resetFields();
               setConflicts(null);
+              setTargetBranch(currentBranch);
             },
             children: "取消"
           },
@@ -61848,25 +63113,35 @@ function MergeModal() {
       ],
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(Form2, { form, layout: "vertical", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Form2.Item, { label: "当前分支", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Text$1, { code: true, strong: true, children: currentBranch }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             Form2.Item,
             {
               name: "sourceBranch",
-              label: "合并到当前分支",
-              rules: [{ required: true, message: "请选择要合并的分支" }],
+              label: "源分支",
+              rules: [{ required: true, message: "请选择要合并的源分支" }],
               children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Select,
                 {
                   placeholder: "选择要合并的分支...",
-                  options: otherBranches.map((b2) => ({
+                  options: branches.map((b2) => ({
                     value: b2.name,
                     label: b2.name
                   }))
                 }
               )
             }
-          )
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Form2.Item, { label: "目标分支", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Select,
+            {
+              value: targetBranch,
+              onChange: setTargetBranch,
+              options: branches.map((b2) => ({
+                value: b2.name,
+                label: b2.name
+              }))
+            }
+          ) })
         ] }),
         conflicts && conflicts.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(
           Alert,
@@ -61874,9 +63149,9 @@ function MergeModal() {
             type: "error",
             title: "检测到合并冲突",
             description: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Text$1, { children: "冲突文件：" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { children: conflicts.map((f2) => /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Text$1, { code: true, children: f2 }) }, f2)) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Text$1, { children: "请手动解决冲突后再提交合并。" })
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Text$4, { children: "冲突文件：" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { children: conflicts.map((f2) => /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: /* @__PURE__ */ jsxRuntimeExports.jsx(Text$4, { code: true, children: f2 }) }, f2)) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Text$4, { children: "请手动解决冲突后再提交合并。" })
             ] }),
             showIcon: true
           }
@@ -61885,8 +63160,182 @@ function MergeModal() {
     }
   );
 }
+const { Text: Text$3 } = Typography;
+function GitHubPublishModal({ open: open2, repoPath, repoName, onClose }) {
+  const [form] = Form2.useForm();
+  const [loading, setLoading] = reactExports.useState(false);
+  const stageAll = useStore((s) => s.stageAll);
+  const commit = useStore((s) => s.commit);
+  const repos = useStore((s) => s.repos);
+  const updateRepoInfo = useStore((s) => s.updateRepoInfo);
+  const githubRepos = useStore((s) => s.githubRepos);
+  const setGithubRepos = useStore((s) => s.setGithubRepos);
+  reactExports.useEffect(() => {
+    if (open2) {
+      window.electronAPI.githubGetToken().then((res) => {
+        if (res.success && res.data) {
+          form.setFieldsValue({ token: res.data });
+        }
+      });
+      form.setFieldsValue({ repoName });
+    }
+  }, [open2, repoName, form]);
+  const handlePublish = async () => {
+    const values = await form.validateFields();
+    setLoading(true);
+    try {
+      if (values.token) {
+        await window.electronAPI.githubSaveToken(values.token);
+      }
+      const createRes = await window.electronAPI.githubCreateRepo(
+        values.token,
+        values.repoName || repoName,
+        values.isPrivate || false
+      );
+      if (!createRes.success) {
+        staticMethods.error({ message: "创建 GitHub 仓库失败", description: createRes.error });
+        return;
+      }
+      const newRepo = createRes.data;
+      const authUrl = newRepo.cloneUrl.replace("https://", `https://${values.token}@`);
+      const remoteRes = await window.electronAPI.gitAddRemote(repoPath, "origin", authUrl);
+      if (!remoteRes.success) {
+        staticMethods.error({ message: "添加远程仓库失败", description: remoteRes.error });
+        return;
+      }
+      staticMethods.success({ message: `GitHub 仓库已创建: ${newRepo.cloneUrl}` });
+      setGithubRepos([newRepo, ...githubRepos]);
+      const targetRepo = repos.find((r2) => r2.path === repoPath);
+      if (targetRepo) {
+        await updateRepoInfo(targetRepo.id, { remoteUrl: newRepo.cloneUrl });
+      }
+      let branchName = "";
+      try {
+        const branchRes = await window.electronAPI.gitCurrentBranch(repoPath);
+        if (branchRes.success && branchRes.data) {
+          branchName = branchRes.data;
+        }
+      } catch {
+      }
+      if (!branchName) {
+        await stageAll(repoPath);
+        await commit(repoPath, "Initial commit");
+        const branchRes = await window.electronAPI.gitCurrentBranch(repoPath);
+        branchName = branchRes.success ? branchRes.data : "main";
+      }
+      await window.electronAPI.gitPushWithUpstream(repoPath, "origin", branchName);
+      staticMethods.success({ message: "已推送到 GitHub" });
+      onClose();
+    } catch (err) {
+      staticMethods.error({ message: "操作失败", description: err.message });
+    } finally {
+      setLoading(false);
+    }
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Modal,
+    {
+      title: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { marginRight: 8 } }),
+        "推送到 GitHub"
+      ] }),
+      open: open2,
+      onCancel: onClose,
+      footer: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { onClick: onClose, children: "取消" }, "cancel"),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "primary", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, {}), loading, onClick: handlePublish, children: "创建仓库并推送" }, "publish")
+      ],
+      children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Form2, { form, layout: "vertical", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Form2.Item,
+          {
+            name: "token",
+            label: "GitHub Personal Access Token",
+            rules: [{ required: true, message: "请输入 GitHub Token" }],
+            extra: /* @__PURE__ */ jsxRuntimeExports.jsx(Text$3, { type: "secondary", style: { fontSize: 11 }, children: "需要 repo 权限。在 GitHub Settings > Developer settings > Personal access tokens 中生成" }),
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(Input.Password, { placeholder: "ghp_xxxxxxxxxxxx" })
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Form2.Item,
+          {
+            name: "repoName",
+            label: "仓库名称",
+            rules: [{ required: true, message: "请输入仓库名称" }],
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(Input, { placeholder: repoName })
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Form2.Item, { name: "isPrivate", label: "私有仓库", valuePropName: "checked", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Switch, {}) })
+      ] })
+    }
+  );
+}
+const { Text: Text$2 } = Typography;
+function GithubLoginModal({ open: open2, onClose }) {
+  const [form] = Form2.useForm();
+  const [loading, setLoading] = reactExports.useState(false);
+  const setGithubLogin = useStore((s) => s.setGithubLogin);
+  const setGithubRepos = useStore((s) => s.setGithubRepos);
+  reactExports.useEffect(() => {
+    if (open2) {
+      window.electronAPI.githubGetToken().then((res) => {
+        if (res.success && res.data) {
+          form.setFieldsValue({ token: res.data });
+        }
+      });
+    }
+  }, [open2, form]);
+  const handleLogin = async () => {
+    const values = await form.validateFields();
+    setLoading(true);
+    try {
+      const validateRes = await window.electronAPI.githubValidateToken(values.token);
+      if (!validateRes.success) {
+        staticMethods.error({ message: "登录失败", description: validateRes.error });
+        return;
+      }
+      await window.electronAPI.githubSaveToken(values.token);
+      setGithubLogin(true, validateRes.data.login, validateRes.data.avatarUrl);
+      const reposRes = await window.electronAPI.githubListRepos(values.token);
+      if (reposRes.success) {
+        setGithubRepos(reposRes.data);
+      }
+      staticMethods.success({ message: `已登录为 ${validateRes.data.login}` });
+      onClose();
+    } catch (err) {
+      staticMethods.error({ message: "登录失败", description: err.message });
+    } finally {
+      setLoading(false);
+    }
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Modal,
+    {
+      title: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { marginRight: 8 } }),
+        "登录 GitHub"
+      ] }),
+      open: open2,
+      onCancel: onClose,
+      footer: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { onClick: onClose, children: "取消" }, "cancel"),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "primary", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, {}), loading, onClick: handleLogin, children: "登录" }, "login")
+      ],
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(Form2, { form, layout: "vertical", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Form2.Item,
+        {
+          name: "token",
+          label: "Personal Access Token",
+          rules: [{ required: true, message: "请输入 GitHub Token" }],
+          extra: /* @__PURE__ */ jsxRuntimeExports.jsx(Text$2, { type: "secondary", style: { fontSize: 11 }, children: "需要 repo 权限。在 GitHub Settings > Developer settings > Personal access tokens 中生成" }),
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(Input.Password, { placeholder: "ghp_xxxxxxxxxxxx" })
+        }
+      ) })
+    }
+  );
+}
 const { Content } = Layout;
-const { Text } = Typography;
+const { Text: Text$1 } = Typography;
 function AppContent() {
   const repos = useStore((s) => s.repos);
   const selectedRepoId = useStore((s) => s.selectedRepoId);
@@ -61895,6 +63344,7 @@ function AppContent() {
   const operationError = useStore((s) => s.operationError);
   const currentBranch = useStore((s) => s.currentBranch);
   const branches = useStore((s) => s.branches);
+  const workingStatus = useStore((s) => s.workingStatus);
   const setActiveTab = useStore((s) => s.setActiveTab);
   const setModalOpen = useStore((s) => s.setModalOpen);
   const clearOperationError = useStore((s) => s.clearOperationError);
@@ -61902,6 +63352,7 @@ function AppContent() {
   const push = useStore((s) => s.push);
   const switchBranch = useStore((s) => s.switchBranch);
   const selectedRepo = repos.find((r2) => r2.id === selectedRepoId);
+  const [githubModalOpen, setGithubModalOpen] = reactExports.useState(false);
   if (operationError) {
     staticMethods.error({
       message: "操作失败",
@@ -61950,7 +63401,22 @@ function AppContent() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(CommitModal, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(CreateBranchModal, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(MergeModal, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(CommitDetail, {}),
+    selectedRepo && /* @__PURE__ */ jsxRuntimeExports.jsx(
+      GitHubPublishModal,
+      {
+        open: githubModalOpen,
+        repoPath: selectedRepo.path,
+        repoName: selectedRepo.name,
+        onClose: () => setGithubModalOpen(false)
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      GithubLoginModal,
+      {
+        open: useStore((s) => s.githubLoginModalOpen) ?? false,
+        onClose: () => setModalOpen("githubLoginModalOpen", false)
+      }
+    ),
     !selectedRepo ? /* @__PURE__ */ jsxRuntimeExports.jsx(Content, { style: { display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg-primary)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "请从左侧选择一个仓库", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { type: "primary", onClick: () => setModalOpen("addRepoModalOpen", true), children: "添加仓库" }) }) }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(
         "div",
@@ -61970,7 +63436,7 @@ function AppContent() {
               /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Breadcrumb,
                 {
-                  items: [{ title: /* @__PURE__ */ jsxRuntimeExports.jsx(Text, { strong: true, style: { color: "var(--text-primary)" }, children: selectedRepo.name }) }]
+                  items: [{ title: /* @__PURE__ */ jsxRuntimeExports.jsx(Text$1, { strong: true, style: { color: "var(--text-primary)" }, children: selectedRepo.name }) }]
                 }
               ),
               /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -61984,7 +63450,7 @@ function AppContent() {
                   options: branches.map((b2) => ({
                     value: b2.name,
                     label: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, { style: { marginRight: 4 } }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$g, { style: { marginRight: 4 } }),
                       b2.name
                     ] })
                   }))
@@ -61992,17 +63458,17 @@ function AppContent() {
               )
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs(Space, { size: "small", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { count: workingStatus?.behind || 0, overflowCount: 99, size: "small", offset: [-2, 2], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Button$1,
                 {
                   size: "small",
-                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$d, {}),
+                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$i, {}),
                   loading: activeOperation === "pull",
                   onClick: handlePull,
                   children: "拉取"
                 }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
+              ) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { count: workingStatus?.ahead || 0, overflowCount: 99, size: "small", offset: [-2, 2], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Button$1,
                 {
                   size: "small",
@@ -62011,36 +63477,28 @@ function AppContent() {
                   onClick: handlePush,
                   children: "推送"
                 }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
+              ) }),
+              selectedRepo && !selectedRepo.remoteUrl && /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Button$1,
                 {
                   size: "small",
-                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$z, {}),
-                  onClick: () => setModalOpen("createBranchModalOpen", true),
-                  children: "新建分支"
-                }
-              ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button$1,
-                {
-                  size: "small",
-                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$5, {}),
-                  onClick: () => setModalOpen("mergeModalOpen", true),
-                  children: "合并分支"
+                  icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$b, {}),
+                  onClick: () => setGithubModalOpen(true),
+                  children: "推送 GitHub"
                 }
               )
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Content, { style: { padding: 0, overflow: "auto", flex: 1, background: "var(--bg-primary)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Content, { style: { padding: 0, overflow: "hidden", flex: 1, minHeight: 0, background: "var(--bg-primary)", display: "flex", flexDirection: "column" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         Tabs,
         {
           activeKey: activeTab,
           onChange: (key) => setActiveTab(key),
           items: tabItems,
-          style: { padding: "0 16px" }
+          style: { padding: "0 16px", flex: 1, minHeight: 0, display: "flex", flexDirection: "column", overflow: "hidden" },
+          tabBarStyle: { flexShrink: 0 }
         }
       ) })
     ] }),
@@ -62063,7 +63521,7 @@ function AppContent() {
         },
         children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { size: "small" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(Text, { style: { color: "var(--text-secondary)", fontSize: 13 }, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$1, { style: { color: "var(--text-secondary)", fontSize: 13 }, children: [
             activeOperation === "pull" && "正在拉取...",
             activeOperation === "push" && "正在推送...",
             activeOperation === "commit" && "正在提交...",
@@ -62088,21 +63546,503 @@ function AppLayout() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(AppContent, {})
   ] });
 }
+const { Text } = Typography;
+const GUTTER = 42;
+function HunkSideBySide({ hunk, editable, onRevert }) {
+  const contextMenu = editable && onRevert ? [
+    { key: "revert", label: "回退此块", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$3, {}), danger: true }
+  ] : [];
+  const handleMenuClick = ({ key }) => {
+    if (key === "revert") onRevert?.(hunk);
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginBottom: 6 }, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        style: {
+          padding: "3px 12px",
+          fontSize: 11,
+          fontFamily: "monospace",
+          color: "var(--text-tertiary)",
+          background: "var(--bg-tertiary)",
+          borderTop: "1px solid var(--border-secondary)",
+          borderBottom: "1px solid var(--border-secondary)"
+        },
+        children: hunk.header
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Dropdown, { menu: { items: contextMenu, onClick: handleMenuClick }, trigger: ["contextMenu"], disabled: !editable, children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: hunk.pairs.map((pair, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(PairRow, { pair }, i)) }) })
+  ] });
+}
+function PairRow({ pair }) {
+  const [hovered, setHovered] = reactExports.useState(false);
+  const sideStyle = (side, line2) => {
+    const isAdd = side === "right" && line2?.type === "add";
+    const isDel = side === "left" && line2?.type === "del";
+    return {
+      flex: 1,
+      display: "flex",
+      minHeight: 22,
+      lineHeight: "22px",
+      fontSize: 12,
+      fontFamily: "'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace",
+      background: isDel ? "rgba(232, 131, 122, 0.1)" : isAdd ? "rgba(111, 207, 151, 0.1)" : "transparent",
+      borderLeft: isDel ? "3px solid rgba(232, 131, 122, 0.4)" : isAdd ? "3px solid rgba(111, 207, 151, 0.4)" : "3px solid transparent",
+      opacity: line2 ? 1 : 0.5
+    };
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "div",
+    {
+      style: { display: "flex" },
+      onMouseEnter: () => setHovered(true),
+      onMouseLeave: () => setHovered(false),
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: sideStyle("left", pair.left), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: {
+            display: "inline-block",
+            width: GUTTER,
+            textAlign: "right",
+            paddingRight: 8,
+            color: "var(--text-tertiary)",
+            userSelect: "none",
+            flexShrink: 0,
+            background: hovered ? "var(--bg-hover)" : "transparent"
+          }, children: pair.left?.oldNum ?? "" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: {
+            paddingLeft: 8,
+            whiteSpace: "pre-wrap",
+            wordBreak: "break-all",
+            flex: 1,
+            color: pair.left?.type === "del" ? "#e8837a" : "var(--text-primary)"
+          }, children: pair.left ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { userSelect: "none", marginRight: 4 }, children: pair.left.type === "del" ? "-" : " " }),
+            pair.left.content
+          ] }) : null })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { width: 1, background: "var(--border-secondary)", flexShrink: 0 } }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: sideStyle("right", pair.right), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: {
+            display: "inline-block",
+            width: GUTTER,
+            textAlign: "right",
+            paddingRight: 8,
+            color: "var(--text-tertiary)",
+            userSelect: "none",
+            flexShrink: 0,
+            background: hovered ? "var(--bg-hover)" : "transparent"
+          }, children: pair.right?.newNum ?? "" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: {
+            paddingLeft: 8,
+            whiteSpace: "pre-wrap",
+            wordBreak: "break-all",
+            flex: 1,
+            color: pair.right?.type === "add" ? "#6fcf97" : "var(--text-primary)"
+          }, children: pair.right ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { userSelect: "none", marginRight: 4 }, children: pair.right.type === "add" ? "+" : " " }),
+            pair.right.content
+          ] }) : null })
+        ] })
+      ]
+    }
+  );
+}
+function FileDiffView({ file, editable, onRevertHunk }) {
+  if (file.hunks.length === 0) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { padding: 24, textAlign: "center" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Text, { type: "secondary", children: "二进制文件或无法显示差异" }) });
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: file.hunks.map((hunk, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(HunkSideBySide, { hunk, editable, onRevert: onRevertHunk }, i)) });
+}
+function DiffPanel({ diff, standalone, editable, repoPath, filePath, staged, onRefreshStatus }) {
+  const [selectedFile, setSelectedFile] = reactExports.useState(null);
+  const [saving, setSaving] = reactExports.useState(false);
+  const [resolving, setResolving] = reactExports.useState(false);
+  const [fullFile, setFullFile] = reactExports.useState(false);
+  const [fullDiff, setFullDiff] = reactExports.useState(null);
+  const [loadingFullDiff, setLoadingFullDiff] = reactExports.useState(false);
+  const files = reactExports.useMemo(() => parseDiff(fullFile && fullDiff ? fullDiff : diff), [diff, fullFile, fullDiff]);
+  const activeFile = reactExports.useMemo(
+    () => files.find((f2) => f2.path === selectedFile) || null,
+    [files, selectedFile]
+  );
+  const canShowFullFile = !!repoPath && !!filePath;
+  const handleToggleFullFile = reactExports.useCallback(async () => {
+    if (fullFile) {
+      setFullFile(false);
+      setFullDiff(null);
+      return;
+    }
+    if (!repoPath || !filePath) return;
+    setLoadingFullDiff(true);
+    try {
+      const res = await window.electronAPI.gitFileFullDiff(repoPath, filePath, staged || false);
+      if (res.success && res.data) {
+        setFullDiff(res.data);
+        setFullFile(true);
+      }
+    } finally {
+      setLoadingFullDiff(false);
+    }
+  }, [fullFile, repoPath, filePath, staged]);
+  reactExports.useEffect(() => {
+    if (files.length > 0 && !selectedFile) {
+      setSelectedFile(files[0].path);
+    }
+  }, [files, selectedFile]);
+  const hasConflict = reactExports.useMemo(() => {
+    return diff.includes("<<<<<<< ") && diff.includes(">>>>>>> ");
+  }, [diff]);
+  const handleDiscard = reactExports.useCallback(async () => {
+    if (!repoPath || !filePath) return;
+    setSaving(true);
+    try {
+      const res = await window.electronAPI.gitDiscardFile(repoPath, [filePath]);
+      if (res.success) {
+        staticMethods.success({ message: `已丢弃 "${filePath}" 的修改` });
+        onRefreshStatus?.();
+      } else {
+        staticMethods.error({ message: "丢弃失败", description: res.error });
+      }
+    } finally {
+      setSaving(false);
+    }
+  }, [repoPath, filePath, onRefreshStatus]);
+  const handleRevertHunk = reactExports.useCallback(async (hunk) => {
+    if (!repoPath || !filePath) return;
+    const lines = [];
+    for (const pair of hunk.pairs) {
+      if (pair.left && pair.left.type === "del") {
+        lines.push(`-${pair.left.content}`);
+      }
+      if (pair.right && pair.right.type === "add") {
+        lines.push(`+${pair.right.content}`);
+      }
+      if (pair.left && pair.right && pair.left.type === "ctx") {
+        lines.push(` ${pair.left.content}`);
+      }
+    }
+    try {
+      const res = await window.electronAPI.gitRevertHunk(repoPath, filePath, hunk.header, lines.join("\n"));
+      if (res.success) {
+        staticMethods.success({ message: "已回退此块修改" });
+        onRefreshStatus?.();
+      } else {
+        staticMethods.error({ message: "回退失败", description: res.error });
+      }
+    } catch {
+      staticMethods.error({ message: "回退失败" });
+    }
+  }, [repoPath, filePath, onRefreshStatus]);
+  const handleResolveConflict = reactExports.useCallback(async (strategy) => {
+    if (!repoPath || !filePath) return;
+    setResolving(true);
+    try {
+      const res = await window.electronAPI.gitResolveConflict(repoPath, filePath, strategy);
+      if (res.success) {
+        staticMethods.success({ message: "冲突已解决" });
+        onRefreshStatus?.();
+      } else {
+        staticMethods.error({ message: "解决冲突失败", description: res.error });
+      }
+    } finally {
+      setResolving(false);
+    }
+  }, [repoPath, filePath, onRefreshStatus]);
+  if (!diff || files.length === 0) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { padding: 24, textAlign: "center" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "暂无差异数据" }) });
+  }
+  const totalAdds = files.reduce((s, f2) => s + f2.additions, 0);
+  const totalDels = files.reduce((s, f2) => s + f2.deletions, 0);
+  const showToolbar = editable && filePath;
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "div",
+    {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        border: standalone ? "none" : "1px solid var(--border-primary)",
+        borderRadius: standalone ? 0 : 12,
+        overflow: "hidden",
+        height: standalone ? "100%" : "calc(100vh - 420px)",
+        minHeight: standalone ? 0 : 300
+      },
+      children: [
+        showToolbar && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: {
+          padding: "6px 12px",
+          borderBottom: "1px solid var(--border-primary)",
+          background: "var(--bg-secondary)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexShrink: 0
+        }, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: 8 }, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Text, { strong: true, style: { fontFamily: "monospace", fontSize: 13 }, children: filePath }),
+            hasConflict && /* @__PURE__ */ jsxRuntimeExports.jsx(Tag, { color: "red", style: { fontSize: 11 }, children: "冲突" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(Space, { size: "small", children: [
+            hasConflict ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { size: "small", onClick: () => handleResolveConflict("ours"), loading: resolving, children: "使用我的版本" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { size: "small", onClick: () => handleResolveConflict("theirs"), loading: resolving, children: "使用他人版本" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { size: "small", onClick: () => handleResolveConflict("both-ours-first"), loading: resolving, children: "保留双方（我的在前）" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { size: "small", onClick: () => handleResolveConflict("both-theirs-first"), loading: resolving, children: "保留双方（他人在前）" })
+            ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { size: "small", danger: true, icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$3, {}), onClick: handleDiscard, loading: saving, children: "丢弃修改" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Button$1, { size: "small", icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$2, {}), onClick: onRefreshStatus, loading: saving, children: "刷新" }),
+            canShowFullFile && /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: fullFile ? "返回差异视图" : "显示全部代码", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button$1,
+              {
+                size: "small",
+                icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$c, {}),
+                type: fullFile ? "primary" : "default",
+                onClick: handleToggleFullFile,
+                loading: loadingFullDiff,
+                children: fullFile ? "差异视图" : "全部代码"
+              }
+            ) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", flex: 1, minHeight: 0 }, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              style: {
+                width: 240,
+                flexShrink: 0,
+                borderRight: "1px solid var(--border-primary)",
+                background: "var(--bg-secondary)",
+                overflow: "auto",
+                display: "flex",
+                flexDirection: "column"
+              },
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                  "div",
+                  {
+                    style: {
+                      padding: "10px 12px",
+                      borderBottom: "1px solid var(--border-primary)",
+                      fontSize: 12,
+                      color: "var(--text-secondary)",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center"
+                    },
+                    children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+                        files.length,
+                        " 个文件"
+                      ] }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { style: { display: "flex", gap: 8 }, children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsxs(Text, { type: "success", style: { fontSize: 11 }, children: [
+                          "+",
+                          totalAdds
+                        ] }),
+                        /* @__PURE__ */ jsxRuntimeExports.jsxs(Text, { type: "danger", style: { fontSize: 11 }, children: [
+                          "-",
+                          totalDels
+                        ] })
+                      ] })
+                    ]
+                  }
+                ),
+                files.map((file) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                  "div",
+                  {
+                    onClick: () => setSelectedFile(file.path),
+                    style: {
+                      padding: "8px 12px",
+                      cursor: "pointer",
+                      fontSize: 12,
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 6,
+                      background: activeFile?.path === file.path ? "var(--bg-selected)" : "transparent",
+                      borderLeft: activeFile?.path === file.path ? "3px solid var(--accent)" : "3px solid transparent",
+                      transition: "background 0.15s"
+                    },
+                    children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$E, { style: { color: "var(--text-tertiary)", fontSize: 13 } }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: {
+                        flex: 1,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                        color: "var(--text-primary)",
+                        fontFamily: "monospace"
+                      }, children: file.path }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { style: { display: "flex", gap: 4, flexShrink: 0 }, children: [
+                        file.additions > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { style: { color: "#6fcf97", fontSize: 11, display: "flex", alignItems: "center", gap: 1 }, children: [
+                          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$F, { style: { fontSize: 9 } }),
+                          file.additions
+                        ] }),
+                        file.deletions > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { style: { color: "#e8837a", fontSize: 11, display: "flex", alignItems: "center", gap: 1 }, children: [
+                          /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$6, { style: { fontSize: 9 } }),
+                          file.deletions
+                        ] })
+                      ] })
+                    ]
+                  },
+                  file.path
+                ))
+              ]
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { flex: 1, overflow: "auto", background: "var(--bg-primary)" }, children: activeFile ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+            (!editable || !filePath) && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: {
+              padding: "10px 16px",
+              borderBottom: "1px solid var(--border-primary)",
+              background: "var(--bg-secondary)",
+              position: "sticky",
+              top: 0,
+              zIndex: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between"
+            }, children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: 8 }, children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Text, { strong: true, style: { fontFamily: "monospace", fontSize: 13 }, children: activeFile.path }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Tag, { children: getFileLang(activeFile.path) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(Text, { type: "success", style: { fontSize: 12 }, children: [
+                  "+",
+                  activeFile.additions
+                ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs(Text, { type: "danger", style: { fontSize: 12 }, children: [
+                  "-",
+                  activeFile.deletions
+                ] })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", alignItems: "center", gap: 12 }, children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { display: "flex", gap: 8, fontSize: 12, color: "var(--text-tertiary)" }, children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "旧版本" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { style: { color: "var(--text-secondary)" }, children: "/" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "新版本" })
+                ] }),
+                canShowFullFile && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  Button$1,
+                  {
+                    size: "small",
+                    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$c, {}),
+                    type: fullFile ? "primary" : "default",
+                    onClick: handleToggleFullFile,
+                    loading: loadingFullDiff,
+                    children: fullFile ? "差异视图" : "全部代码"
+                  }
+                )
+              ] })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              FileDiffView,
+              {
+                file: activeFile,
+                editable: editable && !hasConflict,
+                onRevertHunk: handleRevertHunk
+              }
+            )
+          ] }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { padding: 24, textAlign: "center" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Text, { type: "secondary", children: "请从左侧选择文件" }) }) })
+        ] })
+      ]
+    }
+  );
+}
+function StandaloneDiffPanel() {
+  const setThemeMode = useStore((s) => s.setThemeMode);
+  const [data, setData] = reactExports.useState(null);
+  const [loading, setLoading] = reactExports.useState(true);
+  const [error, setError] = reactExports.useState(null);
+  reactExports.useLayoutEffect(() => {
+    const theme = window.electronAPI.diffWindowTheme;
+    setThemeMode(theme);
+  }, [setThemeMode]);
+  reactExports.useEffect(() => {
+    const tryRead = (attempt) => {
+      const d2 = window.__diffData;
+      if (d2 && d2.diff) {
+        if (d2.theme) {
+          setThemeMode(d2.theme);
+        }
+        setData(d2);
+        setLoading(false);
+      } else if (attempt < 5) {
+        setTimeout(() => tryRead(attempt + 1), 150);
+      } else {
+        setError("无法加载差异数据");
+        setLoading(false);
+      }
+    };
+    setTimeout(() => tryRead(0), 100);
+  }, []);
+  const handleRefreshStatus = reactExports.useCallback(async () => {
+    if (data?.repoPath && data?.filePath) {
+      try {
+        const res = await window.electronAPI.gitFileDiff(
+          data.repoPath,
+          data.filePath,
+          data.staged || false
+        );
+        if (res.success) {
+          setData((prev2) => prev2 ? { ...prev2, diff: res.data } : prev2);
+          staticMethods.success({ message: "文件状态已刷新" });
+        }
+      } catch {
+        staticMethods.error({ message: "刷新失败" });
+      }
+    }
+  }, [data?.repoPath, data?.filePath, data?.staged]);
+  if (loading) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg-primary)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { tip: "加载差异数据..." }) });
+  }
+  if (error || !data) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg-primary)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: error || "暂无数据" }) });
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { height: "100vh", display: "flex", flexDirection: "column", background: "var(--bg-primary)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+    DiffPanel,
+    {
+      diff: data.diff,
+      standalone: true,
+      editable: data.editable,
+      repoPath: data.repoPath,
+      filePath: data.filePath,
+      staged: data.staged,
+      onRefreshStatus: handleRefreshStatus
+    }
+  ) });
+}
 function App() {
   const loadRepos = useStore((s) => s.loadRepos);
   const themeMode = useStore((s) => s.themeMode);
   const setThemeMode = useStore((s) => s.setThemeMode);
+  const isDiffWindow = window.electronAPI.isDiffWindow;
+  const setGithubLogin = useStore((s) => s.setGithubLogin);
+  const setGithubRepos = useStore((s) => s.setGithubRepos);
   reactExports.useEffect(() => {
+    if (isDiffWindow) return;
     loadRepos();
     window.electronAPI.settingsGet("theme").then((res) => {
       if (res.success && res.data) {
         setThemeMode(res.data);
       }
     });
-  }, []);
+    window.electronAPI.githubGetToken().then((res) => {
+      if (res.success && res.data) {
+        window.electronAPI.githubValidateToken(res.data).then((validateRes) => {
+          if (validateRes.success) {
+            setGithubLogin(true, validateRes.data.login, validateRes.data.avatarUrl);
+            window.electronAPI.githubListRepos(res.data).then((reposRes) => {
+              if (reposRes.success) {
+                setGithubRepos(reposRes.data);
+              }
+            });
+          }
+        });
+      }
+    });
+  }, [isDiffWindow]);
   reactExports.useEffect(() => {
     window.electronAPI.settingsSet("theme", themeMode);
   }, [themeMode]);
+  if (isDiffWindow) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(StandaloneDiffPanel, {});
+  }
   return /* @__PURE__ */ jsxRuntimeExports.jsx(AppLayout, {});
 }
 function ThemeWrapper({ children }) {

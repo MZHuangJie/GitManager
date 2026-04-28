@@ -59,26 +59,14 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* 可爱滚动条 */
+/* 隐藏滚动条但保持可滚动 */
 
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: 3px;
-  transition: background 0.3s;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover);
+* {
+  scrollbar-width: none;
 }
 
 /* diff2html 容器 */
@@ -199,4 +187,21 @@ body {
 
 [data-theme='light'] .ant-table-row-selected > td {
   box-shadow: inset 0 0 0 1px rgba(247, 133, 155, 0.25) !important;
+}
+
+/* Tabs 高度传递：让 tab 内容区填充剩余高度 */
+
+.ant-tabs-content-holder {
+  flex: 1 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.ant-tabs-content {
+  height: 100%;
+}
+
+.ant-tabs-tabpane {
+  height: 100%;
+  overflow: auto;
 }
