@@ -65,7 +65,7 @@ export default function CreateBranchModal() {
         >
           <Select
             placeholder="选择基础分支（默认为当前分支）"
-            options={branches.map((b) => ({
+            options={branches.filter((b) => !b.remote).map((b) => ({
               value: b.name,
               label: `${b.name}${b.current ? ' (当前)' : ''}`
             }))}

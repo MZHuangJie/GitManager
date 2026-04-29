@@ -120,6 +120,7 @@ export const gitService = {
   async getLog(repoPath: string, opts: LogOptions = {}): Promise<CommitEntry[]> {
     const git = getGit(repoPath)
     const logOpts: Record<string, unknown> = {
+      '--all': null,
       maxCount: opts.maxCount ?? 50,
       ...(opts.skip ? { '--skip': opts.skip } : {})
     }
@@ -165,13 +166,33 @@ export const gitService = {
 
   async getBranchList(repoPath: string): Promise<BranchEntry[]> {
     const git = getGit(repoPath)
-    const branches = await git.branch()
-    return branches.all.map((name: string) => ({
-      name,
-      current: name === branches.current,
-      commit: branches.branches[name]?.commit || '',
-      label: branches.branches[name]?.label || ''
-    }))
+    const branches = await git.branch(['-a'])
+    const localNames = new Set(branches.all.filter((n) => !n.startsWith('remotes/')))
+
+    const result: BranchEntry[] = []
+    for (const name of branches.all) {
+      if (name.startsWith('remotes/')) {
+        if (name.endsWith('/HEAD')) continue
+        const shortName = name.replace(/^remotes\/\w+\//, '')
+        if (localNames.has(shortName)) continue
+        result.push({
+          name: shortName,
+          current: false,
+          remote: true,
+          remoteRef: name,
+          commit: branches.branches[name]?.commit || '',
+          label: branches.branches[name]?.label || ''
+        })
+      } else {
+        result.push({
+          name,
+          current: name === branches.current,
+          commit: branches.branches[name]?.commit || '',
+          label: branches.branches[name]?.label || ''
+        })
+      }
+    }
+    return result
   },
 
   async getCurrentBranch(repoPath: string): Promise<string> {
@@ -252,9 +273,13 @@ export const gitService = {
     }
   },
 
-  async switchBranch(repoPath: string, branch: string): Promise<void> {
+  async switchBranch(repoPath: string, branch: string, remoteRef?: string): Promise<void> {
     const git = getGit(repoPath)
-    await git.checkout(branch)
+    if (remoteRef) {
+      await git.checkoutBranch(branch, remoteRef)
+    } else {
+      await git.checkout(branch)
+    }
   },
 
   async merge(repoPath: string, sourceBranch: string, targetBranch: string): Promise<{

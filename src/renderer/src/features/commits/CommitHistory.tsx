@@ -23,6 +23,7 @@ export default function CommitHistory() {
   const diffLoading = useStore((s) => s.diffLoading)
   const repos = useStore((s) => s.repos)
   const selectedRepoId = useStore((s) => s.selectedRepoId)
+  const currentBranch = useStore((s) => s.currentBranch)
 
   const selectCommit = useStore((s) => s.selectCommit)
   const loadDiff = useStore((s) => s.loadDiff)
@@ -196,11 +197,30 @@ export default function CommitHistory() {
           <Text>{msg.split('\n')[0]}</Text>
           {record.refs.length > 0 && (
             <span style={{ marginLeft: 8 }}>
-              {record.refs.map((ref) => (
-                <Tag key={ref} color="blue" style={{ fontSize: 11, marginRight: 2 }}>
-                  <BranchesOutlined /> {ref.replace('refs/heads/', '')}
-                </Tag>
-              ))}
+              {record.refs.map((ref) => {
+                const displayRef = ref.replace(/^refs\/heads\//, '').replace(/^refs\/remotes\//, '').replace(/^refs\/tags\//, '')
+                const isHead = ref.startsWith('HEAD ->')
+                const isCurrent = !isHead && (
+                  ref === currentBranch ||
+                  ref === `refs/heads/${currentBranch}` ||
+                  ref.endsWith(`/${currentBranch}`)
+                )
+                const isRemote = ref.startsWith('origin/') || ref.startsWith('refs/remotes/')
+                const color = isHead || isCurrent ? 'green'
+                  : isRemote ? 'blue'
+                  : ref.startsWith('tag:') || ref.startsWith('refs/tags/') ? 'orange'
+                  : 'blue'
+                return (
+                  <Tag key={ref} color={color} style={{ fontSize: 11, marginRight: 2 }}>
+                    <BranchesOutlined style={{ marginRight: 1 }} />
+                    {isHead ? (
+                      <span style={{ fontWeight: 600 }}>{displayRef} HEAD</span>
+                    ) : (
+                      displayRef
+                    )}
+                  </Tag>
+                )
+                })}
             </span>
           )}
         </div>
@@ -239,9 +259,17 @@ export default function CommitHistory() {
     <div ref={containerRef} style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0, overflow: 'hidden' }}>
       {/* Search bar */}
       <div style={{ marginBottom: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
-        <Text type="secondary" strong>
-          共 {commits.length} 条提交
-        </Text>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <Text type="secondary" strong>
+            共 {commits.length} 条提交
+          </Text>
+          {currentBranch && (
+            <Tag color="blue" style={{ margin: 0 }}>
+              <BranchesOutlined style={{ marginRight: 2 }} />
+              {currentBranch}
+            </Tag>
+          )}
+        </div>
         <Input.Search
           placeholder="搜索提交记录..."
           allowClear
@@ -340,11 +368,26 @@ export default function CommitHistory() {
             </Descriptions.Item>
             {selectedCommit.refs.length > 0 && (
               <Descriptions.Item label="引用" span={2}>
-                {selectedCommit.refs.map((ref) => (
-                  <Tag key={ref} color="blue" style={{ marginRight: 4 }}>
-                    <BranchesOutlined /> {ref}
-                  </Tag>
-                ))}
+                {selectedCommit.refs.map((ref) => {
+                  const displayRef = ref.replace(/^refs\/heads\//, '').replace(/^refs\/remotes\//, '').replace(/^refs\/tags\//, '')
+                  const isHead = ref.startsWith('HEAD ->')
+                  const isCurrent = !isHead && (
+                    ref === currentBranch ||
+                    ref === `refs/heads/${currentBranch}` ||
+                    ref.endsWith(`/${currentBranch}`)
+                  )
+                  const isRemote = ref.startsWith('origin/') || ref.startsWith('refs/remotes/')
+                  const color = isHead || isCurrent ? 'green'
+                    : isRemote ? 'blue'
+                    : ref.startsWith('tag:') || ref.startsWith('refs/tags/') ? 'orange'
+                    : 'blue'
+                  return (
+                    <Tag key={ref} color={color} style={{ marginRight: 4 }}>
+                      <BranchesOutlined style={{ marginRight: 2 }} />
+                      {isHead ? `${displayRef} HEAD` : displayRef}
+                    </Tag>
+                  )
+                })}
               </Descriptions.Item>
             )}
           </Descriptions>

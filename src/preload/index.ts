@@ -35,8 +35,8 @@ const api = {
     ipcRenderer.invoke(IPC.GIT_PUSH_UPSTREAM, repoPath, remote, branch),
   gitCreateBranch: (repoPath: string, name: string, baseBranch?: string, switchTo?: boolean) =>
     ipcRenderer.invoke(IPC.GIT_CREATE_BRANCH, repoPath, name, baseBranch, switchTo),
-  gitSwitchBranch: (repoPath: string, branch: string) =>
-    ipcRenderer.invoke(IPC.GIT_SWITCH_BRANCH, repoPath, branch),
+  gitSwitchBranch: (repoPath: string, branch: string, remoteRef?: string) =>
+    ipcRenderer.invoke(IPC.GIT_SWITCH_BRANCH, repoPath, branch, remoteRef),
   gitMerge: (repoPath: string, sourceBranch: string, targetBranch: string) =>
     ipcRenderer.invoke(IPC.GIT_MERGE, repoPath, sourceBranch, targetBranch),
   gitDeleteBranch: (repoPath: string, branch: string) =>

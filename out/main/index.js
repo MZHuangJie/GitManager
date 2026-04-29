@@ -291,6 +291,7 @@ const gitService = {
   async getLog(repoPath, opts = {}) {
     const git = getGit(repoPath);
     const logOpts = {
+      "--all": null,
       maxCount: opts.maxCount ?? 50,
       ...opts.skip ? { "--skip": opts.skip } : {}
     };
@@ -329,13 +330,32 @@ const gitService = {
   },
   async getBranchList(repoPath) {
     const git = getGit(repoPath);
-    const branches = await git.branch();
-    return branches.all.map((name) => ({
-      name,
-      current: name === branches.current,
-      commit: branches.branches[name]?.commit || "",
-      label: branches.branches[name]?.label || ""
-    }));
+    const branches = await git.branch(["-a"]);
+    const localNames = new Set(branches.all.filter((n) => !n.startsWith("remotes/")));
+    const result = [];
+    for (const name of branches.all) {
+      if (name.startsWith("remotes/")) {
+        if (name.endsWith("/HEAD")) continue;
+        const shortName = name.replace(/^remotes\/\w+\//, "");
+        if (localNames.has(shortName)) continue;
+        result.push({
+          name: shortName,
+          current: false,
+          remote: true,
+          remoteRef: name,
+          commit: branches.branches[name]?.commit || "",
+          label: branches.branches[name]?.label || ""
+        });
+      } else {
+        result.push({
+          name,
+          current: name === branches.current,
+          commit: branches.branches[name]?.commit || "",
+          label: branches.branches[name]?.label || ""
+        });
+      }
+    }
+    return result;
   },
   async getCurrentBranch(repoPath) {
     const git = getGit(repoPath);
@@ -403,9 +423,13 @@ const gitService = {
       }
     }
   },
-  async switchBranch(repoPath, branch) {
+  async switchBranch(repoPath, branch, remoteRef) {
     const git = getGit(repoPath);
-    await git.checkout(branch);
+    if (remoteRef) {
+      await git.checkoutBranch(branch, remoteRef);
+    } else {
+      await git.checkout(branch);
+    }
   },
   async merge(repoPath, sourceBranch, targetBranch) {
     const git = getGit(repoPath);
@@ -705,9 +729,9 @@ function registerGitIpc() {
   );
   electron.ipcMain.handle(
     IPC.GIT_SWITCH_BRANCH,
-    async (_e, repoPath, branch) => {
+    async (_e, repoPath, branch, remoteRef) => {
       try {
-        await gitService.switchBranch(repoPath, branch);
+        await gitService.switchBranch(repoPath, branch, remoteRef);
         return { success: true, data: void 0 };
       } catch (err) {
         return { success: false, error: err.message };

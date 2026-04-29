@@ -73,10 +73,11 @@ export default function AppContent() {
   const handleBranchChange = useCallback(
     async (branch: string) => {
       if (!selectedRepo || branch === currentBranch) return
-      await switchBranch(selectedRepo.path, branch)
+      const entry = branches.find((b) => b.name === branch)
+      await switchBranch(selectedRepo.path, branch, entry?.remoteRef)
       notification.success({ message: `已切换到 ${branch}` })
     },
-    [selectedRepo, currentBranch, switchBranch]
+    [selectedRepo, currentBranch, switchBranch, branches]
   )
 
   const tabItems = selectedRepo || isRemoteViewing
@@ -169,6 +170,9 @@ export default function AppContent() {
                       <span>
                         <BranchesOutlined style={{ marginRight: 4 }} />
                         {b.name}
+                        {b.remote && (
+                          <Tag color="purple" style={{ marginLeft: 4, fontSize: 10, lineHeight: '16px' }}>远程</Tag>
+                        )}
                       </span>
                     )
                   }))}

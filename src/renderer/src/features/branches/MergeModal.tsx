@@ -79,7 +79,7 @@ export default function MergeModal() {
         >
           <Select
             placeholder="选择要合并的分支..."
-            options={branches.map((b) => ({
+            options={branches.filter((b) => !b.remote).map((b) => ({
               value: b.name,
               label: b.name
             }))}
@@ -89,7 +89,7 @@ export default function MergeModal() {
           <Select
             value={targetBranch}
             onChange={setTargetBranch}
-            options={branches.map((b) => ({
+            options={branches.filter((b) => !b.remote).map((b) => ({
               value: b.name,
               label: b.name
             }))}

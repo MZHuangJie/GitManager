@@ -25,9 +25,9 @@ export default function BranchList() {
   const selectedRepo = repos.find((r) => r.id === selectedRepoId)
 
   const handleSwitch = useCallback(
-    async (branch: string) => {
+    async (branch: string, remoteRef?: string) => {
       if (!selectedRepo || branch === currentBranch) return
-      await switchBranch(selectedRepo.path, branch)
+      await switchBranch(selectedRepo.path, branch, remoteRef)
       notification.success({ message: `已切换到 ${branch}` })
     },
     [selectedRepo, currentBranch, switchBranch]
@@ -67,6 +67,11 @@ export default function BranchList() {
               当前
             </Tag>
           )}
+          {record.remote && (
+            <Tag color="purple" style={{ marginLeft: 4, fontSize: 11 }}>
+              远程
+            </Tag>
+          )}
         </span>
       )
     },
@@ -92,23 +97,25 @@ export default function BranchList() {
               <Button
                 size="small"
                 icon={<SwapOutlined />}
-                onClick={() => handleSwitch(record.name)}
+                onClick={() => handleSwitch(record.name, record.remoteRef)}
                 loading={activeOperation === 'switch-branch'}
               >
                 切换
               </Button>
-              <Popconfirm
-                title="确认删除分支？"
-                description={`确定要删除 "${record.name}" 分支吗？`}
-                onConfirm={() => handleDelete(record.name)}
-              >
-                <Button
-                  size="small"
-                  danger
-                  icon={<DeleteOutlined />}
-                  loading={activeOperation === 'delete-branch'}
-                />
-              </Popconfirm>
+              {!record.remote && (
+                <Popconfirm
+                  title="确认删除分支？"
+                  description={`确定要删除 "${record.name}" 分支吗？`}
+                  onConfirm={() => handleDelete(record.name)}
+                >
+                  <Button
+                    size="small"
+                    danger
+                    icon={<DeleteOutlined />}
+                    loading={activeOperation === 'delete-branch'}
+                  />
+                </Popconfirm>
+              )}
             </>
           )}
         </Space>

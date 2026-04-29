@@ -29,7 +29,17 @@ export function createRepoSlice(
       set({ isReposLoading: true, reposError: null })
       const res: IpcResponse<any> = await window.electronAPI.repoList()
       if (res.success) {
-        set({ repos: res.data as RepoInfo[], isReposLoading: false })
+        const allRepos = res.data as RepoInfo[]
+        const validRepos: RepoInfo[] = []
+        for (const repo of allRepos) {
+          const v: IpcResponse<boolean> = await window.electronAPI.repoValidate(repo.path)
+          if (v.success && v.data) {
+            validRepos.push(repo)
+          } else {
+            await window.electronAPI.repoRemove(repo.id)
+          }
+        }
+        set({ repos: validRepos, isReposLoading: false })
       } else {
         set({ reposError: res.error, isReposLoading: false })
       }

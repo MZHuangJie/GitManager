@@ -214,9 +214,9 @@ export function registerGitIpc(): void {
 
   ipcMain.handle(
     IPC.GIT_SWITCH_BRANCH,
-    async (_e, repoPath: string, branch: string): Promise<IpcResponse<any>> => {
+    async (_e, repoPath: string, branch: string, remoteRef?: string): Promise<IpcResponse<any>> => {
       try {
-        await gitService.switchBranch(repoPath, branch)
+        await gitService.switchBranch(repoPath, branch, remoteRef)
         return { success: true, data: undefined }
       } catch (err: any) {
         return { success: false, error: err.message }

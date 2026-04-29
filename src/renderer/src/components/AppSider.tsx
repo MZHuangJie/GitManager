@@ -344,6 +344,12 @@ export default function AppSider() {
           {gr.private ? ' · 私有' : ''}
         </Text>
       </div>
+      {isCloned && matchedLocal && (
+        <Tooltip title="从列表移除">
+          <Button type="text" size="small" danger icon={<DeleteOutlined />}
+            onClick={(e) => { e.stopPropagation(); removeRepo(matchedLocal.id) }} />
+        </Tooltip>
+      )}
       {!isCloned && (
         <>
           {gr.owner !== githubUsername && (

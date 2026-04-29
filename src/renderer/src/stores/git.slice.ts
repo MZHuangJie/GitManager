@@ -33,7 +33,7 @@ export interface GitSlice {
   pull: (repoPath: string) => Promise<void>
   push: (repoPath: string) => Promise<void>
   createBranch: (repoPath: string, name: string, baseBranch?: string, switchTo?: boolean) => Promise<void>
-  switchBranch: (repoPath: string, branch: string) => Promise<void>
+  switchBranch: (repoPath: string, branch: string, remoteRef?: string) => Promise<void>
   merge: (repoPath: string, sourceBranch: string, targetBranch: string) => Promise<any>
   deleteBranch: (repoPath: string, branch: string) => Promise<void>
   discardFiles: (repoPath: string, files: string[]) => Promise<void>
@@ -202,9 +202,9 @@ export function createGitSlice(
       }
     },
 
-    switchBranch: async (repoPath: string, branch: string) => {
+    switchBranch: async (repoPath: string, branch: string, remoteRef?: string) => {
       set({ activeOperation: 'switch-branch', operationError: null })
-      const res: IpcResponse<any> = await window.electronAPI.gitSwitchBranch(repoPath, branch)
+      const res: IpcResponse<any> = await window.electronAPI.gitSwitchBranch(repoPath, branch, remoteRef)
       if (res.success) {
         await get().loadCurrentBranch(repoPath)
         await get().loadCommits(repoPath)

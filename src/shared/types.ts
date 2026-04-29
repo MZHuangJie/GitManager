@@ -49,6 +49,8 @@ export interface BranchEntry {
   current: boolean
   commit: string
   label: string
+  remote?: boolean
+  remoteRef?: string
 }
 
 export interface PullResult {
