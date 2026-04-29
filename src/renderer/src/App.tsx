@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useStore } from './stores'
 import AppLayout from './components/AppLayout'
 import StandaloneDiffPanel from './features/diff/StandaloneDiffPanel'
@@ -13,6 +13,8 @@ export default function App() {
   const setGithubLogin = useStore((s) => s.setGithubLogin)
   const setGithubRepos = useStore((s) => s.setGithubRepos)
 
+  const themeLoaded = useRef(false)
+
   // 加载初始设置（仅主窗口）
   useEffect(() => {
     if (isDiffWindow) return
@@ -21,6 +23,9 @@ export default function App() {
       if (res.success && res.data) {
         setThemeMode(res.data)
       }
+      themeLoaded.current = true
+    }).catch(() => {
+      themeLoaded.current = true
     })
     // 自动 GitHub 登录
     window.electronAPI.githubGetToken().then((res: any) => {
@@ -40,8 +45,9 @@ export default function App() {
     })
   }, [isDiffWindow])
 
-  // 主题变更时持久化
+  // 主题变更时持久化（跳过初始加载阶段）
   useEffect(() => {
+    if (!themeLoaded.current) return
     window.electronAPI.settingsSet('theme', themeMode)
   }, [themeMode])
 

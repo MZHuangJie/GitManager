@@ -62687,7 +62687,7 @@ function CommitHistory() {
     if (!commitSearchQuery) return commits;
     const q2 = commitSearchQuery.toLowerCase();
     return commits.filter(
-      (c2) => c2.message.toLowerCase().includes(q2) || c2.hash.toLowerCase().includes(q2) || c2.author.toLowerCase().includes(q2)
+      (c2) => c2.message.toLowerCase().includes(q2) || c2.hash.toLowerCase().includes(q2) || c2.author.toLowerCase().includes(q2) || c2.email.toLowerCase().includes(q2)
     );
   }, [commits, commitSearchQuery]);
   const handleRowClick = reactExports.useCallback((record) => {
@@ -62849,7 +62849,7 @@ function CommitHistory() {
       /* @__PURE__ */ jsxRuntimeExports.jsx(
         Input.Search,
         {
-          placeholder: "搜索提交记录...",
+          placeholder: "搜索提交信息、作者、邮箱、哈希...",
           allowClear: true,
           size: "small",
           prefix: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$J, {}),
@@ -64614,6 +64614,7 @@ function App() {
   const isDiffWindow = window.electronAPI.isDiffWindow;
   const setGithubLogin = useStore((s) => s.setGithubLogin);
   const setGithubRepos = useStore((s) => s.setGithubRepos);
+  const themeLoaded = reactExports.useRef(false);
   reactExports.useEffect(() => {
     if (isDiffWindow) return;
     loadRepos();
@@ -64621,6 +64622,9 @@ function App() {
       if (res.success && res.data) {
         setThemeMode(res.data);
       }
+      themeLoaded.current = true;
+    }).catch(() => {
+      themeLoaded.current = true;
     });
     window.electronAPI.githubGetToken().then((res) => {
       if (res.success && res.data) {
@@ -64638,6 +64642,7 @@ function App() {
     });
   }, [isDiffWindow]);
   reactExports.useEffect(() => {
+    if (!themeLoaded.current) return;
     window.electronAPI.settingsSet("theme", themeMode);
   }, [themeMode]);
   if (isDiffWindow) {

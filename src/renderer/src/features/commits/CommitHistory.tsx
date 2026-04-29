@@ -62,7 +62,8 @@ export default function CommitHistory() {
       (c) =>
         c.message.toLowerCase().includes(q) ||
         c.hash.toLowerCase().includes(q) ||
-        c.author.toLowerCase().includes(q)
+        c.author.toLowerCase().includes(q) ||
+        c.email.toLowerCase().includes(q)
     )
   }, [commits, commitSearchQuery])
 
@@ -271,7 +272,7 @@ export default function CommitHistory() {
           )}
         </div>
         <Input.Search
-          placeholder="搜索提交记录..."
+          placeholder="搜索提交信息、作者、邮箱、哈希..."
           allowClear
           size="small"
           prefix={<SearchOutlined />}
