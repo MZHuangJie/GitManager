@@ -17,7 +17,8 @@ import {
   ReloadOutlined,
   SearchOutlined,
   ForkOutlined,
-  BgColorsOutlined
+  BgColorsOutlined,
+  PlayCircleOutlined
 } from '@ant-design/icons'
 import { useStore } from '../stores'
 import { RepoInfo, THEME_META } from '@shared/types'
@@ -396,6 +397,10 @@ export default function AppSider() {
           <Tooltip title="克隆仓库" placement="right">
             <Button type="text" icon={<CloudDownloadOutlined />}
               onClick={() => { setCloneUrlPreset(''); setModalOpen('cloneModalOpen', true); }} />
+          </Tooltip>
+          <Tooltip title="视频播放器" placement="right">
+            <Button type="text" icon={<PlayCircleOutlined style={{ color: 'var(--accent)' }} />}
+              onClick={() => setModalOpen('videoPlayerModalOpen', true)} />
           </Tooltip>
           {githubLoggedIn ? (
             <Tooltip title={`已登录: ${githubUsername}`} placement="right">
