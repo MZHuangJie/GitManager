@@ -1,4 +1,4 @@
-import { Layout, Tabs, Breadcrumb, Select, Button, Space, Spin, Empty, Typography, notification, Badge, Tag, Tooltip } from 'antd'
+import { Layout, Tabs, Breadcrumb, Select, Button, Space, Spin, Empty, Typography, notification, Badge, Tag, Tooltip, Alert } from 'antd'
 import {
   DownloadOutlined,
   UploadOutlined,
@@ -212,16 +212,19 @@ export default function AppContent() {
                       拉取
                     </Button>
                   </Badge>
-                  <Badge count={workingStatus?.ahead || 0} overflowCount={99} size="small" offset={[-2, 2]}>
-                    <Button
-                      size="small"
-                      icon={<UploadOutlined />}
-                      loading={activeOperation === 'push'}
-                      onClick={handlePush}
-                    >
-                      推送
-                    </Button>
-                  </Badge>
+                  <Tooltip title={workingStatus && !workingStatus.hasUpstream ? '当前分支尚未设置上游，推送时将自动配置' : undefined}>
+                    <Badge count={workingStatus?.ahead || 0} overflowCount={99} size="small" offset={[-2, 2]}>
+                      <Button
+                        size="small"
+                        icon={<UploadOutlined />}
+                        loading={activeOperation === 'push'}
+                        onClick={handlePush}
+                        type={workingStatus && !workingStatus.hasUpstream ? 'primary' : 'default'}
+                      >
+                        {workingStatus && !workingStatus.hasUpstream ? '首次推送' : '推送'}
+                      </Button>
+                    </Badge>
+                  </Tooltip>
                   {selectedRepo && !selectedRepo.remoteUrl && (
                     <Button
                       size="small"
@@ -235,6 +238,22 @@ export default function AppContent() {
               )}
             </Space>
           </div>
+
+          {/* 冲突警告 */}
+          {!isRemoteViewing && workingStatus && workingStatus.conflicted.length > 0 && (
+            <Alert
+              type="error"
+              showIcon
+              banner
+              message={
+                <span>
+                  检测到 <Text strong>{workingStatus.conflicted.length}</Text> 个文件存在合并冲突：
+                  <Text code style={{ marginLeft: 8 }}>{workingStatus.conflicted.join(', ')}</Text>
+                </span>
+              }
+              description="请先在「文件变更」中解决冲突再提交/推送，否则操作将失败。"
+            />
+          )}
 
           {/* Tab 内容 */}
           <Content style={{ padding: 0, overflow: 'hidden', flex: 1, minHeight: 0, background: 'var(--bg-primary)', display: 'flex', flexDirection: 'column' }}>

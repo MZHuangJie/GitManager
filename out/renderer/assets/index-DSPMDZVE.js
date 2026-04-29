@@ -48529,7 +48529,7 @@ let defaultIndicator;
 function shouldDelay(spinning, delay) {
   return !!spinning && !!delay && !Number.isNaN(Number(delay));
 }
-const Spin = (props) => {
+const Spin$1 = (props) => {
   var _a;
   const {
     prefixCls: customizePrefixCls,
@@ -48614,7 +48614,7 @@ const Spin = (props) => {
   }
   return wrapCSSVar(spinElement);
 };
-Spin.setDefaultIndicator = (indicator) => {
+Spin$1.setDefaultIndicator = (indicator) => {
   defaultIndicator = indicator;
 };
 const ListContext = /* @__PURE__ */ React.createContext({});
@@ -49243,7 +49243,7 @@ function InternalList(props, ref) {
     className: classString
   }, rest), (paginationPosition === "top" || paginationPosition === "both") && paginationContent, header && /* @__PURE__ */ reactExports.createElement("div", {
     className: `${prefixCls}-header`
-  }, header), /* @__PURE__ */ reactExports.createElement(Spin, Object.assign({}, loadingProp), childrenContent, children), footer && /* @__PURE__ */ reactExports.createElement("div", {
+  }, header), /* @__PURE__ */ reactExports.createElement(Spin$1, Object.assign({}, loadingProp), childrenContent, children), footer && /* @__PURE__ */ reactExports.createElement("div", {
     className: `${prefixCls}-footer`
   }, footer), loadMore || (paginationPosition === "bottom" || paginationPosition === "both") && paginationContent)));
 }
@@ -58649,7 +58649,7 @@ const InternalTable = (props, ref) => {
     ref: rootRef,
     className: wrapperClassNames,
     style: mergedStyle
-  }, /* @__PURE__ */ reactExports.createElement(Spin, Object.assign({
+  }, /* @__PURE__ */ reactExports.createElement(Spin$1, Object.assign({
     spinning: false
   }, spinProps), topPaginationNode, /* @__PURE__ */ reactExports.createElement(TableComponent, Object.assign({}, virtualProps, tableProps, {
     ref: tblRef,
@@ -60917,8 +60917,7 @@ function createGitSlice(set2, get2) {
       set2({ activeOperation: "pull", operationError: null });
       const res = await window.electronAPI.gitPull(repoPath);
       if (res.success) {
-        await get2().loadCommits(repoPath);
-        await get2().loadStatus(repoPath);
+        await get2().refreshGitState(repoPath);
         set2({ activeOperation: null });
       } else {
         set2({ operationError: res.error, activeOperation: null });
@@ -60928,8 +60927,7 @@ function createGitSlice(set2, get2) {
       set2({ activeOperation: "push", operationError: null });
       const res = await window.electronAPI.gitPush(repoPath);
       if (res.success) {
-        await get2().loadCommits(repoPath);
-        await get2().loadStatus(repoPath);
+        await get2().refreshGitState(repoPath);
         set2({ activeOperation: null });
       } else {
         set2({ operationError: res.error, activeOperation: null });
@@ -60952,10 +60950,7 @@ function createGitSlice(set2, get2) {
       set2({ activeOperation: "switch-branch", operationError: null });
       const res = await window.electronAPI.gitSwitchBranch(repoPath, branch, remoteRef);
       if (res.success) {
-        await get2().loadCurrentBranch(repoPath);
-        await get2().loadCommits(repoPath);
-        await get2().loadStatus(repoPath);
-        await get2().loadBranches(repoPath);
+        await get2().refreshGitState(repoPath);
         set2({ activeOperation: null });
       } else {
         set2({ operationError: res.error, activeOperation: null });
@@ -61018,6 +61013,25 @@ function createGitSlice(set2, get2) {
       } else {
         set2({ operationError: res.error, activeOperation: null });
       }
+    },
+    refreshGitState: async (repoPath) => {
+      const [branchRes, commitsRes, statusRes, branchesRes] = await Promise.all([
+        window.electronAPI.gitCurrentBranch(repoPath),
+        window.electronAPI.gitLog(repoPath),
+        window.electronAPI.gitStatus(repoPath),
+        window.electronAPI.gitBranchList(repoPath)
+      ]);
+      set2({
+        currentBranch: branchRes.success ? branchRes.data : null,
+        commits: commitsRes.success ? commitsRes.data : [],
+        commitsLoading: false,
+        commitsError: commitsRes.success ? null : commitsRes.error,
+        workingStatus: statusRes.success ? statusRes.data : null,
+        statusLoading: false,
+        statusError: statusRes.success ? null : statusRes.error,
+        branches: branchesRes.success ? branchesRes.data : [],
+        branchesLoading: false
+      });
     },
     clearOperationError: () => {
       set2({ operationError: null });
@@ -62115,7 +62129,7 @@ function AppSider() {
                       },
                       children: [
                         /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon$9, {}),
-                        searchingGithub ? /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { size: "small" }) : `在 GitHub 上搜索 "${repoSearchQuery}"`
+                        searchingGithub ? /* @__PURE__ */ jsxRuntimeExports.jsx(Spin$1, { size: "small" }) : `在 GitHub 上搜索 "${repoSearchQuery}"`
                       ]
                     }
                   ),
@@ -62190,7 +62204,7 @@ function AppSider() {
             ) })
           ] })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { flex: 1, overflow: "auto", padding: "4px 0", display: "flex", flexDirection: "column" }, children: isReposLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { textAlign: "center", padding: 24 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { tip: "加载中..." }) }) : githubLoggedIn ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { flex: 1, overflow: "auto", padding: "4px 0", display: "flex", flexDirection: "column" }, children: isReposLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { textAlign: "center", padding: 24 }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spin$1, { tip: "加载中..." }) }) : githubLoggedIn ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               "div",
@@ -62952,7 +62966,7 @@ function CommitHistory() {
             fileList.length,
             ")"
           ] }),
-          diffLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { tip: "加载差异中..." }) : fileList.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(Text$7, { type: "secondary", children: "暂无可显示的文件变更" }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", flexDirection: "column", gap: 4 }, children: fileList.map((f2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          diffLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx(Spin$1, { tip: "加载差异中..." }) : fileList.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(Text$7, { type: "secondary", children: "暂无可显示的文件变更" }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { display: "flex", flexDirection: "column", gap: 4 }, children: fileList.map((f2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
             "div",
             {
               onClick: () => handleFileClick(f2.path),
@@ -63161,7 +63175,9 @@ function StageArea() {
       width: 120,
       render: (_, record) => {
         const statusChar = record.working_dir === "?" ? "?" : record.working_dir || record.index;
+        const isConflicted = workingStatus?.conflicted.includes(record.path);
         return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+          isConflicted && /* @__PURE__ */ jsxRuntimeExports.jsx(Tag, { color: "red", style: { fontSize: 11, marginRight: 4 }, children: "冲突" }),
           record.staged && /* @__PURE__ */ jsxRuntimeExports.jsx(Tag, { color: "green", style: { fontSize: 11, marginRight: 4 }, children: "已暂存" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(Tag, { color: getStatusColor(statusChar), style: { fontSize: 11 }, children: getStatusLabel(statusChar) })
         ] });
@@ -63195,7 +63211,7 @@ function StageArea() {
       )
     }
   ];
-  const isClean = !workingStatus || workingStatus.staged.length === 0 && workingStatus.unstaged.length === 0 && workingStatus.created.length === 0 && workingStatus.deleted.length === 0;
+  const isClean = !workingStatus || workingStatus.staged.length === 0 && workingStatus.unstaged.length === 0 && workingStatus.created.length === 0 && workingStatus.deleted.length === 0 && workingStatus.conflicted.length === 0;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginBottom: 12, display: "flex", justifyContent: "space-between", alignItems: "center" }, children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(Text$6, { strong: true, style: { color: "var(--text-secondary)" }, children: isClean ? "工作区干净" : `${allFiles.length} 个文件有变更` }),
@@ -64066,16 +64082,17 @@ function AppContent() {
                   children: "拉取"
                 }
               ) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { count: workingStatus?.ahead || 0, overflowCount: 99, size: "small", offset: [-2, 2], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Tooltip2, { title: workingStatus && !workingStatus.hasUpstream ? "当前分支尚未设置上游，推送时将自动配置" : void 0, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { count: workingStatus?.ahead || 0, overflowCount: 99, size: "small", offset: [-2, 2], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Button$1,
                 {
                   size: "small",
                   icon: /* @__PURE__ */ jsxRuntimeExports.jsx(RefIcon, {}),
                   loading: activeOperation === "push",
                   onClick: handlePush,
-                  children: "推送"
+                  type: workingStatus && !workingStatus.hasUpstream ? "primary" : "default",
+                  children: workingStatus && !workingStatus.hasUpstream ? "首次推送" : "推送"
                 }
-              ) }),
+              ) }) }),
               selectedRepo && !selectedRepo.remoteUrl && /* @__PURE__ */ jsxRuntimeExports.jsx(
                 Button$1,
                 {
@@ -64087,6 +64104,21 @@ function AppContent() {
               )
             ] }) })
           ]
+        }
+      ),
+      !isRemoteViewing && workingStatus && workingStatus.conflicted.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Alert,
+        {
+          type: "error",
+          showIcon: true,
+          banner: true,
+          message: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+            "检测到 ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Text$1, { strong: true, children: workingStatus.conflicted.length }),
+            " 个文件存在合并冲突：",
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Text$1, { code: true, style: { marginLeft: 8 }, children: workingStatus.conflicted.join(", ") })
+          ] }),
+          description: "请先在「文件变更」中解决冲突再提交/推送，否则操作将失败。"
         }
       ),
       /* @__PURE__ */ jsxRuntimeExports.jsx(Content, { style: { padding: 0, overflow: "hidden", flex: 1, minHeight: 0, background: "var(--bg-primary)", display: "flex", flexDirection: "column" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -64118,7 +64150,7 @@ function AppContent() {
           boxShadow: "0 2px 12px rgba(0,0,0,0.15)"
         },
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { size: "small" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Spin$1, { size: "small" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs(Text$1, { style: { color: "var(--text-secondary)", fontSize: 13 }, children: [
             activeOperation === "pull" && "正在拉取...",
             activeOperation === "push" && "正在推送...",
@@ -64288,6 +64320,11 @@ function DiffPanel({ diff, standalone, editable, repoPath, filePath, staged, onR
       setSelectedFile(files[0].path);
     }
   }, [files, selectedFile]);
+  reactExports.useEffect(() => {
+    if ((!diff || files.length === 0) && canShowFullFile && !fullFile && !loadingFullDiff) {
+      handleToggleFullFile();
+    }
+  }, [diff, files.length, canShowFullFile, fullFile, loadingFullDiff, handleToggleFullFile]);
   const hasConflict = reactExports.useMemo(() => {
     return diff.includes("<<<<<<< ") && diff.includes(">>>>>>> ");
   }, [diff]);
@@ -64347,7 +64384,10 @@ function DiffPanel({ diff, standalone, editable, repoPath, filePath, staged, onR
       setResolving(false);
     }
   }, [repoPath, filePath, onRefreshStatus]);
-  if (!diff || files.length === 0) {
+  if ((!diff || files.length === 0) && !fullFile) {
+    if (canShowFullFile) {
+      return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { padding: 24, textAlign: "center" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { tip: "加载文件内容..." }) });
+    }
     return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { padding: 24, textAlign: "center" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: "暂无差异数据" }) });
   }
   const totalAdds = files.reduce((s, f2) => s + f2.additions, 0);
@@ -64556,7 +64596,7 @@ function StandaloneDiffPanel() {
   reactExports.useEffect(() => {
     const tryRead = (attempt) => {
       const d2 = window.__diffData;
-      if (d2 && d2.diff) {
+      if (d2 && (d2.diff || d2.repoPath)) {
         if (d2.theme) {
           setThemeMode(d2.theme);
         }
@@ -64589,7 +64629,7 @@ function StandaloneDiffPanel() {
     }
   }, [data?.repoPath, data?.filePath, data?.staged]);
   if (loading) {
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg-primary)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spin, { tip: "加载差异数据..." }) });
+    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg-primary)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spin$1, { tip: "加载差异数据..." }) });
   }
   if (error || !data) {
     return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg-primary)" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Empty, { description: error || "暂无数据" }) });

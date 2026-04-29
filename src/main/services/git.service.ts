@@ -113,7 +113,16 @@ export const gitService = {
           to: r.to
         })),
       ahead: status.ahead,
-      behind: status.behind
+      behind: status.behind,
+      conflicted: status.conflicted,
+      hasUpstream: await (async () => {
+        try {
+          await git.raw(['rev-parse', '--abbrev-ref', '@{upstream}'])
+          return true
+        } catch {
+          return false
+        }
+      })()
     }
   },
 
@@ -215,7 +224,7 @@ export const gitService = {
 
   async stageAll(repoPath: string): Promise<void> {
     const git = getGit(repoPath)
-    await git.add('.')
+    await git.add(['-A'])
   },
 
   async commit(repoPath: string, message: string): Promise<{ hash: string }> {

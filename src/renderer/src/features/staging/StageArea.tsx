@@ -167,8 +167,14 @@ export default function StageArea() {
       width: 120,
       render: (_: any, record: StatusFile & { staged: boolean }) => {
         const statusChar = record.working_dir === '?' ? '?' : record.working_dir || record.index
+        const isConflicted = workingStatus?.conflicted.includes(record.path)
         return (
           <>
+            {isConflicted && (
+              <Tag color="red" style={{ fontSize: 11, marginRight: 4 }}>
+                冲突
+              </Tag>
+            )}
             {record.staged && (
               <Tag color="green" style={{ fontSize: 11, marginRight: 4 }}>
                 已暂存
@@ -211,7 +217,8 @@ export default function StageArea() {
     workingStatus.staged.length === 0 &&
     workingStatus.unstaged.length === 0 &&
     workingStatus.created.length === 0 &&
-    workingStatus.deleted.length === 0
+    workingStatus.deleted.length === 0 &&
+    workingStatus.conflicted.length === 0
   )
 
   return (

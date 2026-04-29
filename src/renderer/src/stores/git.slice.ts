@@ -45,6 +45,7 @@ export interface GitSlice {
 
   clearOperationError: () => void
   resetGitState: () => void
+  refreshGitState: (repoPath: string) => Promise<void>
 }
 
 export function createGitSlice(
@@ -168,8 +169,7 @@ export function createGitSlice(
       set({ activeOperation: 'pull', operationError: null })
       const res: IpcResponse<any> = await window.electronAPI.gitPull(repoPath)
       if (res.success) {
-        await get().loadCommits(repoPath)
-        await get().loadStatus(repoPath)
+        await get().refreshGitState(repoPath)
         set({ activeOperation: null })
       } else {
         set({ operationError: res.error, activeOperation: null })
@@ -180,8 +180,7 @@ export function createGitSlice(
       set({ activeOperation: 'push', operationError: null })
       const res: IpcResponse<any> = await window.electronAPI.gitPush(repoPath)
       if (res.success) {
-        await get().loadCommits(repoPath)
-        await get().loadStatus(repoPath)
+        await get().refreshGitState(repoPath)
         set({ activeOperation: null })
       } else {
         set({ operationError: res.error, activeOperation: null })
@@ -206,10 +205,7 @@ export function createGitSlice(
       set({ activeOperation: 'switch-branch', operationError: null })
       const res: IpcResponse<any> = await window.electronAPI.gitSwitchBranch(repoPath, branch, remoteRef)
       if (res.success) {
-        await get().loadCurrentBranch(repoPath)
-        await get().loadCommits(repoPath)
-        await get().loadStatus(repoPath)
-        await get().loadBranches(repoPath)
+        await get().refreshGitState(repoPath)
         set({ activeOperation: null })
       } else {
         set({ operationError: res.error, activeOperation: null })
@@ -277,6 +273,26 @@ export function createGitSlice(
       } else {
         set({ operationError: res.error, activeOperation: null })
       }
+    },
+
+    refreshGitState: async (repoPath: string) => {
+      const [branchRes, commitsRes, statusRes, branchesRes] = await Promise.all([
+        window.electronAPI.gitCurrentBranch(repoPath),
+        window.electronAPI.gitLog(repoPath),
+        window.electronAPI.gitStatus(repoPath),
+        window.electronAPI.gitBranchList(repoPath)
+      ])
+      set({
+        currentBranch: branchRes.success ? branchRes.data as string : null,
+        commits: commitsRes.success ? commitsRes.data as CommitEntry[] : [],
+        commitsLoading: false,
+        commitsError: commitsRes.success ? null : commitsRes.error,
+        workingStatus: statusRes.success ? statusRes.data as WorkingStatus : null,
+        statusLoading: false,
+        statusError: statusRes.success ? null : statusRes.error,
+        branches: branchesRes.success ? branchesRes.data as BranchEntry[] : [],
+        branchesLoading: false
+      })
     },
 
     clearOperationError: () => {

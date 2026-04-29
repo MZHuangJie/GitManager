@@ -28,7 +28,7 @@ export default function StandaloneDiffPanel() {
   useEffect(() => {
     const tryRead = (attempt: number) => {
       const d = (window as any).__diffData as DiffWindowData | undefined
-      if (d && d.diff) {
+      if (d && (d.diff || d.repoPath)) {
         if (d.theme) {
           setThemeMode(d.theme as ThemeMode)
         }

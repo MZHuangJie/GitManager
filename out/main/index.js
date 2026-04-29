@@ -285,7 +285,16 @@ const gitService = {
         to: r.to
       })),
       ahead: status.ahead,
-      behind: status.behind
+      behind: status.behind,
+      conflicted: status.conflicted,
+      hasUpstream: await (async () => {
+        try {
+          await git.raw(["rev-parse", "--abbrev-ref", "@{upstream}"]);
+          return true;
+        } catch {
+          return false;
+        }
+      })()
     };
   },
   async getLog(repoPath, opts = {}) {
@@ -373,7 +382,7 @@ const gitService = {
   },
   async stageAll(repoPath) {
     const git = getGit(repoPath);
-    await git.add(".");
+    await git.add(["-A"]);
   },
   async commit(repoPath, message) {
     const git = getGit(repoPath);

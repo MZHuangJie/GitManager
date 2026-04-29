@@ -190,6 +190,13 @@ export default function DiffPanel({ diff, standalone, editable, repoPath, filePa
     }
   }, [files, selectedFile])
 
+  // diff 为空时自动加载完整文件内容
+  useEffect(() => {
+    if ((!diff || files.length === 0) && canShowFullFile && !fullFile && !loadingFullDiff) {
+      handleToggleFullFile()
+    }
+  }, [diff, files.length, canShowFullFile, fullFile, loadingFullDiff, handleToggleFullFile])
+
   const hasConflict = useMemo(() => {
     // 检测 diff 中是否包含冲突标记
     return diff.includes('<<<<<<< ') && diff.includes('>>>>>>> ')
@@ -255,7 +262,14 @@ export default function DiffPanel({ diff, standalone, editable, repoPath, filePa
     }
   }, [repoPath, filePath, onRefreshStatus])
 
-  if (!diff || files.length === 0) {
+  if ((!diff || files.length === 0) && !fullFile) {
+    if (canShowFullFile) {
+      return (
+        <div style={{ padding: 24, textAlign: 'center' }}>
+          <Spin tip="加载文件内容..." />
+        </div>
+      )
+    }
     return (
       <div style={{ padding: 24, textAlign: 'center' }}>
         <Empty description="暂无差异数据" />

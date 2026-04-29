@@ -42,6 +42,8 @@ export interface WorkingStatus {
   renamed: Array<{ from: string; to: string }>
   ahead: number
   behind: number
+  hasUpstream: boolean
+  conflicted: string[]
 }
 
 export interface BranchEntry {
