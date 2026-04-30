@@ -32,6 +32,11 @@ function formatSize(bytes: number): string {
   return bytes + ' B'
 }
 
+function joinPath(parent: string, child: string): string {
+  const sep = parent.includes('\\') ? '\\' : '/'
+  return parent.endsWith(sep) ? parent + child : parent + sep + child
+}
+
 export default function VideoBrowserModal() {
   const open = useStore((s) => s.videoPlayerModalOpen)
   const setModalOpen = useStore((s) => s.setModalOpen)
@@ -47,6 +52,7 @@ export default function VideoBrowserModal() {
   const [playingVideo, setPlayingVideo] = useState<VideoFile | null>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const fullscreenRequested = useRef(false)
+  const loadIdRef = useRef(0)
 
   // drag state
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
@@ -74,15 +80,17 @@ export default function VideoBrowserModal() {
 
   // load directory contents
   const loadDir = useCallback(async (dirPath: string) => {
+    const loadId = ++loadIdRef.current
     setLoading(true)
     try {
       const res: any = await window.electronAPI.fsReadDir(dirPath)
+      if (loadId !== loadIdRef.current) return
       if (res.success) {
         setVideos(res.data.videos)
         setTreeNodes(
           res.data.dirs.map((d: string) => ({
             title: d,
-            key: dirPath + (dirPath.endsWith('\\') || dirPath.endsWith('/') ? '' : (dirPath.includes('\\') ? '\\' : '/')) + d,
+            key: joinPath(dirPath, d),
             isLeaf: false
           }))
         )
@@ -93,9 +101,10 @@ export default function VideoBrowserModal() {
         setTreeNodes([])
       }
     } catch (err: any) {
+      if (loadId !== loadIdRef.current) return
       message.error(err.message)
     }
-    setLoading(false)
+    if (loadId === loadIdRef.current) setLoading(false)
   }, [])
 
   // select drive
@@ -113,7 +122,7 @@ export default function VideoBrowserModal() {
       if (res.success) {
         return res.data.dirs.map((d: string) => ({
           title: d,
-          key: dirPath + (dirPath.endsWith('\\') || dirPath.endsWith('/') ? '' : (dirPath.includes('\\') ? '\\' : '/')) + d,
+          key: joinPath(dirPath, d),
           isLeaf: false
         }))
       }
@@ -282,15 +291,8 @@ export default function VideoBrowserModal() {
                   className="video-card"
                   size="small"
                   cover={
-                    <div style={{
-                      height: 100,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      background: 'var(--bg-tertiary)',
-                      fontSize: 40
-                    }}>
-                      <PlayCircleOutlined style={{ color: 'var(--accent)' }} />
+                    <div className="video-card-cover">
+                      <PlayCircleOutlined style={{ color: 'var(--accent)', fontSize: 40 }} />
                     </div>
                   }
                   onClick={() => handlePlayVideo(v)}
