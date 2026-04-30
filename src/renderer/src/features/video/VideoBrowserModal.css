@@ -1,0 +1,142 @@
+.video-browser-modal .ant-modal-header {
+  cursor: move;
+  user-select: none;
+}
+
+.video-browser-content {
+  display: flex;
+  gap: 0;
+  height: 480px;
+}
+
+.video-browser-sidebar {
+  width: 240px;
+  min-width: 200px;
+  border-right: 1px solid var(--border-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.drive-selector {
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.drive-btn {
+  font-size: 12px;
+  height: 28px;
+  min-width: 44px;
+}
+
+.folder-tree {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.video-browser-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.video-grid {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  align-content: start;
+}
+
+.video-card {
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.video-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.video-card .ant-card-cover {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  font-size: 40px;
+}
+
+.video-card .ant-card-meta-title {
+  font-size: 13px;
+  margin-bottom: 2px !important;
+}
+
+.video-card .ant-card-meta-description {
+  font-size: 11px;
+}
+
+.video-player-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 16px;
+}
+
+.video-player-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.video-player-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-player-wrapper video {
+  width: 100%;
+  max-height: 100%;
+}
+
+.video-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  gap: 12px;
+}
+
+.video-status-bar {
+  padding: 8px 16px;
+  border-top: 1px solid var(--border-primary);
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.video-loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
