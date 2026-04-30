@@ -1,7 +1,7 @@
 import { ipcMain } from 'electron'
 import { IPC } from '../../shared/ipc-channels'
 import { IpcResponse } from '../../shared/types'
-import { readdirSync, existsSync } from 'fs'
+import { readdirSync, existsSync, statSync } from 'fs'
 import { join } from 'path'
 import { platform, homedir } from 'os'
 
@@ -64,7 +64,7 @@ export function registerFsIpc(): void {
           } else if (entry.isFile() && isVideoFile(entry.name)) {
             const fullPath = join(dirPath, entry.name)
             try {
-              const stat = require('fs').statSync(fullPath)
+              const stat = statSync(fullPath)
               videos.push({ name: entry.name, size: stat.size, path: fullPath })
             } catch {
               // skip files that can't be stat'd
