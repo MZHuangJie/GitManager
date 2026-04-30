@@ -1,5 +1,5 @@
 import { app, BrowserWindow, shell, Menu, protocol, net } from 'electron'
-import { join } from 'path'
+import { join, normalize, extname } from 'path'
 import { pathToFileURL } from 'url'
 import { registerAllIpc } from './ipc'
 import { settingsStore } from './services/settings.store'
@@ -62,9 +62,34 @@ protocol.registerSchemesAsPrivileged([
 
 app.whenReady().then(() => {
   // Handle local-file:// protocol to serve local files to renderer
-  protocol.handle('local-file', (request) => {
-    const filePath = decodeURIComponent(request.url.slice('local-file:///'.length))
-    return net.fetch(pathToFileURL(filePath).toString())
+  protocol.handle('local-file', async (request) => {
+    const rawPath = decodeURIComponent(request.url.slice('local-file:///'.length))
+    const filePath = normalize(rawPath)
+    const fileUrl = pathToFileURL(filePath).toString()
+    try {
+      const response = await net.fetch(fileUrl)
+      const ext = extname(filePath).toLowerCase()
+      const mimeMap: Record<string, string> = {
+        '.mp4': 'video/mp4',
+        '.webm': 'video/webm',
+        '.ogg': 'video/ogg',
+        '.mkv': 'video/x-matroska',
+        '.avi': 'video/x-msvideo',
+        '.mov': 'video/quicktime',
+        '.wmv': 'video/x-ms-wmv',
+        '.flv': 'video/x-flv',
+      }
+      return new Response(response.body, {
+        status: response.status,
+        headers: {
+          'Content-Type': mimeMap[ext] || 'application/octet-stream',
+          'Accept-Ranges': 'bytes',
+          'Content-Length': response.headers.get('Content-Length') || '',
+        }
+      })
+    } catch {
+      return new Response('File not found', { status: 404 })
+    }
   })
 
   Menu.setApplicationMenu(null)
