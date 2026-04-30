@@ -1,10 +1,12 @@
 "use strict";
 const electron = require("electron");
 const path = require("path");
+const promises = require("fs/promises");
 const Store = require("electron-store");
 const uuid = require("uuid");
 const simpleGit = require("simple-git");
 const fs = require("fs");
+const os = require("os");
 const IPC = {
   // Repository Management
   REPO_ADD: "repo:add",
@@ -57,7 +59,12 @@ const IPC = {
   GITHUB_GET_BRANCHES: "github:get-branches",
   GITHUB_GET_COMMIT_DIFF: "github:get-commit-diff",
   // Window Management
-  WINDOW_OPEN_DIFF: "window:open-diff"
+  WINDOW_OPEN_DIFF: "window:open-diff",
+  // Shell
+  SHELL_OPEN_PATH: "shell:open-path",
+  // File System
+  FS_LIST_DRIVES: "fs:list-drives",
+  FS_READ_DIR: "fs:read-dir"
 };
 const store$1 = new Store({
   defaults: {
@@ -939,6 +946,9 @@ function registerWindowIpc() {
       return { id: 0 };
     }
   );
+  electron.ipcMain.handle(IPC.SHELL_OPEN_PATH, async (_e, filePath) => {
+    return electron.shell.openPath(filePath);
+  });
 }
 const githubService = {
   getToken() {
@@ -1261,13 +1271,90 @@ function registerGithubIpc() {
     }
   );
 }
+const VIDEO_EXTENSIONS = /* @__PURE__ */ new Set([
+  ".mp4",
+  ".webm",
+  ".ogg",
+  ".mkv",
+  ".avi",
+  ".mov",
+  ".wmv",
+  ".flv"
+]);
+function isVideoFile(filename) {
+  const ext = filename.slice(filename.lastIndexOf(".")).toLowerCase();
+  return VIDEO_EXTENSIONS.has(ext);
+}
+function listDrives() {
+  if (os.platform() === "win32") {
+    const drives = [];
+    for (let charCode = 65; charCode <= 90; charCode++) {
+      const letter = String.fromCharCode(charCode) + ":\\";
+      if (fs.existsSync(letter)) {
+        drives.push(letter);
+      }
+    }
+    return drives;
+  }
+  const roots = ["/"];
+  const home = os.homedir();
+  if (home && home !== "/") {
+    roots.push(home);
+  }
+  return roots;
+}
+function registerFsIpc() {
+  electron.ipcMain.handle(
+    IPC.FS_LIST_DRIVES,
+    async () => {
+      try {
+        const drives = listDrives();
+        return { success: true, data: drives };
+      } catch (err) {
+        return { success: false, error: err.message };
+      }
+    }
+  );
+  electron.ipcMain.handle(
+    IPC.FS_READ_DIR,
+    async (_e, dirPath) => {
+      try {
+        const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+        const dirs = [];
+        const videos = [];
+        for (const entry of entries) {
+          if (entry.isDirectory()) {
+            dirs.push(entry.name);
+          } else if (entry.isFile() && isVideoFile(entry.name)) {
+            const fullPath = path.join(dirPath, entry.name);
+            try {
+              const stat = fs.statSync(fullPath);
+              videos.push({ name: entry.name, size: stat.size, path: fullPath });
+            } catch {
+            }
+          }
+        }
+        dirs.sort((a, b) => a.localeCompare(b, "zh-CN"));
+        videos.sort((a, b) => a.name.localeCompare(b.name, "zh-CN"));
+        return { success: true, data: { dirs, videos } };
+      } catch (err) {
+        return { success: false, error: err.message };
+      }
+    }
+  );
+}
 function registerAllIpc() {
   registerRepoIpc();
   registerGitIpc();
   registerSettingsIpc();
   registerWindowIpc();
   registerGithubIpc();
+  registerFsIpc();
 }
+electron.app.commandLine.appendSwitch(
+  "enable-features",
+  "PlatformHEVCDecoderSupport,PlatformHEVCEncoderSupport,HardwareMediaKeyHandling"
+);
 let mainWindow = null;
 function createWindow() {
   const bounds = settingsStore.get("windowBounds");
@@ -1309,7 +1396,50 @@ function createWindow() {
     mainWindow.loadFile(path.join(__dirname, "../renderer/index.html"));
   }
 }
+electron.protocol.registerSchemesAsPrivileged([
+  { scheme: "local-file", privileges: { bypassCSP: true, stream: true, supportFetchAPI: true } }
+]);
 electron.app.whenReady().then(() => {
+  electron.protocol.handle("local-file", async (request) => {
+    const rawPath = decodeURIComponent(request.url.slice("local-file:///".length));
+    const filePath = path.normalize(rawPath);
+    try {
+      const fileStat = await promises.stat(filePath);
+      const total = fileStat.size;
+      const ext = filePath.slice(filePath.lastIndexOf(".")).toLowerCase();
+      const mimeMap = {
+        ".mp4": "video/mp4",
+        ".webm": "video/webm",
+        ".ogg": "video/ogg",
+        ".mkv": "video/x-matroska",
+        ".avi": "video/x-msvideo",
+        ".mov": "video/quicktime",
+        ".wmv": "video/x-ms-wmv",
+        ".flv": "video/x-flv"
+      };
+      const mimeType = mimeMap[ext] || "application/octet-stream";
+      const rangeHeader = request.headers.get("range");
+      const start = rangeHeader?.match(/bytes=(\d+)-/)?.[1] ? parseInt(rangeHeader.match(/bytes=(\d+)-/)[1], 10) : 0;
+      const endMatch = rangeHeader?.match(/bytes=\d+-(\d+)/);
+      const end = endMatch?.[1] ? parseInt(endMatch[1], 10) : total - 1;
+      const length = end - start + 1;
+      const fileHandle = await promises.open(filePath, "r");
+      const buf = Buffer.alloc(length);
+      await fileHandle.read(buf, 0, length, start);
+      await fileHandle.close();
+      return new Response(buf, {
+        status: 206,
+        headers: {
+          "Content-Type": mimeType,
+          "Content-Range": `bytes ${start}-${end}/${total}`,
+          "Content-Length": String(length),
+          "Accept-Ranges": "bytes"
+        }
+      });
+    } catch {
+      return new Response("File not found", { status: 404 });
+    }
+  });
   electron.Menu.setApplicationMenu(null);
   registerAllIpc();
   createWindow();

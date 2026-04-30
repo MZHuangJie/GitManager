@@ -12,6 +12,7 @@ export interface UiSlice {
   mergeModalOpen: boolean
   cloneModalOpen: boolean
   githubLoginModalOpen: boolean
+  videoPlayerModalOpen: boolean
   cloneUrlPreset: string
 
   selectedCommitHash: string | null
@@ -39,7 +40,7 @@ export interface UiSlice {
 
   toggleSidebar: () => void
   setActiveTab: (tab: UiSlice['activeTab']) => void
-  setModalOpen: (modal: 'addRepoModalOpen' | 'commitModalOpen' | 'createBranchModalOpen' | 'mergeModalOpen' | 'cloneModalOpen' | 'githubLoginModalOpen', open: boolean) => void
+  setModalOpen: (modal: 'addRepoModalOpen' | 'commitModalOpen' | 'createBranchModalOpen' | 'mergeModalOpen' | 'cloneModalOpen' | 'githubLoginModalOpen' | 'videoPlayerModalOpen', open: boolean) => void
   setCloneUrlPreset: (url: string) => void
   selectCommit: (hash: string | null) => void
   setCommitDetailOpen: (open: boolean) => void
@@ -67,6 +68,7 @@ export function createUiSlice(
     mergeModalOpen: false,
     cloneModalOpen: false,
     githubLoginModalOpen: false,
+    videoPlayerModalOpen: false,
     cloneUrlPreset: '',
 
     selectedCommitHash: null,

@@ -17,6 +17,7 @@ import MergeModal from '../features/branches/MergeModal'
 import { useCallback, useState } from 'react'
 import GitHubPublishModal from '../features/repository/GitHubPublishModal'
 import GithubLoginModal from '../features/repository/GithubLoginModal'
+import VideoBrowserModal from '../features/video/VideoBrowserModal'
 
 const { Content } = Layout
 const { Text } = Typography
@@ -126,6 +127,7 @@ export default function AppContent() {
         open={useStore((s) => s.githubLoginModalOpen) ?? false}
         onClose={() => setModalOpen('githubLoginModalOpen', false)}
       />
+      <VideoBrowserModal />
 
       {!selectedRepo && !isRemoteViewing ? (
         <Content style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-primary)' }}>

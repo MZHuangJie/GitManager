@@ -1,7 +1,12 @@
-import { app, BrowserWindow, shell, Menu } from 'electron'
-import { join } from 'path'
+import { app, BrowserWindow, shell, Menu, protocol } from 'electron'
+import { join, normalize } from 'path'
+import { open, stat } from 'fs/promises'
 import { registerAllIpc } from './ipc'
 import { settingsStore } from './services/settings.store'
+
+app.commandLine.appendSwitch('enable-features',
+  'PlatformHEVCDecoderSupport,PlatformHEVCEncoderSupport,HardwareMediaKeyHandling'
+)
 
 let mainWindow: BrowserWindow | null = null
 
@@ -54,7 +59,60 @@ function createWindow(): void {
   }
 }
 
+// Register custom protocol for local file access
+protocol.registerSchemesAsPrivileged([
+  { scheme: 'local-file', privileges: { bypassCSP: true, stream: true, supportFetchAPI: true } }
+])
+
 app.whenReady().then(() => {
+  // Handle local-file:// protocol to serve local files to renderer
+  protocol.handle('local-file', async (request) => {
+    const rawPath = decodeURIComponent(request.url.slice('local-file:///'.length))
+    const filePath = normalize(rawPath)
+    try {
+      const fileStat = await stat(filePath)
+      const total = fileStat.size
+
+      const ext = filePath.slice(filePath.lastIndexOf('.')).toLowerCase()
+      const mimeMap: Record<string, string> = {
+        '.mp4': 'video/mp4',
+        '.webm': 'video/webm',
+        '.ogg': 'video/ogg',
+        '.mkv': 'video/x-matroska',
+        '.avi': 'video/x-msvideo',
+        '.mov': 'video/quicktime',
+        '.wmv': 'video/x-ms-wmv',
+        '.flv': 'video/x-flv',
+      }
+      const mimeType = mimeMap[ext] || 'application/octet-stream'
+
+      const rangeHeader = request.headers.get('range')
+      const start = rangeHeader?.match(/bytes=(\d+)-/)?.[1]
+        ? parseInt(rangeHeader.match(/bytes=(\d+)-/)![1], 10)
+        : 0
+      const endMatch = rangeHeader?.match(/bytes=\d+-(\d+)/)
+      const end = endMatch?.[1] ? parseInt(endMatch[1], 10) : total - 1
+
+      const length = end - start + 1
+      const fileHandle = await open(filePath, 'r')
+      const buf = Buffer.alloc(length)
+      await fileHandle.read(buf, 0, length, start)
+      await fileHandle.close()
+
+      return new Response(buf, {
+        status: 206,
+        headers: {
+          'Content-Type': mimeType,
+          'Content-Range': `bytes ${start}-${end}/${total}`,
+          'Content-Length': String(length),
+          'Accept-Ranges': 'bytes',
+        }
+      })
+    } catch {
+      return new Response('File not found', { status: 404 })
+    }
+  })
+
   Menu.setApplicationMenu(null)
   registerAllIpc()
   createWindow()
