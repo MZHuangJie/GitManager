@@ -99,13 +99,21 @@ export default function VideoBrowserModal() {
     if (loadId === loadIdRef.current) setLoading(false)
   }, [])
 
-  // build tree nodes from a directory listing
-  const buildTreeNodes = (dirPath: string, dirs: string[]): TreeNode[] =>
-    dirs.map((d) => ({
+  // build tree nodes from a directory listing (dirs + videos)
+  const buildTreeNodes = (dirPath: string, dirs: string[], videos: VideoFile[]): TreeNode[] => [
+    ...dirs.map((d) => ({
       title: d,
       key: joinPath(dirPath, d),
+      icon: <FolderOutlined />,
       isLeaf: false
+    })),
+    ...videos.map((v) => ({
+      title: v.name,
+      key: v.path,
+      icon: <PlayCircleOutlined style={{ color: 'var(--accent)' }} />,
+      isLeaf: true
     }))
+  ]
 
   // select drive — initializes both tree and videos
   const handleDriveSelect = useCallback(async (drive: string) => {
@@ -116,7 +124,7 @@ export default function VideoBrowserModal() {
       const res: any = await window.electronAPI.fsReadDir(drive)
       if (res.success) {
         setVideos(res.data.videos)
-        setTreeNodes(buildTreeNodes(drive, res.data.dirs))
+        setTreeNodes(buildTreeNodes(drive, res.data.dirs, res.data.videos))
         setCurrentPath(drive)
       } else {
         message.error(res.error)
@@ -135,7 +143,7 @@ export default function VideoBrowserModal() {
     try {
       const res: any = await window.electronAPI.fsReadDir(dirPath)
       if (res.success) {
-        return buildTreeNodes(dirPath, res.data.dirs)
+        return buildTreeNodes(dirPath, res.data.dirs, res.data.videos)
       }
     } catch (err: any) {
       message.error(err?.message || '读取目录失败')
@@ -143,11 +151,19 @@ export default function VideoBrowserModal() {
     return []
   }
 
-  // select folder from tree — only loads videos, tree stays intact
-  const handleTreeSelect = (selectedKeys: React.Key[]) => {
+  // select node from tree — folder loads videos, video file plays directly
+  const handleTreeSelect = (selectedKeys: React.Key[], info: any) => {
     if (selectedKeys.length > 0) {
-      setPlayingVideo(null)
-      loadVideos(selectedKeys[0] as string)
+      const node = info.node
+      if (node.isLeaf) {
+        // video file — play it
+        const video: VideoFile = { name: node.title as string, size: 0, path: node.key as string }
+        handlePlayVideo(video)
+      } else {
+        // folder — load videos, tree stays intact
+        setPlayingVideo(null)
+        loadVideos(selectedKeys[0] as string)
+      }
     }
   }
 
