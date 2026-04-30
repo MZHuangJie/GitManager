@@ -296,7 +296,6 @@ export default function VideoBrowserModal() {
                   onClick={() => handlePlayVideo(v)}
                   onDoubleClick={() => {
                     fullscreenRequested.current = true
-                    handlePlayVideo(v)
                   }}
                 >
                   <Card.Meta
