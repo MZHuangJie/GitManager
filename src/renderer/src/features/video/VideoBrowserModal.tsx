@@ -143,18 +143,30 @@ export default function VideoBrowserModal() {
     setLoading(false)
   }, [])
 
-  // lazy load tree node children
+  // recursively update tree node children by key
+  const patchTree = (nodes: TreeNode[], key: string, children: TreeNode[]): TreeNode[] =>
+    nodes.map((n) => {
+      if (n.key === key) return { ...n, children }
+      if (n.children) return { ...n, children: patchTree(n.children, key, children) }
+      return n
+    })
+
+  // lazy load tree node children — updates treeNodes directly for reliability
   const handleTreeLoad = async (node: any) => {
     const dirPath = node.key as string
     try {
       const res: any = await window.electronAPI.fsReadDir(dirPath)
       if (res.success) {
-        return buildTreeNodes(dirPath, res.data.dirs, res.data.videos)
+        const children = buildTreeNodes(dirPath, res.data.dirs, res.data.videos)
+        setTreeNodes((prev) => patchTree(prev, dirPath, children))
+      } else {
+        message.error(res.error || '读取目录失败')
+        // mark as leaf so user doesn't keep seeing the expand arrow
+        setTreeNodes((prev) => patchTree(prev, dirPath, []))
       }
     } catch (err: any) {
       message.error(err?.message || '读取目录失败')
     }
-    return []
   }
 
   // select node from tree — folder loads videos, video file plays directly
