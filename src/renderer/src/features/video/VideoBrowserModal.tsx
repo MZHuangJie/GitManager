@@ -63,12 +63,18 @@ export default function VideoBrowserModal() {
   useEffect(() => {
     if (open) {
       setDriveLoading(true)
-      window.electronAPI.fsListDrives().then((res: any) => {
-        if (res.success) {
-          setDrives(res.data)
-        }
-        setDriveLoading(false)
-      })
+      window.electronAPI.fsListDrives()
+        .then((res: any) => {
+          if (res.success) {
+            setDrives(res.data)
+          } else {
+            message.error(res.error || '获取盘符列表失败')
+          }
+        })
+        .catch((err: any) => {
+          message.error(err?.message || '获取盘符列表失败')
+        })
+        .finally(() => setDriveLoading(false))
       // reset state
       setCurrentDrive(null)
       setCurrentPath(null)
