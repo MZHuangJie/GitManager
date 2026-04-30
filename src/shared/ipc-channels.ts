@@ -55,5 +55,9 @@ export const IPC = {
   GITHUB_GET_COMMIT_DIFF: 'github:get-commit-diff',
 
   // Window Management
-  WINDOW_OPEN_DIFF: 'window:open-diff'
+  WINDOW_OPEN_DIFF: 'window:open-diff',
+
+  // File System
+  FS_LIST_DRIVES: 'fs:list-drives',
+  FS_READ_DIR: 'fs:read-dir'
 } as const
