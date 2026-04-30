@@ -1,5 +1,6 @@
-import { app, BrowserWindow, shell, Menu } from 'electron'
+import { app, BrowserWindow, shell, Menu, protocol, net } from 'electron'
 import { join } from 'path'
+import { pathToFileURL } from 'url'
 import { registerAllIpc } from './ipc'
 import { settingsStore } from './services/settings.store'
 
@@ -54,7 +55,18 @@ function createWindow(): void {
   }
 }
 
+// Register custom protocol for local file access
+protocol.registerSchemesAsPrivileged([
+  { scheme: 'local-file', privileges: { bypassCSP: true, stream: true, supportFetchAPI: true } }
+])
+
 app.whenReady().then(() => {
+  // Handle local-file:// protocol to serve local files to renderer
+  protocol.handle('local-file', (request) => {
+    const filePath = decodeURIComponent(request.url.slice('local-file:///'.length))
+    return net.fetch(pathToFileURL(filePath).toString())
+  })
+
   Menu.setApplicationMenu(null)
   registerAllIpc()
   createWindow()

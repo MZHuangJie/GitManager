@@ -314,7 +314,7 @@ export default function VideoBrowserModal() {
               <div className="video-player-wrapper">
                 <video
                   ref={videoRef}
-                  src={'file:///' + playingVideo.path.replace(/\\/g, '/')}
+                  src={'local-file:///' + playingVideo.path.replace(/\\/g, '/')}
                   controls
                   autoPlay
                   onError={() => message.error('无法播放此视频文件')}
