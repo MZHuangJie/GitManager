@@ -78,8 +78,8 @@ export default function VideoBrowserModal() {
     }
   }, [open])
 
-  // load directory contents
-  const loadDir = useCallback(async (dirPath: string) => {
+  // load videos for a directory (does NOT touch tree)
+  const loadVideos = useCallback(async (dirPath: string) => {
     const loadId = ++loadIdRef.current
     setLoading(true)
     try {
@@ -87,18 +87,10 @@ export default function VideoBrowserModal() {
       if (loadId !== loadIdRef.current) return
       if (res.success) {
         setVideos(res.data.videos)
-        setTreeNodes(
-          res.data.dirs.map((d: string) => ({
-            title: d,
-            key: joinPath(dirPath, d),
-            isLeaf: false
-          }))
-        )
         setCurrentPath(dirPath)
       } else {
         message.error(res.error)
         setVideos([])
-        setTreeNodes([])
       }
     } catch (err: any) {
       if (loadId !== loadIdRef.current) return
@@ -107,12 +99,35 @@ export default function VideoBrowserModal() {
     if (loadId === loadIdRef.current) setLoading(false)
   }, [])
 
-  // select drive
-  const handleDriveSelect = (drive: string) => {
+  // build tree nodes from a directory listing
+  const buildTreeNodes = (dirPath: string, dirs: string[]): TreeNode[] =>
+    dirs.map((d) => ({
+      title: d,
+      key: joinPath(dirPath, d),
+      isLeaf: false
+    }))
+
+  // select drive — initializes both tree and videos
+  const handleDriveSelect = useCallback(async (drive: string) => {
     setCurrentDrive(drive)
     setPlayingVideo(null)
-    loadDir(drive)
-  }
+    setLoading(true)
+    try {
+      const res: any = await window.electronAPI.fsReadDir(drive)
+      if (res.success) {
+        setVideos(res.data.videos)
+        setTreeNodes(buildTreeNodes(drive, res.data.dirs))
+        setCurrentPath(drive)
+      } else {
+        message.error(res.error)
+        setVideos([])
+        setTreeNodes([])
+      }
+    } catch (err: any) {
+      message.error(err.message)
+    }
+    setLoading(false)
+  }, [])
 
   // lazy load tree node children
   const handleTreeLoad = async (node: any) => {
@@ -120,11 +135,7 @@ export default function VideoBrowserModal() {
     try {
       const res: any = await window.electronAPI.fsReadDir(dirPath)
       if (res.success) {
-        return res.data.dirs.map((d: string) => ({
-          title: d,
-          key: joinPath(dirPath, d),
-          isLeaf: false
-        }))
+        return buildTreeNodes(dirPath, res.data.dirs)
       }
     } catch (err: any) {
       message.error(err?.message || '读取目录失败')
@@ -132,11 +143,11 @@ export default function VideoBrowserModal() {
     return []
   }
 
-  // select folder from tree
+  // select folder from tree — only loads videos, tree stays intact
   const handleTreeSelect = (selectedKeys: React.Key[]) => {
     if (selectedKeys.length > 0) {
       setPlayingVideo(null)
-      loadDir(selectedKeys[0] as string)
+      loadVideos(selectedKeys[0] as string)
     }
   }
 
