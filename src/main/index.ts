@@ -4,7 +4,9 @@ import { open, stat } from 'fs/promises'
 import { registerAllIpc } from './ipc'
 import { settingsStore } from './services/settings.store'
 
-app.commandLine.appendSwitch('enable-features', 'PlatformHEVCDecoderSupport,PlatformHEVCEncoderSupport')
+app.commandLine.appendSwitch('enable-features',
+  'PlatformHEVCDecoderSupport,PlatformHEVCEncoderSupport,HardwareMediaKeyHandling'
+)
 
 let mainWindow: BrowserWindow | null = null
 
@@ -49,20 +51,11 @@ function createWindow(): void {
     return { action: 'deny' }
   })
 
-  mainWindow.webContents.on('console-message', (_e, level, message) => {
-    console.log('[renderer]', level === 2 ? 'WARN' : level === 3 ? 'ERROR' : 'LOG', message)
-  })
-
   // Load the renderer
   if (process.env['ELECTRON_RENDERER_URL']) {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
-  }
-
-  // Open DevTools in development
-  if (process.env.NODE_ENV === 'development' || process.env['ELECTRON_RENDERER_URL']) {
-    mainWindow.webContents.openDevTools()
   }
 }
 
@@ -76,12 +69,9 @@ app.whenReady().then(() => {
   protocol.handle('local-file', async (request) => {
     const rawPath = decodeURIComponent(request.url.slice('local-file:///'.length))
     const filePath = normalize(rawPath)
-    console.log('[local-file] Request:', request.url)
-    console.log('[local-file] Range:', request.headers.get('range'))
     try {
       const fileStat = await stat(filePath)
       const total = fileStat.size
-      console.log('[local-file] File size:', total)
 
       const ext = filePath.slice(filePath.lastIndexOf('.')).toLowerCase()
       const mimeMap: Record<string, string> = {
@@ -104,14 +94,11 @@ app.whenReady().then(() => {
       const end = endMatch?.[1] ? parseInt(endMatch[1], 10) : total - 1
 
       const length = end - start + 1
-      console.log('[local-file] Range:', start, '-', end, '/', total, 'length:', length)
-
       const fileHandle = await open(filePath, 'r')
       const buf = Buffer.alloc(length)
       await fileHandle.read(buf, 0, length, start)
       await fileHandle.close()
 
-      console.log('[local-file] Returning 206, Content-Range:', `bytes ${start}-${end}/${total}`)
       return new Response(buf, {
         status: 206,
         headers: {
@@ -121,8 +108,7 @@ app.whenReady().then(() => {
           'Accept-Ranges': 'bytes',
         }
       })
-    } catch (err) {
-      console.error('[local-file] Error:', err)
+    } catch {
       return new Response('File not found', { status: 404 })
     }
   })

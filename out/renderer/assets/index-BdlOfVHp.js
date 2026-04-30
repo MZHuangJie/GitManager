@@ -65391,16 +65391,20 @@ function VideoBrowserModal() {
                   src: "local-file:///" + playingVideo.path.replace(/\\/g, "/"),
                   controls: true,
                   autoPlay: true,
-                  onError: (e2) => {
-                    const v2 = e2.currentTarget;
-                    console.error("[video] error code:", v2.error?.code, "message:", v2.error?.message);
-                    console.error("[video] src:", v2.src);
-                    console.error("[video] networkState:", v2.networkState, "readyState:", v2.readyState);
-                    staticMethods$1.error("无法播放此视频文件");
-                  },
+                  onError: () => staticMethods$1.error("无法播放此视频文件"),
                   onLoadedMetadata: (e2) => {
                     const v2 = e2.currentTarget;
-                    console.log("[video] loaded metadata, duration:", v2.duration, "videoWidth:", v2.videoWidth, "videoHeight:", v2.videoHeight);
+                    if (v2.videoWidth === 0 || v2.videoHeight === 0) {
+                      Modal.confirm({
+                        title: "视频编码不支持",
+                        content: "该视频使用了 HEVC/H.265 编码，当前系统无法解码。您可以用系统默认播放器打开。",
+                        okText: "用系统播放器打开",
+                        cancelText: "取消",
+                        onOk: () => {
+                          window.electronAPI.shellOpenPath(playingVideo.path);
+                        }
+                      });
+                    }
                   }
                 }
               ) })

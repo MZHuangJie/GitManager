@@ -87,6 +87,9 @@ const api = {
   windowOpenDiff: (data: { diff: string; repoPath?: string; filePath?: string; staged?: boolean; editable?: boolean; theme?: string }) =>
     ipcRenderer.invoke(IPC.WINDOW_OPEN_DIFF, data),
 
+  // Shell
+  shellOpenPath: (filePath: string) => ipcRenderer.invoke(IPC.SHELL_OPEN_PATH, filePath),
+
   // File System
   fsListDrives: () => ipcRenderer.invoke(IPC.FS_LIST_DRIVES),
   fsReadDir: (dirPath: string) => ipcRenderer.invoke(IPC.FS_READ_DIR, dirPath),

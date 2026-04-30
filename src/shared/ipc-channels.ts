@@ -57,6 +57,9 @@ export const IPC = {
   // Window Management
   WINDOW_OPEN_DIFF: 'window:open-diff',
 
+  // Shell
+  SHELL_OPEN_PATH: 'shell:open-path',
+
   // File System
   FS_LIST_DRIVES: 'fs:list-drives',
   FS_READ_DIR: 'fs:read-dir'

@@ -60,6 +60,8 @@ const IPC = {
   GITHUB_GET_COMMIT_DIFF: "github:get-commit-diff",
   // Window Management
   WINDOW_OPEN_DIFF: "window:open-diff",
+  // Shell
+  SHELL_OPEN_PATH: "shell:open-path",
   // File System
   FS_LIST_DRIVES: "fs:list-drives",
   FS_READ_DIR: "fs:read-dir"
@@ -935,6 +937,9 @@ function registerWindowIpc() {
       return { id: 0 };
     }
   );
+  electron.ipcMain.handle(IPC.SHELL_OPEN_PATH, async (_e, filePath) => {
+    return electron.shell.openPath(filePath);
+  });
 }
 const githubService = {
   getToken() {
@@ -1337,7 +1342,10 @@ function registerAllIpc() {
   registerGithubIpc();
   registerFsIpc();
 }
-electron.app.commandLine.appendSwitch("enable-features", "PlatformHEVCDecoderSupport,PlatformHEVCEncoderSupport");
+electron.app.commandLine.appendSwitch(
+  "enable-features",
+  "PlatformHEVCDecoderSupport,PlatformHEVCEncoderSupport,HardwareMediaKeyHandling"
+);
 let mainWindow = null;
 function createWindow() {
   const bounds = settingsStore.get("windowBounds");
@@ -1373,16 +1381,10 @@ function createWindow() {
     electron.shell.openExternal(url);
     return { action: "deny" };
   });
-  mainWindow.webContents.on("console-message", (_e, level, message) => {
-    console.log("[renderer]", level === 2 ? "WARN" : level === 3 ? "ERROR" : "LOG", message);
-  });
   if (process.env["ELECTRON_RENDERER_URL"]) {
     mainWindow.loadURL(process.env["ELECTRON_RENDERER_URL"]);
   } else {
     mainWindow.loadFile(path.join(__dirname, "../renderer/index.html"));
-  }
-  if (process.env.NODE_ENV === "development" || process.env["ELECTRON_RENDERER_URL"]) {
-    mainWindow.webContents.openDevTools();
   }
 }
 electron.protocol.registerSchemesAsPrivileged([
@@ -1392,12 +1394,9 @@ electron.app.whenReady().then(() => {
   electron.protocol.handle("local-file", async (request) => {
     const rawPath = decodeURIComponent(request.url.slice("local-file:///".length));
     const filePath = path.normalize(rawPath);
-    console.log("[local-file] Request:", request.url);
-    console.log("[local-file] Range:", request.headers.get("range"));
     try {
       const fileStat = await promises.stat(filePath);
       const total = fileStat.size;
-      console.log("[local-file] File size:", total);
       const ext = filePath.slice(filePath.lastIndexOf(".")).toLowerCase();
       const mimeMap = {
         ".mp4": "video/mp4",
@@ -1415,12 +1414,10 @@ electron.app.whenReady().then(() => {
       const endMatch = rangeHeader?.match(/bytes=\d+-(\d+)/);
       const end = endMatch?.[1] ? parseInt(endMatch[1], 10) : total - 1;
       const length = end - start + 1;
-      console.log("[local-file] Range:", start, "-", end, "/", total, "length:", length);
       const fileHandle = await promises.open(filePath, "r");
       const buf = Buffer.alloc(length);
       await fileHandle.read(buf, 0, length, start);
       await fileHandle.close();
-      console.log("[local-file] Returning 206, Content-Range:", `bytes ${start}-${end}/${total}`);
       return new Response(buf, {
         status: 206,
         headers: {
@@ -1430,8 +1427,7 @@ electron.app.whenReady().then(() => {
           "Accept-Ranges": "bytes"
         }
       });
-    } catch (err) {
-      console.error("[local-file] Error:", err);
+    } catch {
       return new Response("File not found", { status: 404 });
     }
   });

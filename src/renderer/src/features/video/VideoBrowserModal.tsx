@@ -317,18 +317,19 @@ export default function VideoBrowserModal() {
                   src={'local-file:///' + playingVideo.path.replace(/\\/g, '/')}
                   controls
                   autoPlay
-                  onError={(e) => {
-                    const v = e.currentTarget as HTMLVideoElement
-                    console.error('[video] error code:', v.error?.code, 'message:', v.error?.message)
-                    console.error('[video] src:', v.src)
-                    console.error('[video] networkState:', v.networkState, 'readyState:', v.readyState)
-                    message.error('无法播放此视频文件')
-                  }}
+                  onError={() => message.error('无法播放此视频文件')}
                   onLoadedMetadata={(e) => {
                     const v = e.currentTarget as HTMLVideoElement
-                    console.log('[video] loaded metadata, duration:', v.duration, 'videoWidth:', v.videoWidth, 'videoHeight:', v.videoHeight)
                     if (v.videoWidth === 0 || v.videoHeight === 0) {
-                      message.error('该视频使用了不支持的编码格式（可能是 HEVC/H.265），请使用 H.264 编码的视频')
+                      Modal.confirm({
+                        title: '视频编码不支持',
+                        content: '该视频使用了 HEVC/H.265 编码，当前系统无法解码。您可以用系统默认播放器打开。',
+                        okText: '用系统播放器打开',
+                        cancelText: '取消',
+                        onOk: () => {
+                          window.electronAPI.shellOpenPath(playingVideo.path)
+                        }
+                      })
                     }
                   }}
                 />

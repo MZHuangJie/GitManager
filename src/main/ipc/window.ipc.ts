@@ -1,4 +1,4 @@
-import { ipcMain, BrowserWindow } from 'electron'
+import { ipcMain, BrowserWindow, shell } from 'electron'
 import { join } from 'path'
 import { IPC } from '../../shared/ipc-channels'
 import { DEFAULT_THEME } from '../../shared/types'
@@ -55,4 +55,8 @@ export function registerWindowIpc(): void {
       return { id: 0 }
     }
   )
+
+  ipcMain.handle(IPC.SHELL_OPEN_PATH, async (_e, filePath: string) => {
+    return shell.openPath(filePath)
+  })
 }
