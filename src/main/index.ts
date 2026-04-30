@@ -1,6 +1,8 @@
 import { app, BrowserWindow, shell, Menu, protocol } from 'electron'
 import { join, normalize } from 'path'
-import { readFile } from 'fs/promises'
+import { createReadStream } from 'fs'
+import { stat } from 'fs/promises'
+import { Readable } from 'stream'
 import { registerAllIpc } from './ipc'
 import { settingsStore } from './services/settings.store'
 
@@ -66,8 +68,7 @@ app.whenReady().then(() => {
     const rawPath = decodeURIComponent(request.url.slice('local-file:///'.length))
     const filePath = normalize(rawPath)
     try {
-      const data = await readFile(filePath)
-      const total = data.byteLength
+      const fileStat = await stat(filePath)
       const rangeHeader = request.headers.get('range')
 
       const ext = filePath.slice(filePath.lastIndexOf('.')).toLowerCase()
@@ -87,25 +88,26 @@ app.whenReady().then(() => {
         const match = rangeHeader.match(/bytes=(\d+)-(\d*)/)
         if (match) {
           const start = parseInt(match[1], 10)
-          const end = match[2] ? parseInt(match[2], 10) : total - 1
-          const chunk = data.subarray(start, end + 1)
-          return new Response(chunk, {
+          const end = match[2] ? parseInt(match[2], 10) : fileStat.size - 1
+          const stream = createReadStream(filePath, { start, end })
+          return new Response(Readable.toWeb(stream) as ReadableStream, {
             status: 206,
             headers: {
               'Content-Type': mimeType,
-              'Content-Range': `bytes ${start}-${end}/${total}`,
-              'Content-Length': String(chunk.byteLength),
+              'Content-Range': `bytes ${start}-${end}/${fileStat.size}`,
+              'Content-Length': String(end - start + 1),
               'Accept-Ranges': 'bytes',
             }
           })
         }
       }
 
-      return new Response(data, {
+      const stream = createReadStream(filePath)
+      return new Response(Readable.toWeb(stream) as ReadableStream, {
         status: 200,
         headers: {
           'Content-Type': mimeType,
-          'Content-Length': String(total),
+          'Content-Length': String(fileStat.size),
           'Accept-Ranges': 'bytes',
         }
       })
