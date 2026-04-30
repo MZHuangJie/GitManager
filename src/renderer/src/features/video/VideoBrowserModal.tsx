@@ -3,6 +3,7 @@ import {
   PlayCircleOutlined,
   FolderOutlined,
   ArrowLeftOutlined,
+  FullscreenOutlined,
   HddOutlined,
   VideoCameraOutlined
 } from '@ant-design/icons'
@@ -51,7 +52,6 @@ export default function VideoBrowserModal() {
 
   const [playingVideo, setPlayingVideo] = useState<VideoFile | null>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const fullscreenRequested = useRef(false)
   const loadIdRef = useRef(0)
 
   // drag state
@@ -151,14 +151,6 @@ export default function VideoBrowserModal() {
   const handleBackToGrid = () => {
     setPlayingVideo(null)
   }
-
-  // fullscreen effect — fires after video element mounts from state change
-  useEffect(() => {
-    if (playingVideo && fullscreenRequested.current) {
-      fullscreenRequested.current = false
-      videoRef.current?.requestFullscreen()
-    }
-  }, [playingVideo])
 
   const handleClose = () => {
     setModalOpen('videoPlayerModalOpen', false)
@@ -266,6 +258,13 @@ export default function VideoBrowserModal() {
                 </Button>
                 <Text style={{ color: 'var(--text-primary)' }}>{playingVideo.name}</Text>
                 <Text type="secondary">{formatSize(playingVideo.size)}</Text>
+                <Button
+                  type="text"
+                  icon={<FullscreenOutlined />}
+                  onClick={() => videoRef.current?.requestFullscreen()}
+                  style={{ color: 'var(--text-primary)' }}
+                  title="全屏"
+                />
               </div>
               <div className="video-player-wrapper">
                 <video
@@ -296,9 +295,6 @@ export default function VideoBrowserModal() {
                     </div>
                   }
                   onClick={() => handlePlayVideo(v)}
-                  onDoubleClick={() => {
-                    fullscreenRequested.current = true
-                  }}
                 >
                   <Card.Meta
                     title={
