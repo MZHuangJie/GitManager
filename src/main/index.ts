@@ -1,6 +1,6 @@
-import { app, BrowserWindow, shell, Menu, protocol, net } from 'electron'
-import { join, normalize, extname } from 'path'
-import { pathToFileURL } from 'url'
+import { app, BrowserWindow, shell, Menu, protocol } from 'electron'
+import { join, normalize } from 'path'
+import { readFile } from 'fs/promises'
 import { registerAllIpc } from './ipc'
 import { settingsStore } from './services/settings.store'
 
@@ -65,10 +65,12 @@ app.whenReady().then(() => {
   protocol.handle('local-file', async (request) => {
     const rawPath = decodeURIComponent(request.url.slice('local-file:///'.length))
     const filePath = normalize(rawPath)
-    const fileUrl = pathToFileURL(filePath).toString()
     try {
-      const response = await net.fetch(fileUrl)
-      const ext = extname(filePath).toLowerCase()
+      const data = await readFile(filePath)
+      const total = data.byteLength
+      const rangeHeader = request.headers.get('range')
+
+      const ext = filePath.slice(filePath.lastIndexOf('.')).toLowerCase()
       const mimeMap: Record<string, string> = {
         '.mp4': 'video/mp4',
         '.webm': 'video/webm',
@@ -79,12 +81,32 @@ app.whenReady().then(() => {
         '.wmv': 'video/x-ms-wmv',
         '.flv': 'video/x-flv',
       }
-      return new Response(response.body, {
-        status: response.status,
+      const mimeType = mimeMap[ext] || 'application/octet-stream'
+
+      if (rangeHeader) {
+        const match = rangeHeader.match(/bytes=(\d+)-(\d*)/)
+        if (match) {
+          const start = parseInt(match[1], 10)
+          const end = match[2] ? parseInt(match[2], 10) : total - 1
+          const chunk = data.subarray(start, end + 1)
+          return new Response(chunk, {
+            status: 206,
+            headers: {
+              'Content-Type': mimeType,
+              'Content-Range': `bytes ${start}-${end}/${total}`,
+              'Content-Length': String(chunk.byteLength),
+              'Accept-Ranges': 'bytes',
+            }
+          })
+        }
+      }
+
+      return new Response(data, {
+        status: 200,
         headers: {
-          'Content-Type': mimeMap[ext] || 'application/octet-stream',
+          'Content-Type': mimeType,
+          'Content-Length': String(total),
           'Accept-Ranges': 'bytes',
-          'Content-Length': response.headers.get('Content-Length') || '',
         }
       })
     } catch {
