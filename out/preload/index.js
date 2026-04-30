@@ -52,7 +52,10 @@ const IPC = {
   GITHUB_GET_BRANCHES: "github:get-branches",
   GITHUB_GET_COMMIT_DIFF: "github:get-commit-diff",
   // Window Management
-  WINDOW_OPEN_DIFF: "window:open-diff"
+  WINDOW_OPEN_DIFF: "window:open-diff",
+  // File System
+  FS_LIST_DRIVES: "fs:list-drives",
+  FS_READ_DIR: "fs:read-dir"
 };
 const DEFAULT_THEME = "light";
 const api = {
@@ -109,6 +112,9 @@ const api = {
   githubGetCommitDiff: (token, owner, repo, sha) => electron.ipcRenderer.invoke(IPC.GITHUB_GET_COMMIT_DIFF, token, owner, repo, sha),
   // Window management
   windowOpenDiff: (data) => electron.ipcRenderer.invoke(IPC.WINDOW_OPEN_DIFF, data),
+  // File System
+  fsListDrives: () => electron.ipcRenderer.invoke(IPC.FS_LIST_DRIVES),
+  fsReadDir: (dirPath) => electron.ipcRenderer.invoke(IPC.FS_READ_DIR, dirPath),
   // Diff window detection
   isDiffWindow: process.argv.includes("--diff-window"),
   diffWindowTheme: process.argv.find((a) => a.startsWith("--theme="))?.replace("--theme=", "") || DEFAULT_THEME
