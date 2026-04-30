@@ -46,6 +46,7 @@ export default function VideoBrowserModal() {
 
   const [playingVideo, setPlayingVideo] = useState<VideoFile | null>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const fullscreenRequested = useRef(false)
 
   // drag state
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
@@ -116,7 +117,9 @@ export default function VideoBrowserModal() {
           isLeaf: false
         }))
       }
-    } catch { /* ignore */ }
+    } catch (err: any) {
+      message.error(err?.message || '读取目录失败')
+    }
     return []
   }
 
@@ -139,6 +142,14 @@ export default function VideoBrowserModal() {
   const handleBackToGrid = () => {
     setPlayingVideo(null)
   }
+
+  // fullscreen effect — fires after video element mounts from state change
+  useEffect(() => {
+    if (playingVideo && fullscreenRequested.current) {
+      fullscreenRequested.current = false
+      videoRef.current?.requestFullscreen()
+    }
+  }, [playingVideo])
 
   const handleClose = () => {
     setModalOpen('videoPlayerModalOpen', false)
@@ -284,8 +295,8 @@ export default function VideoBrowserModal() {
                   }
                   onClick={() => handlePlayVideo(v)}
                   onDoubleClick={() => {
+                    fullscreenRequested.current = true
                     handlePlayVideo(v)
-                    setTimeout(() => videoRef.current?.requestFullscreen(), 100)
                   }}
                 >
                   <Card.Meta
