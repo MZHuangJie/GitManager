@@ -221,23 +221,32 @@ export const githubService = {
     date: string
     refs: string[]
   }>> {
-    const res = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/commits?per_page=50`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: 'application/vnd.github+json',
-          'User-Agent': 'GitManager'
+    const allCommits: any[] = []
+    let page = 1
+    while (true) {
+      const res = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/commits?per_page=100&page=${page}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/vnd.github+json',
+            'User-Agent': 'GitManager'
+          }
         }
-      }
-    )
+      )
 
-    if (!res.ok) {
-      throw new Error(`GitHub API error: ${res.status}`)
+      if (!res.ok) {
+        throw new Error(`GitHub API error: ${res.status}`)
+      }
+
+      const data = await res.json()
+      if (!Array.isArray(data) || data.length === 0) break
+      allCommits.push(...data)
+      if (data.length < 100) break
+      page++
     }
 
-    const data = await res.json()
-    return (data || []).map((c: any) => ({
+    return allCommits.map((c: any) => ({
       hash: c.sha,
       message: c.commit?.message || '',
       author: c.commit?.author?.name || c.author?.login || '',
@@ -287,23 +296,32 @@ export const githubService = {
     commit: string
     label: string
   }>> {
-    const res = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/branches?per_page=50`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: 'application/vnd.github+json',
-          'User-Agent': 'GitManager'
+    const allBranches: any[] = []
+    let page = 1
+    while (true) {
+      const res = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/branches?per_page=100&page=${page}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/vnd.github+json',
+            'User-Agent': 'GitManager'
+          }
         }
-      }
-    )
+      )
 
-    if (!res.ok) {
-      throw new Error(`GitHub API error: ${res.status}`)
+      if (!res.ok) {
+        throw new Error(`GitHub API error: ${res.status}`)
+      }
+
+      const data = await res.json()
+      if (!Array.isArray(data) || data.length === 0) break
+      allBranches.push(...data)
+      if (data.length < 100) break
+      page++
     }
 
-    const data = await res.json()
-    return (data || []).map((b: any) => ({
+    return allBranches.map((b: any) => ({
       name: b.name,
       current: false,
       commit: b.commit?.sha || '',

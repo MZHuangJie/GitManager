@@ -130,7 +130,7 @@ export const gitService = {
     const git = getGit(repoPath)
     const logOpts: Record<string, unknown> = {
       '--all': null,
-      maxCount: opts.maxCount ?? 50,
+      ...(opts.maxCount ? { maxCount: opts.maxCount } : {}),
       ...(opts.skip ? { '--skip': opts.skip } : {})
     }
     const log = await git.log(logOpts)

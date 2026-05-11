@@ -308,7 +308,7 @@ const gitService = {
     const git = getGit(repoPath);
     const logOpts = {
       "--all": null,
-      maxCount: opts.maxCount ?? 50,
+      ...opts.maxCount ? { maxCount: opts.maxCount } : {},
       ...opts.skip ? { "--skip": opts.skip } : {}
     };
     const log = await git.log(logOpts);
@@ -1092,21 +1092,29 @@ const githubService = {
     }));
   },
   async getRepoCommits(token, owner, repo) {
-    const res = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/commits?per_page=50`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/vnd.github+json",
-          "User-Agent": "GitManager"
+    const allCommits = [];
+    let page = 1;
+    while (true) {
+      const res = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/commits?per_page=100&page=${page}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/vnd.github+json",
+            "User-Agent": "GitManager"
+          }
         }
+      );
+      if (!res.ok) {
+        throw new Error(`GitHub API error: ${res.status}`);
       }
-    );
-    if (!res.ok) {
-      throw new Error(`GitHub API error: ${res.status}`);
+      const data = await res.json();
+      if (!Array.isArray(data) || data.length === 0) break;
+      allCommits.push(...data);
+      if (data.length < 100) break;
+      page++;
     }
-    const data = await res.json();
-    return (data || []).map((c) => ({
+    return allCommits.map((c) => ({
       hash: c.sha,
       message: c.commit?.message || "",
       author: c.commit?.author?.name || c.author?.login || "",
@@ -1137,21 +1145,29 @@ const githubService = {
     return diff;
   },
   async getRepoBranches(token, owner, repo) {
-    const res = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/branches?per_page=50`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/vnd.github+json",
-          "User-Agent": "GitManager"
+    const allBranches = [];
+    let page = 1;
+    while (true) {
+      const res = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/branches?per_page=100&page=${page}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/vnd.github+json",
+            "User-Agent": "GitManager"
+          }
         }
+      );
+      if (!res.ok) {
+        throw new Error(`GitHub API error: ${res.status}`);
       }
-    );
-    if (!res.ok) {
-      throw new Error(`GitHub API error: ${res.status}`);
+      const data = await res.json();
+      if (!Array.isArray(data) || data.length === 0) break;
+      allBranches.push(...data);
+      if (data.length < 100) break;
+      page++;
     }
-    const data = await res.json();
-    return (data || []).map((b) => ({
+    return allBranches.map((b) => ({
       name: b.name,
       current: false,
       commit: b.commit?.sha || "",
